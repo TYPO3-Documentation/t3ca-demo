@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Search — Mto Safi Municipality</title>
+  <link rel="icon" href="images/logo.svg">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <span>Municipal office: Mon–Fri 8:00–17:00 · +254 700 000 000</span>
+        <nav aria-label="Service">
+          <a href="login.html">E-services portal</a>
+          <a href="contact.html">Contact</a>
+          <a href="#" lang="sw" hreflang="sw">Kiswahili</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container header-main">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="" width="56" height="56">
+        <span class="brand__name">Mto Safi<small>Municipality</small></span>
+      </a>
+      <form class="site-search" role="search" action="search.html">
+        <label class="visually-hidden" for="site-search">Search the website</label>
+        <input id="site-search" name="q" type="search" placeholder="Search services, news, forms">
+        <button class="button" type="submit">Search</button>
+      </form>
+      <button class="button button--outline nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    </div>
+    <nav id="main-nav" class="main-nav" aria-label="Main">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="land-rates.html">Revenue &amp; payments</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Environment &amp; water</a></li>
+          <li><a href="#">Trade &amp; tourism</a></li>
+          <li><a href="#">Public participation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <h1>Search results for “<span data-search-term>land rates</span>”</h1>
+      <p><span data-search-count>5 results</span></p>
+
+      <div class="layout layout--sidebar-right">
+        <ol class="search-results" data-search-results>
+          <li data-type="service">
+            <span class="badge">Service</span>
+            <h2><a href="land-rates.html">Land rates</a></h2>
+            <p>Every owner of land in Mto Safi pays land rates once a year. Calculate what you owe and pay online.</p>
+          </li>
+          <li data-type="service">
+            <span class="badge">Service</span>
+            <h2><a href="#">Waiver of interest</a></h2>
+            <p>Apply for a waiver of the interest on land rates you paid late.</p>
+          </li>
+          <li data-type="document">
+            <span class="badge">Document</span>
+            <h2><a href="#">Valuation roll 2026 (PDF)</a></h2>
+            <p>The rateable value of every plot in the municipality.</p>
+          </li>
+          <li data-type="news">
+            <span class="badge">News</span>
+            <h2><a href="#">Pay land rates by mobile money from January</a></h2>
+            <p>Residents can now pay land rates and business permits with their phone.</p>
+          </li>
+          <li data-type="document">
+            <span class="badge">Document</span>
+            <h2><a href="#">Objection to a valuation (PDF)</a></h2>
+            <p>Form to object to the rateable value of your plot.</p>
+          </li>
+        </ol>
+
+        <aside class="filters" aria-labelledby="filter-title">
+          <h2 id="filter-title" class="visually-hidden">Filter results</h2>
+          <fieldset>
+            <legend>Show only</legend>
+            <label class="check"><input type="checkbox" value="service" data-search-filter> Services</label>
+            <label class="check"><input type="checkbox" value="news" data-search-filter> News</label>
+            <label class="check"><input type="checkbox" value="document" data-search-filter> Documents</label>
+          </fieldset>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__columns">
+        <div>
+          <h2>Mto Safi Municipality</h2>
+          <address>Municipal Office<br>Beach Road 1<br>P.O. Box 123, Mto Safi<br>+254 700 000 000</address>
+        </div>
+        <div>
+          <h2>Opening hours</h2>
+          <p>Monday to Friday<br>8:00–17:00<br>Closed on public holidays</p>
+        </div>
+        <div>
+          <h2>Information</h2>
+          <ul>
+            <li><a href="#">Accessibility statement</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Access to information</a></li>
+            <li><a href="#">Tenders</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__note">Mto Safi is a fictional municipality. This design is a demo for TYPO3 Camp Africa 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/search.js" defer></script>
+</body>
+</html>

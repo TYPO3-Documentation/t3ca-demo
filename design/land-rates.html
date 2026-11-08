@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Land rates — Mto Safi Municipality</title>
+  <link rel="icon" href="images/logo.svg">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <span>Municipal office: Mon–Fri 8:00–17:00 · +254 700 000 000</span>
+        <nav aria-label="Service">
+          <a href="login.html">E-services portal</a>
+          <a href="contact.html">Contact</a>
+          <a href="#" lang="sw" hreflang="sw">Kiswahili</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container header-main">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="" width="56" height="56">
+        <span class="brand__name">Mto Safi<small>Municipality</small></span>
+      </a>
+      <form class="site-search" role="search" action="search.html">
+        <label class="visually-hidden" for="site-search">Search the website</label>
+        <input id="site-search" name="q" type="search" placeholder="Search services, news, forms">
+        <button class="button" type="submit">Search</button>
+      </form>
+      <button class="button button--outline nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    </div>
+    <nav id="main-nav" class="main-nav" aria-label="Main">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="land-rates.html" aria-current="page">Revenue &amp; payments</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Environment &amp; water</a></li>
+          <li><a href="#">Trade &amp; tourism</a></li>
+          <li><a href="#">Public participation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Revenue &amp; payments</a></li>
+        <li><span aria-current="page">Land rates</span></li>
+      </ol>
+    </nav>
+  </div>
+
+  <main id="main">
+    <div class="container layout layout--sidebar-left">
+      <nav class="subnav" aria-labelledby="subnav-title">
+        <h2 id="subnav-title">Revenue &amp; payments</h2>
+        <ul>
+          <li><a href="land-rates.html" aria-current="page">Land rates</a></li>
+          <li><a href="#">Single business permit</a></li>
+          <li><a href="#">Parking fees</a></li>
+          <li><a href="#">Market fees</a></li>
+          <li><a href="#">Waiver of interest</a></li>
+        </ul>
+      </nav>
+
+      <article>
+        <h1>Land rates</h1>
+        <p class="lead">Every owner of land in Mto Safi pays land rates once a year. The rates pay for roads, street lights, markets and waste collection.</p>
+
+        <h2>How your land rates are calculated</h2>
+        <p>The rate is a share of the rateable value of your plot. The valuation roll sets that value, and your valuation notice states it. The share depends on what the land is used for.</p>
+        <p>Pay before 31 March. From April, interest is added for every month the rate stays unpaid.</p>
+
+        <section class="calculator" data-calculator data-currency="KES"
+          data-rates='{"percentOfValue": {"residential": 0.5, "commercial": 1.2, "agricultural": 0.2}, "minimum": 1500, "interestPerMonth": 1}'
+          aria-labelledby="calculator-title">
+          <h2 id="calculator-title">Land rates calculator</h2>
+          <form class="calculator__form" action="#">
+            <div class="form-field">
+              <label for="calc-use">Land use</label>
+              <select id="calc-use" name="use">
+                <option value="residential">Residential</option>
+                <option value="commercial">Commercial</option>
+                <option value="agricultural">Agricultural</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="calc-value">Rateable value (KES)</label>
+              <input id="calc-value" name="value" type="number" min="0" step="10000" inputmode="numeric" value="2500000" aria-describedby="calc-value-hint">
+              <p class="form-hint" id="calc-value-hint">As stated on your valuation notice.</p>
+            </div>
+            <div class="form-field">
+              <label for="calc-months">Months paid late</label>
+              <input id="calc-months" name="months" type="number" min="0" max="36" value="0" inputmode="numeric" aria-describedby="calc-months-hint">
+              <p class="form-hint" id="calc-months-hint">0 if you pay before 31 March.</p>
+            </div>
+          </form>
+          <div class="calculator__result" aria-live="polite">
+            <dl>
+              <dt>Rate for this land use</dt><dd data-output="percent"></dd>
+              <dt>Annual land rate</dt><dd data-output="rate"></dd>
+              <dt>Interest</dt><dd data-output="interest"></dd>
+              <dt class="calculator__total">Total to pay</dt><dd class="calculator__total" data-output="total"></dd>
+            </dl>
+            <p class="calculator__warning" data-output="warning"></p>
+          </div>
+        </section>
+
+        <div class="infobox">
+          <h2>How to pay</h2>
+          <p>Pay by mobile money, by card in the e-services portal, or at the cash office in the municipal office. Keep the receipt: it is your proof of payment.</p>
+          <a class="button" href="login.html">Pay in the e-services portal</a>
+        </div>
+
+        <h2>Downloads</h2>
+        <ul class="downloads">
+          <li><a href="#">Valuation roll 2026 (PDF, 2.1 MB)</a></li>
+          <li><a href="#">Application for a waiver of interest (PDF, 120 KB)</a></li>
+          <li><a href="#">Objection to a valuation (PDF, 95 KB)</a></li>
+        </ul>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__columns">
+        <div>
+          <h2>Mto Safi Municipality</h2>
+          <address>Municipal Office<br>Beach Road 1<br>P.O. Box 123, Mto Safi<br>+254 700 000 000</address>
+        </div>
+        <div>
+          <h2>Opening hours</h2>
+          <p>Monday to Friday<br>8:00–17:00<br>Closed on public holidays</p>
+        </div>
+        <div>
+          <h2>Information</h2>
+          <ul>
+            <li><a href="#">Accessibility statement</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Access to information</a></li>
+            <li><a href="#">Tenders</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__note">Mto Safi is a fictional municipality. This design is a demo for TYPO3 Camp Africa 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-services portal — Mto Safi Municipality</title>
+  <link rel="icon" href="images/logo.svg">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <span>Municipal office: Mon–Fri 8:00–17:00 · +254 700 000 000</span>
+        <nav aria-label="Service">
+          <a href="login.html" aria-current="page">E-services portal</a>
+          <a href="contact.html">Contact</a>
+          <a href="#" lang="sw" hreflang="sw">Kiswahili</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container header-main">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="" width="56" height="56">
+        <span class="brand__name">Mto Safi<small>Municipality</small></span>
+      </a>
+      <form class="site-search" role="search" action="search.html">
+        <label class="visually-hidden" for="site-search">Search the website</label>
+        <input id="site-search" name="q" type="search" placeholder="Search services, news, forms">
+        <button class="button" type="submit">Search</button>
+      </form>
+      <button class="button button--outline nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    </div>
+    <nav id="main-nav" class="main-nav" aria-label="Main">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="land-rates.html">Revenue &amp; payments</a></li>
+          <li><a href="#">Health</a></li>
+          <li><a href="#">Environment &amp; water</a></li>
+          <li><a href="#">Trade &amp; tourism</a></li>
+          <li><a href="#">Public participation</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="container layout layout--narrow">
+      <div class="login-card">
+        <h1>E-services portal</h1>
+        <p>Log in to pay rates and fees, apply for permits and follow your applications.</p>
+        <form class="form" action="#" method="post" data-validate data-success="login-success">
+          <div class="alert alert--error" data-error-summary tabindex="-1" hidden>
+            <strong>Please correct the following:</strong>
+            <ul></ul>
+          </div>
+          <div class="form-field">
+            <label for="login-user">Email or phone number</label>
+            <input id="login-user" name="user" type="text" autocomplete="username" required aria-describedby="login-user-error">
+            <p class="form-error" id="login-user-error" aria-live="polite"></p>
+          </div>
+          <div class="form-field">
+            <label for="login-pass">Password</label>
+            <div class="password-field">
+              <input id="login-pass" name="pass" type="password" autocomplete="current-password" required aria-describedby="login-pass-error">
+              <button class="button button--outline" type="button" data-password-toggle aria-controls="login-pass" aria-pressed="false">Show</button>
+            </div>
+            <p class="form-error" id="login-pass-error" aria-live="polite"></p>
+          </div>
+          <label class="check"><input type="checkbox" name="remember"> Keep me logged in on this device</label>
+          <div><button class="button" type="submit">Log in</button></div>
+          <div class="login-card__links">
+            <a href="#">Forgot your password?</a>
+            <a href="#">Create an account</a>
+          </div>
+        </form>
+        <div class="alert alert--success" id="login-success" tabindex="-1" hidden>
+          <strong>Karibu tena!</strong>
+          <p>In the website, this is where your account page opens.</p>
+        </div>
+      </div>
+      <p class="infobox">Never share your password. The municipality never asks for it by phone, SMS or email.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__columns">
+        <div>
+          <h2>Mto Safi Municipality</h2>
+          <address>Municipal Office<br>Beach Road 1<br>P.O. Box 123, Mto Safi<br>+254 700 000 000</address>
+        </div>
+        <div>
+          <h2>Opening hours</h2>
+          <p>Monday to Friday<br>8:00–17:00<br>Closed on public holidays</p>
+        </div>
+        <div>
+          <h2>Information</h2>
+          <ul>
+            <li><a href="#">Accessibility statement</a></li>
+            <li><a href="#">Privacy policy</a></li>
+            <li><a href="#">Access to information</a></li>
+            <li><a href="#">Tenders</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="site-footer__note">Mto Safi is a fictional municipality. This design is a demo for TYPO3 Camp Africa 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/navigation.js" defer></script>
+  <script src="js/forms.js" defer></script>
+</body>
+</html>

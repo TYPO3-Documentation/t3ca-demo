@@ -1,0 +1,13 @@
+{
+  "name": "mto-safi-design",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static design of the Mto Safi Municipality website",
+  "scripts": {
+    "build": "sass scss/main.scss css/main.css --no-source-map",
+    "watch": "sass --watch scss/main.scss css/main.css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}
