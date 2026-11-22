@@ -1,0 +1,12 @@
+{
+    "mcpServers": {
+        "typo3-dev-companion": {
+            "type": "stdio",
+            "command": "sh",
+            "args": [
+                "vendor/bin/typo3-dev-companion-ddev",
+                "vendor/bin/typo3-dev-companion"
+            ]
+        }
+    }
+}

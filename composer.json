@@ -44,5 +44,8 @@
             "type": "path",
             "url": "./packages/*"
         }
+    },
+    "require-dev": {
+        "typo3/dev-companion": "@dev"
     }
 }
