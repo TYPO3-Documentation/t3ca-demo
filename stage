@@ -1,0 +1,166 @@
+#!/usr/bin/env bash
+# Records the demo stage by stage and moves through the stages on stage.
+# The demo itself is the git repository in demo/; each stage is a tag there,
+# and everything git cannot hold (session, database, fileadmin) is in stages/<stage>/.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEMO="$ROOT/demo"
+STAGES="$ROOT/stages"
+SPEED="${SPEED:-4}"   # playback speed of a recorded session
+IDLE="${IDLE:-1}"     # longest pause kept in a recording, in seconds
+
+die() { echo "stage: $*" >&2; exit 1; }
+say() { printf '\033[1m==> %s\033[0m\n' "$*"; }
+
+usage() {
+    cat <<EOF
+Usage: ./stage <command> [stage]
+
+Preparing at home:
+  record <NN-slug>   record an AI session in demo/, then save it as that stage
+  save <NN-slug>     save demo/ as that stage: commit, tag, database, fileadmin
+  list               every stage, and what is saved for it
+  rehearse           go through every stage and check that the site answers
+
+On stage:
+  go <NN>            switch demo/ and the site to that stage
+  next               switch to the stage after the current one
+  play <NN>          replay that stage's AI session (SPEED=$SPEED, IDLE=$IDLE)
+
+A stage is named by its number and a slug, e.g. 01-ddev-setup; "go 1" finds it.
+EOF
+}
+
+has_ddev() { [[ -f "$DEMO/.ddev/config.yaml" ]]; }
+tags() { git -C "$DEMO" tag --list 'stage-*' | sort -V; }
+current() { git -C "$DEMO" describe --tags --exact-match --match 'stage-*' 2>/dev/null | sed 's/^stage-//'; }
+
+resolve() {
+    local want="$1" match
+    [[ "$want" =~ ^[0-9]+$ ]] && want="$(printf '%02d' "$((10#$want))")"
+    match="$(tags | sed 's/^stage-//' | grep -E "^${want}(-|$)" || true)"
+    [[ -n "$match" ]] || die "no stage matches '$1' (./stage list)"
+    [[ "$(wc -l <<<"$match")" -eq 1 ]] || die "'$1' matches more than one stage: $match"
+    echo "$match"
+}
+
+check_name() { [[ "${1:-}" =~ ^[0-9]{2}-[a-z0-9-]+$ ]] || die "name a stage like 01-ddev-setup"; }
+
+fileadmin_dir() {
+    local docroot
+    docroot="$(cd "$DEMO" && ddev describe -j | jq -r '.raw.docroot')"
+    echo "$DEMO/${docroot:+$docroot/}fileadmin"
+}
+
+cmd_record() {
+    check_name "${1:-}"
+    command -v asciinema >/dev/null || die "asciinema is missing: sudo apt install asciinema"
+    mkdir -p "$STAGES/$1"
+    say "Recording into stages/$1/session.cast. Work in demo/ as usual; type 'exit' when the stage is done."
+    (cd "$DEMO" && asciinema rec --overwrite --idle-time-limit "$IDLE" --command "${SHELL:-bash}" "$STAGES/$1/session.cast")
+    read -r -p "Save demo/ as stage $1 now? [Y/n] " answer
+    [[ "${answer,,}" == n* ]] || cmd_save "$1"
+}
+
+cmd_save() {
+    check_name "${1:-}"
+    local dir="$STAGES/$1"
+    mkdir -p "$dir"
+    say "Committing demo/ as stage-$1"
+    git -C "$DEMO" add -A
+    git -C "$DEMO" commit --quiet --allow-empty -m "Stage $1"
+    git -C "$DEMO" tag -f "stage-$1" >/dev/null
+    if has_ddev; then
+        say "Exporting the database"
+        (cd "$DEMO" && ddev export-db --file="$dir/db.sql.gz")
+        local fa; fa="$(fileadmin_dir)"
+        if [[ -d "$fa" ]]; then
+            say "Saving fileadmin"
+            tar -czf "$dir/fileadmin.tar.gz" -C "$fa" .
+        fi
+    fi
+    [[ -f "$dir/notes.md" ]] || printf '# Stage %s\n\nThe prompt:\n\nWhat to point out:\n' "$1" >"$dir/notes.md"
+    say "Saved stage $1"
+}
+
+cmd_list() {
+    local now; now="$(current || true)"
+    tags | sed 's/^stage-//' | while read -r s; do
+        local d="$STAGES/$s" parts=()
+        [[ -f "$d/session.cast" ]] && parts+=(session)
+        [[ -f "$d/db.sql.gz" ]] && parts+=(database)
+        [[ -f "$d/fileadmin.tar.gz" ]] && parts+=(fileadmin)
+        printf '%s %-30s %s\n' "$([[ "$s" == "$now" ]] && echo '*' || echo ' ')" "$s" "${parts[*]:-code only}"
+    done
+}
+
+cmd_go() {
+    local to; to="$(resolve "${1:-}")"
+    local from_commit; from_commit="$(git -C "$DEMO" rev-parse HEAD)"
+    if [[ -n "$(git -C "$DEMO" status --porcelain)" ]]; then
+        [[ "${FORCE:-}" == 1 ]] || die "demo/ has changes that are not saved in a stage (git -C demo status). FORCE=1 discards them."
+        git -C "$DEMO" reset --quiet --hard
+        git -C "$DEMO" clean --quiet -fd
+    fi
+    # A stage without DDEV cannot stop the project once its config is gone.
+    if has_ddev && ! git -C "$DEMO" cat-file -e "stage-$to:.ddev/config.yaml" 2>/dev/null; then
+        (cd "$DEMO" && ddev stop)
+    fi
+    say "Switching to stage $to"
+    git -C "$DEMO" checkout --quiet "stage-$to"
+    has_ddev || { say "Stage $to has no DDEV project"; return; }
+
+    if git -C "$DEMO" diff --quiet "$from_commit" HEAD -- .ddev 2>/dev/null; then
+        (cd "$DEMO" && ddev start)
+    else
+        (cd "$DEMO" && ddev restart)
+    fi
+    [[ -f "$DEMO/composer.json" ]] && (cd "$DEMO" && ddev composer install --no-interaction --no-progress)
+    local dir="$STAGES/$to"
+    if [[ -f "$dir/db.sql.gz" ]]; then
+        say "Importing the database"
+        (cd "$DEMO" && ddev import-db --file="$dir/db.sql.gz")
+    fi
+    if [[ -f "$dir/fileadmin.tar.gz" ]]; then
+        local fa; fa="$(fileadmin_dir)"
+        rm -rf "$fa" && mkdir -p "$fa" && tar -xzf "$dir/fileadmin.tar.gz" -C "$fa"
+    fi
+    [[ -x "$DEMO/vendor/bin/typo3" ]] && (cd "$DEMO" && ddev exec vendor/bin/typo3 cache:flush)
+    say "Stage $to is up: $(cd "$DEMO" && ddev describe -j | jq -r '.raw.primary_url')"
+}
+
+cmd_next() {
+    local now; now="$(current)" || die "demo/ is not on a stage; use ./stage go <NN>"
+    local next; next="$(tags | sed 's/^stage-//' | grep -A1 -x -- "$now" | tail -n +2)"
+    [[ -n "$next" ]] || die "stage $now is the last one"
+    cmd_go "$next"
+}
+
+cmd_play() {
+    local s; s="$(resolve "${1:-}")"
+    [[ -f "$STAGES/$s/session.cast" ]] || die "stage $s has no recorded session"
+    asciinema play --speed "$SPEED" --idle-time-limit "$IDLE" "$STAGES/$s/session.cast"
+}
+
+cmd_rehearse() {
+    local failed=0
+    for s in $(tags | sed 's/^stage-//'); do
+        cmd_go "$s"
+        if has_ddev; then
+            local url code
+            url="$(cd "$DEMO" && ddev describe -j | jq -r '.raw.primary_url')"
+            code="$(curl -sk -o /dev/null -w '%{http_code}' "$url/")"
+            [[ "$code" == 200 ]] && say "Stage $s answers 200" || { echo "Stage $s answers $code" >&2; failed=1; }
+        fi
+        [[ -f "$STAGES/$s/session.cast" ]] || { echo "Stage $s has no recorded session" >&2; failed=1; }
+    done
+    ((failed == 0)) && say "Every stage came up" || die "some stages need attention, see above"
+}
+
+case "${1:-}" in
+    record|save|go|play) [[ -n "${2:-}" ]] || die "$1 needs a stage"; "cmd_$1" "$2" ;;
+    list|next|rehearse) "cmd_$1" ;;
+    ""|-h|--help|help) usage ;;
+    *) die "unknown command '$1' (./stage help)" ;;
+esac
