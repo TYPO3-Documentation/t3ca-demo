@@ -39,6 +39,7 @@ final readonly class CreateEditorGroupOnPackageInitialization
     private const FILE_MOUNTS = [
         'News images' => self::UPLOAD_FOLDER,
         'Slider images' => '/user_upload/slides/',
+        'Page images' => '/user_upload/pages/',
     ];
 
     /**

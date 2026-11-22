@@ -555,3 +555,158 @@ fieldset.form-field {
     margin-bottom: 0.5rem;
   }
 }
+
+// Content elements of fluid_styled_content. The set typo3/fluid-styled-content-css
+// places the images of "Text & Images"; this gives them and the table the design's look.
+
+.ce-gallery img {
+  border-radius: $radius;
+}
+
+// The caption of an image: its description, under it.
+.ce-gallery .image-caption {
+  margin-top: 0.4rem;
+  color: $color-muted;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+// Beside the text, the image keeps more distance than the 10px fluid_styled_content
+// gives it. Below md it leaves the text too narrow a column, so it goes above the text.
+.ce-intext.ce-right .ce-gallery {
+  margin-left: 1.5rem;
+}
+
+.ce-intext.ce-left .ce-gallery {
+  margin-right: 1.5rem;
+}
+
+@media (max-width: 47.99rem) {
+  .ce-textpic.ce-intext .ce-gallery {
+    float: none;
+    margin: 0 0 $spacing;
+  }
+}
+
+.ce-table {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid $color-border;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    background: $color-surface;
+    border-bottom: 2px solid $color-primary;
+    font-weight: 600;
+  }
+}
+
+// Lightbox (Resources/Public/JavaScript/lightbox.js): an image with "Enlarge on click"
+// opens full size in a modal dialog.
+
+.lightbox-link {
+  display: block;
+  cursor: zoom-in;
+}
+
+.has-lightbox {
+  overflow: hidden;
+}
+
+.lightbox {
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 3.5rem 1rem 1rem;
+  border: 0;
+  background: rgba(7, 20, 14, 0.98);
+  color: $color-white;
+
+  &::backdrop {
+    background: rgba(7, 20, 14, 0.6);
+  }
+
+  &__figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: calc(100vh - 8rem);
+    object-fit: contain;
+    border-radius: $radius;
+    background: $color-white;
+  }
+
+  &__caption {
+    max-width: 48rem;
+    margin-top: 0.75rem;
+    text-align: center;
+  }
+
+  &__position {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    margin: 0;
+  }
+
+  &__button {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    color: $color-white;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    &:focus-visible {
+      outline: 3px solid $color-focus-on-dark;
+      outline-offset: 2px;
+    }
+
+    &[hidden] {
+      display: none;
+    }
+
+    &--close {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    &--previous,
+    &--next {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &--previous {
+      left: 0.5rem;
+    }
+
+    &--next {
+      right: 0.5rem;
+    }
+  }
+}

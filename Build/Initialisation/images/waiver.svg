@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f3f7f4"/>
+  <g transform="translate(260 140)">
+    <rect width="520" height="500" rx="24" fill="#fff" stroke="#cdd8d2" stroke-width="8"/>
+    <rect width="520" height="110" rx="24" fill="#9b1c1f"/>
+    <rect y="80" width="520" height="30" fill="#9b1c1f"/>
+    <rect x="110" y="-30" width="22" height="70" rx="10" fill="#4a5650"/><rect x="388" y="-30" width="22" height="70" rx="10" fill="#4a5650"/>
+    <text x="260" y="78" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#fff" text-anchor="middle">MARCH</text>
+    <g fill="#cdd8d2">
+      <rect x="40" y="150" width="70" height="60" rx="6"/><rect x="135" y="150" width="70" height="60" rx="6"/><rect x="230" y="150" width="70" height="60" rx="6"/><rect x="325" y="150" width="70" height="60" rx="6"/><rect x="420" y="150" width="70" height="60" rx="6"/>
+      <rect x="40" y="235" width="70" height="60" rx="6"/><rect x="135" y="235" width="70" height="60" rx="6"/><rect x="230" y="235" width="70" height="60" rx="6"/><rect x="325" y="235" width="70" height="60" rx="6"/><rect x="420" y="235" width="70" height="60" rx="6"/>
+      <rect x="40" y="320" width="70" height="60" rx="6"/><rect x="135" y="320" width="70" height="60" rx="6"/><rect x="230" y="320" width="70" height="60" rx="6"/><rect x="325" y="320" width="70" height="60" rx="6"/>
+      <rect x="40" y="405" width="70" height="60" rx="6"/><rect x="135" y="405" width="70" height="60" rx="6"/><rect x="230" y="405" width="70" height="60" rx="6"/>
+    </g>
+    <rect x="325" y="405" width="70" height="60" rx="6" fill="#f2b632"/>
+  </g>
+  <circle cx="860" cy="560" r="130" fill="#1e6b34"/>
+  <path d="M800 560l45 45 80-90" stroke="#fff" stroke-width="28" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

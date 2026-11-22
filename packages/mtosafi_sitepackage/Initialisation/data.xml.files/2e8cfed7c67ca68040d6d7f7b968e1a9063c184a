@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#bfe3ea"></rect>
+  <path d="M0 620c400-40 800-40 1200 0v180H0z" fill="#127a50"></path>
+  <g transform="translate(260 260)">
+    <rect width="680" height="380" fill="#fff"></rect>
+    <rect x="-20" y="-30" width="720" height="40" fill="#0b5a3c"></rect>
+    <g fill="#bfe3ea">
+      <rect x="50" y="70" width="110" height="90"></rect>
+      <rect x="200" y="70" width="110" height="90"></rect>
+      <rect x="370" y="70" width="110" height="90"></rect>
+      <rect x="520" y="70" width="110" height="90"></rect>
+    </g>
+    <rect x="280" y="220" width="120" height="160" fill="#0b5a3c"></rect>
+    <rect x="335" y="220" width="10" height="160" fill="#073d29"></rect>
+  </g>
+  <rect x="520" y="120" width="160" height="160" rx="20" fill="#fff" stroke="#9b1c1f" stroke-width="10"></rect>
+  <path d="M575 145h50v50h50v50h-50v50h-50v-50h-50v-50h50z" fill="#9b1c1f" transform="translate(0 -5) scale(1) "></path>
+  <g fill="#0b5a3c">
+    <rect x="120" y="420" width="14" height="220"></rect>
+    <path d="M127 420c-60-30-120-20-150 20 60-20 100-15 150-20zM127 420c50-50 110-60 160-30-60 0-110 10-160 30z"></path>
+  </g>
+</svg>

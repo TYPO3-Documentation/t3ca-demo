@@ -23,7 +23,18 @@
                 <f:for each="{newsItem.mediaPreviews}" as="mediaElement">
                     <f:if condition="{mediaElement.originalResource.type} == 2">
                         <figure>
-                            <f:image image="{mediaElement}" alt="{mediaElement.originalResource.alternative}" maxWidth="800" />
+                            <f:asset.script identifier="mtosafiLightbox" src="EXT:mtosafi_sitepackage/Resources/Public/JavaScript/lightbox.js" defer="1" />
+                            <a class="lightbox-link" href="{f:uri.image(image: mediaElement, maxWidth: 1920, maxHeight: 1920)}"
+                                data-lightbox="news{newsItem.uid}"
+                                data-lightbox-alt="{mediaElement.originalResource.alternative}"
+                                data-lightbox-caption="{mediaElement.originalResource.description}"
+                                data-label-close="{f:translate(key: 'lightbox.close', domain: 'mtosafi_sitepackage.frontend')}"
+                                data-label-previous="{f:translate(key: 'lightbox.previous', domain: 'mtosafi_sitepackage.frontend')}"
+                                data-label-next="{f:translate(key: 'lightbox.next', domain: 'mtosafi_sitepackage.frontend')}"
+                                data-label-position="{f:translate(key: 'lightbox.position', domain: 'mtosafi_sitepackage.frontend')}">
+                                <f:image image="{mediaElement}" alt="{mediaElement.originalResource.alternative}" maxWidth="800" />
+                                <span class="visually-hidden"><f:translate key="lightbox.enlarge" domain="mtosafi_sitepackage.frontend" /></span>
+                            </a>
                             <f:if condition="{mediaElement.originalResource.description}">
                                 <figcaption>{mediaElement.originalResource.description}</figcaption>
                             </f:if>

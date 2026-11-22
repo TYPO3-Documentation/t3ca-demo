@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f7c66b"/>
+  <rect y="600" width="1200" height="200" fill="#d9c49a"/>
+  <g id="stall">
+    <rect x="80" y="300" width="12" height="300" fill="#7a3e1d"/><rect x="448" y="300" width="12" height="300" fill="#7a3e1d"/>
+    <path d="M50 300h440l-30-110H80z" fill="#0b5a3c"/>
+    <path d="M50 300h440v30H50z" fill="#9b1c1f"/>
+    <rect x="70" y="450" width="400" height="30" fill="#7a3e1d"/>
+    <g fill="#f2b632"><circle cx="120" cy="430" r="24"/><circle cx="165" cy="430" r="24"/><circle cx="142" cy="395" r="24"/></g>
+    <g fill="#9b1c1f"><circle cx="250" cy="430" r="22"/><circle cx="292" cy="430" r="22"/><circle cx="271" cy="394" r="22"/></g>
+    <g fill="#127a50"><ellipse cx="390" cy="425" rx="50" ry="26"/><ellipse cx="400" cy="395" rx="40" ry="22"/></g>
+  </g>
+  <use href="#stall" transform="translate(620 30)"/>
+  <circle cx="1080" cy="120" r="60" fill="#fde9a8"/>
+</svg>

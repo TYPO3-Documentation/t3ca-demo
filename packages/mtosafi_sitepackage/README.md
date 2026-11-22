@@ -16,27 +16,36 @@ the "News records" folder with the categories and news from
 list page and the detail page. The home page carries the slider and the service
 tiles above the news; the slider images come along in `Initialisation/data.xml.files/`
 and land in `fileadmin/user_upload/slides/`. The "Page not found" page carries the
-text the site shows for an address that does not exist. The other pages carry no
-content yet. The "Search index" folder holds what the search needs: the filter
+text the site shows for an address that does not exist. Every other page carries
+example content: a "Text & Images" element with an illustration, most of them a
+table, a list or the menu of the subpages beside it; "Trade & tourism" also has a
+gallery of four images. Every image has an alternative text and a caption, which
+shows under it and in the lightbox. The illustrations land in
+`fileadmin/user_upload/pages/`. The texts are made up for the fictional
+municipality; the accessibility statement and the privacy policy say that they are
+placeholders, because their real text is the municipality's to write. The "Search index" folder holds what the search needs: the filter
 "Show only" and the indexers for pages and news (see Search below).
 
 `Initialisation/Site/main/` is the site configuration that comes with it. It is
 copied only where no site called `main` exists, and it answers on base `/`. Its
 error handling shows the "Page not found" page for HTTP 404.
 
-The tree is not edited by hand. Five scripts in the project write it into an
+The tree is not edited by hand. Six scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
 `Build/Initialisation/seed-news.php` the news on top of them,
 `Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
 and `Build/Initialisation/seed-not-found.php` the "Page not found" page with the
-404 error handling of the site and `Build/Initialisation/seed-search.php` the
-search, and it is exported from there:
+404 error handling of the site, `Build/Initialisation/seed-search.php` the
+search and `Build/Initialisation/seed-pages.php` the example content of the other
+pages, with the illustrations in `Build/Initialisation/images/`, and it is exported
+from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
     ddev exec php Build/Initialisation/seed-news.php
     ddev exec php Build/Initialisation/seed-home.php
     ddev exec php Build/Initialisation/seed-not-found.php
     ddev exec php Build/Initialisation/seed-search.php
+    ddev exec php Build/Initialisation/seed-pages.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
@@ -100,7 +109,8 @@ are built where the package is set up. The group gets:
   their fields
 - every content type but "HTML" and "Insert records"
 - the file mounts "News images", `fileadmin/user_upload/news/`, which is also
-  where uploads go, and "Slider images", `fileadmin/user_upload/slides/`
+  where uploads go, "Slider images", `fileadmin/user_upload/slides/`, and "Page
+  images", `fileadmin/user_upload/pages/`
 
 Create the editors' backend users in the backend (System > Backend users) and
 put them into "Editors". The text editor offers paragraphs, two heading levels,
@@ -115,6 +125,26 @@ page section, with the content element's header as its heading and a link to the
 plugin's list page. The detail page uses the page layout "Article", which leaves
 the heading to the news. Addresses are `/news/article/<news>` and
 `/news/page-2` (`Configuration/Sets/Sitepackage/route-enhancers.yaml`).
+
+## Text, images and tables
+
+The elements of fluid_styled_content render with its own templates. The site set
+depends on `typo3/fluid-styled-content-css`, which places the images of "Text &
+Images" beside or above the text; `Resources/Private/Scss/_components.scss` gives
+them and the table the design's look, and puts an image beside the text above it on
+small screens.
+
+An image's description is its caption, under the image and in the lightbox.
+
+An image with "Enlarge on click" opens full size (up to 1920 pixels) in a lightbox, a
+modal dialog with previous and next for the images of the same element, the arrow
+keys, Escape and a click beside the image to close. New elements have "Enlarge on
+click" on (`TCAdefaults` in `page.tsconfig`). The link goes to the large image, so it
+works without JavaScript too. The site replaces one partial of fluid_styled_content
+for it, `Resources/Private/Templates/Partials/Content/Media/Type/Image.fluid.html`,
+which loads `Resources/Public/JavaScript/lightbox.js` through the asset collector on the
+pages that need it. The images of a news article open in the same lightbox. The labels
+the script writes are in `Resources/Private/Language/frontend.xlf`.
 
 ## Service tiles
 
@@ -163,7 +193,7 @@ carries the configuration of both; the result list loads it from there.
 
 The index holds pages and news; files are not indexed. The indexer "Pages" starts
 at the home page and takes every page that has indexable content. A page without
-it, which is most of them so far, does not appear in the results until it has text.
+it does not appear in the results until it has text.
 The "Search", "Article" and "Page not found" pages are excluded with "Include in
 search: no". The indexer "News" takes the news of the "News records" folder and
 links them to the "Article" page.

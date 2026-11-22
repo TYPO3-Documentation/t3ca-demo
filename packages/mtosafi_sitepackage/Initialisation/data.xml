@@ -436,6 +436,71 @@
 						</softref_element>
 					</softrefs>
 				</rec>
+				<rec index="42" type="array">
+					<uid>42</uid>
+					<pid>21</pid>
+					<title>Doing business with the municipality</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:23" type="array">
+							<id>23</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="43" type="array">
+					<uid>43</uid>
+					<pid>21</pid>
+					<title>Open tenders</title>
+				</rec>
+				<rec index="40" type="array">
+					<uid>40</uid>
+					<pid>20</pid>
+					<title>Ask for the information we hold</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:22" type="array">
+							<id>22</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="41" type="array">
+					<uid>41</uid>
+					<pid>20</pid>
+					<title>Published without a request</title>
+				</rec>
+				<rec index="39" type="array">
+					<uid>39</uid>
+					<pid>19</pid>
+					<title>Example text</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:21" type="array">
+							<id>21</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="38" type="array">
+					<uid>38</uid>
+					<pid>18</pid>
+					<title>Example text</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:20" type="array">
+							<id>20</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="37" type="array">
+					<uid>37</uid>
+					<pid>17</pid>
+					<title>Your municipal services online</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:19" type="array">
+							<id>19</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
 				<rec index="10" type="array">
 					<uid>10</uid>
 					<pid>16</pid>
@@ -461,6 +526,313 @@
 							<table>pages</table>
 						</element>
 					</relations>
+				</rec>
+				<rec index="34" type="array">
+					<uid>34</uid>
+					<pid>15</pid>
+					<title>Visit us</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:18" type="array">
+							<id>18</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+					<softrefs type="array">
+						<softref_element index="bodytext:typolink_tag:1" type="array">
+							<field>bodytext</field>
+							<spKey>typolink_tag</spKey>
+							<matchString>&lt;a href=&quot;tel:+254700000000&quot;&gt;</matchString>
+							<subst type="array">
+								<type>string</type>
+								<tokenID>f0db9b67a649a62a1a3db0a977671b74</tokenID>
+								<tokenValue>+254700000000</tokenValue>
+							</subst>
+						</softref_element>
+						<softref_element index="bodytext:typolink_tag:3" type="array">
+							<field>bodytext</field>
+							<spKey>typolink_tag</spKey>
+							<matchString>&lt;a href=&quot;mailto:info@mtosafi.example&quot;&gt;</matchString>
+							<subst type="array">
+								<type>string</type>
+								<tokenID>80264ce8d752fb34f3445680452d4388</tokenID>
+								<tokenValue>info@mtosafi.example</tokenValue>
+							</subst>
+						</softref_element>
+						<softref_element index="bodytext:email:2" type="array">
+							<field>bodytext</field>
+							<spKey>email</spKey>
+							<matchString>info@mtosafi.example</matchString>
+							<subst type="array">
+								<type>string</type>
+								<tokenID>b8f36485b969dae8d4edcca19c66bd5c</tokenID>
+								<tokenValue>info@mtosafi.example</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="35" type="array">
+					<uid>35</uid>
+					<pid>15</pid>
+					<title>Opening hours</title>
+				</rec>
+				<rec index="36" type="array">
+					<uid>36</uid>
+					<pid>15</pid>
+					<title>Report a problem</title>
+					<softrefs type="array">
+						<softref_element index="bodytext:typolink_tag:1" type="array">
+							<field>bodytext</field>
+							<spKey>typolink_tag</spKey>
+							<matchString>&lt;a href=&quot;mailto:report@mtosafi.example&quot;&gt;</matchString>
+							<subst type="array">
+								<type>string</type>
+								<tokenID>2c5044914863589570bee4438edda51f</tokenID>
+								<tokenValue>report@mtosafi.example</tokenValue>
+							</subst>
+						</softref_element>
+						<softref_element index="bodytext:email:2" type="array">
+							<field>bodytext</field>
+							<spKey>email</spKey>
+							<matchString>report@mtosafi.example</matchString>
+							<subst type="array">
+								<type>string</type>
+								<tokenID>7ffef10d6527d7d6f8892cff94944a8a</tokenID>
+								<tokenValue>report@mtosafi.example</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="32" type="array">
+					<uid>32</uid>
+					<pid>14</pid>
+					<title>Have your say on the budget</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:17" type="array">
+							<id>17</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="33" type="array">
+					<uid>33</uid>
+					<pid>14</pid>
+					<title>Forum dates</title>
+				</rec>
+				<rec index="29" type="array">
+					<uid>29</uid>
+					<pid>13</pid>
+					<title>Karibu Mto Safi</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:12" type="array">
+							<id>12</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+					<softrefs type="array">
+						<softref_element index="bodytext:typolink_tag:1" type="array">
+							<field>bodytext</field>
+							<spKey>typolink_tag</spKey>
+							<matchString>&lt;a href=&quot;t3://page?uid=7&quot;&gt;</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:7</recordRef>
+								<tokenID>44f45cc3d22bc1f9f771d777d3335a9d</tokenID>
+								<tokenValue>7</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="30" type="array">
+					<uid>30</uid>
+					<pid>13</pid>
+					<title>Places to visit</title>
+				</rec>
+				<rec index="31" type="array">
+					<uid>31</uid>
+					<pid>13</pid>
+					<title>Impressions of Mto Safi</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:13" type="array">
+							<id>13</id>
+							<table>sys_file_reference</table>
+						</element>
+						<element index="sys_file_reference:14" type="array">
+							<id>14</id>
+							<table>sys_file_reference</table>
+						</element>
+						<element index="sys_file_reference:15" type="array">
+							<id>15</id>
+							<table>sys_file_reference</table>
+						</element>
+						<element index="sys_file_reference:16" type="array">
+							<id>16</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="26" type="array">
+					<uid>26</uid>
+					<pid>12</pid>
+					<title>A clean river for everyone</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:11" type="array">
+							<id>11</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="27" type="array">
+					<uid>27</uid>
+					<pid>12</pid>
+					<title>Water connection</title>
+				</rec>
+				<rec index="28" type="array">
+					<uid>28</uid>
+					<pid>12</pid>
+					<title>Waste collection</title>
+				</rec>
+				<rec index="24" type="array">
+					<uid>24</uid>
+					<pid>11</pid>
+					<title>Health services close to home</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:10" type="array">
+							<id>10</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="25" type="array">
+					<uid>25</uid>
+					<pid>11</pid>
+					<title>Health centres</title>
+				</rec>
+				<rec index="11" type="array">
+					<uid>11</uid>
+					<pid>5</pid>
+					<title>Pay the municipality from wherever you a...</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:4" type="array">
+							<id>4</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+					<softrefs type="array">
+						<softref_element index="bodytext:typolink_tag:1" type="array">
+							<field>bodytext</field>
+							<spKey>typolink_tag</spKey>
+							<matchString>&lt;a href=&quot;t3://page?uid=17&quot;&gt;</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:17</recordRef>
+								<tokenID>ab0225f28f08ae427fb608ca8bc988e7</tokenID>
+								<tokenValue>17</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="12" type="array">
+					<uid>12</uid>
+					<pid>5</pid>
+					<title>Payments and fees</title>
+				</rec>
+				<rec index="22" type="array">
+					<uid>22</uid>
+					<pid>10</pid>
+					<title>Interest waived when you clear your arre...</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:9" type="array">
+							<id>9</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="23" type="array">
+					<uid>23</uid>
+					<pid>10</pid>
+					<title>How it works</title>
+				</rec>
+				<rec index="20" type="array">
+					<uid>20</uid>
+					<pid>9</pid>
+					<title>Selling at the municipal markets</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:8" type="array">
+							<id>8</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="21" type="array">
+					<uid>21</uid>
+					<pid>9</pid>
+					<title>Fees</title>
+				</rec>
+				<rec index="18" type="array">
+					<uid>18</uid>
+					<pid>8</pid>
+					<title>Parking in the town centre</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:7" type="array">
+							<id>7</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="19" type="array">
+					<uid>19</uid>
+					<pid>8</pid>
+					<title>Fees</title>
+				</rec>
+				<rec index="16" type="array">
+					<uid>16</uid>
+					<pid>7</pid>
+					<title>One permit for your business</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:6" type="array">
+							<id>6</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="17" type="array">
+					<uid>17</uid>
+					<pid>7</pid>
+					<title>What you need to apply</title>
+				</rec>
+				<rec index="13" type="array">
+					<uid>13</uid>
+					<pid>6</pid>
+					<title>How your land rates are calculated</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:5" type="array">
+							<id>5</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="14" type="array">
+					<uid>14</uid>
+					<pid>6</pid>
+					<title>Rates for 2026</title>
+				</rec>
+				<rec index="15" type="array">
+					<uid>15</uid>
+					<pid>6</pid>
+					<title>How to pay</title>
+					<softrefs type="array">
+						<softref_element index="bodytext:typolink_tag:1" type="array">
+							<field>bodytext</field>
+							<spKey>typolink_tag</spKey>
+							<matchString>&lt;a href=&quot;t3://page?uid=17&quot;&gt;</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:17</recordRef>
+								<tokenID>0f65c761f9929d0e19da2d19abd31fa3</tokenID>
+								<tokenValue>17</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
 				</rec>
 			</table>
 			<table index="tx_mtosafisitepackage_slide" type="array">
@@ -891,6 +1263,246 @@
 						</element>
 					</relations>
 				</rec>
+				<rec index="23" type="array">
+					<uid>23</uid>
+					<pid>21</pid>
+					<title>tenders.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:26" type="array">
+							<id>26</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="22" type="array">
+					<uid>22</uid>
+					<pid>20</pid>
+					<title>documents.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:25" type="array">
+							<id>25</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="21" type="array">
+					<uid>21</uid>
+					<pid>19</pid>
+					<title>privacy.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:24" type="array">
+							<id>24</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="20" type="array">
+					<uid>20</uid>
+					<pid>18</pid>
+					<title>accessibility.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:23" type="array">
+							<id>23</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="19" type="array">
+					<uid>19</uid>
+					<pid>17</pid>
+					<title>portal.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:22" type="array">
+							<id>22</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="18" type="array">
+					<uid>18</uid>
+					<pid>15</pid>
+					<title>office.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:20" type="array">
+							<id>20</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="17" type="array">
+					<uid>17</uid>
+					<pid>14</pid>
+					<title>participation.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:21" type="array">
+							<id>21</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="12" type="array">
+					<uid>12</uid>
+					<pid>13</pid>
+					<title>tourism.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:19" type="array">
+							<id>19</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="13" type="array">
+					<uid>13</uid>
+					<pid>13</pid>
+					<title>tourism.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:19" type="array">
+							<id>19</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="14" type="array">
+					<uid>14</uid>
+					<pid>13</pid>
+					<title>market.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:15" type="array">
+							<id>15</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="15" type="array">
+					<uid>15</uid>
+					<pid>13</pid>
+					<title>water.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:18" type="array">
+							<id>18</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="16" type="array">
+					<uid>16</uid>
+					<pid>13</pid>
+					<title>office.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:20" type="array">
+							<id>20</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="11" type="array">
+					<uid>11</uid>
+					<pid>12</pid>
+					<title>water.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:18" type="array">
+							<id>18</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="10" type="array">
+					<uid>10</uid>
+					<pid>11</pid>
+					<title>health.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:17" type="array">
+							<id>17</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>5</pid>
+					<title>revenue.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:11" type="array">
+							<id>11</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="9" type="array">
+					<uid>9</uid>
+					<pid>10</pid>
+					<title>waiver.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:16" type="array">
+							<id>16</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="8" type="array">
+					<uid>8</uid>
+					<pid>9</pid>
+					<title>market.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:15" type="array">
+							<id>15</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="7" type="array">
+					<uid>7</uid>
+					<pid>8</pid>
+					<title>parking.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:14" type="array">
+							<id>14</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="6" type="array">
+					<uid>6</uid>
+					<pid>7</pid>
+					<title>business-permit.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:13" type="array">
+							<id>13</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="5" type="array">
+					<uid>5</uid>
+					<pid>6</pid>
+					<title>land-rates.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:12" type="array">
+							<id>12</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
 			</table>
 			<table index="sys_file" type="array">
 				<rec index="2" type="array">
@@ -941,6 +1553,262 @@
 						</element>
 					</relations>
 				</rec>
+				<rec index="26" type="array">
+					<uid>26</uid>
+					<pid>0</pid>
+					<title>tenders.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:26" type="array">
+							<id>26</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="25" type="array">
+					<uid>25</uid>
+					<pid>0</pid>
+					<title>documents.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:25" type="array">
+							<id>25</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="24" type="array">
+					<uid>24</uid>
+					<pid>0</pid>
+					<title>privacy.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:24" type="array">
+							<id>24</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="23" type="array">
+					<uid>23</uid>
+					<pid>0</pid>
+					<title>accessibility.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:23" type="array">
+							<id>23</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="22" type="array">
+					<uid>22</uid>
+					<pid>0</pid>
+					<title>portal.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:22" type="array">
+							<id>22</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="20" type="array">
+					<uid>20</uid>
+					<pid>0</pid>
+					<title>office.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:20" type="array">
+							<id>20</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="21" type="array">
+					<uid>21</uid>
+					<pid>0</pid>
+					<title>participation.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:21" type="array">
+							<id>21</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="19" type="array">
+					<uid>19</uid>
+					<pid>0</pid>
+					<title>tourism.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:19" type="array">
+							<id>19</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="15" type="array">
+					<uid>15</uid>
+					<pid>0</pid>
+					<title>market.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:15" type="array">
+							<id>15</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="18" type="array">
+					<uid>18</uid>
+					<pid>0</pid>
+					<title>water.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:18" type="array">
+							<id>18</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="17" type="array">
+					<uid>17</uid>
+					<pid>0</pid>
+					<title>health.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:17" type="array">
+							<id>17</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="11" type="array">
+					<uid>11</uid>
+					<pid>0</pid>
+					<title>revenue.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:11" type="array">
+							<id>11</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="16" type="array">
+					<uid>16</uid>
+					<pid>0</pid>
+					<title>waiver.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:16" type="array">
+							<id>16</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="14" type="array">
+					<uid>14</uid>
+					<pid>0</pid>
+					<title>parking.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:14" type="array">
+							<id>14</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="13" type="array">
+					<uid>13</uid>
+					<pid>0</pid>
+					<title>business-permit.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:13" type="array">
+							<id>13</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="12" type="array">
+					<uid>12</uid>
+					<pid>0</pid>
+					<title>land-rates.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:12" type="array">
+							<id>12</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
 			</table>
 			<table index="sys_file_metadata" type="array">
 				<rec index="2" type="array">
@@ -979,6 +1847,198 @@
 						</element>
 					</relations>
 				</rec>
+				<rec index="26" type="array">
+					<uid>26</uid>
+					<pid>0</pid>
+					<title>tenders.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:26" type="array">
+							<id>26</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="25" type="array">
+					<uid>25</uid>
+					<pid>0</pid>
+					<title>documents.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:25" type="array">
+							<id>25</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="24" type="array">
+					<uid>24</uid>
+					<pid>0</pid>
+					<title>privacy.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:24" type="array">
+							<id>24</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="23" type="array">
+					<uid>23</uid>
+					<pid>0</pid>
+					<title>accessibility.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:23" type="array">
+							<id>23</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="22" type="array">
+					<uid>22</uid>
+					<pid>0</pid>
+					<title>portal.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:22" type="array">
+							<id>22</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="20" type="array">
+					<uid>20</uid>
+					<pid>0</pid>
+					<title>office.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:20" type="array">
+							<id>20</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="21" type="array">
+					<uid>21</uid>
+					<pid>0</pid>
+					<title>participation.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:21" type="array">
+							<id>21</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="19" type="array">
+					<uid>19</uid>
+					<pid>0</pid>
+					<title>tourism.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:19" type="array">
+							<id>19</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="15" type="array">
+					<uid>15</uid>
+					<pid>0</pid>
+					<title>market.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:15" type="array">
+							<id>15</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="18" type="array">
+					<uid>18</uid>
+					<pid>0</pid>
+					<title>water.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:18" type="array">
+							<id>18</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="17" type="array">
+					<uid>17</uid>
+					<pid>0</pid>
+					<title>health.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:17" type="array">
+							<id>17</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="11" type="array">
+					<uid>11</uid>
+					<pid>0</pid>
+					<title>revenue.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:11" type="array">
+							<id>11</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="16" type="array">
+					<uid>16</uid>
+					<pid>0</pid>
+					<title>waiver.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:16" type="array">
+							<id>16</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="14" type="array">
+					<uid>14</uid>
+					<pid>0</pid>
+					<title>parking.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:14" type="array">
+							<id>14</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="13" type="array">
+					<uid>13</uid>
+					<pid>0</pid>
+					<title>business-permit.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:13" type="array">
+							<id>13</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="12" type="array">
+					<uid>12</uid>
+					<pid>0</pid>
+					<title>land-rates.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:12" type="array">
+							<id>12</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
 			</table>
 		</records>
 		<pid_lookup type="array">
@@ -990,11 +2050,43 @@
 					<item index="2">1</item>
 					<item index="3">1</item>
 					<item index="4">1</item>
+					<item index="26">1</item>
+					<item index="25">1</item>
+					<item index="24">1</item>
+					<item index="23">1</item>
+					<item index="22">1</item>
+					<item index="20">1</item>
+					<item index="21">1</item>
+					<item index="19">1</item>
+					<item index="15">1</item>
+					<item index="18">1</item>
+					<item index="17">1</item>
+					<item index="11">1</item>
+					<item index="16">1</item>
+					<item index="14">1</item>
+					<item index="13">1</item>
+					<item index="12">1</item>
 				</table>
 				<table index="sys_file_metadata" type="array">
 					<item index="2">1</item>
 					<item index="3">1</item>
 					<item index="4">1</item>
+					<item index="26">1</item>
+					<item index="25">1</item>
+					<item index="24">1</item>
+					<item index="23">1</item>
+					<item index="22">1</item>
+					<item index="20">1</item>
+					<item index="21">1</item>
+					<item index="19">1</item>
+					<item index="15">1</item>
+					<item index="18">1</item>
+					<item index="17">1</item>
+					<item index="11">1</item>
+					<item index="16">1</item>
+					<item index="14">1</item>
+					<item index="13">1</item>
+					<item index="12">1</item>
 				</table>
 			</page_contents>
 			<page_contents index="1" type="array">
@@ -1108,19 +2200,166 @@
 					<item index="8">1</item>
 				</table>
 			</page_contents>
+			<page_contents index="21" type="array">
+				<table index="tt_content" type="array">
+					<item index="42">1</item>
+					<item index="43">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="23">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="20" type="array">
+				<table index="tt_content" type="array">
+					<item index="40">1</item>
+					<item index="41">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="22">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="19" type="array">
+				<table index="tt_content" type="array">
+					<item index="39">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="21">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="18" type="array">
+				<table index="tt_content" type="array">
+					<item index="38">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="20">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="17" type="array">
+				<table index="tt_content" type="array">
+					<item index="37">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="19">1</item>
+				</table>
+			</page_contents>
 			<page_contents index="16" type="array">
 				<table index="tt_content" type="array">
 					<item index="10">1</item>
 					<item index="9">1</item>
 				</table>
 			</page_contents>
+			<page_contents index="15" type="array">
+				<table index="tt_content" type="array">
+					<item index="34">1</item>
+					<item index="35">1</item>
+					<item index="36">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="18">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="14" type="array">
+				<table index="tt_content" type="array">
+					<item index="32">1</item>
+					<item index="33">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="17">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="13" type="array">
+				<table index="tt_content" type="array">
+					<item index="29">1</item>
+					<item index="30">1</item>
+					<item index="31">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="12">1</item>
+					<item index="13">1</item>
+					<item index="14">1</item>
+					<item index="15">1</item>
+					<item index="16">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="12" type="array">
+				<table index="tt_content" type="array">
+					<item index="26">1</item>
+					<item index="27">1</item>
+					<item index="28">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="11">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="11" type="array">
+				<table index="tt_content" type="array">
+					<item index="24">1</item>
+					<item index="25">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="10">1</item>
+				</table>
+			</page_contents>
 			<page_contents index="5" type="array">
+				<table index="tt_content" type="array">
+					<item index="11">1</item>
+					<item index="12">1</item>
+				</table>
 				<table index="pages" type="array">
 					<item index="10">1</item>
 					<item index="9">1</item>
 					<item index="8">1</item>
 					<item index="7">1</item>
 					<item index="6">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="4">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="10" type="array">
+				<table index="tt_content" type="array">
+					<item index="22">1</item>
+					<item index="23">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="9">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="9" type="array">
+				<table index="tt_content" type="array">
+					<item index="20">1</item>
+					<item index="21">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="8">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="8" type="array">
+				<table index="tt_content" type="array">
+					<item index="18">1</item>
+					<item index="19">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="7">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="7" type="array">
+				<table index="tt_content" type="array">
+					<item index="16">1</item>
+					<item index="17">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="6">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="6" type="array">
+				<table index="tt_content" type="array">
+					<item index="13">1</item>
+					<item index="14">1</item>
+					<item index="15">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="5">1</item>
 				</table>
 			</page_contents>
 		</pid_lookup>
@@ -1136,6 +2375,70 @@
 			<file index="05cbc02e82726d1703f9c0b26d2f865b" type="array">
 				<filename>slide-community.svg</filename>
 				<filemtime>1795344511</filemtime>
+			</file>
+			<file index="754720bef3230c0357a24a2d0168f4cc" type="array">
+				<filename>tenders.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="a5d83a4c75935ed96e5ff501332e9921" type="array">
+				<filename>documents.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="2524a149cb4fa0c018af971b3bc95763" type="array">
+				<filename>privacy.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="46b087a87ee640d636315379f4f7db89" type="array">
+				<filename>accessibility.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="8d238d67ea0384c29370c4caf0f546d7" type="array">
+				<filename>portal.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="2b8ccbbeaf455812387f8347e6d18dc8" type="array">
+				<filename>office.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="2f53f0d98dc4aa718f08ddad34248a10" type="array">
+				<filename>participation.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="2f8fc4fd9c6c226760311ce4de2fe136" type="array">
+				<filename>tourism.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="e7c804240fe48ec5ddb01cd1480263b4" type="array">
+				<filename>market.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="4d56274233c74f1be11e6de9fc814682" type="array">
+				<filename>water.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="6ff1d2fc3b76e3d065c52568066fa2a8" type="array">
+				<filename>health.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="91cb59d187256d90835cbf90ff226e5d" type="array">
+				<filename>revenue.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="78b5cfcae1341dbe2fd55f3ac56b63b7" type="array">
+				<filename>waiver.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="ef66da9734f4e43759e2ba5d0d8cd4bd" type="array">
+				<filename>parking.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="c78d369c3e80a1d7e6039315578a954a" type="array">
+				<filename>business-permit.svg</filename>
+				<filemtime>1795366717</filemtime>
+			</file>
+			<file index="2328a13390b48546b4064f389eeead9a" type="array">
+				<filename>land-rates.svg</filename>
+				<filemtime>1795366717</filemtime>
 			</file>
 		</files_fal>
 	</header>
@@ -2665,7 +3968,7 @@ fields[] = bodytext</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795336956</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795348009</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Article</field>
 				<field index="slug">/news/article</field>
@@ -2835,6 +4138,56 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:42" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">42</field>
+				<field index="pid" type="integer">21</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Doing business with the municipality</field>
+				<field index="bodytext">&lt;p&gt;The municipality publishes every tender above KES 500,000 here and on the national procurement portal. Bids are submitted in a sealed envelope at the procurement office before the closing date.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>23</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:43" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">43</field>
+				<field index="pid" type="integer">21</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Open tenders</field>
+				<field index="bodytext">Number|Subject|Closes
+MSM/T/01/2026|Resurfacing of Market Street|12 June
+MSM/T/02/2026|Solar street lights, Beach ward|19 June
+MSM/T/03/2026|Waste collection vehicles (2)|26 June</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
 		<tablerow index="pages:20" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">20</field>
@@ -2855,6 +4208,56 @@ fields[] = bodytext</field>
 				<field index="slug">/access-to-information</field>
 				<field index="nav_hide" type="integer">1</field>
 				<field index="tsconfig_includes"></field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:40" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">40</field>
+				<field index="pid" type="integer">20</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Ask for the information we hold</field>
+				<field index="bodytext">&lt;p&gt;Every citizen has the right to the information the municipality holds. Ask for a document in writing, by email or at the front desk of the municipal office, and say as precisely as you can what you are looking for.&lt;/p&gt;
+&lt;p&gt;We answer within 21 days. Copies cost KES 10 per page; electronic copies are free.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>22</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:41" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">41</field>
+				<field index="pid" type="integer">20</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">bullets</field>
+				<field index="header">Published without a request</field>
+				<field index="bodytext">The budget and the annual accounts
+The valuation roll
+The minutes of the municipal board
+Tenders and the contracts awarded</field>
+				<field index="image_zoom" type="integer">1</field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:19" type="array">
@@ -2879,6 +4282,36 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:39" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">39</field>
+				<field index="pid" type="integer">19</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Example text</field>
+				<field index="bodytext">&lt;p&gt;This is placeholder text for the demo site. The municipality writes its own privacy policy here: which personal data the site and its forms collect, what for, how long it is kept and whom visitors contact about it.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>21</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
 		<tablerow index="pages:18" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">18</field>
@@ -2900,6 +4333,37 @@ fields[] = bodytext</field>
 				<field index="nav_hide" type="integer">1</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:38" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">38</field>
+				<field index="pid" type="integer">18</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Example text</field>
+				<field index="bodytext">&lt;p&gt;This is placeholder text for the demo site. The municipality writes its own accessibility statement here: the standard the site aims at, what is not accessible yet and how visitors report a barrier.&lt;/p&gt;
+&lt;p&gt;The design of this site targets WCAG 2.1 level AA.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>20</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="pages:17" type="array">
 			<fieldlist index="data" type="array">
@@ -2923,6 +4387,36 @@ fields[] = bodytext</field>
 				<field index="backend_layout">pagets__Narrow</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:37" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">37</field>
+				<field index="pid" type="integer">17</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Your municipal services online</field>
+				<field index="bodytext">&lt;p&gt;In the e-services portal you pay land rates, permits and fees, apply for a water connection and download your receipts, at any time of day.&lt;/p&gt;
+&lt;p&gt;Log in with your eCitizen account. You do not have one yet? Register at eCitizen first; it takes five minutes.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>19</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="pages:16" type="array">
 			<fieldlist index="data" type="array">
@@ -3131,6 +4625,138 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:34" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">34</field>
+				<field index="pid" type="integer">15</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Visit us</field>
+				<field index="bodytext">&lt;p&gt;Mto Safi Municipality&lt;br /&gt;Municipal Office&lt;br /&gt;Beach Road 1&lt;br /&gt;P.O. Box 123, Mto Safi&lt;/p&gt;
+&lt;p&gt;Phone: &lt;a href=&quot;tel:+254700000000&quot;&gt;+254 700 000 000&lt;/a&gt;&lt;br /&gt;Email: &lt;a href=&quot;mailto:info@mtosafi.example&quot;&gt;info@mtosafi.example&lt;/a&gt;&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="bodytext" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink_tag" type="array">
+								<softref_element index="1" type="array">
+									<matchString>&lt;a href=&quot;tel:+254700000000&quot;&gt;</matchString>
+									<subst type="array">
+										<type>string</type>
+										<tokenID>f0db9b67a649a62a1a3db0a977671b74</tokenID>
+										<tokenValue>+254700000000</tokenValue>
+									</subst>
+								</softref_element>
+								<softref_element index="3" type="array">
+									<matchString>&lt;a href=&quot;mailto:info@mtosafi.example&quot;&gt;</matchString>
+									<subst type="array">
+										<type>string</type>
+										<tokenID>80264ce8d752fb34f3445680452d4388</tokenID>
+										<tokenValue>info@mtosafi.example</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+							<softref_key index="email" type="array">
+								<softref_element index="2" type="array">
+									<matchString>info@mtosafi.example</matchString>
+									<subst type="array">
+										<type>string</type>
+										<tokenID>b8f36485b969dae8d4edcca19c66bd5c</tokenID>
+										<tokenValue>info@mtosafi.example</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>&lt;p&gt;Mto Safi Municipality&lt;br /&gt;Municipal Office&lt;br /&gt;Beach Road 1&lt;br /&gt;P.O. Box 123, Mto Safi&lt;/p&gt;
+&lt;p&gt;Phone: &lt;a href=&quot;tel:{softref:f0db9b67a649a62a1a3db0a977671b74}&quot;&gt;+254 700 000 000&lt;/a&gt;&lt;br /&gt;Email: &lt;a href=&quot;mailto:{softref:80264ce8d752fb34f3445680452d4388}&quot;&gt;{softref:b8f36485b969dae8d4edcca19c66bd5c}&lt;/a&gt;&lt;/p&gt;</tokenizedContent>
+					</softrefs>
+				</field>
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>18</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:35" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">35</field>
+				<field index="pid" type="integer">15</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Opening hours</field>
+				<field index="bodytext">Days|Hours
+Mon–Thu|8:00–17:00
+Friday|8:00–13:00, 14:00–17:00
+Sat, Sun|Closed</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:36" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">36</field>
+				<field index="pid" type="integer">15</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">768</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">text</field>
+				<field index="header">Report a problem</field>
+				<field index="bodytext">&lt;p&gt;A pothole, a broken street light, a blocked drain or waste that was not collected: call +254 700 000 002 or write to &lt;a href=&quot;mailto:report@mtosafi.example&quot;&gt;report@mtosafi.example&lt;/a&gt;, and say where it is.&lt;/p&gt;</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="bodytext" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink_tag" type="array">
+								<softref_element index="1" type="array">
+									<matchString>&lt;a href=&quot;mailto:report@mtosafi.example&quot;&gt;</matchString>
+									<subst type="array">
+										<type>string</type>
+										<tokenID>2c5044914863589570bee4438edda51f</tokenID>
+										<tokenValue>report@mtosafi.example</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+							<softref_key index="email" type="array">
+								<softref_element index="2" type="array">
+									<matchString>report@mtosafi.example</matchString>
+									<subst type="array">
+										<type>string</type>
+										<tokenID>7ffef10d6527d7d6f8892cff94944a8a</tokenID>
+										<tokenValue>report@mtosafi.example</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>&lt;p&gt;A pothole, a broken street light, a blocked drain or waste that was not collected: call +254 700 000 002 or write to &lt;a href=&quot;mailto:{softref:2c5044914863589570bee4438edda51f}&quot;&gt;{softref:7ffef10d6527d7d6f8892cff94944a8a}&lt;/a&gt;, and say where it is.&lt;/p&gt;</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
 		<tablerow index="pages:14" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">14</field>
@@ -3152,6 +4778,58 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:32" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">32</field>
+				<field index="pid" type="integer">14</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Have your say on the budget</field>
+				<field index="bodytext">&lt;p&gt;Before the county assembly decides on the budget, the municipality presents it in every ward. Come to a forum, ask questions and tell us what your ward needs most.&lt;/p&gt;
+&lt;p&gt;You can also send your views in writing to the clerk until 15 May.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>17</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:33" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">33</field>
+				<field index="pid" type="integer">14</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Forum dates</field>
+				<field index="bodytext">Ward|Date|Place
+Central|4 May, 10:00|Municipal hall
+Beach|6 May, 10:00|Pwani primary school
+Upper River|8 May, 14:00|Kijiji social hall
+Mnarani|11 May, 10:00|Mnarani chief&#039;s camp</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
 		<tablerow index="pages:13" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">13</field>
@@ -3166,12 +4844,119 @@ fields[] = bodytext</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795368020</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Trade &amp; tourism</field>
 				<field index="slug">/trade-tourism</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:29" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">29</field>
+				<field index="pid" type="integer">13</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Karibu Mto Safi</field>
+				<field index="bodytext">&lt;p&gt;White beaches, a quiet river mouth and the old dhow harbour bring visitors to Mto Safi all year round. Tourism and the fish trade are what the town lives from.&lt;/p&gt;
+&lt;p&gt;The tourist information at the jetty helps with accommodation, boat trips and guides. Businesses that want to start here find the permits they need under &lt;a href=&quot;t3://page?uid=7&quot;&gt;Single business permit&lt;/a&gt;.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="bodytext" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink_tag" type="array">
+								<softref_element index="1" type="array">
+									<matchString>&lt;a href=&quot;t3://page?uid=7&quot;&gt;</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:7</recordRef>
+										<tokenID>44f45cc3d22bc1f9f771d777d3335a9d</tokenID>
+										<tokenValue>7</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>&lt;p&gt;White beaches, a quiet river mouth and the old dhow harbour bring visitors to Mto Safi all year round. Tourism and the fish trade are what the town lives from.&lt;/p&gt;
+&lt;p&gt;The tourist information at the jetty helps with accommodation, boat trips and guides. Businesses that want to start here find the permits they need under &lt;a href=&quot;{softref:44f45cc3d22bc1f9f771d777d3335a9d}&quot;&gt;Single business permit&lt;/a&gt;.&lt;/p&gt;</tokenizedContent>
+					</softrefs>
+				</field>
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>12</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:30" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">30</field>
+				<field index="pid" type="integer">13</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">bullets</field>
+				<field index="header">Places to visit</field>
+				<field index="bodytext">The dhow harbour and the fish market at sunrise
+The mangrove boardwalk at the river mouth
+Mto Safi beach and the coral garden
+The old town with its carved doors</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:31" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">31</field>
+				<field index="pid" type="integer">13</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">768</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">image</field>
+				<field index="header">Impressions of Mto Safi</field>
+				<field index="image" type="integer">4</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>13</id>
+							<table>sys_file_reference</table>
+						</element>
+						<element index="1" type="array">
+							<id>14</id>
+							<table>sys_file_reference</table>
+						</element>
+						<element index="2" type="array">
+							<id>15</id>
+							<table>sys_file_reference</table>
+						</element>
+						<element index="3" type="array">
+							<id>16</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="pages:12" type="array">
 			<fieldlist index="data" type="array">
@@ -3194,6 +4979,71 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:26" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">26</field>
+				<field index="pid" type="integer">12</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">A clean river for everyone</field>
+				<field index="bodytext">&lt;p&gt;Mto Safi means &quot;clean river&quot;, and we work to keep it that way: with a sewage plant that serves the town centre, waste collection twice a week and clean-up days in every ward.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>11</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:27" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">27</field>
+				<field index="pid" type="integer">12</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">text</field>
+				<field index="header">Water connection</field>
+				<field index="bodytext">&lt;p&gt;To connect a plot to the water supply, apply in the e-services portal with the plot number. A connection to a house on a plot along a main pipe costs KES 6,500 and takes about three weeks.&lt;/p&gt;
+&lt;p&gt;To report a leak or a burst pipe, call +254 700 000 001 at any time.&lt;/p&gt;</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:28" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">28</field>
+				<field index="pid" type="integer">12</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">768</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">bullets</field>
+				<field index="header">Waste collection</field>
+				<field index="bodytext">Town centre: Monday and Thursday
+Beach and Mnarani: Tuesday and Friday
+Upper River: Wednesday and Saturday</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
 		<tablerow index="pages:11" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">11</field>
@@ -3213,6 +5063,58 @@ fields[] = bodytext</field>
 				<field index="title">Health</field>
 				<field index="slug">/health</field>
 				<field index="tsconfig_includes"></field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:24" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">24</field>
+				<field index="pid" type="integer">11</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Health services close to home</field>
+				<field index="bodytext">&lt;p&gt;The municipality runs four health centres and eleven dispensaries. Maternal care, vaccinations and the treatment of common illnesses are free in all of them.&lt;/p&gt;
+&lt;p&gt;For an emergency, call 1199 or go to Mto Safi Sub-County Hospital, which is open day and night.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>10</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:25" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">25</field>
+				<field index="pid" type="integer">11</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Health centres</field>
+				<field index="bodytext">Health centre|Ward|Opening hours
+Mto Safi Town|Central|Mon–Sat 7:00–19:00
+Pwani|Beach|Mon–Fri 8:00–17:00
+Kijiji|Upper River|Mon–Fri 8:00–17:00
+Mnarani|Mnarani|Mon–Fri 8:00–17:00</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:5" type="array">
@@ -3238,6 +5140,71 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:11" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">11</field>
+				<field index="pid" type="integer">5</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Pay the municipality from wherever you are</field>
+				<field index="bodytext">&lt;p&gt;Land rates, permits, parking and market fees pay for the roads, the street lights, the markets and the waste collection of Mto Safi.&lt;/p&gt;
+&lt;p&gt;Most of them can be paid by mobile money or by card in the &lt;a href=&quot;t3://page?uid=17&quot;&gt;e-services portal&lt;/a&gt;, at any time of day. The cash office in the municipal office is open on working days.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="bodytext" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink_tag" type="array">
+								<softref_element index="1" type="array">
+									<matchString>&lt;a href=&quot;t3://page?uid=17&quot;&gt;</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:17</recordRef>
+										<tokenID>ab0225f28f08ae427fb608ca8bc988e7</tokenID>
+										<tokenValue>17</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>&lt;p&gt;Land rates, permits, parking and market fees pay for the roads, the street lights, the markets and the waste collection of Mto Safi.&lt;/p&gt;
+&lt;p&gt;Most of them can be paid by mobile money or by card in the &lt;a href=&quot;{softref:ab0225f28f08ae427fb608ca8bc988e7}&quot;&gt;e-services portal&lt;/a&gt;, at any time of day. The cash office in the municipal office is open on working days.&lt;/p&gt;</tokenizedContent>
+					</softrefs>
+				</field>
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>4</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:12" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">12</field>
+				<field index="pid" type="integer">5</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">menu_subpages</field>
+				<field index="header">Payments and fees</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
 		<tablerow index="pages:10" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">10</field>
@@ -3257,6 +5224,55 @@ fields[] = bodytext</field>
 				<field index="title">Waiver of interest</field>
 				<field index="slug">/revenue-payments/waiver-of-interest</field>
 				<field index="tsconfig_includes"></field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:22" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">22</field>
+				<field index="pid" type="integer">10</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Interest waived when you clear your arrears</field>
+				<field index="bodytext">&lt;p&gt;Owners who pay all their land rate arrears in one sum before 30 June can apply for a waiver of the interest on them.&lt;/p&gt;
+&lt;p&gt;Apply at the cash office or in the e-services portal before you pay. The waiver is granted once per plot.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">26</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>9</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:23" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">23</field>
+				<field index="pid" type="integer">10</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">bullets</field>
+				<field index="header">How it works</field>
+				<field index="bodytext">Ask for a statement of your arrears
+Apply for the waiver with the statement
+Pay the arrears without the interest within 30 days of the approval</field>
+				<field index="image_zoom" type="integer">1</field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:9" type="array">
@@ -3280,6 +5296,57 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:20" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">20</field>
+				<field index="pid" type="integer">9</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Selling at the municipal markets</field>
+				<field index="bodytext">&lt;p&gt;Mto Safi runs three markets: the central market on Market Street, the fish market at the jetty and the Saturday market at the bus park.&lt;/p&gt;
+&lt;p&gt;Traders with a stall pay a monthly fee, traders without one a daily fee at the gate. A free stall is allocated by the market office; ask there for the waiting list.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>8</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:21" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">21</field>
+				<field index="pid" type="integer">9</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Fees</field>
+				<field index="bodytext">|Fee
+Stall, per month|KES 1,200
+Open space, per day|KES 50
+Fish market, per day|KES 80</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
 		<tablerow index="pages:8" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">8</field>
@@ -3299,6 +5366,58 @@ fields[] = bodytext</field>
 				<field index="title">Parking fees</field>
 				<field index="slug">/revenue-payments/parking-fees</field>
 				<field index="tsconfig_includes"></field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:18" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">18</field>
+				<field index="pid" type="integer">8</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">Parking in the town centre</field>
+				<field index="bodytext">&lt;p&gt;Parking in the town centre and on Beach Road is paid from Monday to Saturday, 7:00 to 18:00. Sundays and public holidays are free.&lt;/p&gt;
+&lt;p&gt;Pay by mobile money with your number plate, or buy a monthly sticker in the e-services portal.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">26</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>7</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:19" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">19</field>
+				<field index="pid" type="integer">8</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Fees</field>
+				<field index="bodytext">Vehicle|Per day|Per month
+Car|KES 100|KES 2,000
+Pick-up and van|KES 150|KES 3,000
+Lorry|KES 300|KES 6,000
+Motorcycle (boda boda)|KES 30|KES 500</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:7" type="array">
@@ -3322,6 +5441,56 @@ fields[] = bodytext</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:16" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">16</field>
+				<field index="pid" type="integer">7</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">One permit for your business</field>
+				<field index="bodytext">&lt;p&gt;Every business in Mto Safi, from a kiosk to a hotel, needs a single business permit. It replaces the separate trade, health and fire licences, and it is valid for the calendar year.&lt;/p&gt;
+&lt;p&gt;Apply for a new permit or renew yours in the e-services portal. A renewal is due by 31 January.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>6</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:17" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">17</field>
+				<field index="pid" type="integer">7</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">bullets</field>
+				<field index="header">What you need to apply</field>
+				<field index="bodytext">Your national ID or passport
+The KRA PIN of the business
+The plot number of the premises
+A description of the activity and the number of employees</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
 		<tablerow index="pages:6" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">6</field>
@@ -3342,6 +5511,93 @@ fields[] = bodytext</field>
 				<field index="slug">/revenue-payments/land-rates</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:13" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">13</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">textpic</field>
+				<field index="header">How your land rates are calculated</field>
+				<field index="bodytext">&lt;p&gt;Every owner of land in Mto Safi pays land rates once a year. The rate is a share of the rateable value of your plot. The valuation roll sets that value, and your valuation notice states it. The share depends on what the land is used for.&lt;/p&gt;
+&lt;p&gt;Pay before 31 March. From April, interest of 1 % of the annual rate is added for every month the rate stays unpaid.&lt;/p&gt;</field>
+				<field index="image" type="integer">1</field>
+				<field index="imageorient" type="integer">25</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="imagecols" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>5</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:14" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">14</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">table</field>
+				<field index="header">Rates for 2026</field>
+				<field index="bodytext">Land use|Rate|Minimum per plot and year
+Residential|0.5 % of the rateable value|KES 1,500
+Commercial|1.2 % of the rateable value|KES 1,500
+Agricultural|0.2 % of the rateable value|KES 1,500</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="table_header_position" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:15" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">15</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">768</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">text</field>
+				<field index="header">How to pay</field>
+				<field index="bodytext">&lt;p&gt;Pay by mobile money, by card in the &lt;a href=&quot;t3://page?uid=17&quot;&gt;e-services portal&lt;/a&gt;, or at the cash office in the municipal office. Keep the receipt: it is your proof of payment.&lt;/p&gt;</field>
+				<field index="image_zoom" type="integer">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="bodytext" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink_tag" type="array">
+								<softref_element index="1" type="array">
+									<matchString>&lt;a href=&quot;t3://page?uid=17&quot;&gt;</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:17</recordRef>
+										<tokenID>0f65c761f9929d0e19da2d19abd31fa3</tokenID>
+										<tokenValue>17</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>&lt;p&gt;Pay by mobile money, by card in the &lt;a href=&quot;{softref:0f65c761f9929d0e19da2d19abd31fa3}&quot;&gt;e-services portal&lt;/a&gt;, or at the cash office in the municipal office. Keep the receipt: it is your proof of payment.&lt;/p&gt;</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="sys_file_reference:1" type="array">
 			<fieldlist index="data" type="array">
@@ -3415,6 +5671,566 @@ fields[] = bodytext</field>
 					<relations index="itemArray" type="array">
 						<element index="0" type="array">
 							<id>4</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:23" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">23</field>
+				<field index="pid">21</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">26</field>
+				<field index="alternative">A building under construction with a crane, and a sealed envelope</field>
+				<field index="uid_foreign">42</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Bids go in a sealed envelope to the procurement office.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>26</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:22" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">22</field>
+				<field index="pid">20</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">25</field>
+				<field index="alternative">A folder of documents and a magnifying glass</field>
+				<field index="uid_foreign">40</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Requests are answered within 21 days.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>25</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:21" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">21</field>
+				<field index="pid">19</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">24</field>
+				<field index="alternative">A shield with a padlock</field>
+				<field index="uid_foreign">39</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Example image: replace it together with the text.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>24</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:20" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">20</field>
+				<field index="pid">18</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">23</field>
+				<field index="alternative">A web page with clear headings and a focused button, beside the accessibility symbol</field>
+				<field index="uid_foreign">38</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Example image: replace it together with the text.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>23</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:19" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">19</field>
+				<field index="pid">17</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">22</field>
+				<field index="alternative">A laptop showing a login form, beside a padlock</field>
+				<field index="uid_foreign">37</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Log in with your eCitizen account.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>22</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:18" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">18</field>
+				<field index="pid">15</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">20</field>
+				<field index="alternative">The municipal office with a flag on the roof</field>
+				<field index="uid_foreign">34</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">The municipal office on Beach Road.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>20</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:17" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">17</field>
+				<field index="pid">14</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">21</field>
+				<field index="alternative">Residents gathered in front of a board at a public forum</field>
+				<field index="uid_foreign">32</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Budget forum in the municipal hall, Central ward.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>21</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:12" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">12</field>
+				<field index="pid">13</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">19</field>
+				<field index="alternative">A dhow sailing at sunset with a palm tree on the beach</field>
+				<field index="uid_foreign">29</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">A dhow leaves the old harbour at sunset.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>19</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:13" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">13</field>
+				<field index="pid">13</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">19</field>
+				<field index="alternative">A dhow sailing at sunset with a palm tree on the beach</field>
+				<field index="uid_foreign">31</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Sunset over the old dhow harbour.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>19</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:14" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">14</field>
+				<field index="pid">13</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">15</field>
+				<field index="alternative">Two market stalls with fruit and vegetables</field>
+				<field index="uid_foreign">31</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">2</field>
+				<field index="description">Mangoes, tomatoes and sukuma wiki at the central market.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>15</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:15" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">15</field>
+				<field index="pid">13</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">18</field>
+				<field index="alternative">A river running through green land, with a water tower and a tap</field>
+				<field index="uid_foreign">31</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">3</field>
+				<field index="description">The river mouth, where the mangrove boardwalk starts.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>18</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:16" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">16</field>
+				<field index="pid">13</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">20</field>
+				<field index="alternative">The municipal office with a flag on the roof</field>
+				<field index="uid_foreign">31</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">4</field>
+				<field index="description">The municipal office, built in 1962, on Beach Road.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>20</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:11" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">11</field>
+				<field index="pid">12</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">18</field>
+				<field index="alternative">A river running through green land, with a water tower and a tap</field>
+				<field index="uid_foreign">26</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">The river gives the town its name: Mto Safi means &quot;clean river&quot;.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>18</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:10" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">10</field>
+				<field index="pid">11</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">17</field>
+				<field index="alternative">A health centre with a red cross sign</field>
+				<field index="uid_foreign">24</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Mto Safi Town health centre, open Monday to Saturday.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>17</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">4</field>
+				<field index="pid">5</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">11</field>
+				<field index="alternative">A mobile phone confirming a payment, beside a stack of coins</field>
+				<field index="uid_foreign">11</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Pay by mobile money: the receipt arrives on your phone.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>11</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:9" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">9</field>
+				<field index="pid">10</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">16</field>
+				<field index="alternative">A calendar with a ticked check mark beside it</field>
+				<field index="uid_foreign">22</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Clear your arrears before 30 June to have the interest waived.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>16</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:8" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">8</field>
+				<field index="pid">9</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">15</field>
+				<field index="alternative">Two market stalls with fruit and vegetables</field>
+				<field index="uid_foreign">20</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Stalls at the central market on Market Street.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>15</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:7" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">7</field>
+				<field index="pid">8</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">14</field>
+				<field index="alternative">Two cars parked beside a parking sign</field>
+				<field index="uid_foreign">18</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Parking on Beach Road is paid Monday to Saturday, 7:00 to 18:00.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>14</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:6" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">6</field>
+				<field index="pid">7</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">13</field>
+				<field index="alternative">A shop with a striped awning and a framed business permit</field>
+				<field index="uid_foreign">16</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">One permit a year covers trade, health and fire safety.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>13</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:5" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">5</field>
+				<field index="pid">6</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">12</field>
+				<field index="alternative">Two houses on surveyed plots on a green hillside</field>
+				<field index="uid_foreign">13</field>
+				<field index="tablenames">tt_content</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+				<field index="description">Every plot in the valuation roll has a rateable value.</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>12</id>
 							<table>sys_file</table>
 						</element>
 					</relations>
@@ -3538,6 +6354,630 @@ fields[] = bodytext</field>
 				</field>
 			</related>
 		</tablerow>
+		<tablerow index="sys_file:26" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">26</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/tenders.svg</field>
+				<field index="identifier_hash">6d7a69908a1ccb7e07fe72d25353ab2cd97bcd6e</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">tenders.svg</field>
+				<field index="sha1">4466965824279af3d0752afc1c381bc67bf02cb3</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1327</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>26</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:25" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">25</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/documents.svg</field>
+				<field index="identifier_hash">aabcfbfda5ee6ee108add7c25755e60125aac964</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">documents.svg</field>
+				<field index="sha1">55578155722872d3dbe552da247abdf9eab0f079</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1109</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>25</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:24" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">24</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/privacy.svg</field>
+				<field index="identifier_hash">37eb3d14802d29b87df0e485e47493b1d99c8c21</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">privacy.svg</field>
+				<field index="sha1">9b8e53905ab5b20c15fdeb594911c71feb55252c</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">658</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>24</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:23" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">23</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/accessibility.svg</field>
+				<field index="identifier_hash">6f0b06a790eb2db4ac6f06627a44c9b86354e777</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">accessibility.svg</field>
+				<field index="sha1">ac912b916c948f19149c48cc52ef27f3e3a9a2eb</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1311</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>23</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:22" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">22</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/portal.svg</field>
+				<field index="identifier_hash">2d8f4684e52b0f63833ec132ac661878cbbd3f8e</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">portal.svg</field>
+				<field index="sha1">83926aff612828d0f180cb5c7549588e6e10c537</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1459</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>22</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:20" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">20</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/office.svg</field>
+				<field index="identifier_hash">ce61dc3f063e40c13764b7cd0cdc993f1a605920</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">office.svg</field>
+				<field index="sha1">2a62d5fb10462c90782877bc4254dec0a59e82a0</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1396</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>20</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:21" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">21</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/participation.svg</field>
+				<field index="identifier_hash">a4da72511bdbadb3e3b61b67f2225a182ed42e62</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">participation.svg</field>
+				<field index="sha1">36f0d096874cc84265f1180798b35e74ccb363dc</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1413</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>21</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:19" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">19</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/tourism.svg</field>
+				<field index="identifier_hash">8c1f6765ae9538e3fd436189d04637f5e020d708</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">tourism.svg</field>
+				<field index="sha1">b2596f9cc022b1e81e206e3533d1e5944587bb51</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1109</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>19</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:15" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">15</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/market.svg</field>
+				<field index="identifier_hash">9b5ab031812f7b3000919f31d93eb6834eef44f1</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">market.svg</field>
+				<field index="sha1">f4699dfad158612a22995a697549a4f0b4e34d51</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1219</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>15</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:18" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">18</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/water.svg</field>
+				<field index="identifier_hash">6b1802ac603aa6da515cf8c4311e08b581f6e965</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">water.svg</field>
+				<field index="sha1">4555d9ca1525f63e42e91e3b6f492963d65bc496</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1246</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>18</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:17" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">17</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/health.svg</field>
+				<field index="identifier_hash">a1bb0acb15caed893f46871a75b18a2a72fbed07</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">health.svg</field>
+				<field index="sha1">2e8cfed7c67ca68040d6d7f7b968e1a9063c184a</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1263</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>17</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:11" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">11</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/revenue.svg</field>
+				<field index="identifier_hash">1cd73fe883ea2a924471d5fd501fa4302aefed05</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">revenue.svg</field>
+				<field index="sha1">039761d3da5f2ae222ccf36fc2a0b075c4fe1bbd</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1527</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>11</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:16" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">16</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/waiver.svg</field>
+				<field index="identifier_hash">c29d9ffd11670a33b99b6be69ccd5d853c4477e3</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">waiver.svg</field>
+				<field index="sha1">fe4ef5de488313ec55bf32751c903663094ef756</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">2156</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>16</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:14" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">14</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/parking.svg</field>
+				<field index="identifier_hash">d5d63aa11f9836ff8a5574041dd005fc33d3063e</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">parking.svg</field>
+				<field index="sha1">21e3ea6329d902fadb8e700a33b813364ae0f517</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1635</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>14</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:13" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">13</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/business-permit.svg</field>
+				<field index="identifier_hash">9de9cf466345826e6e0004eaff218214e0ed670c</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">business-permit.svg</field>
+				<field index="sha1">3cdd6e20a13e650cec99679b5eb52e67c529921a</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1796</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>13</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:12" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">12</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795368020</field>
+				<field index="identifier">/user_upload/pages/land-rates.svg</field>
+				<field index="identifier_hash">d5f7763ccb54d96ca705ae00a952c4e667420ed2</field>
+				<field index="folder_hash">41e6d150c75718d77d7de5232176c747d5e946ab</field>
+				<field index="extension">svg</field>
+				<field index="name">land-rates.svg</field>
+				<field index="sha1">443957829800f283dbb2ffd610ad644b542355be</field>
+				<field index="creation_date">1795366717</field>
+				<field index="modification_date">1795366717</field>
+				<field index="size">1341</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>12</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
 		<tablerow index="sys_file_metadata:2" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid">2</field>
@@ -3607,6 +7047,374 @@ fields[] = bodytext</field>
 				</field>
 			</related>
 		</tablerow>
+		<tablerow index="sys_file_metadata:26" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">26</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">26</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>26</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:25" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">25</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">25</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>25</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:24" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">24</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">24</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>24</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:23" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">23</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">23</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>23</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:22" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">22</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">22</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>22</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:20" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">20</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">20</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>20</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:21" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">21</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">21</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>21</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:19" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">19</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">19</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>19</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:15" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">15</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">15</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>15</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:18" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">18</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">18</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>18</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:17" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">17</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">17</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>17</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:11" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">11</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">11</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>11</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:16" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">16</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">16</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>16</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:14" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">14</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">14</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>14</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:13" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">13</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">13</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>13</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:12" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">12</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">12</field>
+				<field index="width">1200</field>
+				<field index="height">800</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>12</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
 	</records>
 	<files_fal type="array">
 		<file index="c6a9c87e213b1cef9952efa8c82e91d2" type="array">
@@ -3623,6 +7431,86 @@ fields[] = bodytext</field>
 			<filename>slide-community.svg</filename>
 			<filemtime>1795344511</filemtime>
 			<content_sha1>20ea8f7cede2a53c268a4bab9647c06acfed9ff3</content_sha1>
+		</file>
+		<file index="754720bef3230c0357a24a2d0168f4cc" type="array">
+			<filename>tenders.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>4466965824279af3d0752afc1c381bc67bf02cb3</content_sha1>
+		</file>
+		<file index="a5d83a4c75935ed96e5ff501332e9921" type="array">
+			<filename>documents.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>55578155722872d3dbe552da247abdf9eab0f079</content_sha1>
+		</file>
+		<file index="2524a149cb4fa0c018af971b3bc95763" type="array">
+			<filename>privacy.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>9b8e53905ab5b20c15fdeb594911c71feb55252c</content_sha1>
+		</file>
+		<file index="46b087a87ee640d636315379f4f7db89" type="array">
+			<filename>accessibility.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>ac912b916c948f19149c48cc52ef27f3e3a9a2eb</content_sha1>
+		</file>
+		<file index="8d238d67ea0384c29370c4caf0f546d7" type="array">
+			<filename>portal.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>83926aff612828d0f180cb5c7549588e6e10c537</content_sha1>
+		</file>
+		<file index="2b8ccbbeaf455812387f8347e6d18dc8" type="array">
+			<filename>office.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>2a62d5fb10462c90782877bc4254dec0a59e82a0</content_sha1>
+		</file>
+		<file index="2f53f0d98dc4aa718f08ddad34248a10" type="array">
+			<filename>participation.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>36f0d096874cc84265f1180798b35e74ccb363dc</content_sha1>
+		</file>
+		<file index="2f8fc4fd9c6c226760311ce4de2fe136" type="array">
+			<filename>tourism.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>b2596f9cc022b1e81e206e3533d1e5944587bb51</content_sha1>
+		</file>
+		<file index="e7c804240fe48ec5ddb01cd1480263b4" type="array">
+			<filename>market.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>f4699dfad158612a22995a697549a4f0b4e34d51</content_sha1>
+		</file>
+		<file index="4d56274233c74f1be11e6de9fc814682" type="array">
+			<filename>water.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>4555d9ca1525f63e42e91e3b6f492963d65bc496</content_sha1>
+		</file>
+		<file index="6ff1d2fc3b76e3d065c52568066fa2a8" type="array">
+			<filename>health.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>2e8cfed7c67ca68040d6d7f7b968e1a9063c184a</content_sha1>
+		</file>
+		<file index="91cb59d187256d90835cbf90ff226e5d" type="array">
+			<filename>revenue.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>039761d3da5f2ae222ccf36fc2a0b075c4fe1bbd</content_sha1>
+		</file>
+		<file index="78b5cfcae1341dbe2fd55f3ac56b63b7" type="array">
+			<filename>waiver.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>fe4ef5de488313ec55bf32751c903663094ef756</content_sha1>
+		</file>
+		<file index="ef66da9734f4e43759e2ba5d0d8cd4bd" type="array">
+			<filename>parking.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>21e3ea6329d902fadb8e700a33b813364ae0f517</content_sha1>
+		</file>
+		<file index="c78d369c3e80a1d7e6039315578a954a" type="array">
+			<filename>business-permit.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>3cdd6e20a13e650cec99679b5eb52e67c529921a</content_sha1>
+		</file>
+		<file index="2328a13390b48546b4064f389eeead9a" type="array">
+			<filename>land-rates.svg</filename>
+			<filemtime>1795366717</filemtime>
+			<content_sha1>443957829800f283dbb2ffd610ad644b542355be</content_sha1>
 		</file>
 	</files_fal>
 </T3RecordDocument>

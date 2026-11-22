@@ -117,6 +117,21 @@
 			<trans-unit id="slider.play">
 				<source>Play slider</source>
 			</trans-unit>
+			<trans-unit id="lightbox.enlarge">
+				<source>(show larger)</source>
+			</trans-unit>
+			<trans-unit id="lightbox.close">
+				<source>Close</source>
+			</trans-unit>
+			<trans-unit id="lightbox.previous">
+				<source>Previous image</source>
+			</trans-unit>
+			<trans-unit id="lightbox.next">
+				<source>Next image</source>
+			</trans-unit>
+			<trans-unit id="lightbox.position">
+				<source>Image %1$s of %2$s</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

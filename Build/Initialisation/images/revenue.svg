@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f3f7f4"/>
+  <circle cx="960" cy="180" r="90" fill="#f2b632"/>
+  <path d="M0 620c300-60 700-70 1200-20v200H0z" fill="#cdd8d2"/>
+  <g transform="translate(330 170)">
+    <rect width="260" height="480" rx="34" fill="#073d29"/>
+    <rect x="22" y="50" width="216" height="360" rx="10" fill="#fff"/>
+    <rect x="44" y="80" width="172" height="40" rx="6" fill="#0b5a3c"/>
+    <rect x="44" y="140" width="120" height="16" rx="4" fill="#cdd8d2"/>
+    <rect x="44" y="170" width="150" height="16" rx="4" fill="#cdd8d2"/>
+    <rect x="44" y="230" width="172" height="70" rx="8" fill="#f3f7f4"/>
+    <path d="M90 265l25 25 50-50" stroke="#1e6b34" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="44" y="330" width="172" height="50" rx="25" fill="#9b1c1f"/>
+    <circle cx="130" cy="445" r="16" fill="#0b5a3c"/>
+  </g>
+  <g fill="#e0a010" stroke="#9a6d06" stroke-width="6">
+    <ellipse cx="760" cy="600" rx="110" ry="30"/>
+    <ellipse cx="760" cy="570" rx="110" ry="30"/>
+    <ellipse cx="760" cy="540" rx="110" ry="30"/>
+    <ellipse cx="760" cy="510" rx="110" ry="30" fill="#f2b632"/>
+  </g>
+  <text x="760" y="522" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#7a5205" text-anchor="middle">KES</text>
+</svg>

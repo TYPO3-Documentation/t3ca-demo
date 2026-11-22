@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    An image of a fluid_styled_content element (Text & Images, Images, Text & Media).
+    Replaces the partial of fluid_styled_content to open "Enlarge on click" in the
+    site's lightbox (Resources/Public/JavaScript/lightbox.js) instead of a popup window.
+    The link goes to the large image, so it works without JavaScript too. The images of
+    one element are one group in the lightbox. The labels the script writes come from here.
+</f:comment>
+<figure class="image">
+    <f:if condition="{file.link}">
+        <f:then>
+            <f:link.typolink parameter="{file.link}" title="{file.title}">
+                <f:render partial="Media/Rendering/Image" arguments="{file: file, dimensions: dimensions, settings: settings}" />
+            </f:link.typolink>
+        </f:then>
+        <f:else if="{data.image_zoom}">
+            <f:asset.script identifier="mtosafiLightbox" src="EXT:mtosafi_sitepackage/Resources/Public/JavaScript/lightbox.js" defer="1" />
+            <a class="lightbox-link" href="{f:uri.image(image: file, maxWidth: 1920, maxHeight: 1920)}"
+                data-lightbox="c{data.uid}"
+                data-lightbox-alt="{file.alternative}"
+                data-lightbox-caption="{file.description}"
+                data-label-close="{f:translate(key: 'lightbox.close', domain: 'mtosafi_sitepackage.frontend')}"
+                data-label-previous="{f:translate(key: 'lightbox.previous', domain: 'mtosafi_sitepackage.frontend')}"
+                data-label-next="{f:translate(key: 'lightbox.next', domain: 'mtosafi_sitepackage.frontend')}"
+                data-label-position="{f:translate(key: 'lightbox.position', domain: 'mtosafi_sitepackage.frontend')}">
+                <f:render partial="Media/Rendering/Image" arguments="{file: file, dimensions: dimensions, settings: settings}" />
+                <span class="visually-hidden"><f:translate key="lightbox.enlarge" domain="mtosafi_sitepackage.frontend" /></span>
+            </a>
+        </f:else>
+        <f:else>
+            <f:render partial="Media/Rendering/Image" arguments="{file: file, dimensions: dimensions, settings: settings}" />
+        </f:else>
+    </f:if>
+    <f:if condition="{file.description}">
+        <figcaption class="image-caption">
+            {file.description -> f:format.nl2br()}
+        </figcaption>
+    </f:if>
+</figure>
+</html>

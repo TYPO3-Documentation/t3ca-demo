@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#bfe3ea"></rect>
+  <circle cx="200" cy="160" r="80" fill="#f2b632"></circle>
+  <path d="M0 480c250-90 600-110 1200-40v360H0z" fill="#127a50"></path>
+  <path d="M0 560c350-60 800-60 1200 0v240H0z" fill="#0b5a3c"></path>
+  <path d="M120 800L520 500M560 800l120-300M1100 800L840 500" stroke="#f3dfb3" stroke-width="6" stroke-dasharray="20 14"></path>
+  <g transform="translate(300 380)">
+    <rect width="160" height="110" fill="#fff"></rect>
+    <path d="M-20 0h200L80-80z" fill="#9b1c1f"></path>
+    <rect x="62" y="50" width="36" height="60" fill="#7a3e1d"></rect>
+    <rect x="18" y="30" width="30" height="28" fill="#bfe3ea"></rect>
+  </g>
+  <g transform="translate(720 360)">
+    <rect width="220" height="130" fill="#f3dfb3"></rect>
+    <path d="M-20 0h260L110-90z" fill="#073d29"></path>
+    <rect x="90" y="60" width="40" height="70" fill="#7a3e1d"></rect>
+    <rect x="22" y="34" width="40" height="32" fill="#bfe3ea"></rect>
+    <rect x="158" y="34" width="40" height="32" fill="#bfe3ea"></rect>
+  </g>
+  <g transform="translate(560 600)">
+    <rect x="-6" y="-120" width="12" height="160" fill="#7a3e1d"></rect>
+    <path d="M6-120h90l-20 30 20 30H6z" fill="#f2b632"></path>
+  </g>
+</svg>

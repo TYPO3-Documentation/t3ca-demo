@@ -85,8 +85,11 @@ page {
 }
 
 # Content elements of the sitepackage: their templates in Templates/Content/, the layout
-# and partials stay those of fluid_styled_content.
+# and the other partials stay those of fluid_styled_content.
 lib.contentElement.templateRootPaths.200 = EXT:mtosafi_sitepackage/Resources/Private/Templates/Content/
+# Partials of fluid_styled_content the site replaces: Media/Type/Image opens "Enlarge on
+# click" in the site's lightbox. Partials/Content/ keeps them apart from the page partials.
+lib.contentElement.partialRootPaths.200 = EXT:mtosafi_sitepackage/Resources/Private/Templates/Partials/Content/
 
 @import './TypoScript/ContentElements/*.typoscript'
 

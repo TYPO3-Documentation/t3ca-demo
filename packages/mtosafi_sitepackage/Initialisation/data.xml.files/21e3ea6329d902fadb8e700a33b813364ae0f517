@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#bfe3ea"></rect>
+  <rect y="480" width="1200" height="320" fill="#4a5650"></rect>
+  <rect y="460" width="1200" height="24" fill="#cdd8d2"></rect>
+  <g fill="#fff">
+    <rect x="100" y="620" width="10" height="140"></rect>
+    <rect x="420" y="620" width="10" height="140"></rect>
+    <rect x="740" y="620" width="10" height="140"></rect>
+    <rect x="1060" y="620" width="10" height="140"></rect>
+  </g>
+  <g transform="translate(150 600)">
+    <path d="M0 80V30q10-50 60-55h120q40 5 70 55h20q20 0 20 20v30z" fill="#9b1c1f"></path>
+    <rect x="70" y="-15" width="70" height="40" fill="#bfe3ea"></rect>
+    <rect x="150" y="-15" width="60" height="40" fill="#bfe3ea"></rect>
+    <circle cx="70" cy="85" r="28" fill="#1c2420"></circle>
+    <circle cx="250" cy="85" r="28" fill="#1c2420"></circle>
+  </g>
+  <g transform="translate(790 600)">
+    <path d="M0 80V30q10-50 60-55h120q40 5 70 55h20q20 0 20 20v30z" fill="#f2b632"></path>
+    <rect x="70" y="-15" width="70" height="40" fill="#bfe3ea"></rect>
+    <rect x="150" y="-15" width="60" height="40" fill="#bfe3ea"></rect>
+    <circle cx="70" cy="85" r="28" fill="#1c2420"></circle>
+    <circle cx="250" cy="85" r="28" fill="#1c2420"></circle>
+  </g>
+  <rect x="580" y="200" width="16" height="280" fill="#4a5650"></rect>
+  <rect x="500" y="110" width="176" height="176" rx="20" fill="#0b5a3c"></rect>
+  <text x="588" y="245" font-family="Arial, sans-serif" font-size="140" font-weight="700" fill="#fff" text-anchor="middle">P</text>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#bfe3ea"/>
+  <rect y="640" width="1200" height="160" fill="#d9c49a"/>
+  <g transform="translate(240 220)">
+    <path d="M-40 90h800L360-40z" fill="#0b5a3c"/>
+    <rect y="90" width="720" height="330" fill="#fff"/>
+    <rect x="-20" y="400" width="760" height="30" fill="#cdd8d2"/>
+    <g fill="#f3dfb3"><rect x="40" y="120" width="40" height="280"/><rect x="160" y="120" width="40" height="280"/><rect x="520" y="120" width="40" height="280"/><rect x="640" y="120" width="40" height="280"/></g>
+    <rect x="300" y="250" width="120" height="150" fill="#7a3e1d"/>
+    <circle cx="360" cy="40" r="26" fill="#f2b632"/>
+  </g>
+  <g transform="translate(600 120)">
+    <rect x="-4" y="0" width="8" height="110" fill="#4a5650"/>
+    <rect x="4" y="0" width="90" height="16" fill="#000"/><rect x="4" y="16" width="90" height="16" fill="#9b1c1f"/><rect x="4" y="32" width="90" height="16" fill="#0b5a3c"/>
+  </g>
+  <g fill="#0b5a3c"><rect x="110" y="420" width="14" height="230"/><path d="M117 420c-60-30-110-20-140 20 60-20 90-15 140-20zM117 420c50-50 110-60 160-30-60 0-110 10-160 30z"/></g>
+</svg>

@@ -13,3 +13,6 @@ mod.web_layout.tt_content.preview {
 
 # The text editor offers what the design styles, nothing more.
 RTE.default.preset = mtosafi
+
+# "Enlarge on click" is on for new elements: their images open in the lightbox.
+TCAdefaults.tt_content.image_zoom = 1

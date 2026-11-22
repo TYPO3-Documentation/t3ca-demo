@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#f7c66b"/>
+  <rect y="640" width="1200" height="160" fill="#d9c49a"/>
+  <g transform="translate(180 180)">
+    <rect width="620" height="460" fill="#fff"/>
+    <path d="M-30 0h680v-60H-30z" fill="#0b5a3c"/>
+    <g fill="#9b1c1f"><path d="M-30 0h85l-10 70h-65z"/><path d="M140 0h85l-10 70h-65z"/><path d="M310 0h85l-10 70h-65z"/><path d="M480 0h85l-10 70h-65z"/></g>
+    <g fill="#fff"><path d="M55 0h85l-10 70H65z"/><path d="M225 0h85l-10 70h-65z"/><path d="M395 0h85l-10 70h-65z"/><path d="M565 0h85l-10 70h-65z"/></g>
+    <rect x="50" y="130" width="300" height="200" fill="#bfe3ea"/>
+    <rect x="410" y="130" width="140" height="330" fill="#7a3e1d"/>
+    <circle cx="530" cy="300" r="10" fill="#f2b632"/>
+    <text x="310" y="-18" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#fff" text-anchor="middle">DUKA LA MTO SAFI</text>
+  </g>
+  <g transform="translate(840 230) rotate(6)">
+    <rect width="260" height="330" fill="#fff" stroke="#cdd8d2" stroke-width="6"/>
+    <rect x="30" y="40" width="200" height="22" fill="#0b5a3c"/>
+    <rect x="30" y="90" width="200" height="12" fill="#cdd8d2"/>
+    <rect x="30" y="120" width="170" height="12" fill="#cdd8d2"/>
+    <rect x="30" y="150" width="190" height="12" fill="#cdd8d2"/>
+    <circle cx="180" cy="250" r="44" fill="#9b1c1f"/>
+    <path d="M160 285l-12 50 32-18 32 18-12-50" fill="#9b1c1f"/>
+    <circle cx="180" cy="250" r="26" fill="#f2b632"/>
+  </g>
+</svg>
