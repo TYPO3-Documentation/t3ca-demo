@@ -55,17 +55,22 @@ The export lands in `public/fileadmin/user_upload/_temp_/importexport/`; replace
 
 ### Page uids in the site settings
 
-`Initialisation/Site/main/settings.yaml` names three pages by uid:
-`mtosafi.navigation.serviceMenu`, `footerMenu` and `searchPage`. The import
-remaps the root page in the site configuration and nothing else. These three are
-right on an installation that starts empty, where the import hands out the uids
-the export had. On any other installation, set them in the site settings
-(Site Management > Settings) to the "Service navigation" folder, the
-"Footer navigation" folder and the "Search" page.
+The site settings `mtosafi.navigation.serviceMenu`, `footerMenu` and
+`searchPage` name pages by uid, and so does the 404 error handling
+(`t3://page?uid=…`). Those are the uids the pages had where the export was made.
+The import gives every page a new uid and remaps only the root page of a site
+it copies from `Initialisation/Site/`.
 
-`Initialisation/Site/main/config.yaml` names one more: the 404 error handling
-shows `t3://page?uid=33`, the "Page not found" page. On any other installation,
-point it at that page in Site Management > Sites > Error Handling.
+`Classes/Initialization/RemapSitePageUidsOnPackageInitialization.php` translates
+the other four with the uid map the import kept, in the setup that imported the
+data. It changes the site `main` where its root page is one of the imported
+pages, whether the site came from `Initialisation/Site/main/` or was in
+`config/sites/main/` already. A uid the import did not bring stays as it is.
+
+Elsewhere, set them in the site settings (Site Management > Settings) to the
+"Service navigation" folder, the "Footer navigation" folder and the "Search"
+page, and the error handling (Site Management > Sites > Error Handling) to the
+"Page not found" page.
 
 The news plugins name their pages (the news folder, the list and the detail
 page) in FlexForm fields the import remaps, so they need no site setting.

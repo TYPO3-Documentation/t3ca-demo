@@ -136,8 +136,9 @@ if ($dataHandler->errorLog !== []) {
 
 $uid = static fn(string $newId): int => (int)$dataHandler->substNEWwithIDs[$newId];
 
-// These are page uids: they hold on this installation and on a fresh one only where
-// the import hands out the same uids. See packages/mtosafi_sitepackage/README.md.
+// These are page uids of this installation. The export carries them, and
+// RemapSitePageUidsOnPackageInitialization translates them where data.xml is imported.
+// See packages/mtosafi_sitepackage/README.md.
 GeneralUtility::makeInstance(SiteWriter::class)->writeSettings(SITE_IDENTIFIER, [
     'mtosafi' => [
         'navigation' => [
