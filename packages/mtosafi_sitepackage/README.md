@@ -17,28 +17,33 @@ list page and the detail page. The home page carries the slider and the service
 tiles above the news; the slider images come along in `Initialisation/data.xml.files/`
 and land in `fileadmin/user_upload/slides/`. The "Page not found" page carries the
 text the site shows for an address that does not exist. The other pages carry no
-content yet.
+content yet. The "Search index" folder holds what the search needs: the filter
+"Show only" and the indexers for pages and news (see Search below).
 
 `Initialisation/Site/main/` is the site configuration that comes with it. It is
 copied only where no site called `main` exists, and it answers on base `/`. Its
 error handling shows the "Page not found" page for HTTP 404.
 
-The tree is not edited by hand. Four scripts in the project write it into an
+The tree is not edited by hand. Five scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
 `Build/Initialisation/seed-news.php` the news on top of them,
 `Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
 and `Build/Initialisation/seed-not-found.php` the "Page not found" page with the
-404 error handling of the site, and it is exported from there:
+404 error handling of the site and `Build/Initialisation/seed-search.php` the
+search, and it is exported from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
     ddev exec php Build/Initialisation/seed-news.php
     ddev exec php Build/Initialisation/seed-home.php
     ddev exec php Build/Initialisation/seed-not-found.php
+    ddev exec php Build/Initialisation/seed-search.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
         --table=tx_news_domain_model_tag --table=tx_mtosafisitepackage_tile \
         --table=tx_mtosafisitepackage_slide \
+        --table=tx_kesearch_indexerconfig --table=tx_kesearch_filters \
+        --table=tx_kesearch_filteroptions \
         --include-related=sys_file \
         --include-related=sys_file_reference --include-related=sys_file_metadata \
         --save-files-outside-export-file data
@@ -138,3 +143,46 @@ moves into the slider and stays off where the visitor prefers reduced motion. Th
 labels the script writes are in `Resources/Private/Language/frontend.xlf`. The
 template is `Resources/Private/Templates/Content/Slider.fluid.html`, the page
 module preview `Resources/Private/Templates/ContentPreviews/Slider.fluid.html`.
+
+## Search
+
+The search comes from `tpwd/ke_search`, without its paid premium add-on. The
+search field in the page header sends the search word as `q` to the "Search" page
+(`mtosafi.navigation.searchPage`), which ke_search reads through
+`plugin.tx_kesearch_pi1.searchWordParameter = q`.
+
+The "Search" page uses the page layout "Sidebar right". Its main area holds the
+result list, its sidebar the search box plugin, which on this site renders only
+the filter "Show only": the search field is the one in the header. The search box
+carries the configuration of both; the result list loads it from there.
+
+The index holds pages and news; files are not indexed. The indexer "Pages" starts
+at the home page and takes every page that has indexable content. A page without
+it, which is most of them so far, does not appear in the results until it has text.
+The "Search", "Article" and "Page not found" pages are excluded with "Include in
+search: no". The indexer "News" takes the news of the "News records" folder and
+links them to the "Article" page.
+
+Each result has a type, shown as its badge and filtered by "Show only": `service`
+for a page, `news` for a news record. The filter options carry these words as their
+tags, and `Classes/Search/TagIndexEntryWithResultType.php` writes them into the
+index. The indexers do not set the tag themselves, because an indexer names its
+filter option by uid and the import does not keep uids.
+
+The templates are in `Resources/Private/Extensions/KeSearch/`. One result renders
+through `Resources/Private/Extensions/Search/Partials/Search/Result.html`, which does
+not depend on ke_search, so a later switch to another search engine (EXT:solr)
+can reuse it with the CSS. `Classes/Search/AddSearchWordToResultList.php` hands
+the search word to the result list, which ke_search gives to the search box only.
+
+The index is built by a command, nothing builds it on its own:
+
+    ddev exec typo3 ke_search:indexing
+
+Run it after the setup of a new installation and after content changes; on a live
+site, run it from cron. The installation has no scheduler.
+
+The search box plugin names its filter by uid in the field "Filters", which the
+import does not remap. It is right where the "Search index" folder holds the only
+filter, as it does after the import. Otherwise choose "Show only" there again.
+

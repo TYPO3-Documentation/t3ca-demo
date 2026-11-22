@@ -11,6 +11,7 @@
     ],
     "require": {
         "georgringer/news": "^14.1",
+        "tpwd/ke_search": "^7.5",
         "typo3/cms-core": "^14.3",
         "typo3/cms-fluid": "^14.3",
         "typo3/cms-fluid-styled-content": "^14.3",

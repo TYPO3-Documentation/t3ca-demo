@@ -27,6 +27,42 @@
 			<trans-unit id="search.submit">
 				<source>Search</source>
 			</trans-unit>
+			<trans-unit id="search.results.count">
+				<source>%1$s results for “%2$s”</source>
+			</trans-unit>
+			<trans-unit id="search.results.countOne">
+				<source>1 result for “%1$s”</source>
+			</trans-unit>
+			<trans-unit id="search.results.none">
+				<source>Nothing found for “%1$s”. Try another word, or fewer words.</source>
+			</trans-unit>
+			<trans-unit id="search.results.tooShort">
+				<source>Search for words of at least %1$s letters.</source>
+			</trans-unit>
+			<trans-unit id="search.filters">
+				<source>Filter results</source>
+			</trans-unit>
+			<trans-unit id="search.filters.apply">
+				<source>Apply filter</source>
+			</trans-unit>
+			<trans-unit id="search.type.service">
+				<source>Service</source>
+			</trans-unit>
+			<trans-unit id="search.type.news">
+				<source>News</source>
+			</trans-unit>
+			<trans-unit id="search.pagination">
+				<source>More results</source>
+			</trans-unit>
+			<trans-unit id="search.pagination.previous">
+				<source>Previous results</source>
+			</trans-unit>
+			<trans-unit id="search.pagination.next">
+				<source>Next results</source>
+			</trans-unit>
+			<trans-unit id="search.pagination.status">
+				<source>Page %1$s of %2$s</source>
+			</trans-unit>
 			<trans-unit id="footer.openingHours">
 				<source>Opening hours</source>
 			</trans-unit>

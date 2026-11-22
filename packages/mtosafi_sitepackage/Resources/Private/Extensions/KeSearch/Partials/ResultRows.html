@@ -1,0 +1,40 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:kesearch="http://typo3.org/ns/Tpwd/KeSearch/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    The number of results, the results, and the previous and next page. The index type
+    "page" is the type "service" of the design; each result renders through the partial
+    Search/Result, which does not depend on ke_search.
+</f:comment>
+<p>
+    <f:if condition="{numberofresults} == 1">
+        <f:then><f:translate key="search.results.countOne" domain="mtosafi_sitepackage.frontend" arguments="{0: searchword}" /></f:then>
+        <f:else><f:translate key="search.results.count" domain="mtosafi_sitepackage.frontend" arguments="{0: numberofresults, 1: searchword}" /></f:else>
+    </f:if>
+</p>
+<ol class="search-results">
+    <f:for each="{resultrows}" as="resultrow">
+        <f:variable name="type" value="{resultrow.type}" />
+        <f:if condition="{type} == 'page'">
+            <f:variable name="type" value="service" />
+        </f:if>
+        <f:render partial="Search/Result" arguments="{
+            type: type,
+            title: resultrow.title_text,
+            url: resultrow.url,
+            teaser: resultrow.teaser
+        }" />
+    </f:for>
+</ol>
+<f:if condition="{pagination.paginator.numberOfPages} > 1">
+    <nav class="section-header" aria-label="{f:translate(key: 'search.pagination', domain: 'mtosafi_sitepackage.frontend')}">
+        <f:if condition="{pagination.previousPageNumber}">
+            <kesearch:link class="button" piVars="{page: pagination.previousPageNumber}" keepPiVars="1"><f:translate key="search.pagination.previous" domain="mtosafi_sitepackage.frontend" /></kesearch:link>
+        </f:if>
+        <span><f:translate key="search.pagination.status" domain="mtosafi_sitepackage.frontend" arguments="{0: pagination.paginator.currentPageNumber, 1: pagination.paginator.numberOfPages}" /></span>
+        <f:if condition="{pagination.nextPageNumber}">
+            <kesearch:link class="button" piVars="{page: pagination.nextPageNumber}" keepPiVars="1"><f:translate key="search.pagination.next" domain="mtosafi_sitepackage.frontend" /></kesearch:link>
+        </f:if>
+    </nav>
+</f:if>
+</html>

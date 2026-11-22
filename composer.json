@@ -16,6 +16,7 @@
     "require": {
         "georgringer/news": "^14.1",
         "mtosafi/sitepackage": "@dev",
+        "tpwd/ke_search": "^7.5",
         "typo3/cms-backend": "^14.3",
         "typo3/cms-belog": "^14.3",
         "typo3/cms-beuser": "^14.3",

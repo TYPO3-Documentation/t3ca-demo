@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    One search result as the design shows it: the badge of its type, the linked title
+    and the teaser. It knows nothing of the search engine, so the templates of another
+    one render it as well.
+
+    type:   "service" or "news", the tag of the filter option
+    title:  plain text
+    url:    the address of the result
+    teaser: HTML; the engine wraps the words found in it
+</f:comment>
+<li data-type="{type}">
+    <span class="badge"><f:translate key="search.type.{type}" domain="mtosafi_sitepackage.frontend" default="{type}" /></span>
+    <h2><a href="{url}">{title}</a></h2>
+    <f:if condition="{teaser}">
+        <p>{teaser -> f:format.raw()}</p>
+    </f:if>
+</li>
+</html>

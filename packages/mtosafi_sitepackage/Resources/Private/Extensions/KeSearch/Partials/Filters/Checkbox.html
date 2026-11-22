@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    A filter of type "checkbox" as the design's "Show only": the title of the filter
+    record is the legend, each option a checkbox whose value is its tag.
+</f:comment>
+<fieldset>
+    <legend>{filter.title}</legend>
+    <f:for each="{filter.checkboxOptions}" as="option">
+        <label class="check" for="{option.id}">
+            <input type="checkbox" id="{option.id}" name="{option.key}" value="{option.tag}"{f:if(condition: option.selected, then: ' checked')}{f:if(condition: option.disabled, then: ' disabled')} />
+            {option.title}<f:if condition="{filter.shownumberofresults} && {option.results}"> ({option.results})</f:if>
+        </label>
+    </f:for>
+</fieldset>
+</html>

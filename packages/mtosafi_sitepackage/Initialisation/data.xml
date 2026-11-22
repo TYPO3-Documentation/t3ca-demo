@@ -107,6 +107,9 @@
 					<node index="32" type="array">
 						<uid>32</uid>
 					</node>
+					<node index="34" type="array">
+						<uid>34</uid>
+					</node>
 				</node>
 			</node>
 		</pagetree>
@@ -116,6 +119,11 @@
 					<uid>1</uid>
 					<pid>0</pid>
 					<title>Home</title>
+				</rec>
+				<rec index="34" type="array">
+					<uid>34</uid>
+					<pid>1</pid>
+					<title>Search index</title>
 				</rec>
 				<rec index="32" type="array">
 					<uid>32</uid>
@@ -428,6 +436,32 @@
 						</softref_element>
 					</softrefs>
 				</rec>
+				<rec index="10" type="array">
+					<uid>10</uid>
+					<pid>16</pid>
+					<title>Search results</title>
+					<relations index="rels" type="array">
+						<element index="tt_content:9" type="array">
+							<id>9</id>
+							<table>tt_content</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="9" type="array">
+					<uid>9</uid>
+					<pid>16</pid>
+					<title>Filter results</title>
+					<relations index="rels" type="array">
+						<element index="pages:34" type="array">
+							<id>34</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:16" type="array">
+							<id>16</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
 			</table>
 			<table index="tx_mtosafisitepackage_slide" type="array">
 				<rec index="1" type="array">
@@ -611,6 +645,71 @@
 							</subst>
 						</softref_element>
 					</softrefs>
+				</rec>
+			</table>
+			<table index="tx_kesearch_filteroptions" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>34</pid>
+					<title>Services</title>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>34</pid>
+					<title>News</title>
+				</rec>
+			</table>
+			<table index="tx_kesearch_filters" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>34</pid>
+					<title>Show only</title>
+					<relations index="rels" type="array">
+						<element index="tx_kesearch_filteroptions:1" type="array">
+							<id>1</id>
+							<table>tx_kesearch_filteroptions</table>
+						</element>
+						<element index="tx_kesearch_filteroptions:2" type="array">
+							<id>2</id>
+							<table>tx_kesearch_filteroptions</table>
+						</element>
+					</relations>
+				</rec>
+			</table>
+			<table index="tx_kesearch_indexerconfig" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>34</pid>
+					<title>Pages</title>
+					<relations index="rels" type="array">
+						<element index="pages:34" type="array">
+							<id>34</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:1" type="array">
+							<id>1</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>34</pid>
+					<title>News</title>
+					<relations index="rels" type="array">
+						<element index="pages:34" type="array">
+							<id>34</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:31" type="array">
+							<id>31</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+					</relations>
 				</rec>
 			</table>
 			<table index="sys_category" type="array">
@@ -918,6 +1017,7 @@
 					<item index="6">1</item>
 				</table>
 				<table index="pages" type="array">
+					<item index="34">1</item>
 					<item index="32">1</item>
 					<item index="23">1</item>
 					<item index="22">1</item>
@@ -940,6 +1040,19 @@
 					<item index="1">1</item>
 					<item index="2">1</item>
 					<item index="3">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="34" type="array">
+				<table index="tx_kesearch_filteroptions" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
+				</table>
+				<table index="tx_kesearch_filters" type="array">
+					<item index="1">1</item>
+				</table>
+				<table index="tx_kesearch_indexerconfig" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
 				</table>
 			</page_contents>
 			<page_contents index="32" type="array">
@@ -993,6 +1106,12 @@
 			<page_contents index="33" type="array">
 				<table index="tt_content" type="array">
 					<item index="8">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="16" type="array">
+				<table index="tt_content" type="array">
+					<item index="10">1</item>
+					<item index="9">1</item>
 				</table>
 			</page_contents>
 			<page_contents index="5" type="array">
@@ -1569,6 +1688,275 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				</field>
 			</related>
 		</tablerow>
+		<tablerow index="pages:34" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">34</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">4096</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="doktype" type="integer">254</field>
+				<field index="title">Search index</field>
+				<field index="slug">/search-index</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_kesearch_filteroptions:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">34</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource">{&quot;hidden&quot;:&quot;&quot;,&quot;slug&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;title&quot;:&quot;&quot;}</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="title">Services</field>
+				<field index="tag">service</field>
+				<field index="slug">services</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_kesearch_filteroptions:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">34</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource">{&quot;hidden&quot;:&quot;&quot;,&quot;slug&quot;:&quot;&quot;,&quot;tag&quot;:&quot;&quot;,&quot;title&quot;:&quot;&quot;}</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="title">News</field>
+				<field index="tag">news</field>
+				<field index="slug">news</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_kesearch_filters:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">34</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource">{&quot;alphabeticalsorting&quot;:&quot;&quot;,&quot;amount&quot;:&quot;&quot;,&quot;hidden&quot;:&quot;&quot;,&quot;markAllCheckboxes&quot;:&quot;&quot;,&quot;options&quot;:&quot;&quot;,&quot;rendertype&quot;:&quot;&quot;,&quot;shownumberofresults&quot;:&quot;&quot;,&quot;target_pid&quot;:&quot;&quot;,&quot;title&quot;:&quot;&quot;}</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="title">Show only</field>
+				<field index="options">1,2</field>
+				<field index="rendertype">checkbox</field>
+				<field index="alphabeticalsorting" type="integer">0</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="options" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>tx_kesearch_filteroptions</table>
+						</element>
+						<element index="1" type="array">
+							<id>2</id>
+							<table>tx_kesearch_filteroptions</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_kesearch_indexerconfig:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">34</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="title">Pages</field>
+				<field index="storagepid">34</field>
+				<field index="startingpoints_recursive">1</field>
+				<field index="additional_tables">[accordion]
+table = tx_bootstrappackage_accordion_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = bodytext
+
+[tab]
+table = tx_bootstrappackage_tab_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = bodytext
+
+[carousel]
+table = tx_bootstrappackage_carousel_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = nav_title
+fields[] = link
+
+[carousel_fullscreen]
+table = tx_bootstrappackage_carousel_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = nav_title
+fields[] = link
+
+[carousel_small]
+table = tx_bootstrappackage_carousel_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = nav_title
+fields[] = link
+
+[icon_group]
+table = tx_bootstrappackage_icon_group_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = link
+
+[card_group]
+table = tx_bootstrappackage_card_group_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = link
+fields[] = link_title
+
+[timeline]
+table = tx_bootstrappackage_timeline_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = bodytext</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storagepid" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>34</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</field>
+				<field index="startingpoints_recursive" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_kesearch_indexerconfig:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">34</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="title">News</field>
+				<field index="storagepid">34</field>
+				<field index="targetpid">31</field>
+				<field index="startingpoints_recursive">32</field>
+				<field index="type">news</field>
+				<field index="additional_tables">[accordion]
+table = tx_bootstrappackage_accordion_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = bodytext
+
+[tab]
+table = tx_bootstrappackage_tab_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = bodytext
+
+[carousel]
+table = tx_bootstrappackage_carousel_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = nav_title
+fields[] = link
+
+[carousel_fullscreen]
+table = tx_bootstrappackage_carousel_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = nav_title
+fields[] = link
+
+[carousel_small]
+table = tx_bootstrappackage_carousel_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = nav_title
+fields[] = link
+
+[icon_group]
+table = tx_bootstrappackage_icon_group_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = link
+
+[card_group]
+table = tx_bootstrappackage_card_group_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = subheader
+fields[] = bodytext
+fields[] = link
+fields[] = link_title
+
+[timeline]
+table = tx_bootstrappackage_timeline_item
+referenceFieldName = tt_content
+fields[] = header
+fields[] = bodytext</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storagepid" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>34</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</field>
+				<field index="targetpid" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>31</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</field>
+				<field index="startingpoints_recursive" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
 		<tablerow index="pages:32" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">32</field>
@@ -1599,6 +1987,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Trade &amp; markets</field>
 				<field index="slug">trade-markets</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1626,6 +2016,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Roads &amp; transport</field>
 				<field index="slug">roads-transport</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1653,6 +2045,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Health</field>
 				<field index="slug">health</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1680,6 +2074,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Revenue &amp; payments</field>
 				<field index="slug">revenue-payments</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1707,6 +2103,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Public participation</field>
 				<field index="slug">public-participation</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1734,6 +2132,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Environment</field>
 				<field index="slug">environment</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1761,6 +2161,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Water</field>
 				<field index="slug">water</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="items" type="array">
@@ -1788,6 +2190,8 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="l10n_diffsource"></field>
 				<field index="title">Education</field>
 				<field index="slug">education</field>
+				<field index="tx_kesearch_filter" type="NULL"></field>
+				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="tx_news_domain_model_news:1" type="array">
@@ -2256,7 +2660,7 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="sys_language_uid" type="integer">0</field>
 				<field index="l10n_parent" type="integer">0</field>
 				<field index="l10n_source" type="integer">0</field>
-				<field index="l10n_diffsource"></field>
+				<field index="l10n_diffsource">{&quot;no_search&quot;:&quot;&quot;}</field>
 				<field index="perms_userid" type="integer">1</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
@@ -2266,6 +2670,7 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="title">Article</field>
 				<field index="slug">/news/article</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="no_search" type="integer">1</field>
 				<field index="backend_layout">pagets__Article</field>
 			</fieldlist>
 		</tablerow>
@@ -2345,7 +2750,7 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="sys_language_uid" type="integer">0</field>
 				<field index="l10n_parent" type="integer">0</field>
 				<field index="l10n_source" type="integer">0</field>
-				<field index="l10n_diffsource"></field>
+				<field index="l10n_diffsource">{&quot;no_search&quot;:&quot;&quot;}</field>
 				<field index="perms_userid" type="integer">1</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
@@ -2355,6 +2760,7 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="title">Page not found</field>
 				<field index="slug">/page-not-found</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="no_search" type="integer">1</field>
 				<field index="backend_layout">pagets__Narrow</field>
 				<field index="no_index" type="integer">1</field>
 				<field index="no_follow" type="integer">1</field>
@@ -2527,19 +2933,182 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="sys_language_uid" type="integer">0</field>
 				<field index="l10n_parent" type="integer">0</field>
 				<field index="l10n_source" type="integer">0</field>
-				<field index="l10n_diffsource"></field>
+				<field index="l10n_diffsource">{&quot;no_search&quot;:&quot;&quot;}</field>
 				<field index="perms_userid" type="integer">1</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795348009</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Search</field>
 				<field index="slug">/search</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="no_search" type="integer">1</field>
 				<field index="backend_layout">pagets__SidebarRight</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:10" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">10</field>
+				<field index="pid" type="integer">16</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">128</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">ke_search_pi2</field>
+				<field index="header">Search results</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;MAIN&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;loadFlexformsFromOtherCE&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;9&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="MAIN/lDEF/loadFlexformsFromOtherCE/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>9</id>
+									<table>tt_content</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:9" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">9</field>
+				<field index="pid" type="integer">16</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="colPos" type="integer">1</field>
+				<field index="CType">ke_search_pi1</field>
+				<field index="header">Filter results</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="pages">34</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;MAIN&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;resultPage&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;16&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showTextInsteadOfResults&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;textForResults&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;&amp;lt;p&amp;gt;Type what you are looking for into the search field at the top of the page.&amp;lt;/p&amp;gt;&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showNoResultsText&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;view&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;highlightSword&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;resultChars&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;200&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;resultsNumeration&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showResultUrl&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showDate&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;images&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;showTypeIcon&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showPageImages&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showNewsImages&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;showFilePreview&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;pagebrowser&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;pagebrowserOnTop&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;pagebrowserAtBottom&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;resultsPerPage&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;10&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;maxPagesInPagebrowser&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;10&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;filter&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;filters&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pages" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>34</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</field>
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="MAIN/lDEF/resultPage/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>16</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="pages:15" type="array">
 			<fieldlist index="data" type="array">

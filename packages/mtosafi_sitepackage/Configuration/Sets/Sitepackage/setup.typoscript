@@ -103,3 +103,25 @@ plugin.tx_news {
     list.paginate.itemsPerPage = 12
   }
 }
+
+# Search (EXT:ke_search): the design's markup, none of the extension's CSS, and "q" as the
+# parameter of the search word, which the search field in the page header submits.
+# Extensions/Search/Partials/ holds the markup of a result that does not depend on the
+# search engine.
+plugin.tx_kesearch_pi1 {
+  view {
+    templateRootPaths.10 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/KeSearch/Templates/
+    partialRootPaths.10 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/Search/Partials/
+    partialRootPaths.20 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/KeSearch/Partials/
+    layoutRootPaths.10 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/KeSearch/Layouts/
+  }
+  cssFile =
+  searchWordParameter = q
+}
+
+# The result list copied these from the search box before the lines above were set.
+plugin.tx_kesearch_pi2 {
+  view < plugin.tx_kesearch_pi1.view
+  cssFile =
+  searchWordParameter < plugin.tx_kesearch_pi1.searchWordParameter
+}
