@@ -84,6 +84,12 @@ page {
   }
 }
 
+# Content elements of the sitepackage: their templates in Templates/Content/, the layout
+# and partials stay those of fluid_styled_content.
+lib.contentElement.templateRootPaths.200 = EXT:mtosafi_sitepackage/Resources/Private/Templates/Content/
+
+@import './TypoScript/ContentElements/*.typoscript'
+
 # News (EXT:news): the design's markup instead of the extension's own, and none of its CSS.
 plugin.tx_news {
   view {

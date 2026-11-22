@@ -1,0 +1,28 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Service tiles (design/index.html, section "Popular services").
+
+    The heading is part of the section rather than the frame's own header, so the
+    section can name itself by it. Header type "Hidden" keeps it for screen readers.
+    The icon is decoration: the label alone names the link.
+</f:comment>
+<f:layout name="Default" />
+
+<f:section name="Header" />
+
+<f:section name="Main">
+    <section aria-labelledby="tiles-title-{data.uid}">
+        <h2 id="tiles-title-{data.uid}"{f:if(condition: '{data.header_layout} == 100', then: ' class="visually-hidden"') -> f:format.raw()}>{data.header}</h2>
+        <ul class="tiles">
+            <f:for each="{record.tx_mtosafisitepackage_tiles}" as="tile">
+                <li>
+                    <f:link.typolink parameter="{tile.link}" class="tile">
+                        <f:if condition="{tile.icon}"><span class="tile__icon" aria-hidden="true">{tile.icon}</span></f:if>{tile.label}
+                    </f:link.typolink>
+                </li>
+            </f:for>
+        </ul>
+    </section>
+</f:section>
+
+</html>

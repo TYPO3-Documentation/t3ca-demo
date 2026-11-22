@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:mtosafi_sitepackage/Resources/Private/Language/content_elements.xlf" date="2026-11-22T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="group">
+				<source>Mto Safi</source>
+			</trans-unit>
+			<trans-unit id="tiles.title">
+				<source>Service tiles</source>
+			</trans-unit>
+			<trans-unit id="tiles.description">
+				<source>A heading and a grid of tiles, each with an icon and a link to a service, such as "Popular services" on the home page.</source>
+			</trans-unit>
+			<trans-unit id="tiles.field.tiles">
+				<source>Tiles</source>
+			</trans-unit>
+			<trans-unit id="tiles.field.tiles.new">
+				<source>Add a tile</source>
+			</trans-unit>
+			<trans-unit id="tile">
+				<source>Service tile</source>
+			</trans-unit>
+			<trans-unit id="tile.icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tile.icon.description">
+				<source>One emoji, such as 🏡. It is decoration only: screen readers skip it, so the label has to say everything.</source>
+			</trans-unit>
+			<trans-unit id="tile.label">
+				<source>Label</source>
+			</trans-unit>
+			<trans-unit id="tile.link">
+				<source>Link</source>
+			</trans-unit>
+			<trans-unit id="tile.link.description">
+				<source>The page of the service, usually. A link to another website opens in the same window.</source>
+			</trans-unit>
+			<trans-unit id="preview.noLink">
+				<source>no link</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

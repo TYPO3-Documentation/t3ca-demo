@@ -18,17 +18,20 @@ list page and the detail page. The other pages carry no content yet.
 `Initialisation/Site/main/` is the site configuration that comes with it. It is
 copied only where no site called `main` exists, and it answers on base `/`.
 
-The tree is not edited by hand. Two scripts in the project write it into an
-installation, `Build/Initialisation/seed-page-tree.php` the pages and
-`Build/Initialisation/seed-news.php` the news on top of them, and it is exported
+The tree is not edited by hand. Three scripts in the project write it into an
+installation, `Build/Initialisation/seed-page-tree.php` the pages,
+`Build/Initialisation/seed-news.php` the news on top of them and
+`Build/Initialisation/seed-home.php` the service tiles of the home page, and it is exported
 from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
     ddev exec php Build/Initialisation/seed-news.php
+    ddev exec php Build/Initialisation/seed-home.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
-        --table=tx_news_domain_model_tag --include-related=sys_file \
+        --table=tx_news_domain_model_tag --table=tx_mtosafisitepackage_tile \
+        --include-related=sys_file \
         --include-related=sys_file_reference --include-related=sys_file_metadata \
         --save-files-outside-export-file data
 
@@ -89,3 +92,14 @@ page section, with the content element's header as its heading and a link to the
 plugin's list page. The detail page uses the page layout "Article", which leaves
 the heading to the news. Addresses are `/news/article/<news>` and
 `/news/page-2` (`Configuration/Sets/Sitepackage/route-enhancers.yaml`).
+
+## Service tiles
+
+The content element "Service tiles" (group "Mto Safi" in the content wizard)
+renders the design's "Popular services": a heading and a grid of tiles, each
+with an emoji as icon, a label and a link. The tiles are records of
+`tx_mtosafisitepackage_tile` that belong to the element and are edited, sorted,
+hidden and translated inside its form. The heading is required, because the
+section is named by it; header type "Hidden" keeps it for screen readers only.
+The template is `Resources/Private/Templates/Content/Tiles.fluid.html`, the
+page module preview `Resources/Private/Templates/ContentPreviews/Tiles.fluid.html`.

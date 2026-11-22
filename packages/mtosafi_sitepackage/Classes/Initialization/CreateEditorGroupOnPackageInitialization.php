@@ -46,6 +46,7 @@ final readonly class CreateEditorGroupOnPackageInitialization
         'tx_news_domain_model_news',
         'tx_news_domain_model_link',
         'tx_news_domain_model_tag',
+        'tx_mtosafisitepackage_tile',
     ];
 
     /**

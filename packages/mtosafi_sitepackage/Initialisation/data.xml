@@ -292,6 +292,37 @@
 				</rec>
 			</table>
 			<table index="tt_content" type="array">
+				<rec index="6" type="array">
+					<uid>6</uid>
+					<pid>1</pid>
+					<title>Popular services</title>
+					<relations index="rels" type="array">
+						<element index="tx_mtosafisitepackage_tile:1" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="tx_mtosafisitepackage_tile:2" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="tx_mtosafisitepackage_tile:3" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="tx_mtosafisitepackage_tile:4" type="array">
+							<id>4</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="tx_mtosafisitepackage_tile:5" type="array">
+							<id>5</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="tx_mtosafisitepackage_tile:6" type="array">
+							<id>6</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+					</relations>
+				</rec>
 				<rec index="3" type="array">
 					<uid>3</uid>
 					<pid>1</pid>
@@ -340,6 +371,116 @@
 							<table>pages</table>
 						</element>
 					</relations>
+				</rec>
+			</table>
+			<table index="tx_mtosafisitepackage_tile" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>1</pid>
+					<title>Single business permit</title>
+					<softrefs type="array">
+						<softref_element index="link:typolink:7f69a1aa54e9db8a5ae0d952977b4cd9:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=7</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:7</recordRef>
+								<tokenID>7f69a1aa54e9db8a5ae0d952977b4cd9</tokenID>
+								<tokenValue>7</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>1</pid>
+					<title>Land rates</title>
+					<softrefs type="array">
+						<softref_element index="link:typolink:087881d39e3c58af824e5fb90e661a8e:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=6</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:6</recordRef>
+								<tokenID>087881d39e3c58af824e5fb90e661a8e</tokenID>
+								<tokenValue>6</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>1</pid>
+					<title>Parking fees</title>
+					<softrefs type="array">
+						<softref_element index="link:typolink:5add86f047c9d524d9e9595219c10eb5:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=8</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:8</recordRef>
+								<tokenID>5add86f047c9d524d9e9595219c10eb5</tokenID>
+								<tokenValue>8</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>1</pid>
+					<title>Water connection</title>
+					<softrefs type="array">
+						<softref_element index="link:typolink:e34f7e18c8dc8d47f12cbbc9ec0587df:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=12</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:12</recordRef>
+								<tokenID>e34f7e18c8dc8d47f12cbbc9ec0587df</tokenID>
+								<tokenValue>12</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="5" type="array">
+					<uid>5</uid>
+					<pid>1</pid>
+					<title>Market stalls</title>
+					<softrefs type="array">
+						<softref_element index="link:typolink:a01eec11a0a46a8e86685cb8ec780ef1:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=9</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:9</recordRef>
+								<tokenID>a01eec11a0a46a8e86685cb8ec780ef1</tokenID>
+								<tokenValue>9</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="6" type="array">
+					<uid>6</uid>
+					<pid>1</pid>
+					<title>Report a problem</title>
+					<softrefs type="array">
+						<softref_element index="link:typolink:7f897eb5d5b640dce3bedcdb56c2d987:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=15</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:15</recordRef>
+								<tokenID>7f897eb5d5b640dce3bedcdb56c2d987</tokenID>
+								<tokenValue>15</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
 				</rec>
 			</table>
 			<table index="sys_category" type="array">
@@ -493,7 +634,16 @@
 			</page_contents>
 			<page_contents index="1" type="array">
 				<table index="tt_content" type="array">
+					<item index="6">1</item>
 					<item index="3">1</item>
+				</table>
+				<table index="tx_mtosafisitepackage_tile" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
+					<item index="3">1</item>
+					<item index="4">1</item>
+					<item index="5">1</item>
+					<item index="6">1</item>
 				</table>
 				<table index="pages" type="array">
 					<item index="32">1</item>
@@ -588,7 +738,7 @@
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
 				<field index="perms_everybody" type="integer">1</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795336956</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795343750</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Home</field>
 				<field index="slug">/</field>
@@ -598,6 +748,52 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="backend_layout">pagets__Home</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:6" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">6</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">128</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">mtosafi_tiles</field>
+				<field index="header">Popular services</field>
+				<field index="tx_mtosafisitepackage_tiles" type="integer">6</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="tx_mtosafisitepackage_tiles" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="1" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="2" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="3" type="array">
+							<id>4</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="4" type="array">
+							<id>5</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+						<element index="5" type="array">
+							<id>6</id>
+							<table>tx_mtosafisitepackage_tile</table>
+						</element>
+					</relations>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="tt_content:3" type="array">
 			<fieldlist index="data" type="array">
@@ -682,6 +878,222 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 							</path>
 						</db_relations>
 					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_tile:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">6</field>
+				<field index="icon">🏪</field>
+				<field index="label">Single business permit</field>
+				<field index="link">t3://page?uid=7</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="7f69a1aa54e9db8a5ae0d952977b4cd9:0" type="array">
+									<matchString>t3://page?uid=7</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:7</recordRef>
+										<tokenID>7f69a1aa54e9db8a5ae0d952977b4cd9</tokenID>
+										<tokenValue>7</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:7f69a1aa54e9db8a5ae0d952977b4cd9}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_tile:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">2</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">6</field>
+				<field index="icon">🏡</field>
+				<field index="label">Land rates</field>
+				<field index="link">t3://page?uid=6</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="087881d39e3c58af824e5fb90e661a8e:0" type="array">
+									<matchString>t3://page?uid=6</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:6</recordRef>
+										<tokenID>087881d39e3c58af824e5fb90e661a8e</tokenID>
+										<tokenValue>6</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:087881d39e3c58af824e5fb90e661a8e}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_tile:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">3</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">6</field>
+				<field index="icon">🅿️</field>
+				<field index="label">Parking fees</field>
+				<field index="link">t3://page?uid=8</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="5add86f047c9d524d9e9595219c10eb5:0" type="array">
+									<matchString>t3://page?uid=8</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:8</recordRef>
+										<tokenID>5add86f047c9d524d9e9595219c10eb5</tokenID>
+										<tokenValue>8</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:5add86f047c9d524d9e9595219c10eb5}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_tile:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">4</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">4</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">6</field>
+				<field index="icon">💧</field>
+				<field index="label">Water connection</field>
+				<field index="link">t3://page?uid=12</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="e34f7e18c8dc8d47f12cbbc9ec0587df:0" type="array">
+									<matchString>t3://page?uid=12</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:12</recordRef>
+										<tokenID>e34f7e18c8dc8d47f12cbbc9ec0587df</tokenID>
+										<tokenValue>12</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:e34f7e18c8dc8d47f12cbbc9ec0587df}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_tile:5" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">5</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">5</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">6</field>
+				<field index="icon">🧺</field>
+				<field index="label">Market stalls</field>
+				<field index="link">t3://page?uid=9</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="a01eec11a0a46a8e86685cb8ec780ef1:0" type="array">
+									<matchString>t3://page?uid=9</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:9</recordRef>
+										<tokenID>a01eec11a0a46a8e86685cb8ec780ef1</tokenID>
+										<tokenValue>9</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:a01eec11a0a46a8e86685cb8ec780ef1}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_tile:6" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">6</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">6</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">6</field>
+				<field index="icon">📣</field>
+				<field index="label">Report a problem</field>
+				<field index="link">t3://page?uid=15</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="7f897eb5d5b640dce3bedcdb56c2d987:0" type="array">
+									<matchString>t3://page?uid=15</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:15</recordRef>
+										<tokenID>7f897eb5d5b640dce3bedcdb56c2d987</tokenID>
+										<tokenValue>15</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:7f897eb5d5b640dce3bedcdb56c2d987}</tokenizedContent>
+					</softrefs>
 				</field>
 			</related>
 		</tablerow>

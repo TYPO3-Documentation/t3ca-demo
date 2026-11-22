@@ -5,5 +5,10 @@ tx_news.templateLayouts {
   home = Home page: the latest news as cards, with a link to all news
 }
 
+# Page module previews of the sitepackage's content elements.
+mod.web_layout.tt_content.preview {
+  mtosafi_tiles = EXT:mtosafi_sitepackage/Resources/Private/Templates/ContentPreviews/Tiles.fluid.html
+}
+
 # The text editor offers what the design styles, nothing more.
 RTE.default.preset = mtosafi

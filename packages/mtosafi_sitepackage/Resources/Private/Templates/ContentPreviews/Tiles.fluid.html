@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Page module preview of "Service tiles": one line per tile, with its icon, its label
+    and where it links to. The header is rendered by the page module above this.
+</f:comment>
+<ul>
+    <f:for each="{record.tx_mtosafisitepackage_tiles}" as="tile">
+        <li>
+            <f:if condition="{tile.icon}">{tile.icon} </f:if><strong>{tile.label}</strong>
+            <f:variable name="target"><f:uri.typolink parameter="{tile.link}" /></f:variable>
+            → <f:if condition="{target}"><f:then>{target}</f:then><f:else><em><f:translate key="preview.noLink" domain="mtosafi_sitepackage.content_elements" /></em></f:else></f:if>
+        </li>
+    </f:for>
+</ul>
+</html>

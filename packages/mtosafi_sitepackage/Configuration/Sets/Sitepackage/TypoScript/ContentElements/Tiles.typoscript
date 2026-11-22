@@ -1,0 +1,8 @@
+# Service tiles (CType mtosafi_tiles): design/index.html, section "Popular services".
+# lib.contentElement hands the element to the template as {record}; its tiles are
+# {record.tx_mtosafisitepackage_tiles}, in the editor's order, translated and
+# without the hidden ones.
+tt_content.mtosafi_tiles =< lib.contentElement
+tt_content.mtosafi_tiles {
+  templateName = Tiles
+}
