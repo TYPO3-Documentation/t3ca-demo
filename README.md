@@ -46,8 +46,8 @@ Both parts live in https://github.com/TYPO3-Documentation/t3ca-demo:
 
 To set it up on another machine:
 
-    git clone -b presenter https://github.com/TYPO3-Documentation/t3ca-demo.git t3ca-2026
-    git clone https://github.com/TYPO3-Documentation/t3ca-demo.git t3ca-2026/demo
+    git clone -b presenter git@github.com:TYPO3-Documentation/t3ca-demo.git t3ca-2026
+    git clone git@github.com:TYPO3-Documentation/t3ca-demo.git t3ca-2026/demo
 
 After `./stage save`, push both: `git push` here, and
 `git -C demo push --follow-tags`.
