@@ -1,0 +1,3 @@
+# The page rendering comes from the set mtosafi/sitepackage (EXT:mtosafi_sitepackage).
+# This file held the welcome page that "typo3 setup" writes. A site's own TypoScript is
+# read after its sets and would override the set's page object, so it stays empty.

@@ -1363,13 +1363,14 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mtosafi_sitepackage",
-                "reference": "6b8e2ba181b2d73153baae691c0601ae11f37bf4"
+                "reference": "07a504ef5e902948ca30065ad9f1cf79ee9cf3e7"
             },
             "require": {
                 "typo3/cms-core": "^14.3",
                 "typo3/cms-fluid": "^14.3",
                 "typo3/cms-fluid-styled-content": "^14.3",
-                "typo3/cms-frontend": "^14.3"
+                "typo3/cms-frontend": "^14.3",
+                "typo3/cms-impexp": "^14.3"
             },
             "type": "typo3-cms-extension",
             "extra": {
