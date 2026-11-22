@@ -1,0 +1,13 @@
+{
+  "name": "mtosafi-sitepackage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Styles of the Mto Safi sitepackage",
+  "scripts": {
+    "build": "sass Resources/Private/Scss/main.scss Resources/Public/Css/main.css --no-source-map",
+    "watch": "sass --watch Resources/Private/Scss/main.scss Resources/Public/Css/main.css"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0"
+  }
+}

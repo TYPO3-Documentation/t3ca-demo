@@ -1,0 +1,35 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Sidebar left, such as the land rates page: the pages of the current section,
+    then the area "sidebar" below them, and the area "main" beside.
+</f:comment>
+<f:layout name="Pages/Default" />
+
+<f:section name="Breadcrumb">
+    <f:render partial="Page/Breadcrumb" arguments="{_all}" />
+</f:section>
+
+<f:section name="Main">
+    <div class="container layout layout--sidebar-left">
+        <div class="layout__aside">
+            <f:if condition="{subNavigation}">
+                <nav class="subnav" aria-labelledby="subnav-title">
+                    <h2 id="subnav-title">{breadcrumb.1.title}</h2>
+                    <ul>
+                        <f:for each="{subNavigation}" as="item">
+                            <li><f:render partial="Page/MenuLink" arguments="{item: item, markActive: 1}" /></li>
+                        </f:for>
+                    </ul>
+                </nav>
+            </f:if>
+            <f:render.contentArea contentArea="{content.sidebar}" />
+        </div>
+
+        <article>
+            <h1>{page.pageRecord.title}</h1>
+            <f:render.contentArea contentArea="{content.main}" />
+        </article>
+    </div>
+</f:section>
+
+</html>

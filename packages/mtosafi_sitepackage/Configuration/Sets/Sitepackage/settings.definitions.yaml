@@ -1,0 +1,49 @@
+categories:
+  mtosafi:
+    label: 'Mto Safi'
+  mtosafi.brand:
+    parent: mtosafi
+  mtosafi.navigation:
+    parent: mtosafi
+  mtosafi.footer:
+    parent: mtosafi
+
+settings:
+  mtosafi.brand.name:
+    category: mtosafi.brand
+    type: string
+    default: 'Mto Safi'
+  mtosafi.brand.suffix:
+    category: mtosafi.brand
+    type: string
+    default: 'Municipality'
+  mtosafi.brand.notice:
+    category: mtosafi.brand
+    type: string
+    default: 'Municipal office: Mon–Fri 8:00–17:00 · +254 700 000 000'
+
+  mtosafi.navigation.serviceMenu:
+    category: mtosafi.navigation
+    type: page
+    default: 0
+  mtosafi.navigation.footerMenu:
+    category: mtosafi.navigation
+    type: page
+    default: 0
+  mtosafi.navigation.searchPage:
+    category: mtosafi.navigation
+    type: page
+    default: 0
+
+  mtosafi.footer.address:
+    category: mtosafi.footer
+    type: text
+    default: "Municipal Office\nBeach Road 1\nP.O. Box 123, Mto Safi\n+254 700 000 000"
+  mtosafi.footer.openingHours:
+    category: mtosafi.footer
+    type: text
+    default: "Monday to Friday\n8:00–17:00\nClosed on public holidays"
+  mtosafi.footer.note:
+    category: mtosafi.footer
+    type: string
+    default: 'Mto Safi is a fictional municipality. This website is a demo for TYPO3 Camp Africa 2026.'

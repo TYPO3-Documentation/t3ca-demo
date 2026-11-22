@@ -1,0 +1,83 @@
+config {
+  # "Land rates — Mto Safi Municipality": the page first, then the website title of the site language.
+  pageTitleFirst = 1
+  pageTitleSeparator = —
+  pageTitleSeparator.noTrimWrap = | | |
+}
+
+page = PAGE
+page {
+  typeNum = 0
+  shortcutIcon = EXT:mtosafi_sitepackage/Resources/Public/Images/logo.svg
+
+  meta.viewport = width=device-width, initial-scale=1
+
+  includeCSS {
+    mtosafi = EXT:mtosafi_sitepackage/Resources/Public/Css/main.css
+  }
+
+  includeJSFooter {
+    mtosafiNavigation = EXT:mtosafi_sitepackage/Resources/Public/JavaScript/navigation.js
+    mtosafiNavigation.defer = 1
+  }
+
+  10 = PAGEVIEW
+  10 {
+    paths.10 = EXT:mtosafi_sitepackage/Resources/Private/Templates/
+
+    dataProcessing {
+      # The home page as the first entry of the main navigation.
+      10 = menu
+      10 {
+        special = list
+        special.value.data = site:rootPageId
+        as = homeNavigation
+      }
+
+      # The pages below the home page.
+      20 = menu
+      20 {
+        levels = 1
+        as = mainNavigation
+      }
+
+      # The section the current page belongs to, for the sub-navigation of the SidebarLeft layout.
+      30 = menu
+      30 {
+        special = directory
+        special.value.data = leveluid:1
+        levels = 1
+        as = subNavigation
+      }
+
+      40 = menu
+      40 {
+        special = rootline
+        special.range = 0|-1
+        as = breadcrumb
+      }
+
+      50 = menu
+      50 {
+        if.isTrue = {$mtosafi.navigation.serviceMenu}
+        special = directory
+        special.value = {$mtosafi.navigation.serviceMenu}
+        as = serviceNavigation
+      }
+
+      60 = menu
+      60 {
+        if.isTrue = {$mtosafi.navigation.footerMenu}
+        special = directory
+        special.value = {$mtosafi.navigation.footerMenu}
+        as = footerNavigation
+      }
+
+      70 = language-menu
+      70 {
+        languages = auto
+        as = languageNavigation
+      }
+    }
+  }
+}

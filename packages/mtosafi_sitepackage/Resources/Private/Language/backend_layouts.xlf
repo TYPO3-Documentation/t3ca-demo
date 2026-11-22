@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:mtosafi_sitepackage/Resources/Private/Language/backend_layouts.xlf" date="2026-11-22T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="default">
+				<source>Full width</source>
+			</trans-unit>
+			<trans-unit id="home">
+				<source>Home page</source>
+			</trans-unit>
+			<trans-unit id="sidebarLeft">
+				<source>Sidebar left, with sub-navigation</source>
+			</trans-unit>
+			<trans-unit id="sidebarRight">
+				<source>Sidebar right</source>
+			</trans-unit>
+			<trans-unit id="narrow">
+				<source>Narrow, such as a login</source>
+			</trans-unit>
+			<trans-unit id="column.main">
+				<source>Main content</source>
+			</trans-unit>
+			<trans-unit id="column.sidebar">
+				<source>Sidebar</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

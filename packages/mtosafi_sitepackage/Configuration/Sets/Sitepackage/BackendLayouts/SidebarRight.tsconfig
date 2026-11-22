@@ -1,0 +1,23 @@
+mod.web_layout.BackendLayouts {
+  SidebarRight {
+    title = mtosafi_sitepackage.backend_layouts:sidebarRight
+    icon = content-container-columns-2-right
+    config.backend_layout {
+      colCount = 3
+      rowCount = 1
+      rows.1.columns {
+        1 {
+          name = mtosafi_sitepackage.backend_layouts:column.main
+          colPos = 0
+          identifier = main
+          colspan = 2
+        }
+        2 {
+          name = mtosafi_sitepackage.backend_layouts:column.sidebar
+          colPos = 1
+          identifier = sidebar
+        }
+      }
+    }
+  }
+}

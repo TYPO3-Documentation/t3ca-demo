@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:if condition="{breadcrumb -> f:count()} > 1">
+    <div class="container">
+        <nav class="breadcrumb" aria-label="{f:translate(key: 'navigation.breadcrumb', domain: 'mtosafi_sitepackage.frontend')}">
+            <ol>
+                <f:for each="{breadcrumb}" as="item">
+                    <li>
+                        <f:if condition="{item.current}">
+                            <f:then><span aria-current="page">{item.title}</span></f:then>
+                            <f:else><a href="{item.link}">{item.title}</a></f:else>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ol>
+        </nav>
+    </div>
+</f:if>
+
+</html>

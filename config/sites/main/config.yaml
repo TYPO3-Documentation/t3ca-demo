@@ -1,7 +1,6 @@
 base: 'https://demo.ddev.site/'
 dependencies:
-  - typo3/fluid-styled-content
-  - typo3/fluid-styled-content-css
+  - mtosafi/sitepackage
 errorHandling: {  }
 languages:
   -

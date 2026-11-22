@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:mtosafi_sitepackage/Configuration/Sets/Sitepackage/labels.xlf" date="2026-11-22T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="label">
+				<source>Mto Safi sitepackage</source>
+			</trans-unit>
+
+			<trans-unit id="categories.mtosafi.brand">
+				<source>Brand</source>
+			</trans-unit>
+			<trans-unit id="categories.mtosafi.navigation">
+				<source>Navigation</source>
+			</trans-unit>
+			<trans-unit id="categories.mtosafi.footer">
+				<source>Footer</source>
+			</trans-unit>
+
+			<trans-unit id="settings.mtosafi.brand.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.brand.name">
+				<source>The name next to the logo, and the page heading of the home page.</source>
+			</trans-unit>
+			<trans-unit id="settings.mtosafi.brand.suffix">
+				<source>Name suffix</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.brand.suffix">
+				<source>The small line below the name, such as "Municipality".</source>
+			</trans-unit>
+			<trans-unit id="settings.mtosafi.brand.notice">
+				<source>Notice in the top bar</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.brand.notice">
+				<source>Opening hours and phone number above the header. Leave it empty to hide it.</source>
+			</trans-unit>
+
+			<trans-unit id="settings.mtosafi.navigation.serviceMenu">
+				<source>Service menu</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.navigation.serviceMenu">
+				<source>The subpages of this page are linked in the top bar, such as the e-services portal and the contact page. Use shortcut pages in a folder. 0 hides the menu.</source>
+			</trans-unit>
+			<trans-unit id="settings.mtosafi.navigation.footerMenu">
+				<source>Footer menu</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.navigation.footerMenu">
+				<source>The subpages of this page are linked in the footer column "Information". 0 hides the column.</source>
+			</trans-unit>
+			<trans-unit id="settings.mtosafi.navigation.searchPage">
+				<source>Search page</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.navigation.searchPage">
+				<source>The page the search form in the header submits to. 0 hides the search form.</source>
+			</trans-unit>
+
+			<trans-unit id="settings.mtosafi.footer.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="settings.mtosafi.footer.openingHours">
+				<source>Opening hours</source>
+			</trans-unit>
+			<trans-unit id="settings.mtosafi.footer.note">
+				<source>Note</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.footer.note">
+				<source>The line at the bottom of the footer. Leave it empty to hide it.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

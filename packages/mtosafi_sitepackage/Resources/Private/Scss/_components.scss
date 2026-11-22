@@ -1,0 +1,557 @@
+@use 'variables' as *;
+
+// Buttons
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid $color-primary;
+  border-radius: $radius;
+  background: $color-primary;
+  color: $color-white;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    background: $color-primary-dark;
+    border-color: $color-primary-dark;
+    color: $color-white;
+  }
+
+  &--accent {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: $color-text;
+
+    &:hover {
+      background: $color-accent-dark;
+      border-color: $color-accent-dark;
+      color: $color-text;
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $color-primary;
+
+    &:hover {
+      color: $color-white;
+    }
+  }
+}
+
+// Slider
+
+.slider {
+  position: relative;
+  border-radius: $radius;
+  overflow: hidden;
+  background: $color-primary;
+
+  &__track {
+    display: flex;
+    transition: transform 0.5s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-height: 22rem;
+    color: $color-white;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__caption {
+    position: relative;
+    max-width: 34rem;
+    margin: 3rem 1.5rem 4.5rem;
+    padding: 1.5rem;
+    background: rgba(11, 35, 64, 0.88);
+    border-radius: $radius;
+
+    @include from('md') {
+      margin-left: 4rem;
+    }
+
+    h2 {
+      color: $color-white;
+    }
+  }
+
+  &__controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    background: $color-white;
+    color: $color-primary;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  &__dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__dot {
+    width: 0.9rem;
+    height: 0.9rem;
+    padding: 0;
+    border: 2px solid $color-white;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+
+    &[aria-current='true'] {
+      background: $color-accent;
+      border-color: $color-accent;
+    }
+  }
+}
+
+// Cards and teasers
+
+.tiles {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+  list-style: none;
+  padding: 0;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    border-color: $color-secondary;
+    box-shadow: $shadow;
+  }
+
+  &__icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 1.5rem;
+
+  @include from('md') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  background: $color-white;
+
+  &__meta {
+    font-size: 0.9rem;
+    color: $color-muted;
+    margin-bottom: 0.25rem;
+  }
+
+  &__link {
+    margin-top: auto;
+    font-weight: 600;
+  }
+}
+
+.events {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__date {
+    flex: 0 0 4rem;
+    padding: 0.4rem;
+    border-radius: $radius;
+    background: $color-secondary;
+    color: $color-white;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+.infobox {
+  padding: 1rem 1.25rem;
+  border-left: 4px solid $color-accent;
+  background: $color-surface;
+  margin-bottom: $spacing;
+}
+
+.downloads {
+  list-style: none;
+  padding: 0;
+
+  a::before {
+    content: '↓ ';
+  }
+}
+
+// Forms
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.form-field {
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+
+  label,
+  legend {
+    font-weight: 600;
+  }
+
+  input:not([type='checkbox'], [type='radio']),
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 2px solid $color-border;
+    border-radius: $radius;
+    font: inherit;
+    background: $color-white;
+  }
+
+  textarea {
+    min-height: 9rem;
+    resize: vertical;
+  }
+
+  &.has-error {
+    input,
+    select,
+    textarea {
+      border-color: $color-error;
+    }
+  }
+}
+
+fieldset.form-field {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.form-hint {
+  font-size: 0.9rem;
+  color: $color-muted;
+}
+
+.form-error {
+  color: $color-error;
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-weight: 400;
+
+  input {
+    margin-top: 0.35rem;
+  }
+}
+
+.required {
+  color: $color-error;
+}
+
+.alert {
+  padding: 1rem 1.25rem;
+  border-radius: $radius;
+  border-left: 4px solid;
+
+  &--error {
+    border-color: $color-error;
+    background: #fbeceb;
+  }
+
+  &--success {
+    border-color: $color-success;
+    background: #e8f3eb;
+  }
+
+  ul {
+    margin: 0.5rem 0 0;
+  }
+}
+
+.password-field {
+  display: flex;
+
+  input {
+    border-radius: $radius 0 0 $radius !important;
+  }
+
+  button {
+    border-radius: 0 $radius $radius 0;
+    white-space: nowrap;
+  }
+}
+
+// Newsletter band
+
+.newsletter {
+  padding: 2rem;
+  border-radius: $radius;
+  background: $color-secondary;
+  color: $color-white;
+
+  h2,
+  a {
+    color: $color-white;
+  }
+
+  @include from('md') {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 2rem;
+  }
+
+  .form-field {
+    label,
+    legend {
+      color: $color-white;
+    }
+  }
+
+  .form-hint {
+    color: $color-white;
+  }
+
+  .required {
+    color: $color-accent;
+  }
+
+  .form-error {
+    color: $color-white;
+    background: $color-error;
+    padding: 0 0.4rem;
+    justify-self: start;
+  }
+
+  .alert {
+    color: $color-text;
+  }
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+// Waste fee calculator
+
+.calculator {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 2px solid $color-secondary;
+  border-radius: $radius;
+
+  &__form {
+    display: grid;
+    gap: 1.1rem;
+
+    @include from('md') {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__result {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    border-radius: $radius;
+    background: $color-surface;
+
+    dl {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.4rem 1rem;
+      margin: 0;
+    }
+
+    dd {
+      margin: 0;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  &__total {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $color-primary;
+    border-top: 2px solid $color-border;
+    padding-top: 0.4rem;
+  }
+
+  &__warning {
+    margin: 1rem 0 0;
+    font-weight: 600;
+    color: $color-error;
+
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+// Contact page
+
+.contact-grid {
+  display: grid;
+  gap: 2rem;
+
+  @include from('lg') {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.contact-card {
+  padding: 1.5rem;
+  border-radius: $radius;
+  background: $color-surface;
+
+  address {
+    font-style: normal;
+    margin-bottom: $spacing;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 600;
+    padding: 0.2rem 0.75rem 0.2rem 0;
+  }
+}
+
+// Login
+
+.login-card {
+  padding: 2rem;
+  border: 1px solid $color-border;
+  border-radius: $radius;
+  box-shadow: $shadow;
+
+  &__links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+// Search results
+
+.search-results {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 1rem 0;
+    border-bottom: 1px solid $color-border;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  padding: 0.05rem 0.5rem;
+  border-radius: 1rem;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $color-muted;
+}
+
+.filters {
+  padding: 1rem 1.25rem;
+  border-radius: $radius;
+  background: $color-surface;
+  align-self: start;
+
+  fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  legend {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+}

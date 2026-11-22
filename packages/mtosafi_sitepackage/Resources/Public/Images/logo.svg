@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Mto Safi">
+  <circle cx="32" cy="32" r="31" fill="#0b5a3c"/>
+  <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+  <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#fff"/>
+  <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+</svg>

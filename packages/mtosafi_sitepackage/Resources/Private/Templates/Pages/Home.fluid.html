@@ -1,0 +1,15 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    The home page: its sections are content elements stacked in the area "main".
+    The design shows no page heading here, so the heading is for screen readers only.
+</f:comment>
+<f:layout name="Pages/Default" />
+
+<f:section name="Main">
+    <h1 class="visually-hidden">{settings.mtosafi.brand.name} {settings.mtosafi.brand.suffix}</h1>
+    <div class="container layout-home">
+        <f:render.contentArea contentArea="{content.main}" />
+    </div>
+</f:section>
+
+</html>

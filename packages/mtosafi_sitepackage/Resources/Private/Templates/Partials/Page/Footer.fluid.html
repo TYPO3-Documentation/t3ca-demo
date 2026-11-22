@@ -1,0 +1,35 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<f:comment>
+    The address and the opening hours are read from the site settings rather than from {settings}:
+    {settings} holds the TypoScript constants, and a constant ends at the first line break.
+</f:comment>
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__columns">
+            <div>
+                <h2>{settings.mtosafi.brand.name} {settings.mtosafi.brand.suffix}</h2>
+                <address>{site.settings.all.mtosafi.footer.address -> f:format.nl2br()}</address>
+            </div>
+            <div>
+                <h2><f:translate key="footer.openingHours" domain="mtosafi_sitepackage.frontend" /></h2>
+                <p>{site.settings.all.mtosafi.footer.openingHours -> f:format.nl2br()}</p>
+            </div>
+            <f:if condition="{footerNavigation}">
+                <div>
+                    <h2><f:translate key="footer.information" domain="mtosafi_sitepackage.frontend" /></h2>
+                    <ul>
+                        <f:for each="{footerNavigation}" as="item">
+                            <li><f:render partial="Page/MenuLink" arguments="{item: item}" /></li>
+                        </f:for>
+                    </ul>
+                </div>
+            </f:if>
+        </div>
+        <f:if condition="{settings.mtosafi.footer.note}">
+            <p class="site-footer__note">{settings.mtosafi.footer.note}</p>
+        </f:if>
+    </div>
+</footer>
+
+</html>

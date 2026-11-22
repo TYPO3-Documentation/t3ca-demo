@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc22f45e725dbda105654bf77cbf257c",
+    "content-hash": "b02e5cb66b1dd11ebcbf37b5dc3d991d",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1356,6 +1356,40 @@
             },
             "time": "2026-10-25T08:57:58+00:00",
             "published-time": "2026-10-25T08:58:48+00:00"
+        },
+        {
+            "name": "mtosafi/sitepackage",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./packages/mtosafi_sitepackage",
+                "reference": "6b8e2ba181b2d73153baae691c0601ae11f37bf4"
+            },
+            "require": {
+                "typo3/cms-core": "^14.3",
+                "typo3/cms-fluid": "^14.3",
+                "typo3/cms-fluid-styled-content": "^14.3",
+                "typo3/cms-frontend": "^14.3"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "extension-key": "mtosafi_sitepackage"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Lina Wolf",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Sitepackage of the Mto Safi Municipality website: site set, page layouts, page templates and the design's styles.",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "nikic/php-parser",
@@ -8313,6 +8347,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mtosafi/sitepackage": 20,
         "typo3/dev-companion": 20
     },
     "prefer-stable": false,

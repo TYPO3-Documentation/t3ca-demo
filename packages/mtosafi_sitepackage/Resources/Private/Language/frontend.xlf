@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:mtosafi_sitepackage/Resources/Private/Language/frontend.xlf" date="2026-11-22T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="skipLink">
+				<source>Skip to content</source>
+			</trans-unit>
+			<trans-unit id="navigation.service">
+				<source>Service</source>
+			</trans-unit>
+			<trans-unit id="navigation.main">
+				<source>Main</source>
+			</trans-unit>
+			<trans-unit id="navigation.toggle">
+				<source>Menu</source>
+			</trans-unit>
+			<trans-unit id="navigation.breadcrumb">
+				<source>Breadcrumb</source>
+			</trans-unit>
+			<trans-unit id="search.label">
+				<source>Search the website</source>
+			</trans-unit>
+			<trans-unit id="search.placeholder">
+				<source>Search services, news, forms</source>
+			</trans-unit>
+			<trans-unit id="search.submit">
+				<source>Search</source>
+			</trans-unit>
+			<trans-unit id="footer.openingHours">
+				<source>Opening hours</source>
+			</trans-unit>
+			<trans-unit id="footer.information">
+				<source>Information</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

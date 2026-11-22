@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<header class="site-header">
+    <div class="topbar">
+        <div class="container topbar__inner">
+            <span>{settings.mtosafi.brand.notice}</span>
+            <nav aria-label="{f:translate(key: 'navigation.service', domain: 'mtosafi_sitepackage.frontend')}">
+                <f:for each="{serviceNavigation}" as="item">
+                    <f:render partial="Page/MenuLink" arguments="{item: item}" />
+                </f:for>
+                <f:for each="{languageNavigation}" as="item">
+                    <f:if condition="{item.available} && !{item.active}">
+                        <a href="{item.link}" lang="{item.hreflang}" hreflang="{item.hreflang}">{item.navigationTitle}</a>
+                    </f:if>
+                </f:for>
+            </nav>
+        </div>
+    </div>
+
+    <div class="container header-main">
+        <f:link.page class="brand" pageUid="{site.rootPageId}">
+            <img src="{f:uri.resource(path: 'EXT:mtosafi_sitepackage/Resources/Public/Images/logo.svg')}" alt="" width="56" height="56">
+            <span class="brand__name">{settings.mtosafi.brand.name}<f:if condition="{settings.mtosafi.brand.suffix}"><small>{settings.mtosafi.brand.suffix}</small></f:if></span>
+        </f:link.page>
+
+        <f:if condition="{settings.mtosafi.navigation.searchPage}">
+            <form class="site-search" role="search" action="{f:uri.page(pageUid: settings.mtosafi.navigation.searchPage)}">
+                <label class="visually-hidden" for="site-search"><f:translate key="search.label" domain="mtosafi_sitepackage.frontend" /></label>
+                <input id="site-search" name="q" type="search" placeholder="{f:translate(key: 'search.placeholder', domain: 'mtosafi_sitepackage.frontend')}">
+                <button class="button" type="submit"><f:translate key="search.submit" domain="mtosafi_sitepackage.frontend" /></button>
+            </form>
+        </f:if>
+
+        <button class="button button--outline nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><f:translate key="navigation.toggle" domain="mtosafi_sitepackage.frontend" /></button>
+    </div>
+
+    <nav id="main-nav" class="main-nav" aria-label="{f:translate(key: 'navigation.main', domain: 'mtosafi_sitepackage.frontend')}">
+        <div class="container">
+            <ul>
+                <f:for each="{homeNavigation}" as="item">
+                    <li><f:render partial="Page/MenuLink" arguments="{item: item}" /></li>
+                </f:for>
+                <f:for each="{mainNavigation}" as="item">
+                    <li><f:render partial="Page/MenuLink" arguments="{item: item, markActive: 1}" /></li>
+                </f:for>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+</html>

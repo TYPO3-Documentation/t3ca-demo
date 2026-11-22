@@ -1,0 +1,19 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Full width, such as the contact page. A page with no page layout selected renders
+    through this template too, with the core's single area "main".
+</f:comment>
+<f:layout name="Pages/Default" />
+
+<f:section name="Breadcrumb">
+    <f:render partial="Page/Breadcrumb" arguments="{_all}" />
+</f:section>
+
+<f:section name="Main">
+    <div class="container">
+        <h1>{page.pageRecord.title}</h1>
+        <f:render.contentArea contentArea="{content.main}" />
+    </div>
+</f:section>
+
+</html>

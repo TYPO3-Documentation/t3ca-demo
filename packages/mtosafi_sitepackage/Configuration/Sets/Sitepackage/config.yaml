@@ -1,0 +1,3 @@
+name: mtosafi/sitepackage
+dependencies:
+  - typo3/fluid-styled-content
