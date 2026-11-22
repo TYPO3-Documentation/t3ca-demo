@@ -49,6 +49,10 @@ To set it up on another machine:
     git clone -b presenter git@github.com:TYPO3-Documentation/t3ca-demo.git t3ca-2026
     git clone git@github.com:TYPO3-Documentation/t3ca-demo.git t3ca-2026/demo
 
+From stage 02 on, the dev companion's skills are not in git: they are copies
+that go stale. After `./stage go 2` or later, generate them once with
+`ddev exec vendor/bin/typo3-dev-companion update`.
+
 After `./stage save`, push both: `git push` here, and
 `git -C demo push --follow-tags`.
 
