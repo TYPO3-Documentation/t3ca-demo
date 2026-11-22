@@ -292,6 +292,25 @@
 				</rec>
 			</table>
 			<table index="tt_content" type="array">
+				<rec index="7" type="array">
+					<uid>7</uid>
+					<pid>1</pid>
+					<title>Highlights</title>
+					<relations index="rels" type="array">
+						<element index="tx_mtosafisitepackage_slide:1" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_slide</table>
+						</element>
+						<element index="tx_mtosafisitepackage_slide:2" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_slide</table>
+						</element>
+						<element index="tx_mtosafisitepackage_slide:3" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_slide</table>
+						</element>
+					</relations>
+				</rec>
 				<rec index="6" type="array">
 					<uid>6</uid>
 					<pid>1</pid>
@@ -371,6 +390,80 @@
 							<table>pages</table>
 						</element>
 					</relations>
+				</rec>
+			</table>
+			<table index="tx_mtosafisitepackage_slide" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>1</pid>
+					<title>Karibu Mto Safi</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:1" type="array">
+							<id>1</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+					<softrefs type="array">
+						<softref_element index="link:typolink:af39f1ff3aa52a5bc109a0ba6e0c4e9d:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=13</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:13</recordRef>
+								<tokenID>af39f1ff3aa52a5bc109a0ba6e0c4e9d</tokenID>
+								<tokenValue>13</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>1</pid>
+					<title>Pay your land rates by mobile money</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:2" type="array">
+							<id>2</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+					<softrefs type="array">
+						<softref_element index="link:typolink:e3c3bf6b59d1e8eefa995a17a3471d72:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=6</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:6</recordRef>
+								<tokenID>e3c3bf6b59d1e8eefa995a17a3471d72</tokenID>
+								<tokenValue>6</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>1</pid>
+					<title>Have your say on the budget</title>
+					<relations index="rels" type="array">
+						<element index="sys_file_reference:3" type="array">
+							<id>3</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+					<softrefs type="array">
+						<softref_element index="link:typolink:bf1e9cf52cce365bffb23721ba63b67b:0" type="array">
+							<field>link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=14</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:14</recordRef>
+								<tokenID>bf1e9cf52cce365bffb23721ba63b67b</tokenID>
+								<tokenValue>14</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
 				</rec>
 			</table>
 			<table index="tx_mtosafisitepackage_tile" type="array">
@@ -625,16 +718,158 @@
 					<title>New boreholes bring clean water to Ward ...</title>
 				</rec>
 			</table>
+			<table index="sys_file_reference" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>1</pid>
+					<title>slide-coast.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:2" type="array">
+							<id>2</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>1</pid>
+					<title>slide-rates.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:3" type="array">
+							<id>3</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>1</pid>
+					<title>slide-community.svg</title>
+					<relationLevel>1</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:4" type="array">
+							<id>4</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+			</table>
+			<table index="sys_file" type="array">
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>0</pid>
+					<title>slide-coast.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:2" type="array">
+							<id>2</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>0</pid>
+					<title>slide-rates.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:3" type="array">
+							<id>3</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>0</pid>
+					<title>slide-community.svg</title>
+					<relationLevel>2</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file_storage:1" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+						<element index="sys_file_metadata:4" type="array">
+							<id>4</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</rec>
+			</table>
+			<table index="sys_file_metadata" type="array">
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>0</pid>
+					<title>slide-coast.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:2" type="array">
+							<id>2</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>0</pid>
+					<title>slide-rates.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:3" type="array">
+							<id>3</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>0</pid>
+					<title>slide-community.svg</title>
+					<relationLevel>3</relationLevel>
+					<relations index="rels" type="array">
+						<element index="sys_file:4" type="array">
+							<id>4</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</rec>
+			</table>
 		</records>
 		<pid_lookup type="array">
 			<page_contents index="0" type="array">
 				<table index="pages" type="array">
 					<item index="1">1</item>
 				</table>
+				<table index="sys_file" type="array">
+					<item index="2">1</item>
+					<item index="3">1</item>
+					<item index="4">1</item>
+				</table>
+				<table index="sys_file_metadata" type="array">
+					<item index="2">1</item>
+					<item index="3">1</item>
+					<item index="4">1</item>
+				</table>
 			</page_contents>
 			<page_contents index="1" type="array">
 				<table index="tt_content" type="array">
+					<item index="7">1</item>
 					<item index="6">1</item>
+					<item index="3">1</item>
+				</table>
+				<table index="tx_mtosafisitepackage_slide" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
 					<item index="3">1</item>
 				</table>
 				<table index="tx_mtosafisitepackage_tile" type="array">
@@ -662,6 +897,11 @@
 					<item index="12">1</item>
 					<item index="11">1</item>
 					<item index="5">1</item>
+				</table>
+				<table index="sys_file_reference" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
+					<item index="3">1</item>
 				</table>
 			</page_contents>
 			<page_contents index="32" type="array">
@@ -722,6 +962,20 @@
 				</table>
 			</page_contents>
 		</pid_lookup>
+		<files_fal type="array">
+			<file index="c6a9c87e213b1cef9952efa8c82e91d2" type="array">
+				<filename>slide-coast.svg</filename>
+				<filemtime>1795344511</filemtime>
+			</file>
+			<file index="e9540853824e9eef39faf0b933fec0c8" type="array">
+				<filename>slide-rates.svg</filename>
+				<filemtime>1795344511</filemtime>
+			</file>
+			<file index="05cbc02e82726d1703f9c0b26d2f865b" type="array">
+				<filename>slide-community.svg</filename>
+				<filemtime>1795344511</filemtime>
+			</file>
+		</files_fal>
 	</header>
 	<records type="array">
 		<tablerow index="pages:1" type="array">
@@ -748,6 +1002,40 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="backend_layout">pagets__Home</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:7" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">7</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">64</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">mtosafi_slider</field>
+				<field index="header">Highlights</field>
+				<field index="tx_mtosafisitepackage_slides" type="integer">3</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="tx_mtosafisitepackage_slides" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_slide</table>
+						</element>
+						<element index="1" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_slide</table>
+						</element>
+						<element index="2" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_slide</table>
+						</element>
+					</relations>
+				</field>
+			</related>
 		</tablerow>
 		<tablerow index="tt_content:6" type="array">
 			<fieldlist index="data" type="array">
@@ -878,6 +1166,147 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 							</path>
 						</db_relations>
 					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_slide:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">7</field>
+				<field index="image" type="integer">1</field>
+				<field index="title">Karibu Mto Safi</field>
+				<field index="text">White beaches, a clean river and a municipality that serves you online, day and night.</field>
+				<field index="link">t3://page?uid=13</field>
+				<field index="link_label">Discover Mto Safi</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="af39f1ff3aa52a5bc109a0ba6e0c4e9d:0" type="array">
+									<matchString>t3://page?uid=13</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:13</recordRef>
+										<tokenID>af39f1ff3aa52a5bc109a0ba6e0c4e9d</tokenID>
+										<tokenValue>13</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:af39f1ff3aa52a5bc109a0ba6e0c4e9d}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_slide:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">2</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">7</field>
+				<field index="image" type="integer">1</field>
+				<field index="title">Pay your land rates by mobile money</field>
+				<field index="text">Calculate what you owe and pay before 31 March to avoid interest.</field>
+				<field index="link">t3://page?uid=6</field>
+				<field index="link_label">Calculate land rates</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>2</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="e3c3bf6b59d1e8eefa995a17a3471d72:0" type="array">
+									<matchString>t3://page?uid=6</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:6</recordRef>
+										<tokenID>e3c3bf6b59d1e8eefa995a17a3471d72</tokenID>
+										<tokenValue>6</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:e3c3bf6b59d1e8eefa995a17a3471d72}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_slide:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">3</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">7</field>
+				<field index="image" type="integer">1</field>
+				<field index="title">Have your say on the budget</field>
+				<field index="text">Join the public participation forums in every ward this month.</field>
+				<field index="link">t3://page?uid=14</field>
+				<field index="link_label">See the forum dates</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="image" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>sys_file_reference</table>
+						</element>
+					</relations>
+				</field>
+				<field index="link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="bf1e9cf52cce365bffb23721ba63b67b:0" type="array">
+									<matchString>t3://page?uid=14</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:14</recordRef>
+										<tokenID>bf1e9cf52cce365bffb23721ba63b67b</tokenID>
+										<tokenValue>14</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:bf1e9cf52cce365bffb23721ba63b67b}</tokenizedContent>
+					</softrefs>
 				</field>
 			</related>
 		</tablerow>
@@ -2231,5 +2660,286 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="sys_file_reference:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">1</field>
+				<field index="pid">1</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">2</field>
+				<field index="uid_foreign">1</field>
+				<field index="tablenames">tx_mtosafisitepackage_slide</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>2</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">2</field>
+				<field index="pid">1</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">3</field>
+				<field index="uid_foreign">2</field>
+				<field index="tablenames">tx_mtosafisitepackage_slide</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_reference:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">3</field>
+				<field index="pid">1</field>
+				<field index="hidden">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="uid_local">4</field>
+				<field index="uid_foreign">3</field>
+				<field index="tablenames">tx_mtosafisitepackage_slide</field>
+				<field index="fieldname">image</field>
+				<field index="sorting_foreign">1</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="uid_local" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>4</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">2</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795344511</field>
+				<field index="identifier">/user_upload/slides/slide-coast.svg</field>
+				<field index="identifier_hash">ff045dfdd71e6acbcb55576edfcd297e7b28ce67</field>
+				<field index="folder_hash">4860957efe25f35a351a0d662bf525e85e7f4062</field>
+				<field index="extension">svg</field>
+				<field index="name">slide-coast.svg</field>
+				<field index="sha1">54cacd4d18a32d9798c9fcf9cd25f130e38a19fb</field>
+				<field index="creation_date">1795344511</field>
+				<field index="modification_date">1795344511</field>
+				<field index="size">1233</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>2</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">3</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795344511</field>
+				<field index="identifier">/user_upload/slides/slide-rates.svg</field>
+				<field index="identifier_hash">1e61ced89c016178e02a3c5bf79eb2de9fc6ddef</field>
+				<field index="folder_hash">4860957efe25f35a351a0d662bf525e85e7f4062</field>
+				<field index="extension">svg</field>
+				<field index="name">slide-rates.svg</field>
+				<field index="sha1">930ad2b62005be8ab906802601193f671beda593</field>
+				<field index="creation_date">1795344511</field>
+				<field index="modification_date">1795344511</field>
+				<field index="size">1214</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">4</field>
+				<field index="pid">0</field>
+				<field index="last_indexed">1795344511</field>
+				<field index="identifier">/user_upload/slides/slide-community.svg</field>
+				<field index="identifier_hash">fa4ea1a512790f3c4a1936302b29a1a691654ebb</field>
+				<field index="folder_hash">4860957efe25f35a351a0d662bf525e85e7f4062</field>
+				<field index="extension">svg</field>
+				<field index="name">slide-community.svg</field>
+				<field index="sha1">20ea8f7cede2a53c268a4bab9647c06acfed9ff3</field>
+				<field index="creation_date">1795344511</field>
+				<field index="modification_date">1795344511</field>
+				<field index="size">900</field>
+				<field index="storage">1</field>
+				<field index="type">2</field>
+				<field index="mime_type">image/svg+xml</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="storage" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>sys_file_storage</table>
+						</element>
+					</relations>
+				</field>
+				<field index="metadata" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>4</id>
+							<table>sys_file_metadata</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">2</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">2</field>
+				<field index="width">1600</field>
+				<field index="height">600</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>2</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">3</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">3</field>
+				<field index="width">1600</field>
+				<field index="height">600</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_file_metadata:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid">4</field>
+				<field index="pid">0</field>
+				<field index="sys_language_uid">0</field>
+				<field index="l10n_parent">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="file">4</field>
+				<field index="width">1600</field>
+				<field index="height">600</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="file" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>4</id>
+							<table>sys_file</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
 	</records>
+	<files_fal type="array">
+		<file index="c6a9c87e213b1cef9952efa8c82e91d2" type="array">
+			<filename>slide-coast.svg</filename>
+			<filemtime>1795344511</filemtime>
+			<content_sha1>54cacd4d18a32d9798c9fcf9cd25f130e38a19fb</content_sha1>
+		</file>
+		<file index="e9540853824e9eef39faf0b933fec0c8" type="array">
+			<filename>slide-rates.svg</filename>
+			<filemtime>1795344511</filemtime>
+			<content_sha1>930ad2b62005be8ab906802601193f671beda593</content_sha1>
+		</file>
+		<file index="05cbc02e82726d1703f9c0b26d2f865b" type="array">
+			<filename>slide-community.svg</filename>
+			<filemtime>1795344511</filemtime>
+			<content_sha1>20ea8f7cede2a53c268a4bab9647c06acfed9ff3</content_sha1>
+		</file>
+	</files_fal>
 </T3RecordDocument>

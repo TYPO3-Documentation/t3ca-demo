@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Slider (design/index.html, the carousel at the top of the home page).
+
+    The element's header names the carousel for screen readers and is not shown. The
+    images are decoration behind the caption, so they carry no alternative text. The
+    controls work with JavaScript only; the labels the script writes come from here.
+</f:comment>
+<f:layout name="Default" />
+
+<f:section name="Header" />
+
+<f:section name="Main">
+    <f:asset.script identifier="mtosafiSlider" src="EXT:mtosafi_sitepackage/Resources/Public/JavaScript/slider.js" defer="1" />
+    <section class="slider" data-slider data-interval="6000" aria-roledescription="{f:translate(key: 'slider.roledescription', domain: 'mtosafi_sitepackage.frontend')}" aria-label="{data.header}"
+        data-label-dot="{f:translate(key: 'slider.dot', domain: 'mtosafi_sitepackage.frontend')}"
+        data-label-pause="{f:translate(key: 'slider.pause', domain: 'mtosafi_sitepackage.frontend')}"
+        data-label-play="{f:translate(key: 'slider.play', domain: 'mtosafi_sitepackage.frontend')}">
+        <div class="slider__track">
+            <f:for each="{record.tx_mtosafisitepackage_slides}" as="slide" iteration="iterator">
+                <div class="slider__slide" role="group" aria-roledescription="{f:translate(key: 'slider.slide.roledescription', domain: 'mtosafi_sitepackage.frontend')}" aria-label="{f:translate(key: 'slider.slide.position', domain: 'mtosafi_sitepackage.frontend', arguments: {0: iterator.cycle, 1: iterator.total})}">
+                    <f:if condition="{slide.image}">
+                        <f:image image="{slide.image}" alt="" width="1600c" height="560c" loading="{f:if(condition: iterator.isFirst, then: 'eager', else: 'lazy')}" />
+                    </f:if>
+                    <div class="slider__caption">
+                        <h2>{slide.title}</h2>
+                        <f:if condition="{slide.text}"><p>{slide.text}</p></f:if>
+                        <f:if condition="{slide.link} && {slide.link_label}">
+                            <f:link.typolink parameter="{slide.link}" class="button button--accent">{slide.link_label}</f:link.typolink>
+                        </f:if>
+                    </div>
+                </div>
+            </f:for>
+        </div>
+        <div class="slider__controls">
+            <button class="slider__button" type="button" data-slider-prev aria-label="{f:translate(key: 'slider.previous', domain: 'mtosafi_sitepackage.frontend')}">‹</button>
+            <div class="slider__dots"></div>
+            <button class="slider__button" type="button" data-slider-pause aria-label="{f:translate(key: 'slider.pause', domain: 'mtosafi_sitepackage.frontend')}">❚❚</button>
+            <button class="slider__button" type="button" data-slider-next aria-label="{f:translate(key: 'slider.next', domain: 'mtosafi_sitepackage.frontend')}">›</button>
+        </div>
+    </section>
+</f:section>
+
+</html>

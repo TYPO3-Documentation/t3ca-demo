@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7c66b"></stop>
+      <stop offset="1" stop-color="#f29e4c"></stop>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="600" fill="url(#sky)"></rect>
+  <circle cx="1180" cy="300" r="110" fill="#fde9a8"></circle>
+  <rect y="330" width="1600" height="170" fill="#1d8fa8"></rect>
+  <path d="M0 360h1600M0 400h1600M0 440h1600" stroke="#5fc0d2" stroke-width="4" stroke-dasharray="60 40"></path>
+  <path d="M0 500c300-40 700-50 1600-10v110H0z" fill="#f3dfb3"></path>
+  <g fill="#0b5a3c">
+    <rect x="1340" y="250" width="14" height="270" transform="rotate(6 1347 385)"></rect>
+    <path d="M1360 250c-60-30-130-20-170 20 60-20 110-15 170-20zM1360 250c50-50 120-60 180-30-70 0-120 10-180 30zM1360 250c-20-60-70-90-130-90 50 30 90 60 130 90zM1360 250c40-50 90-70 140-60-50 20-100 40-140 60z"></path>
+  </g>
+  <path d="M420 470l90-60 30 40h-60z" fill="#fff"></path>
+  <path d="M500 470l-5-120 70 110z" fill="#fff"></path>
+  <path d="M400 470h180l-20 22H420z" fill="#7a3e1d"></path>
+</svg>

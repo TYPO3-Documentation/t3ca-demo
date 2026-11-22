@@ -1,0 +1,20 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Page module preview of "Slider": one line per slide, with its image, its title and
+    its button. The header is rendered by the page module above this.
+</f:comment>
+<ol>
+    <f:for each="{record.tx_mtosafisitepackage_slides}" as="slide">
+        <li>
+            <f:if condition="{slide.image}">
+                <f:image image="{slide.image}" alt="" width="80c" height="40c" />
+            </f:if>
+            <strong>{slide.title}</strong>
+            <f:if condition="{slide.link}">
+                <f:variable name="target"><f:uri.typolink parameter="{slide.link}" /></f:variable>
+                <br>{slide.link_label} → <f:if condition="{target}"><f:then>{target}</f:then><f:else><em><f:translate key="preview.noLink" domain="mtosafi_sitepackage.content_elements" /></em></f:else></f:if>
+            </f:if>
+        </li>
+    </f:for>
+</ol>
+</html>

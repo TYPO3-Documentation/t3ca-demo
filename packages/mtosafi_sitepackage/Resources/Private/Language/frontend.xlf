@@ -57,6 +57,30 @@
 			<trans-unit id="news.pagination.status">
 				<source>Page %1$s of %2$s</source>
 			</trans-unit>
+			<trans-unit id="slider.roledescription">
+				<source>carousel</source>
+			</trans-unit>
+			<trans-unit id="slider.slide.roledescription">
+				<source>slide</source>
+			</trans-unit>
+			<trans-unit id="slider.slide.position">
+				<source>%1$s of %2$s</source>
+			</trans-unit>
+			<trans-unit id="slider.dot">
+				<source>Show slide %1$s of %2$s</source>
+			</trans-unit>
+			<trans-unit id="slider.previous">
+				<source>Previous slide</source>
+			</trans-unit>
+			<trans-unit id="slider.next">
+				<source>Next slide</source>
+			</trans-unit>
+			<trans-unit id="slider.pause">
+				<source>Pause slider</source>
+			</trans-unit>
+			<trans-unit id="slider.play">
+				<source>Play slider</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

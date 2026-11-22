@@ -36,6 +36,51 @@
 			<trans-unit id="tile.link.description">
 				<source>The page of the service, usually. A link to another website opens in the same window.</source>
 			</trans-unit>
+			<trans-unit id="slider.title">
+				<source>Slider</source>
+			</trans-unit>
+			<trans-unit id="slider.description">
+				<source>Slides with a large image and a caption with a heading, a short text and a button, one at a time, such as the highlights at the top of the home page.</source>
+			</trans-unit>
+			<trans-unit id="slider.field.header">
+				<source>Name for screen readers</source>
+			</trans-unit>
+			<trans-unit id="slider.field.header.description">
+				<source>Not shown on the page. Screen readers announce the slider by it, such as "Highlights".</source>
+			</trans-unit>
+			<trans-unit id="slider.field.slides">
+				<source>Slides</source>
+			</trans-unit>
+			<trans-unit id="slider.field.slides.new">
+				<source>Add a slide</source>
+			</trans-unit>
+			<trans-unit id="slide">
+				<source>Slide</source>
+			</trans-unit>
+			<trans-unit id="slide.image">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="slide.image.description">
+				<source>A wide picture, at least 1600 × 560 pixels; it is cropped to fill the slide. It is decoration only: screen readers skip it, so the heading and the text have to say everything.</source>
+			</trans-unit>
+			<trans-unit id="slide.title">
+				<source>Heading</source>
+			</trans-unit>
+			<trans-unit id="slide.text">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="slide.palette.button">
+				<source>Button</source>
+			</trans-unit>
+			<trans-unit id="slide.link_label">
+				<source>Button text</source>
+			</trans-unit>
+			<trans-unit id="slide.link_label.description">
+				<source>Says where the button leads, such as "Calculate land rates". The button shows only where it has a text and a link.</source>
+			</trans-unit>
+			<trans-unit id="slide.link">
+				<source>Link</source>
+			</trans-unit>
 			<trans-unit id="preview.noLink">
 				<source>no link</source>
 			</trans-unit>

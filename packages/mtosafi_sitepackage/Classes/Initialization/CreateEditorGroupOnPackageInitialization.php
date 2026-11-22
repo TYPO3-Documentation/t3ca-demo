@@ -33,6 +33,15 @@ final readonly class CreateEditorGroupOnPackageInitialization
     private const UPLOAD_FOLDER = '/user_upload/news/';
 
     /**
+     * The folders editors work in, by the title of their file mount. Uploads go to
+     * UPLOAD_FOLDER unless the editor picks another.
+     */
+    private const FILE_MOUNTS = [
+        'News images' => self::UPLOAD_FOLDER,
+        'Slider images' => '/user_upload/slides/',
+    ];
+
+    /**
      * The tables editors read and write. Every field of these tables that needs
      * access to be granted is granted.
      */
@@ -47,6 +56,7 @@ final readonly class CreateEditorGroupOnPackageInitialization
         'tx_news_domain_model_link',
         'tx_news_domain_model_tag',
         'tx_mtosafisitepackage_tile',
+        'tx_mtosafisitepackage_slide',
     ];
 
     /**
@@ -89,7 +99,7 @@ final readonly class CreateEditorGroupOnPackageInitialization
 
         $existingGroupIds = array_map('intval', $groups->select(['uid'], 'be_groups', ['deleted' => 0])->fetchFirstColumn());
         $now = time();
-        $fileMountId = $this->createFileMount($now);
+        $fileMountIds = $this->createFileMounts($now);
         $groups->insert('be_groups', [
             'pid' => 0,
             'tstamp' => $now,
@@ -97,7 +107,7 @@ final readonly class CreateEditorGroupOnPackageInitialization
             'title' => self::GROUP_TITLE,
             'description' => 'Edit pages, content and news of the Mto Safi site. Images upload to fileadmin' . self::UPLOAD_FOLDER,
             'db_mountpoints' => (string)$rootPageId,
-            'file_mountpoints' => $fileMountId === null ? '' : (string)$fileMountId,
+            'file_mountpoints' => implode(',', $fileMountIds),
             'file_permissions' => implode(',', self::FILE_PERMISSIONS),
             'groupMods' => implode(',', self::MODULES),
             'tables_select' => implode(',', self::TABLES),
@@ -123,24 +133,31 @@ final readonly class CreateEditorGroupOnPackageInitialization
         return null;
     }
 
-    private function createFileMount(int $now): ?int
+    /**
+     * @return list<int> the uids of the file mounts of FILE_MOUNTS
+     */
+    private function createFileMounts(int $now): array
     {
         $storage = $this->storageRepository->getDefaultStorage();
         if ($storage === null) {
             $this->logger->warning('No default file storage: the group "' . self::GROUP_TITLE . '" gets no file mount.');
-            return null;
-        }
-        if (!$storage->hasFolder(self::UPLOAD_FOLDER)) {
-            $storage->createFolder(self::UPLOAD_FOLDER);
+            return [];
         }
         $connection = $this->connectionPool->getConnectionForTable('sys_filemounts');
-        $connection->insert('sys_filemounts', [
-            'pid' => 0,
-            'tstamp' => $now,
-            'title' => 'News images',
-            'identifier' => $storage->getUid() . ':' . self::UPLOAD_FOLDER,
-        ]);
-        return (int)$connection->lastInsertId();
+        $uids = [];
+        foreach (self::FILE_MOUNTS as $title => $folder) {
+            if (!$storage->hasFolder($folder)) {
+                $storage->createFolder($folder);
+            }
+            $connection->insert('sys_filemounts', [
+                'pid' => 0,
+                'tstamp' => $now,
+                'title' => $title,
+                'identifier' => $storage->getUid() . ':' . $folder,
+            ]);
+            $uids[] = (int)$connection->lastInsertId();
+        }
+        return $uids;
     }
 
     /**
