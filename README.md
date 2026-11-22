@@ -54,7 +54,7 @@ that go stale. After `./stage go 2` or later, generate them once with
 `ddev exec vendor/bin/typo3-dev-companion update`.
 
 After `./stage save`, push both: `git push` here, and
-`git -C demo push --follow-tags`.
+`git -C demo push && git -C demo push --tags`.
 
 ## License
 
