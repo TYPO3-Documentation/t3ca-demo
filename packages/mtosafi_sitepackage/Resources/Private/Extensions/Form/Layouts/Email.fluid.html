@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Layout of the mails the forms of the site send, instead of the core's "SystemEmail".
+</f:comment>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><f:render section="Title" optional="true" /></title>
+</head>
+<body style="margin: 0; padding: 0; background: #f3f7f4; color: #1c2420; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.5;">
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background: #f3f7f4;">
+        <tr>
+            <td align="center" style="padding: 24px 12px;">
+                <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 640px; background: #ffffff;">
+                    <tr>
+                        <td style="padding: 16px 24px; background: #0b5a3c; color: #ffffff; font-size: 20px; font-weight: bold;">Mto Safi Municipality</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 24px;">
+                            <h1 style="margin: 0 0 16px; font-size: 22px; color: #0b5a3c;"><f:render section="Title" optional="true" /></h1>
+                            <f:render section="Main" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 16px 24px; background: #f3f7f4; font-size: 14px;">
+                            Municipal Office · Beach Road 1 · P.O. Box 123, Mto Safi<br>
+                            +254 700 000 000 · info@mtosafi.example
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

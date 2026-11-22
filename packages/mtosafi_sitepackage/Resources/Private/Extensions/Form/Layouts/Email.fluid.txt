@@ -1,0 +1,7 @@
+<f:spaceless><f:render section="Title" optional="true" />
+<f:render section="Main" /></f:spaceless>
+
+--
+Mto Safi Municipality
+Municipal Office, Beach Road 1, P.O. Box 123, Mto Safi
++254 700 000 000 · info@mtosafi.example

@@ -23,21 +23,24 @@ gallery of four images. Every image has an alternative text and a caption, which
 shows under it and in the lightbox. The illustrations land in
 `fileadmin/user_upload/pages/`. The texts are made up for the fictional
 municipality; the accessibility statement and the privacy policy say that they are
-placeholders, because their real text is the municipality's to write. The "Search index" folder holds what the search needs: the filter
+placeholders, because their real text is the municipality's to write. The "Contact" page
+carries the contact form beside the address and the opening hours. The "Search index" folder holds what the search needs: the filter
 "Show only" and the indexers for pages and news (see Search below).
 
 `Initialisation/Site/main/` is the site configuration that comes with it. It is
 copied only where no site called `main` exists, and it answers on base `/`. Its
 error handling shows the "Page not found" page for HTTP 404.
 
-The tree is not edited by hand. Six scripts in the project write it into an
+The tree is not edited by hand. Seven scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
 `Build/Initialisation/seed-news.php` the news on top of them,
 `Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
 and `Build/Initialisation/seed-not-found.php` the "Page not found" page with the
 404 error handling of the site, `Build/Initialisation/seed-search.php` the
 search and `Build/Initialisation/seed-pages.php` the example content of the other
-pages, with the illustrations in `Build/Initialisation/images/`, and it is exported
+pages, with the illustrations in `Build/Initialisation/images/`, and
+`Build/Initialisation/seed-contact-form.php` the contact form on the "Contact" page,
+and it is exported
 from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
@@ -46,6 +49,7 @@ from there:
     ddev exec php Build/Initialisation/seed-not-found.php
     ddev exec php Build/Initialisation/seed-search.php
     ddev exec php Build/Initialisation/seed-pages.php
+    ddev exec php Build/Initialisation/seed-contact-form.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
@@ -178,6 +182,61 @@ moves into the slider and stays off where the visitor prefers reduced motion. Th
 labels the script writes are in `Resources/Private/Language/frontend.xlf`. The
 template is `Resources/Private/Templates/Content/Slider.fluid.html`, the page
 module preview `Resources/Private/Templates/ContentPreviews/Slider.fluid.html`.
+
+## Contact form
+
+The "Contact" page uses the page layout "Sidebar right": the content element
+"Form" in the main area, the address, the opening hours and "Report a problem" in
+the sidebar. The form comes from the core form framework (`typo3/cms-form`, set
+`typo3/form`). Its definition is a file of the package,
+`Resources/Private/Forms/contact.form.yaml`, so it is under version control. The
+Forms module lists it but cannot change or delete it; change the file instead and
+flush the page cache, because the first page of a form is cached.
+
+`Configuration/Form/Sitepackage/config.yaml` is the form setup of the site. EXT:form
+finds it by its place and merges it over its own. It allows the form directory of
+the package and gives the form elements the classes of the design (`form-field`,
+`form-hint`, `form-error`, `has-error`, `check`, `button`) instead of Bootstrap's.
+The form tag gets the class `form` from
+`Resources/Private/Extensions/Form/Templates/Form.fluid.html`, the core template with
+that one attribute added.
+
+A message goes to `info@mtosafi.example`, with the visitor's address as reply-to.
+It is sent from `noreply@mtosafi.example`; the server that sends the mail has to be
+allowed to send for that domain. Editors change the recipient in the content
+element ("Override finisher settings") without touching the file. The mail uses the
+layout of the site, `Resources/Private/Extensions/Form/Layouts/Email.fluid.html` and
+`.txt`, instead of the core layout "SystemEmail" with the TYPO3 logo. The consent
+checkbox is left out of it. On DDEV it lands in Mailpit (`ddev mailpit`).
+
+The visitor gets no copy by mail, only the confirmation on the page. A copy would go
+to whatever address was entered, with the text that was entered, so anybody could
+use the form to send mail from the municipality's domain to a stranger, and a
+mistyped address would hand the message to somebody else.
+
+Two things keep spam out. A honeypot field, which people do not see, catches bots
+that fill in every field. ALTCHA (`bbysaeth/typo3-altcha`, set
+`bbysaeth/typo3-altcha`) adds the field "I'm not a robot": a click lets the browser
+solve a small proof-of-work puzzle, and the form is sent only with a solution the
+server signed and has not seen solved before. It needs no outside service and sets
+no cookie. Its widget loads JavaScript and CSS on the pages that carry a form.
+
+ALTCHA stores every challenge it hands out in `tx_typo3altcha_domain_model_challenge`
+so that a solution counts once, a row per form view. Nothing deletes them on its own;
+run this regularly, for example from cron:
+
+    vendor/bin/typo3 altcha:remove-obsolete-challenges --include-solved-challenges
+
+The messages themselves are not stored in the database: the mail is the only copy.
+
+ALTCHA still registers its form setup through TypoScript
+(`plugin.tx_form.settings.yamlConfigurations`), which TYPO3 14.2 deprecated and 15
+removes. It works on 14.3; the extension has to move to `Configuration/Form/` before
+the site can go to TYPO3 15.
+
+The consent label links to the privacy policy by its address, `/privacy-policy`,
+rather than by page uid, so the link holds on any installation the package is
+imported into, as long as the page keeps that address.
 
 ## Search
 

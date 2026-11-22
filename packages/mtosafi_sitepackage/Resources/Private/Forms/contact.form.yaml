@@ -1,0 +1,162 @@
+# The contact form of design/contact.html. The content element "Form" on the
+# "Contact" page renders it; Configuration/Form/Sitepackage/config.yaml gives it
+# the classes of the design and the mail layout of the site.
+type: Form
+identifier: contact
+label: 'Contact form'
+prototypeName: standard
+renderingOptions:
+  submitButtonLabel: 'Send message'
+
+finishers:
+  -
+    identifier: EmailToReceiver
+    options:
+      subject: 'Contact form: {topic}'
+      title: 'Message from the contact form'
+      recipients:
+        info@mtosafi.example: 'Mto Safi Municipality'
+      senderAddress: noreply@mtosafi.example
+      senderName: 'Mto Safi website'
+      replyToRecipients:
+        '{email}': '{name}'
+      addHtmlPart: true
+      attachUploads: false
+  # No copy to the visitor: it would go to whatever address was entered, with the
+  # text that was entered, which lets anybody send mail from the municipality.
+  -
+    identifier: Confirmation
+    options:
+      message: '<div class="alert alert--success"><strong>Asante! Your message has been sent.</strong><p>The right department answers to your email address within five working days.</p></div>'
+
+renderables:
+  -
+    type: Page
+    identifier: page-1
+    label: ''
+    renderables:
+      -
+        type: StaticText
+        identifier: required-hint
+        label: ''
+        properties:
+          text: 'Fields marked * are required.'
+      -
+        type: Text
+        identifier: name
+        label: 'Full name'
+        properties:
+          fluidAdditionalAttributes:
+            autocomplete: name
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: StringLength
+            options:
+              maximum: 200
+      -
+        type: Email
+        identifier: email
+        label: 'Email address'
+        properties:
+          fluidAdditionalAttributes:
+            autocomplete: email
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: EmailAddress
+      -
+        type: Telephone
+        identifier: phone
+        label: 'Phone number'
+        properties:
+          fluidAdditionalAttributes:
+            autocomplete: tel
+            placeholder: '+254'
+          validationErrorMessages:
+            -
+              code: 1221565130
+              message: 'Please enter a phone number, such as +254 700 000 000.'
+        validators:
+          -
+            identifier: RegularExpression
+            options:
+              regularExpression: '/^[0-9+()\/ -]{0,30}$/'
+      -
+        type: SingleSelect
+        identifier: topic
+        label: Topic
+        properties:
+          prependOptionLabel: 'Please choose'
+          prependOptionValue: ''
+          options:
+            revenue: 'Revenue & payments'
+            land: 'Land & planning'
+            health: Health
+            environment: 'Environment, water & waste'
+            trade: 'Trade & markets'
+            other: 'Something else'
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+      -
+        type: Textarea
+        identifier: message
+        label: 'Your message'
+        properties:
+          rows: 8
+          elementDescription: 'At least 20 characters. Please do not include ID or bank account numbers.'
+          fluidAdditionalAttributes:
+            required: required
+            minlength: 20
+            maxlength: 5000
+        validators:
+          -
+            identifier: NotEmpty
+          -
+            identifier: StringLength
+            options:
+              minimum: 20
+              maximum: 5000
+      -
+        type: Checkbox
+        identifier: consent
+        label: 'I agree that the municipality processes my details to answer my message. <a href="/privacy-policy">Privacy policy</a>'
+        properties:
+          fluidAdditionalAttributes:
+            required: required
+        validators:
+          -
+            identifier: NotEmpty
+        # Required to send the form at all, so the mails leave it out.
+        variants:
+          -
+            identifier: hide-in-mails
+            condition: 'finisherIdentifier in ["EmailToSender", "EmailToReceiver"]'
+            renderingOptions:
+              enabled: false
+      -
+        # Spam protection: the browser solves a proof-of-work puzzle before the
+        # form can be sent (bbysaeth/typo3-altcha). No outside service, no cookie.
+        type: Altcha
+        identifier: altcha
+        label: 'Spam protection'
+        renderingOptions:
+          doNotShowLabel: true
+        properties:
+          validationErrorMessages:
+            -
+              code: 1719693214
+              message: 'Please tick "I''m not a robot" and wait until it is checked.'
+            -
+              code: 1719694187
+              message: 'The robot check has expired. Please tick "I''m not a robot" again.'
+        validators:
+          -
+            identifier: Altcha

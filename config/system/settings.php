@@ -26,6 +26,9 @@ return [
         ],
     ],
     'EXTENSIONS' => [
+        'altcha' => [
+            'hmac' => '',
+        ],
         'backend' => [
             'backendFavicon' => '',
             'backendLogo' => '',

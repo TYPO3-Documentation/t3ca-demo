@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:formvh="http://typo3.org/ns/TYPO3/CMS/Form/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    The mail of the finishers EmailToReceiver and EmailToSender: the message of the
+    finisher and the values the visitor entered. It differs from the core template
+    in its layout, and it leaves out the ALTCHA field, whose value is the solved
+    puzzle.
+</f:comment>
+<f:layout name="Email" />
+<f:section name="Title">{title}</f:section>
+<f:section name="Main">
+    <f:if condition="{messageBefore}">{messageBefore -> f:sanitize.html() -> f:format.html()}</f:if>
+    <f:if condition="!{hideFormValues}">
+        <table cellspacing="0" cellpadding="6" border="0" style="width: 100%; border-collapse: collapse;">
+            <formvh:renderAllFormValues renderable="{form.formDefinition}" as="formValue">
+                <f:if condition="{formValue.element.type} != 'Altcha'">
+                <tr>
+                    <f:if condition="{formValue.isSection}">
+                        <f:then>
+                            <th colspan="2" align="left" style="border-bottom: 1px solid #c9d4cd;">{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey)}</th>
+                        </f:then>
+                        <f:else>
+                            <th valign="top" align="left" style="border-bottom: 1px solid #c9d4cd; width: 35%;">{formvh:translateElementProperty(element: formValue.element, property: 'label', languageKey: languageKey) -> f:sanitize.html() -> f:transform.html()}</th>
+                            <td valign="top" align="left" style="border-bottom: 1px solid #c9d4cd;">
+                                <f:if condition="{formValue.value}">
+                                    <f:then>
+                                        <f:if condition="{formValue.isMultiValue}">
+                                            <f:then><f:for each="{formValue.processedValue}" as="value">{value}<br></f:for></f:then>
+                                            <f:else><f:format.nl2br>{formValue.processedValue}</f:format.nl2br></f:else>
+                                        </f:if>
+                                    </f:then>
+                                    <f:else>-</f:else>
+                                </f:if>
+                            </td>
+                        </f:else>
+                    </f:if>
+                </tr>
+                </f:if>
+            </formvh:renderAllFormValues>
+        </table>
+    </f:if>
+    <f:if condition="{messageAfter}">{messageAfter -> f:sanitize.html() -> f:format.html()}</f:if>
+</f:section>
+</html>

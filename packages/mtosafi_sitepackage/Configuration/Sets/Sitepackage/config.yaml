@@ -4,3 +4,5 @@ dependencies:
   - typo3/fluid-styled-content-css
   - georgringer/news
   - tpwd/ke_search
+  - typo3/form
+  - bbysaeth/typo3-altcha

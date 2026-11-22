@@ -1,0 +1,88 @@
+# Form setup of the Mto Safi site. EXT:form finds it by its place,
+# Configuration/Form/<SetName>/config.yaml, and merges it over its own base setup.
+name: mtosafi/sitepackage-form
+label: 'Mto Safi forms'
+
+persistenceManager:
+  # The forms of the site are files in the sitepackage, under version control.
+  # The form editor lists them but cannot save or delete them.
+  allowedExtensionPaths:
+    10: 'EXT:mtosafi_sitepackage/Resources/Private/Forms/'
+
+prototypes:
+  standard:
+    formElementsDefinition:
+      # The classes of the design (Resources/Private/Scss/_components.scss,
+      # section "Forms") instead of the Bootstrap classes EXT:form writes.
+      Form:
+        renderingOptions:
+          # Form.fluid.html with the class "form" on the form tag.
+          templateRootPaths:
+            20: 'EXT:mtosafi_sitepackage/Resources/Private/Extensions/Form/Templates/'
+          fieldProperties:
+            errorMsgClassAttribute: form-error
+            errorClassAttribute: has-error
+            descriptionClassAttribute: form-hint
+            requiredMarkClassAttribute: required
+          formNavigation:
+            btnPreviousClassAttribute: 'button button--outline'
+            btnNextClassAttribute: button
+            btnSubmitClassAttribute: button
+      Text:
+        properties:
+          containerClassAttribute: form-field
+          elementClassAttribute: ''
+          labelClassAttribute: ''
+      Email:
+        properties:
+          containerClassAttribute: form-field
+          elementClassAttribute: ''
+          labelClassAttribute: ''
+      Telephone:
+        properties:
+          containerClassAttribute: form-field
+          elementClassAttribute: ''
+          labelClassAttribute: ''
+      Textarea:
+        properties:
+          containerClassAttribute: form-field
+          elementClassAttribute: ''
+          labelClassAttribute: ''
+      SingleSelect:
+        properties:
+          containerClassAttribute: form-field
+          elementClassAttribute: ''
+          labelClassAttribute: ''
+      Checkbox:
+        properties:
+          containerClassAttribute: form-field
+          elementClassAttribute: ''
+          labelClassAttribute: check
+          labelTextClassAttribute: ''
+      StaticText:
+        properties:
+          containerClassAttribute: form-hint
+      Honeypot:
+        properties:
+          elementClassAttribute: ''
+      Altcha:
+        properties:
+          containerClassAttribute: form-field
+
+    finishersDefinition:
+      # The mails of a form go out in the site's own layout. The core template
+      # uses the layout "SystemEmail", which carries the TYPO3 logo and is
+      # written for mail to an administrator. EXT:altcha registers a copy of the
+      # core template under key 2011, so the site's key has to be higher.
+      EmailToReceiver:
+        options:
+          templateRootPaths:
+            2100: 'EXT:mtosafi_sitepackage/Resources/Private/Extensions/Form/Templates/Finishers/Email/'
+          layoutRootPaths:
+            2100: 'EXT:mtosafi_sitepackage/Resources/Private/Extensions/Form/Layouts/'
+      EmailToSender:
+        options:
+          templateRootPaths:
+            2100: 'EXT:mtosafi_sitepackage/Resources/Private/Extensions/Form/Templates/Finishers/Email/'
+          layoutRootPaths:
+            2100: 'EXT:mtosafi_sitepackage/Resources/Private/Extensions/Form/Layouts/'
