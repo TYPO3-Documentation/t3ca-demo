@@ -15,20 +15,25 @@ the "News records" folder with the categories and news from
 `design/docs/news-and-events.docx`, and the news plugins on the home page, the
 list page and the detail page. The home page carries the slider and the service
 tiles above the news; the slider images come along in `Initialisation/data.xml.files/`
-and land in `fileadmin/user_upload/slides/`. The other pages carry no content yet.
+and land in `fileadmin/user_upload/slides/`. The "Page not found" page carries the
+text the site shows for an address that does not exist. The other pages carry no
+content yet.
 
 `Initialisation/Site/main/` is the site configuration that comes with it. It is
-copied only where no site called `main` exists, and it answers on base `/`.
+copied only where no site called `main` exists, and it answers on base `/`. Its
+error handling shows the "Page not found" page for HTTP 404.
 
-The tree is not edited by hand. Three scripts in the project write it into an
+The tree is not edited by hand. Four scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
-`Build/Initialisation/seed-news.php` the news on top of them and
-`Build/Initialisation/seed-home.php` the slider and the service tiles of the home page,
-and it is exported from there:
+`Build/Initialisation/seed-news.php` the news on top of them,
+`Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
+and `Build/Initialisation/seed-not-found.php` the "Page not found" page with the
+404 error handling of the site, and it is exported from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
     ddev exec php Build/Initialisation/seed-news.php
     ddev exec php Build/Initialisation/seed-home.php
+    ddev exec php Build/Initialisation/seed-not-found.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
@@ -52,6 +57,10 @@ right on an installation that starts empty, where the import hands out the uids
 the export had. On any other installation, set them in the site settings
 (Site Management > Settings) to the "Service navigation" folder, the
 "Footer navigation" folder and the "Search" page.
+
+`Initialisation/Site/main/config.yaml` names one more: the 404 error handling
+shows `t3://page?uid=33`, the "Page not found" page. On any other installation,
+point it at that page in Site Management > Sites > Error Handling.
 
 The news plugins name their pages (the news folder, the list and the detail
 page) in FlexForm fields the import remaps, so they need no site setting.

@@ -1,7 +1,11 @@
 base: 'https://demo.ddev.site/'
 dependencies:
   - mtosafi/sitepackage
-errorHandling: {  }
+errorHandling:
+  -
+    errorCode: 404
+    errorHandler: Page
+    errorContentSource: 't3://page?uid=33'
 languages:
   -
     title: English
