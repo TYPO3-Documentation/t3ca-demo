@@ -50,10 +50,12 @@ page {
         as = subNavigation
       }
 
+      # Pages hidden from the navigation, such as the search, still belong in the breadcrumb.
       40 = menu
       40 {
         special = rootline
         special.range = 0|-1
+        includeNotInMenu = 1
         as = breadcrumb
       }
 
@@ -79,5 +81,19 @@ page {
         as = languageNavigation
       }
     }
+  }
+}
+
+# News (EXT:news): the design's markup instead of the extension's own, and none of its CSS.
+plugin.tx_news {
+  view {
+    templateRootPaths.10 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/News/Templates/
+    partialRootPaths.10 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/News/Partials/
+    layoutRootPaths.10 = EXT:mtosafi_sitepackage/Resources/Private/Extensions/News/Layouts/
+  }
+  settings {
+    cssFile =
+    displayDummyIfNoMedia = 0
+    list.paginate.itemsPerPage = 12
   }
 }

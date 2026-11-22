@@ -1,1 +1,9 @@
 @import './BackendLayouts/*.tsconfig'
+
+# The variants of a news list an editor chooses in the plugin, tab "Template".
+tx_news.templateLayouts {
+  home = Home page: the latest news as cards, with a link to all news
+}
+
+# The text editor offers what the design styles, nothing more.
+RTE.default.preset = mtosafi

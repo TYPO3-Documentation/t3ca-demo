@@ -14,6 +14,7 @@
         "sort-packages": true
     },
     "require": {
+        "georgringer/news": "^14.1",
         "mtosafi/sitepackage": "@dev",
         "typo3/cms-backend": "^14.3",
         "typo3/cms-belog": "^14.3",

@@ -10,15 +10,22 @@
         }
     ],
     "require": {
+        "georgringer/news": "^14.1",
         "typo3/cms-core": "^14.3",
         "typo3/cms-fluid": "^14.3",
         "typo3/cms-fluid-styled-content": "^14.3",
         "typo3/cms-frontend": "^14.3",
-        "typo3/cms-impexp": "^14.3"
+        "typo3/cms-impexp": "^14.3",
+        "typo3/cms-rte-ckeditor": "^14.3"
     },
     "extra": {
         "typo3/cms": {
             "extension-key": "mtosafi_sitepackage"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Mtosafi\\Sitepackage\\": "Classes/"
         }
     }
 }

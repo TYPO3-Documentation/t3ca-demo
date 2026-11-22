@@ -33,6 +33,30 @@
 			<trans-unit id="footer.information">
 				<source>Information</source>
 			</trans-unit>
+			<trans-unit id="news.all">
+				<source>All news</source>
+			</trans-unit>
+			<trans-unit id="news.more">
+				<source>Read more</source>
+			</trans-unit>
+			<trans-unit id="news.none">
+				<source>There is no news at the moment.</source>
+			</trans-unit>
+			<trans-unit id="news.notFound">
+				<source>This news item does not exist or is no longer online.</source>
+			</trans-unit>
+			<trans-unit id="news.pagination">
+				<source>More news</source>
+			</trans-unit>
+			<trans-unit id="news.pagination.previous">
+				<source>Newer news</source>
+			</trans-unit>
+			<trans-unit id="news.pagination.next">
+				<source>Older news</source>
+			</trans-unit>
+			<trans-unit id="news.pagination.status">
+				<source>Page %1$s of %2$s</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -4,8 +4,6 @@
 		<XMLversion>1.0</XMLversion>
 		<charset>utf-8</charset>
 		<meta type="array">
-			<title>Mto Safi page tree</title>
-			<description>Page tree of the Mto Safi Municipality website, seeded by Build/Initialisation/seed-page-tree.php</description>
 			<packager_username>_cli_</packager_username>
 			<TYPO3_version>14.3.10</TYPO3_version>
 			<created>Sun 22. November 2026</created>
@@ -67,6 +65,14 @@
 					<node index="21" type="array">
 						<uid>21</uid>
 					</node>
+					<node index="30" type="array">
+						<uid>30</uid>
+						<node index="subrow" type="array">
+							<node index="31" type="array">
+								<uid>31</uid>
+							</node>
+						</node>
+					</node>
 					<node index="22" type="array">
 						<uid>22</uid>
 						<node index="subrow" type="array">
@@ -95,6 +101,9 @@
 							</node>
 						</node>
 					</node>
+					<node index="32" type="array">
+						<uid>32</uid>
+					</node>
 				</node>
 			</node>
 		</pagetree>
@@ -104,6 +113,11 @@
 					<uid>1</uid>
 					<pid>0</pid>
 					<title>Home</title>
+				</rec>
+				<rec index="32" type="array">
+					<uid>32</uid>
+					<pid>1</pid>
+					<title>News records</title>
 				</rec>
 				<rec index="23" type="array">
 					<uid>23</uid>
@@ -180,6 +194,16 @@
 							<table>pages</table>
 						</element>
 					</relations>
+				</rec>
+				<rec index="30" type="array">
+					<uid>30</uid>
+					<pid>1</pid>
+					<title>News</title>
+				</rec>
+				<rec index="31" type="array">
+					<uid>31</uid>
+					<pid>30</pid>
+					<title>Article</title>
 				</rec>
 				<rec index="21" type="array">
 					<uid>21</uid>
@@ -267,6 +291,199 @@
 					<title>Land rates</title>
 				</rec>
 			</table>
+			<table index="tt_content" type="array">
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>1</pid>
+					<title>News</title>
+					<relations index="rels" type="array">
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:31" type="array">
+							<id>31</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:30" type="array">
+							<id>30</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>30</pid>
+					<title>All news</title>
+					<relations index="rels" type="array">
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:31" type="array">
+							<id>31</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="5" type="array">
+					<uid>5</uid>
+					<pid>31</pid>
+					<title>News article</title>
+					<relations index="rels" type="array">
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:30" type="array">
+							<id>30</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+			</table>
+			<table index="sys_category" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>32</pid>
+					<title>Trade &amp; markets</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:1" type="array">
+							<id>1</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>32</pid>
+					<title>Roads &amp; transport</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:2" type="array">
+							<id>2</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>32</pid>
+					<title>Health</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:3" type="array">
+							<id>3</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>32</pid>
+					<title>Revenue &amp; payments</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:4" type="array">
+							<id>4</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="5" type="array">
+					<uid>5</uid>
+					<pid>32</pid>
+					<title>Public participation</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:5" type="array">
+							<id>5</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="6" type="array">
+					<uid>6</uid>
+					<pid>32</pid>
+					<title>Environment</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:6" type="array">
+							<id>6</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="7" type="array">
+					<uid>7</uid>
+					<pid>32</pid>
+					<title>Water</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:7" type="array">
+							<id>7</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</rec>
+				<rec index="8" type="array">
+					<uid>8</uid>
+					<pid>32</pid>
+					<title>Education</title>
+				</rec>
+			</table>
+			<table index="tx_news_domain_model_news" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>32</pid>
+					<title>New fish market opens at the jetty</title>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>32</pid>
+					<title>Beach Road resurfacing starts</title>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>32</pid>
+					<title>Free health camp in Ward 3</title>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>32</pid>
+					<title>Pay land rates by mobile money from Janu...</title>
+				</rec>
+				<rec index="5" type="array">
+					<uid>5</uid>
+					<pid>32</pid>
+					<title>Have your say on the budget 2027/28</title>
+				</rec>
+				<rec index="6" type="array">
+					<uid>6</uid>
+					<pid>32</pid>
+					<title>Mto Safi named cleanest town on the coas...</title>
+				</rec>
+				<rec index="7" type="array">
+					<uid>7</uid>
+					<pid>32</pid>
+					<title>New boreholes bring clean water to Ward ...</title>
+				</rec>
+			</table>
 		</records>
 		<pid_lookup type="array">
 			<page_contents index="0" type="array">
@@ -275,9 +492,14 @@
 				</table>
 			</page_contents>
 			<page_contents index="1" type="array">
+				<table index="tt_content" type="array">
+					<item index="3">1</item>
+				</table>
 				<table index="pages" type="array">
+					<item index="32">1</item>
 					<item index="23">1</item>
 					<item index="22">1</item>
+					<item index="30">1</item>
 					<item index="21">1</item>
 					<item index="20">1</item>
 					<item index="19">1</item>
@@ -292,6 +514,27 @@
 					<item index="5">1</item>
 				</table>
 			</page_contents>
+			<page_contents index="32" type="array">
+				<table index="sys_category" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
+					<item index="3">1</item>
+					<item index="4">1</item>
+					<item index="5">1</item>
+					<item index="6">1</item>
+					<item index="7">1</item>
+					<item index="8">1</item>
+				</table>
+				<table index="tx_news_domain_model_news" type="array">
+					<item index="1">1</item>
+					<item index="2">1</item>
+					<item index="3">1</item>
+					<item index="4">1</item>
+					<item index="5">1</item>
+					<item index="6">1</item>
+					<item index="7">1</item>
+				</table>
+			</page_contents>
 			<page_contents index="23" type="array">
 				<table index="pages" type="array">
 					<item index="29">1</item>
@@ -304,6 +547,19 @@
 				<table index="pages" type="array">
 					<item index="25">1</item>
 					<item index="24">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="30" type="array">
+				<table index="tt_content" type="array">
+					<item index="4">1</item>
+				</table>
+				<table index="pages" type="array">
+					<item index="31">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="31" type="array">
+				<table index="tt_content" type="array">
+					<item index="5">1</item>
 				</table>
 			</page_contents>
 			<page_contents index="5" type="array">
@@ -332,12 +588,462 @@
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
 				<field index="perms_everybody" type="integer">1</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795336956</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Home</field>
 				<field index="slug">/</field>
+				<field index="TSconfig">TCEMAIN.permissions.groupid = 1
+TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="is_siteroot" type="integer">1</field>
 				<field index="backend_layout">pagets__Home</field>
+				<field index="tsconfig_includes"></field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">news_newsliststicky</field>
+				<field index="header">News</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.orderBy&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;datetime&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.orderDirection&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;desc&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;32&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.detailPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;31&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.listPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;30&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.limit&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;3&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.hidePagination&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;template&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.templateLayout&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;home&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="sDEF/lDEF/settings.startingpoint/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>32</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.detailPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>31</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.listPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>30</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="pages:32" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">32</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">3840</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="doktype" type="integer">254</field>
+				<field index="title">News records</field>
+				<field index="slug">/news-records</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="sys_category:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Trade &amp; markets</field>
+				<field index="slug">trade-markets</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Roads &amp; transport</field>
+				<field index="slug">roads-transport</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>2</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">768</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Health</field>
+				<field index="slug">health</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">4</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1024</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Revenue &amp; payments</field>
+				<field index="slug">revenue-payments</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>4</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:5" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">5</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1280</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Public participation</field>
+				<field index="slug">public-participation</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>5</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:6" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">6</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1536</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Environment</field>
+				<field index="slug">environment</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>6</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:7" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">7</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1792</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Water</field>
+				<field index="slug">water</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>7</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="sys_category:8" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">8</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">2048</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Education</field>
+				<field index="slug">education</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">New fish market opens at the jetty</field>
+				<field index="teaser">Sixty stalls, cold storage and clean water for traders and buyers.</field>
+				<field index="bodytext">&lt;p&gt;The new fish market at the jetty opened on Monday. It has sixty stalls, a cold room for the night’s catch and running water at every stall.&lt;/p&gt;
+&lt;p&gt;Traders who sold at the old market keep their stall number. New traders apply for a stall at the trade office in the municipal office. The market opens daily from 5:00 to 18:00.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Trade &amp;amp; Markets Office, +254 700 000 010&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1793595600</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">new-fish-market-opens-at-the-jetty</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Beach Road resurfacing starts</field>
+				<field index="teaser">Works run for six weeks. Matatus take the diversion via Market Street.</field>
+				<field index="bodytext">&lt;p&gt;Beach Road between the roundabout and the public beach gets a new surface and drainage. The works start on 3 November and run for about six weeks.&lt;/p&gt;
+&lt;p&gt;During the works, matatus and lorries take the diversion via Market Street. Pedestrians and bicycles can pass at all times. Shops along Beach Road stay open.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Roads Department, +254 700 000 020&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1793077200</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">beach-road-resurfacing-starts</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Free health camp in Ward 3</field>
+				<field index="teaser">Eye tests, vaccinations and screening, open to every resident.</field>
+				<field index="bodytext">&lt;p&gt;The municipality and the Ward 3 health centre hold a free health camp on 25 and 26 October at Ward 3 Primary School, from 8:00 to 16:00.&lt;/p&gt;
+&lt;p&gt;On offer: eye tests, blood pressure and diabetes screening, and vaccinations for children. Bring your health card if you have one. No appointment is needed.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Health Department, +254 700 000 030&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1792472400</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">free-health-camp-in-ward-3</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">4</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Pay land rates by mobile money from January</field>
+				<field index="teaser">Residents can now pay land rates and business permits with their phone.</field>
+				<field index="bodytext">&lt;p&gt;From 1 January 2027, residents pay land rates, the single business permit and market fees by mobile money. The receipt arrives by SMS and counts as proof of payment.&lt;/p&gt;
+&lt;p&gt;Payment at the cash office in the municipal office stays possible. The land rates calculator on our website shows what you owe before you pay.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Revenue Department, +254 700 000 040&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1791781200</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">pay-land-rates-by-mobile-money-from-january</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:5" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">5</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Have your say on the budget 2027/28</field>
+				<field index="teaser">Public participation forums in every ward in November.</field>
+				<field index="bodytext">&lt;p&gt;The municipality prepares its budget for 2027/28 and asks residents what matters most to them: roads, water, markets, health or schools.&lt;/p&gt;
+&lt;p&gt;A forum takes place in every ward in November. The main forum is on 22 November in the municipal hall. Residents who cannot attend send their views in writing to the municipal office by 30 November.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Planning Office, +254 700 000 050&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1790830800</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">have-your-say-on-the-budget-2027-28</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:6" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">6</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Mto Safi named cleanest town on the coast</field>
+				<field index="teaser">The monthly beach clean-ups and the new waste collection paid off.</field>
+				<field index="bodytext">&lt;p&gt;Mto Safi has won this year’s Clean Coast Town Award. The jury praised the monthly beach clean-ups by residents and schools, and the new waste collection in all wards.&lt;/p&gt;
+&lt;p&gt;The mayor thanked every volunteer and announced that the clean-ups continue every third Saturday of the month.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Environment Department, +254 700 000 060&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1789707600</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">mto-safi-named-cleanest-town-on-the-coast</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:7" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">7</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">New boreholes bring clean water to Ward 5</field>
+				<field index="teaser">Three boreholes and twelve water kiosks serve 4,000 residents.</field>
+				<field index="bodytext">&lt;p&gt;Three new boreholes in Ward 5 now supply twelve water kiosks. About 4,000 residents no longer have to walk to the river for water.&lt;/p&gt;
+&lt;p&gt;A water kiosk is open from 6:00 to 19:00. A 20-litre container costs KES 5.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Contact:&lt;/strong&gt; Water &amp;amp; Sanitation Department, +254 700 000 070&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1788584400</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">new-boreholes-bring-clean-water-to-ward-5</field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:23" type="array">
@@ -351,11 +1057,13 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="doktype" type="integer">254</field>
 				<field index="title">Footer navigation</field>
 				<field index="slug">/footer-navigation</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:29" type="array">
@@ -369,12 +1077,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="shortcut" type="integer">21</field>
 				<field index="doktype" type="integer">4</field>
 				<field index="title">Tenders</field>
 				<field index="slug">/tenders-1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="shortcut" type="array">
@@ -399,12 +1109,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="shortcut" type="integer">20</field>
 				<field index="doktype" type="integer">4</field>
 				<field index="title">Access to information</field>
 				<field index="slug">/access-to-information-1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="shortcut" type="array">
@@ -429,12 +1141,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="shortcut" type="integer">19</field>
 				<field index="doktype" type="integer">4</field>
 				<field index="title">Privacy policy</field>
 				<field index="slug">/privacy-policy-1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="shortcut" type="array">
@@ -459,12 +1173,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="shortcut" type="integer">18</field>
 				<field index="doktype" type="integer">4</field>
 				<field index="title">Accessibility statement</field>
 				<field index="slug">/accessibility-statement-1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="shortcut" type="array">
@@ -489,11 +1205,13 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="doktype" type="integer">254</field>
 				<field index="title">Service navigation</field>
 				<field index="slug">/service-navigation</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:25" type="array">
@@ -507,12 +1225,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="shortcut" type="integer">15</field>
 				<field index="doktype" type="integer">4</field>
 				<field index="title">Contact</field>
 				<field index="slug">/contact-1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="shortcut" type="array">
@@ -537,12 +1257,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="shortcut" type="integer">17</field>
 				<field index="doktype" type="integer">4</field>
 				<field index="title">E-services portal</field>
 				<field index="slug">/e-services-portal-1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 			<related index="rels" type="array">
 				<field index="shortcut" type="array">
@@ -553,6 +1275,180 @@
 							<table>pages</table>
 						</element>
 					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="pages:30" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">30</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">3200</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795336956</field>
+				<field index="doktype" type="integer">1</field>
+				<field index="title">News</field>
+				<field index="slug">/news</field>
+				<field index="nav_hide" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">4</field>
+				<field index="pid" type="integer">30</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">news_newsliststicky</field>
+				<field index="header">All news</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.orderBy&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;datetime&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.orderDirection&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;desc&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;32&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.detailPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;31&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="sDEF/lDEF/settings.startingpoint/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>32</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.detailPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>31</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="pages:31" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">31</field>
+				<field index="pid" type="integer">30</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795336956</field>
+				<field index="doktype" type="integer">1</field>
+				<field index="title">Article</field>
+				<field index="slug">/news/article</field>
+				<field index="nav_hide" type="integer">1</field>
+				<field index="backend_layout">pagets__Article</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:5" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">5</field>
+				<field index="pid" type="integer">31</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">news_newsdetail</field>
+				<field index="header">News article</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;32&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.listPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;30&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.backPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;30&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="sDEF/lDEF/settings.startingpoint/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>32</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.listPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>30</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.backPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>30</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
 				</field>
 			</related>
 		</tablerow>
@@ -567,13 +1463,15 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Tenders</field>
 				<field index="slug">/tenders</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:20" type="array">
@@ -587,12 +1485,15 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Access to information</field>
 				<field index="slug">/access-to-information</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:19" type="array">
@@ -606,12 +1507,15 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Privacy policy</field>
 				<field index="slug">/privacy-policy</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:18" type="array">
@@ -625,12 +1529,15 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Accessibility statement</field>
 				<field index="slug">/accessibility-statement</field>
 				<field index="nav_hide" type="integer">1</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:17" type="array">
@@ -644,14 +1551,16 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">E-services portal</field>
 				<field index="slug">/e-services-portal</field>
 				<field index="nav_hide" type="integer">1</field>
 				<field index="backend_layout">pagets__Narrow</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:16" type="array">
@@ -665,14 +1574,16 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Search</field>
 				<field index="slug">/search</field>
 				<field index="nav_hide" type="integer">1</field>
 				<field index="backend_layout">pagets__SidebarRight</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:15" type="array">
@@ -686,12 +1597,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Contact</field>
 				<field index="slug">/contact</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:14" type="array">
@@ -705,11 +1618,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Public participation</field>
 				<field index="slug">/public-participation</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:13" type="array">
@@ -723,11 +1639,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Trade &amp; tourism</field>
 				<field index="slug">/trade-tourism</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:12" type="array">
@@ -741,11 +1660,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Environment &amp; water</field>
 				<field index="slug">/environment-water</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:11" type="array">
@@ -759,12 +1681,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Health</field>
 				<field index="slug">/health</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:5" type="array">
@@ -778,13 +1702,16 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Revenue &amp; payments</field>
 				<field index="slug">/revenue-payments</field>
 				<field index="backend_layout">pagets__SidebarLeft</field>
 				<field index="backend_layout_next_level">pagets__SidebarLeft</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:10" type="array">
@@ -798,11 +1725,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Waiver of interest</field>
 				<field index="slug">/revenue-payments/waiver-of-interest</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:9" type="array">
@@ -816,11 +1746,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Market fees</field>
 				<field index="slug">/revenue-payments/market-fees</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:8" type="array">
@@ -834,11 +1767,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Parking fees</field>
 				<field index="slug">/revenue-payments/parking-fees</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:7" type="array">
@@ -852,11 +1788,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Single business permit</field>
 				<field index="slug">/revenue-payments/single-business-permit</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="pages:6" type="array">
@@ -870,12 +1809,14 @@
 				<field index="l10n_source" type="integer">0</field>
 				<field index="l10n_diffsource"></field>
 				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
-				<field index="perms_group" type="integer">27</field>
+				<field index="perms_group" type="integer">31</field>
 				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Land rates</field>
 				<field index="slug">/revenue-payments/land-rates</field>
+				<field index="tsconfig_includes"></field>
 			</fieldlist>
 		</tablerow>
 	</records>

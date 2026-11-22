@@ -1,0 +1,18 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    The detail page of a record, such as a news article. The record supplies the
+    page heading, so this template prints none of its own.
+</f:comment>
+<f:layout name="Pages/Default" />
+
+<f:section name="Breadcrumb">
+    <f:render partial="Page/Breadcrumb" arguments="{_all}" />
+</f:section>
+
+<f:section name="Main">
+    <div class="container layout layout--narrow">
+        <f:render.contentArea contentArea="{content.main}" />
+    </div>
+</f:section>
+
+</html>

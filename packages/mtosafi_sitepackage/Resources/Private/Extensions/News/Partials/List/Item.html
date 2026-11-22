@@ -1,0 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    One news as a card. headingLevel is 3 below a section heading, 2 on the list page.
+    Without a teaser, the card shows the beginning of the text.
+</f:comment>
+<article class="card">
+    <p class="card__meta">
+        <time datetime="{f:format.date(date: newsItem.datetime, format: 'Y-m-d')}">{f:format.date(date: newsItem.datetime, format: 'j F Y')}</time>
+    </p>
+    <f:if condition="{headingLevel} == 2">
+        <f:then><h2>{newsItem.title}</h2></f:then>
+        <f:else><h3>{newsItem.title}</h3></f:else>
+    </f:if>
+    <f:if condition="{newsItem.teaser}">
+        <f:then><p>{newsItem.teaser}</p></f:then>
+        <f:else><p>{newsItem.bodytext -> f:format.stripTags() -> f:format.crop(maxCharacters: settings.cropMaxCharacters, respectWordBoundaries: 1)}</p></f:else>
+    </f:if>
+    <n:link newsItem="{newsItem}" settings="{settings}" class="card__link"><f:translate key="news.more" domain="mtosafi_sitepackage.frontend" /><span class="visually-hidden">: {newsItem.title}</span></n:link>
+</article>
+</html>

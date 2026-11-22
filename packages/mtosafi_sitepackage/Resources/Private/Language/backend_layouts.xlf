@@ -18,6 +18,9 @@
 			<trans-unit id="narrow">
 				<source>Narrow, such as a login</source>
 			</trans-unit>
+			<trans-unit id="article">
+				<source>Article, for the detail page of a news item</source>
+			</trans-unit>
 			<trans-unit id="column.main">
 				<source>Main content</source>
 			</trans-unit>
