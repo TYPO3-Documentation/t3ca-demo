@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jambo-ai: the mail imprint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Colours, font, radius and shadow of the Mto Safi design (demo/design/scss/_variables.scss). */
+  :root {
+    --primary: #0b5a3c;
+    --primary-dark: #073d29;
+    --secondary: #9b1c1f;
+    --accent: #f2b632;
+    --text: #1c2420;
+    --muted: #4a5650;
+    --border: #cdd8d2;
+    --surface: #f3f7f4;
+    --white: #fff;
+    --radius: 6px;
+    --shadow: 0 2px 10px rgba(18, 53, 91, 0.12);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    /* One slide: 1920 × 1080. */
+    width: 1920px;
+    height: 1080px;
+    display: grid;
+    place-items: center;
+    background: var(--primary-dark);
+    font-family: 'Source Sans 3', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+  }
+  .window {
+    width: 1500px;
+    background: var(--surface);
+    border-radius: calc(var(--radius) * 3);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 24px 36px;
+    background: var(--primary);
+    color: var(--white);
+  }
+  .titlebar svg { width: 64px; height: 64px; flex: none; }
+  .titlebar .name { font-size: 40px; font-weight: 700; letter-spacing: 0.5px; }
+  .titlebar .name span { color: var(--accent); }
+  .titlebar .who { margin-left: auto; font-size: 28px; opacity: 0.9; }
+  .titlebar .who::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .chat {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 56px 64px 64px;
+  }
+  .msg { display: flex; gap: 22px; align-items: flex-end; max-width: 1120px; }
+  .msg.me { align-self: flex-end; flex-direction: row-reverse; }
+  .avatar {
+    flex: none;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .me .avatar { background: var(--secondary); color: var(--white); }
+  .claudia .avatar { background: var(--accent); color: var(--primary-dark); }
+  .bubble {
+    padding: 26px 34px;
+    border-radius: calc(var(--radius) * 4);
+    font-size: 40px;
+    line-height: 1.4;
+    box-shadow: var(--shadow);
+  }
+  .me .bubble { background: var(--primary); color: var(--white); border-bottom-right-radius: var(--radius); }
+  .claudia .bubble { background: var(--white); border: 1px solid var(--border); border-bottom-left-radius: var(--radius); }
+  .sender { display: block; margin-bottom: 6px; font-size: 26px; font-weight: 600; opacity: 0.75; }
+  mark { background: var(--accent); color: var(--primary-dark); padding: 0 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <div class="window">
+    <div class="titlebar">
+      <svg viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="31" fill="#fff"/>
+        <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+        <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+        <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+      </svg>
+      <div class="name">jambo<span>-ai</span></div>
+      <div class="who">Claudia</div>
+    </div>
+    <div class="chat">
+      <!-- Stage 12-contact-form, prompt 8, as typed. -->
+      <div class="msg me">
+        <div class="avatar">L</div>
+        <div class="bubble">
+          <span class="sender">Lina</span>
+          why are the mails I receive TYPO3 themed now and with a TYPO3 imprint?
+        </div>
+      </div>
+      <!-- Claudia's answer, first two sentences, word for word. -->
+      <div class="msg claudia">
+        <div class="avatar">C</div>
+        <div class="bubble">
+          <span class="sender">Claudia</span>
+          ALTCHA caused it, and <mark>I missed it</mark> because I didn't check the mail layout after installing it.
+          It's fixed now: a new test mail uses the Mto Safi layout again.
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

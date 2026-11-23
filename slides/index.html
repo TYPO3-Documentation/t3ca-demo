@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI meets TYPO3</title>
+<!--
+  Slides for "AI meets TYPO3", TYPO3 Camp Africa 2026, Diani.
+  Works offline: the font and the pictures are local files.
+
+  Keys:  → Space PageDown  next      ← PageUp  previous
+         Home / End        first / last
+         F                 full screen
+         N                 speaker notes in the browser console (and below the slide)
+  The slide number is in the address (#5), so a reload stays on the slide.
+
+  Slide kinds:
+    class "words"    a few words on green
+    class "picture"  a photo filling the screen; add "upright" for portrait photos,
+                     and "left-text" to put the caption on the left
+    class "chat"     a jambo-ai window
+  Speaker notes go into an aside with class "notes" inside a slide; they are hidden unless N is pressed.
+-->
+<style>
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/SourceSans3-latin.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/SourceSans3-latin-italic.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: italic;
+  }
+
+  /* Mto Safi design: demo/design/scss/_variables.scss */
+  :root {
+    --primary: #0b5a3c;
+    --primary-dark: #073d29;
+    --secondary: #9b1c1f;
+    --accent: #f2b632;
+    --text: #1c2420;
+    --border: #cdd8d2;
+    --surface: #f3f7f4;
+    --white: #fff;
+    --radius: 6px;
+    --shadow: 0 2px 10px rgba(18, 53, 91, 0.12);
+    --typo3: #ff8700;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  body { font-family: 'Source Sans 3', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--text); }
+
+  /* Every slide is drawn at 1920 × 1080 and scaled to the window. */
+  #deck {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: center;
+  }
+  section {
+    position: absolute;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+  }
+  section.current { display: flex; }
+
+  /* Words: a few words on green. */
+  .words {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 200px;
+    background: var(--primary-dark);
+    color: var(--white);
+  }
+  .words h1, .words h2 { margin: 0; font-weight: 700; line-height: 1.1; }
+  .words h1 { font-size: 150px; }
+  .words h2 { font-size: 110px; }
+  .words p { margin: 48px 0 0; font-size: 84px; line-height: 1.3; opacity: 0.9; }
+  .words .small { font-size: 48px; opacity: 0.75; }
+  .words em { font-style: normal; color: var(--accent); }
+
+  /* Picture: a photo filling the screen. */
+  .picture { background: var(--primary-dark); }
+  .picture img { width: 100%; height: 100%; object-fit: cover; }
+  .picture.upright img { object-fit: contain; }
+  .picture .caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    padding: 28px 120px;
+    background: rgba(7, 61, 41, 0.85);
+    color: var(--white);
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .picture.upright .caption {
+    /* Next to a portrait photo the caption sits on the free side. */
+    left: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 640px;
+    display: flex;
+    align-items: center;
+    background: none;
+    padding: 0 90px 0 40px;
+  }
+  .picture.upright.left-text .caption { left: 0; right: auto; padding: 0 40px 0 90px; }
+  .picture.upright img { width: calc(100% - 640px); }
+  .picture.upright.left-text img { margin-left: 640px; }
+  .picture .caption.top { top: 80px; bottom: auto; }
+  .caption em { font-style: normal; color: var(--accent); }
+
+  /* A screenshot: shown whole, on green, with a little margin. */
+  .picture.screenshot img { object-fit: contain; padding: 80px 80px 220px; }
+  .picture .caption.url { background: none; text-align: center; bottom: 70px; font-size: 80px; }
+  .picture .caption.url.small-url { font-size: 52px; bottom: 90px; }
+
+  /* Graphic: a drawing on green. */
+  .graphic { background: var(--primary-dark); }
+  .graphic > svg { width: 100%; height: 100%; }
+
+  /* Terminal: one or two commands, large. */
+  .terminal { align-items: center; justify-content: center; background: var(--primary-dark); }
+  .term { width: 1640px; background: #1c2420; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); }
+  .term-bar { display: flex; gap: 16px; padding: 22px 28px; background: #33403a; }
+  .term-bar i { width: 24px; height: 24px; border-radius: 50%; background: #9b1c1f; }
+  .term-bar i:nth-child(2) { background: #f2b632; }
+  .term-bar i:nth-child(3) { background: #0b5a3c; }
+  .term pre { margin: 0; padding: 60px 60px 70px; color: #f3f7f4; font: 44px/1.8 'DejaVu Sans Mono', Consolas, monospace; white-space: pre-wrap; }
+  .term .prompt { color: var(--accent); }
+
+  /* Trio: three photos side by side. */
+  .trio { background: var(--primary-dark); gap: 16px; padding: 16px; }
+  .trio img { flex: 1; min-width: 0; height: 100%; object-fit: cover; border-radius: 8px; }
+
+  /* A file tree in the terminal card. */
+  .term pre.tree { font-size: 38px; line-height: 1.5; }
+  .term .hint { color: #9fb3a8; }
+
+  /* Replay: a recorded session, played in the slide. */
+  .replay { align-items: center; justify-content: center; background: #1c2420; }
+  .replay .player { width: 1880px; height: 1050px; }
+
+  /* Chat: a jambo-ai window. */
+  .chat { align-items: center; justify-content: center; background: var(--primary-dark); }
+  .window {
+    width: 1500px;
+    background: var(--surface);
+    border-radius: calc(var(--radius) * 3);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+  .titlebar { display: flex; align-items: center; gap: 22px; padding: 24px 36px; background: var(--primary); color: var(--white); }
+  .titlebar svg { width: 64px; height: 64px; flex: none; }
+  .titlebar .name { font-size: 40px; font-weight: 700; letter-spacing: 0.5px; }
+  .titlebar .name span { color: var(--accent); }
+  .titlebar .who { margin-left: auto; font-size: 28px; opacity: 0.9; }
+  .titlebar .who::before { content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 10px; border-radius: 50%; background: var(--accent); }
+  .messages { display: flex; flex-direction: column; gap: 40px; padding: 56px 64px 64px; }
+  .msg { display: flex; gap: 22px; align-items: flex-end; max-width: 1120px; }
+  .msg.me { align-self: flex-end; flex-direction: row-reverse; }
+  .avatar { flex: none; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; font-size: 36px; font-weight: 700; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .claudia .avatar { background: var(--accent); color: var(--primary-dark); }
+  .bubble { padding: 26px 34px; border-radius: calc(var(--radius) * 4); font-size: 40px; line-height: 1.4; box-shadow: var(--shadow); }
+  .me .bubble { background: var(--primary); color: var(--white); border-bottom-right-radius: var(--radius); }
+  .claudia .bubble { background: var(--white); border: 1px solid var(--border); border-bottom-left-radius: var(--radius); }
+  .sender { display: block; margin-bottom: 6px; font-size: 26px; font-weight: 600; opacity: 0.75; }
+  mark { background: var(--accent); color: var(--primary-dark); padding: 0 6px; border-radius: 4px; }
+  code { font-family: 'DejaVu Sans Mono', Consolas, monospace; font-size: 0.85em; white-space: nowrap; }
+
+  /* Speaker notes: hidden unless N is pressed. */
+  .notes { display: none; }
+  body.show-notes .notes {
+    display: block;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 20px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #000;
+    font-size: 30px;
+    border-radius: 8px;
+    z-index: 2;
+  }
+  #counter { position: fixed; right: 18px; bottom: 12px; color: rgba(255, 255, 255, 0.85); font: 600 26px 'Source Sans 3', sans-serif; text-shadow: 0 0 6px rgba(0, 0, 0, 0.8), 0 1px 2px rgba(0, 0, 0, 0.9); }
+</style>
+<link rel="stylesheet" href="vendor/asciinema-player/asciinema-player.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- A raised hand, 320 × 560 -->
+    <!-- A show of hands: three people, two with an arm raised, 700 × 540 -->
+    <symbol id="hand" viewBox="0 0 760 540" width="760" height="540">
+      <g transform="translate(0 0)" fill="#f2b632"><circle cx="90" cy="270" r="58"/><path d="M0 540v-90a90 90 0 0 1 90-90a90 90 0 0 1 90 90v90z"/><g transform="rotate(14 150 400)"><rect x="124" y="140" width="54" height="270" rx="27"/><circle cx="151" cy="140" r="42"/></g></g>
+      <g transform="translate(230 0)" fill="#c9d6cf"><circle cx="90" cy="270" r="58"/><path d="M0 540v-90a90 90 0 0 1 90-90a90 90 0 0 1 90 90v90z"/></g>
+      <g transform="translate(460 0)" fill="#f2b632"><circle cx="90" cy="270" r="58"/><path d="M0 540v-90a90 90 0 0 1 90-90a90 90 0 0 1 90 90v90z"/><g transform="rotate(14 150 400)"><rect x="124" y="140" width="54" height="270" rx="27"/><circle cx="151" cy="140" r="42"/></g></g>
+    </symbol>
+
+    <!-- Windows, 900 × 560 -->
+    <symbol id="browser" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#f3f7f4"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#cdd8d2"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <rect x="180" y="22" width="600" height="36" rx="18" fill="#fff"/>
+      <rect x="380" y="140" width="440" height="80" rx="30" fill="#0b5a3c"/>
+      <rect x="80" y="260" width="560" height="200" rx="30" fill="#fff" stroke="#cdd8d2" stroke-width="4"/>
+      <rect x="120" y="305" width="440" height="22" rx="11" fill="#cdd8d2"/>
+      <rect x="120" y="350" width="380" height="22" rx="11" fill="#cdd8d2"/>
+      <rect x="120" y="395" width="300" height="22" rx="11" fill="#cdd8d2"/>
+    </symbol>
+
+    <symbol id="ide" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#f3f7f4"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#cdd8d2"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <path d="M0 80h220v456a24 24 0 0 1-24 24H24a24 24 0 0 1-24-24z" fill="#dfe8e2"/>
+      <g fill="#9fb3a8"><rect x="30" y="120" width="140" height="18" rx="9"/><rect x="50" y="160" width="120" height="18" rx="9"/><rect x="50" y="200" width="100" height="18" rx="9"/><rect x="30" y="240" width="150" height="18" rx="9"/><rect x="50" y="280" width="110" height="18" rx="9"/><rect x="50" y="320" width="130" height="18" rx="9"/></g>
+      <g><rect x="260" y="120" width="220" height="20" rx="10" fill="#9b1c1f"/><rect x="500" y="120" width="160" height="20" rx="10" fill="#0b5a3c"/>
+        <rect x="300" y="165" width="300" height="20" rx="10" fill="#0b5a3c"/><rect x="300" y="210" width="180" height="20" rx="10" fill="#f2b632"/><rect x="500" y="210" width="240" height="20" rx="10" fill="#9fb3a8"/>
+        <rect x="300" y="255" width="360" height="20" rx="10" fill="#9fb3a8"/><rect x="260" y="300" width="120" height="20" rx="10" fill="#9b1c1f"/>
+        <rect x="260" y="345" width="260" height="20" rx="10" fill="#0b5a3c"/><rect x="300" y="390" width="200" height="20" rx="10" fill="#f2b632"/></g>
+      <rect x="220" y="450" width="680" height="110" fill="#e9efeb"/>
+      <g fill="#c0392b"><rect x="250" y="475" width="420" height="14" rx="7"/><rect x="250" y="505" width="360" height="14" rx="7"/></g>
+    </symbol>
+
+    <symbol id="terminal" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#1c2420"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#33403a"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <path d="M60 170l50 40-50 40" fill="none" stroke="#f2b632" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="150" y="188" width="44" height="60" fill="#f3f7f4"/>
+    </symbol>
+
+    <!-- A terminal with a chat inside, 900 × 680 -->
+    <symbol id="terminal-chat" viewBox="0 0 900 680" width="900" height="680">
+      <rect width="900" height="680" rx="24" fill="#1c2420"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#33403a"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <path d="M420 140h380a30 30 0 0 1 30 30v80a30 30 0 0 1-30 30H470l-50 40v-40a30 30 0 0 1-30-30v-80a30 30 0 0 1 30-30z" fill="#0b5a3c"/>
+      <rect x="440" y="190" width="300" height="20" rx="10" fill="#f3f7f4" opacity="0.8"/>
+      <path d="M100 350h460a30 30 0 0 1 30 30v170a30 30 0 0 1-30 30H150l-50 40v-40a30 30 0 0 1-30-30V380a30 30 0 0 1 30-30z" fill="#f3f7f4"/>
+      <rect x="110" y="400" width="400" height="20" rx="10" fill="#9fb3a8"/>
+      <rect x="110" y="445" width="340" height="20" rx="10" fill="#9fb3a8"/>
+      <rect x="110" y="490" width="260" height="20" rx="10" fill="#9fb3a8"/>
+    </symbol>
+
+    <!-- A project folder, 440 × 360 -->
+    <symbol id="folder" viewBox="0 0 440 360" width="440" height="360">
+      <path d="M0 40a30 30 0 0 1 30-30h120l40 45h220a30 30 0 0 1 30 30v245a30 30 0 0 1-30 30H30a30 30 0 0 1-30-30z" fill="#f2b632"/>
+      <g fill="#073d29" opacity="0.55"><rect x="60" y="140" width="220" height="22" rx="11"/><rect x="60" y="190" width="300" height="22" rx="11"/><rect x="60" y="240" width="180" height="22" rx="11"/></g>
+    </symbol>
+
+    <!-- An old laptop with a grey beard and glasses, 900 × 700 -->
+    <symbol id="laptop" viewBox="0 0 900 700" width="900" height="700">
+      <rect x="120" y="0" width="660" height="440" rx="26" fill="#33403a"/>
+      <rect x="150" y="30" width="600" height="380" rx="10" fill="#cdd8d2"/>
+      <path d="M60 470h780l50 80a20 20 0 0 1-17 30H27a20 20 0 0 1-17-30z" fill="#33403a"/>
+      <!-- bushy grey eyebrows -->
+      <g fill="#f3f7f4" stroke="#9fb3a8" stroke-width="3">
+        <path d="M300 120q40 -40 110 -10q-10 22 -40 18q-40 -8 -70 -8z"/>
+        <path d="M600 120q-40 -40 -110 -10q10 22 40 18q40 -8 70 -8z"/>
+      </g>
+      <!-- round glasses and eyes -->
+      <g fill="none" stroke="#33403a" stroke-width="10">
+        <circle cx="360" cy="190" r="58"/><circle cx="540" cy="190" r="58"/>
+        <path d="M418 186q32 -16 64 0"/><path d="M302 180l-60 -14M598 180l60 -14"/>
+      </g>
+      <circle cx="368" cy="196" r="14" fill="#1c2420"/><circle cx="548" cy="196" r="14" fill="#1c2420"/>
+      <!-- nose -->
+      <path d="M450 220q-18 40 0 52q14 4 22 -6" fill="none" stroke="#7f948a" stroke-width="7" stroke-linecap="round"/>
+      <!-- long grey beard with moustache, hanging over the keyboard -->
+      <path d="M300 300q20 -30 70 -24q40 6 80 22q40 -16 80 -22q50 -6 70 24
+               q30 60 0 150q-20 80 -60 140q-30 50 -90 100q-60 -50 -90 -100q-40 -60 -60 -140q-30 -90 0 -150z"
+            fill="#f3f7f4" stroke="#9fb3a8" stroke-width="4"/>
+      <g fill="none" stroke="#c9d6cf" stroke-width="5" stroke-linecap="round">
+        <path d="M380 360q-10 80 20 170M450 350v240M520 360q10 80 -20 170M330 340q0 70 30 140M570 340q0 70 -30 140"/>
+      </g>
+      <path d="M340 300q50 -30 110 0q60 -30 110 0q-50 30 -110 10q-60 20 -110 -10z" fill="#e3ebe6" stroke="#9fb3a8" stroke-width="4"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="deck">
+
+  <!-- ================= Introduction ================= -->
+
+  <section class="words">
+    <h1>AI meets <em>TYPO3</em></h1>
+    <p>From prompt to site package,<br>grounded in the official docs</p>
+    <p class="small">TYPO3 Camp Africa 2026 · Diani</p>
+  </section>
+
+  <section class="picture upright">
+    <img src="images/typo3-25-years-superhero.jpg" alt="Lina next to a TYPO3 superhero cardboard figure at the 25 years wall">
+    <div class="caption"><div>Lina Wolf</div></div>
+    <aside class="notes">Introduce yourself: what you do in TYPO3 and how long.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/typo3-gmbh-team-wall.jpg" alt="The team in front of the TYPO3 logo in the office">
+    <aside class="notes">My colleagues. The poodle came too.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/bjoern_drake_meme.jpg" alt="Meme: Typo3 rejected, TYPO3 approved" style="object-fit: contain; background: #fff">
+    <aside class="notes">"This is my boss, and this is the only rule he really insists on."</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/dogdancing/stgallen-2025-studio-DSC_6316.jpg" alt="Lina in a paddling pool with sunglasses, the poodle holding her hand">
+    <div class="caption">And my other team: <em>Halma</em></div>
+    <aside class="notes">Dog dancing. The pictures between the parts are from our routines.</aside>
+  </section>
+
+  <!-- ================= AI in general ================= -->
+  <!-- Graphics instead of words: people listen while they look, not while they read. -->
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Raised hand and a browser window">
+      <use href="#hand" x="90" y="290"/>
+      <use href="#browser" x="920" y="290"/>
+    </svg>
+    <aside class="notes">Who is using AI in the browser? Hands up. Expect many.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Raised hand and an IDE window">
+      <use href="#hand" x="90" y="290"/>
+      <use href="#ide" x="920" y="290"/>
+    </svg>
+    <aside class="notes">Who is using AI in an IDE? Fewer hands.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Raised hand and a terminal window">
+      <use href="#hand" x="90" y="290"/>
+      <use href="#terminal" x="920" y="290"/>
+    </svg>
+    <aside class="notes">Who is using AI in the terminal? Keep your own hand up. These are your contacts for questions afterwards.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A browser window, cut off from the project folder">
+      <use href="#browser" x="140" y="320" width="700" height="436"/>
+      <line x1="960" y1="300" x2="960" y2="780" stroke="#f2b632" stroke-width="10" stroke-dasharray="30 22" stroke-linecap="round"/>
+      <g transform="translate(960 540)"><circle r="70" fill="#9b1c1f"/><path d="M-30 -30 L30 30 M30 -30 L-30 30" stroke="#fff" stroke-width="16" stroke-linecap="round"/></g>
+      <use href="#folder" x="1140" y="360"/>
+    </svg>
+    <aside class="notes">In the browser: it can't see your project, and it can't try what it suggests. DRAFT: my reasons, replace with yours.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="People raising their hands and an old laptop with glasses and a grey beard">
+      <use href="#hand" x="90" y="290"/>
+      <use href="#laptop" x="920" y="250"/>
+    </svg>
+    <aside class="notes">Who has a computer older than 3 years? Leads into the IDE: resources.</aside>
+  </section>
+
+  <section class="picture upright">
+    <img src="images/typo3-gmbh-desk-ide-coffee.jpg" alt="Desk with an IDE full of warnings and a TYPO3 coffee mug">
+    <aside class="notes">Look at the diff in your IDE, but don't run the AI in it. The IDE eats resources on old computers. On strong ones it keeps re-indexing files the AI is still changing.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A terminal window with a chat inside">
+      <use href="#terminal-chat" x="510" y="200"/>
+    </svg>
+    <aside class="notes">In the terminal: like chatting with a colleague. No commands to remember. Several agents in parallel. Claude Code, OpenCode, Cursor CLI.</aside>
+  </section>
+
+  <section class="picture upright left-text">
+    <img src="images/typo3-gmbh-coffee-grinder.jpg" alt="A coffee grinder with googly eyes next to a TYPO3 mug">
+    <div class="caption"><div>Meet my AI <em>Claudia</em></div></div>
+    <aside class="notes">German name, sounds like Claude. Show `claudia t3ca-12` from the recordings.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form, as typed. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>where3 can I see the mail?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The mails are in Mailpit, which DDEV runs alongside the site. You can also open it from the terminal with <code>ddev mailpit</code>.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">A typo, and she still understood. No command to remember.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/benny-patriciamaier-fotografie.jpg" alt="A white dog with wide eyes and an open mouth" style="object-position: center 40%">
+    <aside class="notes">Some even have humour. (Claudia excluded.)</aside>
+  </section>
+
+  <!-- ================= The cut-off date ================= -->
+
+  <section class="picture">
+    <img src="images/dogdancing/stgallen-2025-tournament-DSC_6108.jpg" alt="Lina shading her eyes and looking into the distance, Halma standing up beside her">
+    <aside class="notes">Section: which TYPO3 version? Looking out for what's new.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A timeline of TYPO3 versions: the AI knows v12 and v13, its knowledge ends before v14">
+      <defs><clipPath id="claudia-face"><circle cx="1150" cy="300" r="110"/></clipPath></defs>
+      <!-- what the AI knows: solid; after the cut-off: dashed -->
+      <line x1="200" y1="640" x2="1150" y2="640" stroke="#f2b632" stroke-width="22" stroke-linecap="round"/>
+      <line x1="1150" y1="640" x2="1720" y2="640" stroke="#9fb3a8" stroke-width="10" stroke-dasharray="26 22" stroke-linecap="round"/>
+      <!-- the cut-off -->
+      <line x1="1150" y1="430" x2="1150" y2="760" stroke="#9b1c1f" stroke-width="10" stroke-dasharray="18 14"/>
+      <image href="images/avatars/claudia.jpg" x="1040" y="190" width="220" height="220" clip-path="url(#claudia-face)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="1150" cy="300" r="110" fill="none" stroke="#f2b632" stroke-width="10"/>
+      <!-- versions, with the year each came out -->
+      <g font-family="Source Sans 3, sans-serif" font-weight="700" text-anchor="middle">
+        <circle cx="550" cy="640" r="40" fill="#f2b632"/><text x="550" y="560" font-size="80" fill="#fff">v12</text>
+        <circle cx="984" cy="640" r="40" fill="#f2b632"/><text x="984" y="560" font-size="80" fill="#fff">v13</text>
+        <circle cx="1390" cy="640" r="40" fill="#073d29" stroke="#9fb3a8" stroke-width="10"/><text x="1390" y="560" font-size="80" fill="#9fb3a8">v14</text>
+        <text x="1620" y="590" font-size="160" fill="#9fb3a8">?</text>
+      </g>
+      <g font-family="Source Sans 3, sans-serif" font-size="44" fill="#9fb3a8" text-anchor="middle">
+        <text x="550" y="740">2023</text><text x="984" y="740">2024</text><text x="1390" y="740">2026</text>
+      </g>
+    </svg>
+    <aside class="notes">The cut-off date: an AI only knows what was in its training data. TYPO3 gets a new LTS about every 18 months and bug fixes every few weeks, so the AI's own knowledge is almost always behind.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 01-ddev-setup, as typed; Claude's first sentence. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>Which is the newest stable TYPO3 version?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The newest stable TYPO3 version is <mark>TYPO3 14.3.10</mark>, in the v14.3 LTS line.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 01, real. Claude searched the web here, and named get.typo3.org as the definitive source. But two of its five sources were agency blogs.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Claudia, cut off from the internet">
+      <defs><clipPath id="claudia-face-2"><circle cx="560" cy="540" r="190"/></clipPath></defs>
+      <image href="images/avatars/claudia.jpg" x="370" y="350" width="380" height="380" clip-path="url(#claudia-face-2)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="560" cy="540" r="190" fill="none" stroke="#f2b632" stroke-width="12"/>
+      <line x1="960" y1="300" x2="960" y2="780" stroke="#f2b632" stroke-width="10" stroke-dasharray="30 22" stroke-linecap="round"/>
+      <g transform="translate(960 540)"><circle r="70" fill="#9b1c1f"/><path d="M-30 -30 L30 30 M30 -30 L-30 30" stroke="#fff" stroke-width="16" stroke-linecap="round"/></g>
+      <g transform="translate(1370 540)" fill="none" stroke="#f3f7f4" stroke-width="12">
+        <circle r="190"/><ellipse rx="85" ry="190"/><line x1="-190" y1="0" x2="190" y2="0"/>
+        <path d="M-165 -95h330M-165 95h330"/>
+      </g>
+    </svg>
+    <aside class="notes">But that was Claude. Not every AI searches the web: some can't, with some you have to switch it on, local models (e.g. OpenCode with Ollama) usually have no internet at all. And even with search, the AI decides itself whether to search.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- An example of the advice, not from a recording. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>Install <mark>TYPO3 14.3 LTS</mark> with DDEV and Composer.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">So: name the version yourself. Then the cut-off date doesn't matter. (Example, not from the recordings.)</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/get-typo3-org-stable.png" alt="get.typo3.org: TYPO3 14 LTS, stable, recommended for new projects">
+    <div class="caption url"><em>get.typo3.org</em></div>
+    <aside class="notes">Where to look: get.typo3.org, ten seconds, always current. Also typo3.org roadmap (support dates) and the maintenance release schedule on typo3.com. Or give the AI the official source: "Check get.typo3.org". Or connect the dev companion: MCP works with any client, not only Claude.</aside>
+  </section>
+
+  <!-- ================= MCP and the dev companion ================= -->
+
+  <section class="picture">
+    <img src="images/dogdancing/munsingen-2025-5.jpg" alt="Lina pointing far away with one arm, Halma sitting up beside her">
+    <aside class="notes">Section: giving the AI the right knowledge. Clear signals.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="MCP: several AI tools connect through one standard plug to tools like documentation, a database and a browser">
+      <defs><clipPath id="claudia-face-3"><circle cx="330" cy="300" r="100"/></clipPath></defs>
+      <g stroke="#9fb3a8" stroke-width="10" fill="none" stroke-linecap="round">
+        <path d="M430 300C650 300 700 540 860 540"/><path d="M430 540H860"/><path d="M430 780C650 780 700 540 860 540"/>
+        <path d="M1060 540C1220 540 1270 300 1490 300"/><path d="M1060 540H1490"/><path d="M1060 540C1220 540 1270 780 1490 780"/>
+      </g>
+      <image href="images/avatars/claudia.jpg" x="230" y="200" width="200" height="200" clip-path="url(#claudia-face-3)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="330" cy="300" r="100" fill="none" stroke="#f2b632" stroke-width="10"/>
+      <g fill="#c9d6cf"><circle cx="330" cy="540" r="100"/><circle cx="330" cy="780" r="100"/></g>
+      <g fill="#073d29"><circle cx="295" cy="525" r="14"/><circle cx="365" cy="525" r="14"/><rect x="290" y="570" width="80" height="14" rx="7"/>
+        <circle cx="295" cy="765" r="14"/><circle cx="365" cy="765" r="14"/><rect x="290" y="810" width="80" height="14" rx="7"/></g>
+      <rect x="860" y="430" width="200" height="220" rx="30" fill="#f2b632"/>
+      <g fill="#073d29"><rect x="900" y="380" width="28" height="60" rx="8"/><rect x="992" y="380" width="28" height="60" rx="8"/></g>
+      <text x="960" y="565" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="64" fill="#073d29">MCP</text>
+      <g transform="translate(1490 220) scale(0.5)"><rect x="0" y="0" width="260" height="320" rx="16" fill="#ff8700"/><rect x="0" y="0" width="44" height="320" rx="12" fill="#c96a00"/><g transform="translate(78 86) scale(3.5)" fill="#fff"><path d="M31.7,28.8c-0.6,0.2-1.1,0.2-1.7,0.2c-5.2,0-12.9-18.2-12.9-24.3c0-2.2,0.5-3,1.3-3.6 C12,1.9,4.3,4.2,1.9,7.2C1.3,8,1,9.1,1,10.6c0,9.5,10.1,31,17.3,31C21.6,41.6,27.1,36.2,31.7,28.8"/><path d="M28.4,0.5c6.6,0,13.2,1.1,13.2,4.8c0,7.6-4.8,16.7-7.2,16.7C30,22,24.5,9.9,24.5,3.8 C24.5,1,25.6,0.5,28.4,0.5"/></g></g>
+      <g transform="translate(1520 470)"><ellipse cx="70" cy="20" rx="70" ry="22" fill="#f3f7f4"/><path d="M0 20v100a70 22 0 0 0 140 0V20" fill="#f3f7f4"/><path d="M0 70a70 22 0 0 0 140 0" fill="none" stroke="#9fb3a8" stroke-width="6"/><ellipse cx="70" cy="20" rx="70" ry="22" fill="none" stroke="#9fb3a8" stroke-width="6"/></g>
+      <use href="#browser" x="1490" y="720" width="200" height="124"/>
+    </svg>
+    <aside class="notes">MCP, the Model Context Protocol: one standard plug between AI tools and the things they can use, like documentation, a database or a browser. An open standard: Claude Code, OpenCode, Cursor and others speak it. "USB-C for AI."</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Claudia, plugged into the TYPO3 Dev Companion, which knows TYPO3 12.4, 13.4, 14.3 and main">
+      <defs><clipPath id="claudia-face-4"><circle cx="420" cy="540" r="180"/></clipPath></defs>
+      <image href="images/avatars/claudia.jpg" x="240" y="360" width="360" height="360" clip-path="url(#claudia-face-4)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="420" cy="540" r="180" fill="none" stroke="#f2b632" stroke-width="12"/>
+      <path d="M600 540H860" stroke="#9fb3a8" stroke-width="12" stroke-linecap="round"/>
+      <rect x="860" y="470" width="120" height="140" rx="24" fill="#f2b632"/>
+      <g fill="#c9d6cf"><rect x="980" y="500" width="60" height="24" rx="8"/><rect x="980" y="556" width="60" height="24" rx="8"/></g>
+      <g transform="translate(1120 300) scale(1.4)"><rect x="0" y="0" width="260" height="320" rx="16" fill="#ff8700"/><rect x="0" y="0" width="44" height="320" rx="12" fill="#c96a00"/><g transform="translate(78 86) scale(3.5)" fill="#fff"><path d="M31.7,28.8c-0.6,0.2-1.1,0.2-1.7,0.2c-5.2,0-12.9-18.2-12.9-24.3c0-2.2,0.5-3,1.3-3.6 C12,1.9,4.3,4.2,1.9,7.2C1.3,8,1,9.1,1,10.6c0,9.5,10.1,31,17.3,31C21.6,41.6,27.1,36.2,31.7,28.8"/><path d="M28.4,0.5c6.6,0,13.2,1.1,13.2,4.8c0,7.6-4.8,16.7-7.2,16.7C30,22,24.5,9.9,24.5,3.8 C24.5,1,25.6,0.5,28.4,0.5"/></g></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700" font-size="40" text-anchor="middle">
+        <rect x="1490" y="330" width="150" height="70" rx="14" fill="#f3f7f4"/><text x="1565" y="380" fill="#073d29">12.4</text>
+        <rect x="1490" y="420" width="150" height="70" rx="14" fill="#f3f7f4"/><text x="1565" y="470" fill="#073d29">13.4</text>
+        <rect x="1490" y="510" width="150" height="70" rx="14" fill="#f2b632"/><text x="1565" y="560" fill="#073d29">14.3</text>
+        <rect x="1490" y="600" width="150" height="70" rx="14" fill="#f3f7f4"/><text x="1565" y="650" fill="#073d29">main</text>
+      </g>
+    </svg>
+    <aside class="notes">The TYPO3 Dev Companion: an MCP server for TYPO3. Current, version-bound TYPO3 knowledge for 12.4, 13.4, 14.3 and main. Runs locally, only reads, writes nothing into your installation. Plus 15 task skills (site package, content elements, extension upgrade…). Experimental, 0.x.</aside>
+  </section>
+
+  <section class="terminal">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i></div>
+      <pre><span class="prompt">❯</span> ddev composer require --dev "typo3/dev-companion:@dev"
+<span class="prompt">❯</span> ddev exec vendor/bin/typo3-dev-companion install</pre>
+    </div>
+    <aside class="notes">Installing it, as Claude did in stage 02. Or just ask your AI: "Install https://github.com/TYPO3/dev-companion as a development dependency and configure it so that my AI client can use it." Restart the AI session afterwards.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 02-dev-companion, as typed; the first two sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>Which icon identifier is the right one for a delete button in the TYPO3 backend?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Use <mark>actions-delete</mark> (the trash can icon). I looked it up in this installation's backend icon registry and it is registered there.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The check question from the tutorial: the answer comes from this installation, not from memory.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 02-dev-companion, shortened from the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>Which tools did you call?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><code>typo3_icon_lookup</code>. I loaded <code>typo3_project_describe</code> but <mark>never called it</mark>, even though the server's instructions say to start every task with it.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Ask which tools it used. Honest answer: it skipped a step the server asks for. Another reason to look.</aside>
+  </section>
+
+  <!-- ================= Themes: site packages ================= -->
+
+  <section class="trio">
+    <img src="images/dogdancing/munsingen-2025-1.jpg" alt="Lina in a purple dress playing the violin, Halma sitting in front of her" style="object-position: 74% center">
+    <img src="images/dogdancing/stgallen-2025-studio-DSC_6346.jpg" alt="Lina in a summer dress and straw hat, Halma leaping past her" style="object-position: 50% center">
+    <img src="images/dogdancing/barock-costume-bridge.jpg" alt="Lina in a baroque costume with a grey wig and lace collar, Halma in her arm with a lace collar, on a covered wooden bridge" style="object-position: 100% center">
+    <aside class="notes">Section: themes. Same dancer, same dog, a different costume each time. In TYPO3 the costume of a website is the site package.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Theme equals site package: a box with page layouts, templates, styles and settings">
+      <g font-family="Source Sans 3, sans-serif" font-weight="700" text-anchor="middle">
+        <!-- a palette: "theme" -->
+        <g transform="translate(470 560)">
+          <path d="M0 -190c120 0 210 80 210 170c0 70 -60 80 -100 70c-40 -10 -60 20 -40 60c20 40 -10 80 -70 80c-120 0 -210 -90 -210 -190s90 -190 210 -190z" fill="#f3f7f4"/>
+          <circle cx="-110" cy="-60" r="34" fill="#9b1c1f"/><circle cx="-20" cy="-120" r="34" fill="#f2b632"/><circle cx="90" cy="-80" r="34" fill="#0b5a3c"/><circle cx="-120" cy="50" r="34" fill="#ff8700"/>
+        </g>
+        <text x="470" y="900" font-size="84" fill="#f3f7f4">theme</text>
+        <text x="960" y="610" font-size="160" fill="#f2b632">=</text>
+        <!-- an open box with what a site package holds -->
+        <g transform="translate(1180 300)">
+          <rect x="60" y="20" width="120" height="150" rx="10" fill="#f3f7f4"/><rect x="80" y="45" width="80" height="20" rx="6" fill="#9fb3a8"/><rect x="80" y="80" width="35" height="70" rx="6" fill="#9fb3a8"/><rect x="125" y="80" width="35" height="70" rx="6" fill="#9fb3a8"/>
+          <g transform="translate(220 0)"><rect width="120" height="150" rx="10" fill="#f3f7f4"/><text x="60" y="105" font-size="70" fill="#0b5a3c">{ }</text></g>
+          <g transform="translate(380 30)"><circle cx="50" cy="50" r="50" fill="#f2b632"/><circle cx="50" cy="50" r="18" fill="#073d29"/>
+            <g fill="#f2b632"><rect x="40" y="-14" width="20" height="28" rx="4"/><rect x="40" y="86" width="20" height="28" rx="4"/><rect x="-14" y="40" width="28" height="20" rx="4"/><rect x="86" y="40" width="28" height="20" rx="4"/></g></g>
+          <path d="M0 200h560v300H0z" fill="#ff8700"/>
+          <path d="M0 200l-60 -90h300l60 90z" fill="#ffa340"/><path d="M560 200l60 -90H320l-60 90z" fill="#ffa340"/>
+          <!-- the TYPO3 mark, from typo3/sysext/core/Resources/Public/Images/typo3_orange.svg -->
+          <g transform="translate(176 246) scale(5)" fill="#fff"><path d="M31.7,28.8c-0.6,0.2-1.1,0.2-1.7,0.2c-5.2,0-12.9-18.2-12.9-24.3c0-2.2,0.5-3,1.3-3.6 C12,1.9,4.3,4.2,1.9,7.2C1.3,8,1,9.1,1,10.6c0,9.5,10.1,31,17.3,31C21.6,41.6,27.1,36.2,31.7,28.8"/><path d="M28.4,0.5c6.6,0,13.2,1.1,13.2,4.8c0,7.6-4.8,16.7-7.2,16.7C30,22,24.5,9.9,24.5,3.8 C24.5,1,25.6,0.5,28.4,0.5"/></g>
+        </g>
+        <text x="1460" y="900" font-size="84" fill="#f3f7f4">site package</text>
+      </g>
+    </svg>
+    <aside class="notes">What WordPress calls a theme, TYPO3 calls a site package. It is an extension: page layouts, Fluid templates (TYPO3's Twig/Blade), CSS and JS, and the site's settings, all under version control.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="The logo of Mto Safi Municipality: a river under the sun">
+      <g transform="translate(720 180) scale(7.5)">
+        <circle cx="32" cy="32" r="31" fill="#f3f7f4"/>
+        <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+        <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+        <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+      </g>
+      <text x="960" y="900" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="110" fill="#f3f7f4">Mto Safi</text>
+    </svg>
+    <aside class="notes">Our customer: Mto Safi, a fictional municipality on the Kenyan coast. Swahili for "clean river". Land rates, mobile money, news and events, a contact form.</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/design-index.png" alt="The static HTML design of Mto Safi: the home page with slider and service tiles">
+    <div class="caption url small-url"><em>github.com/TYPO3-Documentation/t3ca-demo</em> · design/</div>
+    <aside class="notes">The starting point: a static HTML design, like a designer or agency would deliver it. Creating the design is not part of this talk: I am a programmer, not a designer. I assume you already have the design. Five pages, SCSS, plain JavaScript. It is in the repository, in design/: try it yourself. Next: how do we turn this into a TYPO3 site package?</aside>
+  </section>
+
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 03-site-package, as typed; the answer shortened to its five options. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>How should I turn the static design in design/ into a TYPO3 v14 site package? What are the options, and which do you suggest and why?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>1. <mark>Write a small sitepackage by hand</mark> (recommended)<br>2. Site Package Builder<br>3. theme_camino<br>4. bootstrap_package<br>5. Paste the HTML in: a trap</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 03, real; the answer shortened. Ask for the options and why, then choose. The beginner chose option 1.</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/site-package-builder.png" alt="get.typo3.org: Site Package Builder, your kickstarter for modern TYPO3 Theme development">
+    <div class="caption url"><em>get.typo3.org/sitepackage</em></div>
+    <aside class="notes">The official way to start: the Site Package Builder. "Your kickstarter for modern TYPO3 Theme development." Claudia advised against it in stage 03: "creates many empty files". That is fine: an AI doesn't need all these empty files, a human does. The scaffolding helps people find their way; the AI writes only what it needs. The world is changing faster than we can.</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/site-package-tutorial.png" alt="TYPO3 site package tutorial: A site package is a custom TYPO3 extension that contains files regarding the theme and functionality of a site.">
+    <div class="caption url"><em>docs.typo3.org</em> · Site package tutorial</div>
+    <aside class="notes">The official tutorial, step by step from the first installation to the first site. New in v14: the Camino theme as a ready-made starting point.</aside>
+  </section>
+
+  <!-- ================= Claudia builds the site package ================= -->
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 03-site-package, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>go ahead with option 1</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The sitepackage is built and wired into the <code>main</code> site, and <mark>all five page layouts render</mark>.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 03, real. A short "go" after a good question. Then watch it work.</aside>
+  </section>
+
+  <section class="replay" data-cast="03-site-package">
+    <div class="player"></div>
+    <aside class="notes">Stage 03 replay, thinking squeezed out. Space: play/pause. PageDown/PageUp: next/previous slide. Watch: right after "go" it loads the skill typo3-sitepackage-development from the dev companion. Then it reads the design, writes the package file by file, and renders every layout to test it.</aside>
+  </section>
+
+  <section class="terminal">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i></div>
+      <pre class="tree"><span class="prompt">packages/mtosafi_sitepackage/</span>
+├── Configuration/Sets/Sitepackage/
+│   ├── BackendLayouts/       <span class="hint">5 page layouts</span>
+│   ├── config.yaml           <span class="hint">the site set</span>
+│   └── setup.typoscript      <span class="hint">CSS, JS, menus</span>
+└── Resources/
+    ├── Private/Templates/
+    │   ├── Pages/            <span class="hint">5 page templates</span>
+    │   └── Partials/Page/    <span class="hint">header, footer, breadcrumb</span>
+    ├── Private/Scss/         <span class="hint">from the design</span>
+    └── Public/Css/ JavaScript/</pre>
+    </div>
+    <aside class="notes">The result: 36 files. Each layout of the design is a page layout editors can choose, with a Fluid template of the same name. Header and footer are partials. The SCSS moved into the package. Everything from the design is now TYPO3.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 03-site-package, from the answer, shortened. -->
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><code>{page.title}</code> rendered nothing. <mark>In v14</mark> <code>page</code> is an object, so the right path is <code>{page.pageRecord.title}</code>.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 03, one of two bugs it found and fixed while testing. Exactly the kind of version detail an AI gets wrong from memory: the cut-off date again. It tested, so it found it. It also said what it did NOT test: "I didn't open the page module in a browser." So you look.</aside>
+  </section>
+
+
+</div>
+<div id="counter"></div>
+
+<script src="vendor/asciinema-player/asciinema-player.min.js"></script>
+<script src="casts/03-site-package.js"></script>
+<script>
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('section')];
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  function fit() {
+    const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  function show(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach((slide, i) => slide.classList.toggle('current', i === current));
+    counter.textContent = `${current + 1} / ${slides.length}`;
+    history.replaceState(null, '', `#${current + 1}`);
+    startReplay(slides[current]);
+    const notes = slides[current].querySelector('.notes');
+    if (notes) console.log(`Slide ${current + 1}: ${notes.textContent}`);
+  }
+
+  // Replays are created when their slide is first shown, and paused when you leave it.
+  // On a replay slide Space plays and pauses. Once you click into the player, all keys go to it
+  // (arrows seek); click outside it or press PageDown/PageUp to move on.
+  const players = new Map();
+  const playing = new Map();
+  function startReplay(slide) {
+    players.forEach((player, s) => { if (s !== slide && playing.get(s)) player.pause(); });
+    if (!slide.classList.contains('replay') || players.has(slide)) return;
+    const cast = (window.CASTS || {})[slide.dataset.cast];
+    if (!cast || !window.AsciinemaPlayer) return;
+    const player = AsciinemaPlayer.create({ data: cast }, slide.querySelector('.player'), {
+      speed: 3, idleTimeLimit: 1, fit: 'both',
+    });
+    player.addEventListener('play', () => playing.set(slide, true));
+    player.addEventListener('pause', () => playing.set(slide, false));
+    player.addEventListener('ended', () => playing.set(slide, false));
+    players.set(slide, player);
+  }
+
+  document.addEventListener('keydown', (event) => {
+    const slide = slides[current];
+    if (slide.classList.contains('replay')) {
+      if (event.target.closest && event.target.closest('.player')) return;   // the player handles it
+      if (event.key === ' ') {
+        const player = players.get(slide);
+        if (player) playing.get(slide) ? player.pause() : player.play();
+        event.preventDefault();
+        return;
+      }
+    }
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(event.key)) show(current + 1);
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(event.key)) show(current - 1);
+    else if (event.key === 'Home') show(0);
+    else if (event.key === 'End') show(slides.length - 1);
+    else if (event.key === 'f' || event.key === 'F') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    } else if (event.key === 'n' || event.key === 'N') document.body.classList.toggle('show-notes');
+    else return;
+    event.preventDefault();
+  });
+  document.addEventListener('click', (event) => { if (!event.target.closest('.replay')) show(current + 1); });
+  window.addEventListener('resize', fit);
+
+  fit();
+  show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+</script>
+</body>
+</html>
