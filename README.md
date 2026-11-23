@@ -33,7 +33,9 @@ It switches to every stage in order and checks that the site answers.
     ./stage go 2        # show its result in the browser
     ./stage next
 
-`SPEED=8 ./stage play 2` replays faster.
+`SPEED=8 ./stage play 2` replays faster. While Claude thinks, only the spinner
+moves; `play` squeezes each such stretch to 1.5 seconds (`squeeze-cast`).
+`THINK=5` keeps more of it, `THINK=0` plays the recording unchanged.
 
 ## Repository
 

@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+"""Shorten the stretches of a recorded Claude session where only the spinner moves.
+
+While Claude thinks or waits for a command, it redraws the spinner, the verb
+("Considering…") and the token counter several times a second. For asciinema
+that is output, not a pause, so --idle-time-limit cannot cut it. This filter
+finds runs of such frames and squeezes each run to at most THINK seconds.
+
+Usage: squeeze-cast <in.cast> <out.cast> [THINK seconds, default 1.5]
+"""
+import json
+import re
+import sys
+
+ANSI = [
+    re.compile(r'\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)'),  # OSC: window title etc.
+    re.compile(r'\x1b\[[0-9;?>=<]*[ -/]*[@-~]'),        # CSI: cursor moves, colours
+    re.compile(r'\x1b[()][0-9A-B]'),                    # charset switches
+    re.compile(r'\x1b.'),                               # anything else after ESC
+]
+WORDS = re.compile(r'thinking|thought for|tokens|esc to interrupt|[A-Z][a-z]+…')
+GLYPHS = re.compile(r'[\s✢✶✻✽·*●…↓↑()\d.,ks]')
+
+
+def visible(data: str) -> str:
+    for pattern in ANSI:
+        data = pattern.sub('', data)
+    return data.replace('\x0f', '').replace('\x0e', '')
+
+
+SPINNER = re.compile(r'[✢✶✻✽]|thinking|[A-Z][a-z]+…')
+NEARBY = 2.0  # seconds: a letter frame this close after a spinner frame belongs to it
+
+
+def kind(data: str) -> str:
+    """'spinner' for a spinner frame, 'letters' for a few letters, '' for real output.
+
+    The shimmering verb redraws a few letters at a time, but so does typing a
+    prompt. A frame of letters only counts as spinner when a real spinner frame
+    came shortly before it.
+    """
+    text = visible(data)
+    if len(text) > 40:
+        return ''
+    if len(GLYPHS.sub('', WORDS.sub('', text))) > 4:
+        return ''
+    return 'spinner' if SPINNER.search(text) else 'letters'
+
+
+def spinner_flags(events: list) -> list:
+    flags, last_spinner = [], float('-inf')
+    for e in events:
+        k = kind(e[2]) if e[1] == 'o' else ''
+        if k == 'spinner':
+            last_spinner = e[0]
+        flags.append(k == 'spinner' or (k == 'letters' and e[0] - last_spinner <= NEARBY))
+    return flags
+
+
+def main() -> None:
+    src, dst = sys.argv[1], sys.argv[2]
+    think = float(sys.argv[3]) if len(sys.argv) > 3 else 1.5
+    with open(src, encoding='utf-8') as f:
+        header = f.readline()
+        events = [json.loads(line) for line in f if line.strip()]
+
+    # Gaps between events; a run of spinner frames shares one budget of THINK seconds.
+    gaps, prev = [], 0.0
+    for e in events:
+        gaps.append(max(0.0, e[0] - prev))
+        prev = e[0]
+    spinner = spinner_flags(events)
+    i = 0
+    while i < len(events):
+        if spinner[i]:
+            j = i
+            while j < len(events) and spinner[j]:
+                j += 1
+            total = sum(gaps[i:j])
+            if total > think:
+                factor = think / total
+                for k in range(i, j):
+                    gaps[k] *= factor
+            i = j
+        else:
+            i += 1
+
+    with open(dst, 'w', encoding='utf-8') as f:
+        f.write(header)
+        t = 0.0
+        for e, gap in zip(events, gaps):
+            t += gap
+            f.write(json.dumps([round(t, 6), e[1], e[2]], ensure_ascii=False) + '\n')
+
+
+if __name__ == '__main__':
+    main()
