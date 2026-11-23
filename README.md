@@ -37,6 +37,16 @@ It switches to every stage in order and checks that the site answers.
 moves; `play` squeezes each such stretch to 1.5 seconds (`squeeze-cast`).
 `THINK=5` keeps more of it, `THINK=0` plays the recording unchanged.
 
+## Reading instead of watching
+
+`stages/<stage>/dialogue.md` holds the prompts of a stage and the answer Claude
+gave at the end of each turn, without tool calls and their output. `./stage
+save` writes it from Claude Code's session log, which only exists on the
+computer the stage was recorded on. To write it again:
+
+    ./extract-dialogue stages/12-contact-form          # final answers only
+    ./extract-dialogue stages/12-contact-form --all    # also Claude's notes in between
+
 ## Repository
 
 Both parts live in https://github.com/TYPO3-Documentation/t3ca-demo:

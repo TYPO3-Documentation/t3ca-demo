@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""Write the prompts and Claude's answers of a recorded stage as Markdown.
+
+The asciinema recording is what the terminal showed. Claude Code also keeps a
+log of each session in ~/.claude/projects/<folder>/<session id>.jsonl. The
+recording ends with "claude --resume <session id>", so the stage knows its
+session. From that log this script keeps each prompt and the answer Claude
+gave at the end of its turn; tool calls, their output and Claude's notes in
+between are left out.
+
+Usage: extract-dialogue <stage dir> [--all]
+       --all also keeps Claude's text in between, before and after tool calls.
+Writes <stage dir>/dialogue.md.
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+DEMO = ROOT / 'demo'
+LOGS = Path.home() / '.claude' / 'projects' / re.sub(r'[^A-Za-z0-9]', '-', str(DEMO))
+
+
+def session_ids(cast: Path) -> list[str]:
+    text = cast.read_text(encoding='utf-8', errors='replace')
+    ids = re.findall(r'claude --resume ([0-9a-f-]{36})', text)
+    return list(dict.fromkeys(ids))  # in order, without repeats
+
+
+def is_prompt(entry: dict) -> str | None:
+    """The text a person typed, or None for tool results, commands and system notes."""
+    attachment = entry.get('attachment') or {}
+    if (entry.get('type') == 'attachment' and attachment.get('type') == 'queued_command'
+            and (attachment.get('origin') or {}).get('kind') == 'human'):
+        return str(attachment.get('prompt', '')).strip() or None  # typed while Claude was working
+    if entry.get('type') != 'user' or entry.get('isMeta') or entry.get('isSidechain'):
+        return None
+    content = entry.get('message', {}).get('content')
+    if isinstance(content, list):
+        parts = [b.get('text', '') for b in content if b.get('type') == 'text']
+        if not parts:
+            return None
+        content = '\n'.join(parts)
+    if not isinstance(content, str):
+        return None
+    content = content.strip()
+    if not content or content.startswith('<'):  # slash commands, command output, reminders
+        return None
+    return content
+
+
+def answer_texts(entry: dict) -> list[str]:
+    if entry.get('type') != 'assistant' or entry.get('isSidechain'):
+        return []
+    content = entry.get('message', {}).get('content')
+    if not isinstance(content, list):
+        return []
+    return [b['text'].strip() for b in content if b.get('type') == 'text' and b.get('text', '').strip()]
+
+
+def dialogue(log: Path, keep_all: bool) -> list[tuple[str, list[str]]]:
+    turns: list[tuple[str, list[str]]] = []
+    for line in log.read_text(encoding='utf-8').splitlines():
+        entry = json.loads(line)
+        prompt = is_prompt(entry)
+        if prompt is not None:
+            turns.append((prompt, []))
+        elif turns:
+            turns[-1][1].extend(answer_texts(entry))
+    if not keep_all:
+        turns = [(p, a[-1:]) for p, a in turns]
+    return turns
+
+
+def demote(text: str) -> str:
+    """Headings in an answer go two levels below the prompt's heading."""
+    out, fence = [], False
+    for line in text.splitlines():
+        if line.lstrip().startswith('```'):
+            fence = not fence
+        if not fence and re.match(r'#{1,4} ', line):
+            line = '##' + line
+        out.append(line)
+    return '\n'.join(out)
+
+
+def quote(text: str) -> str:
+    return '\n'.join('> ' + line if line else '>' for line in text.splitlines())
+
+
+def main() -> None:
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    keep_all = '--all' in sys.argv
+    stage = Path(args[0]).resolve()
+    cast = stage / 'session.cast'
+    ids = session_ids(cast)
+    if not ids:
+        sys.exit(f'{cast}: no "claude --resume <id>" found; was Claude ended with /exit?')
+
+    out = [f'# Stage {stage.name}: prompts and answers', '']
+    for sid in ids:
+        log = LOGS / f'{sid}.jsonl'
+        if not log.exists():
+            sys.exit(f'{log}: session log not found')
+        for number, (prompt, answers) in enumerate(dialogue(log, keep_all), 1):
+            out += [f'## {number}. Prompt', '', quote(prompt), '']
+            for answer in answers or ['*(no text answer: interrupted or tool calls only)*']:
+                out += [demote(answer), '']
+    (stage / 'dialogue.md').write_text('\n'.join(out).rstrip() + '\n', encoding='utf-8')
+    print(stage / 'dialogue.md')
+
+
+if __name__ == '__main__':
+    main()

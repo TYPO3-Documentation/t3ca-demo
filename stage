@@ -81,6 +81,10 @@ cmd_save() {
             tar -czf "$dir/fileadmin.tar.gz" -C "$fa" .
         fi
     fi
+    if [[ -f "$dir/session.cast" ]]; then
+        say "Writing the prompts and answers"
+        "$ROOT/extract-dialogue" "$dir" >/dev/null || echo "stage: no dialogue.md written, see above" >&2
+    fi
     [[ -f "$dir/notes.md" ]] || printf '# Stage %s\n\nThe prompt:\n\nWhat to point out:\n' "$1" >"$dir/notes.md"
     say "Saved stage $1"
 }
