@@ -7,12 +7,53 @@
     Template layout "home": the newest news on the home page. The heading is the
     header of the content element, and the link to all news goes to the page the
     plugin names as list page (tab "Additional").
+    Template layout "events": the upcoming events on the home page (design/index.html,
+    section "Events"), as a list with a date badge, and a link to the plugin's list
+    page. Template layout "eventsPage": the same list on the events page itself.
+    Which news are events and which are still to come, the plugin decides
+    (EXT:eventnews, tab "Eventnews").
     Without a template layout: the list page itself, with pagination.
 </f:comment>
 <f:layout name="General" />
 
 <f:section name="content">
     <!--TYPO3SEARCH_end-->
+    <f:if condition="{settings.templateLayout} == 'events'">
+        <section aria-labelledby="events-title-{contentObjectData.uid}">
+            <div class="section-header">
+                <h2 id="events-title-{contentObjectData.uid}">{contentObjectData.header}</h2>
+                <f:if condition="{settings.listPid}">
+                    <f:link.page pageUid="{settings.listPid}"><f:translate key="events.all" domain="mtosafi_sitepackage.frontend" /></f:link.page>
+                </f:if>
+            </div>
+            <f:if condition="{news}">
+                <f:then>
+                    <ul class="events">
+                        <f:for each="{news}" as="newsItem">
+                            <f:render partial="List/Event" arguments="{newsItem: newsItem, settings: settings}" />
+                        </f:for>
+                    </ul>
+                </f:then>
+                <f:else>
+                    <p><f:translate key="events.none" domain="mtosafi_sitepackage.frontend" /></p>
+                </f:else>
+            </f:if>
+        </section>
+    </f:if>
+    <f:if condition="{settings.templateLayout} == 'eventsPage'">
+        <f:if condition="{news}">
+            <f:then>
+                <ul class="events">
+                    <f:for each="{news}" as="newsItem">
+                        <f:render partial="List/Event" arguments="{newsItem: newsItem, settings: settings}" />
+                    </f:for>
+                </ul>
+            </f:then>
+            <f:else>
+                <p><f:translate key="events.none" domain="mtosafi_sitepackage.frontend" /></p>
+            </f:else>
+        </f:if>
+    </f:if>
     <f:if condition="{settings.templateLayout} == 'home'">
         <f:then>
             <section aria-labelledby="news-title-{contentObjectData.uid}">
@@ -36,7 +77,7 @@
                 </f:if>
             </section>
         </f:then>
-        <f:else>
+        <f:else if="{settings.templateLayout} != 'events' && {settings.templateLayout} != 'eventsPage'">
             <f:if condition="{news}">
                 <f:then>
                     <div class="cards">

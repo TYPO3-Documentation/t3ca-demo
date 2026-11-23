@@ -3,3 +3,5 @@ mtosafi:
     serviceMenu: 22
     footerMenu: 23
     searchPage: 16
+  events:
+    detailPage: 36

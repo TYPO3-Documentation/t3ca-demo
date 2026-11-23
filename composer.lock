@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b25d1cd39153004c4e4e23770460036",
+    "content-hash": "e41feecfb4cc9a1fb918c81ee33a230d",
     "packages": [
         {
             "name": "altcha-org/altcha",
@@ -1009,6 +1009,103 @@
             "published-time": "2026-09-28T18:08:24+00:00"
         },
         {
+            "name": "georgringer/eventnews",
+            "version": "7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/eventnews.git",
+                "reference": "6851908067508d42ec7474062178095cbbf0d00d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/eventnews/zipball/6851908067508d42ec7474062178095cbbf0d00d",
+                "reference": "6851908067508d42ec7474062178095cbbf0d00d",
+                "shasum": ""
+            },
+            "require": {
+                "georgringer/news": "^13 || ^14",
+                "php": ">= 8.2 < 8.6",
+                "typo3/cms-backend": "^13.4.29 || ^14.3",
+                "typo3/cms-core": "^13.4.29 || ^14.3",
+                "typo3/cms-extbase": "^13.4.29 || ^14.3",
+                "typo3/cms-fluid": "^13.4.29 || ^14.3",
+                "typo3/cms-frontend": "^13.4.29 || ^14.3"
+            },
+            "conflict": {
+                "sebastian/recursion-context": "6.0.0 || 6.0.1 || 6.0.2"
+            },
+            "replace": {
+                "typo3-ter/eventnews": "self.version"
+            },
+            "require-dev": {
+                "a9f/typo3-fractor": "@dev",
+                "friendsofphp/php-cs-fixer": "^3.89.2",
+                "phpstan/phpdoc-parser": "^1.33.0",
+                "phpunit/phpunit": "^10.5.58",
+                "ssch/typo3-rector": "^3.7",
+                "typo3/cms-install": "^13.4.29 || ^14.3",
+                "typo3/coding-standards": "^0.8.0",
+                "typo3/testing-framework": "^8.3.1"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "typo3/cms": {
+                    "app-dir": ".Build",
+                    "web-dir": ".Build/Web",
+                    "extension-key": "eventnews"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\Eventnews\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "homepage": "https://ringer.it",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extend EXT:news with event and calendar functionality",
+            "homepage": "https://extensions.typo3.org/extension/eventnews",
+            "keywords": [
+                "event",
+                "extension",
+                "news",
+                "typo3"
+            ],
+            "support": {
+                "docs": "https://docs.typo3.org/p/georgringer/eventnews/main/en-us/",
+                "issues": "https://github.com/georgringer/eventnews/issues",
+                "source": "https://github.com/georgringer/eventnews"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/GeorgRinger/10",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.amazon.de/hz/wishlist/ls/8F573K08TSDG",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/georgringer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/georgringer",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2026-10-09T17:06:46+00:00",
+            "published-time": "2026-10-09T17:07:07+00:00"
+        },
+        {
             "name": "georgringer/news",
             "version": "14.1.2",
             "source": {
@@ -1591,10 +1688,11 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/mtosafi_sitepackage",
-                "reference": "ff587145bdf0f8aa409bdfa4afbde0030ffc2306"
+                "reference": "e6ec6daa4767a52f1c1f2d375f0a1919f52396b4"
             },
             "require": {
                 "bbysaeth/typo3-altcha": "^2.0",
+                "georgringer/eventnews": "^7.2",
                 "georgringer/news": "^14.1",
                 "tpwd/ke_search": "^7.5",
                 "typo3/cms-core": "^14.3",

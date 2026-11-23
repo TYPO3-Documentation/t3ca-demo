@@ -21,8 +21,8 @@ use TYPO3\CMS\Impexp\Initialization\ImportSiteConfigurationsOnPackageInitializat
  * Points the site configuration at the pages Initialisation/data.xml brought, after
  * the import.
  *
- * The site settings mtosafi.navigation.serviceMenu, footerMenu and searchPage and the
- * 404 error handling name pages by uid. Those are the uids the pages had on the
+ * The site settings mtosafi.navigation.serviceMenu, footerMenu and searchPage,
+ * mtosafi.events.detailPage and the 404 error handling name pages by uid. Those are the uids the pages had on the
  * installation the export was made on. The import gives every page a new uid and
  * remaps only the root page of a site it copies, so this listener translates the rest
  * with the map the import kept.
@@ -44,6 +44,7 @@ final readonly class RemapSitePageUidsOnPackageInitialization
         ['mtosafi', 'navigation', 'serviceMenu'],
         ['mtosafi', 'navigation', 'footerMenu'],
         ['mtosafi', 'navigation', 'searchPage'],
+        ['mtosafi', 'events', 'detailPage'],
     ];
 
     private const PAGE_LINK_PATTERN = '/^t3:\/\/page\?uid=(\d+)$/';

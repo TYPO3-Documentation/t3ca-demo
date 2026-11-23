@@ -26,8 +26,8 @@ What each step is for:
   the first start ran before `composer install`.
 - `typo3 setup` creates the tables and the backend user `admin`, and sets up
   every extension. For the sitepackage that imports the page tree, the news, the
-  home page and the search from `data.xml`, and creates the backend user group
-  "Editors". Choose a password with upper and lower case letters, a digit and a
+  events, the home page and the search from `data.xml`, and creates the backend
+  user group "Editors". Choose a password with upper and lower case letters, a digit and a
   special character, or the setup refuses it.
 - `--force` is needed because `config/system/settings.php` is in the repository.
   The setup rewrites that file: it drops the extension configuration and writes

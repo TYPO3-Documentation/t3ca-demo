@@ -13,7 +13,10 @@ pages, and two folders whose shortcuts make up the service and the footer menu.
 It also brings the news: the "News" list page with its "Article" detail page,
 the "News records" folder with the categories and news from
 `design/docs/news-and-events.docx`, and the news plugins on the home page, the
-list page and the detail page. The home page carries the slider and the service
+list page and the detail page. The events of the document are news records too,
+marked as events, in the same folder; they have their own "Events" list page with
+an "Event" detail page, and the home page lists the upcoming ones below the news.
+The home page carries the slider and the service
 tiles above the news; the slider images come along in `Initialisation/data.xml.files/`
 and land in `fileadmin/user_upload/slides/`. The "Page not found" page carries the
 text the site shows for an address that does not exist. Every other page carries
@@ -31,7 +34,7 @@ carries the contact form beside the address and the opening hours. The "Search i
 copied only where no site called `main` exists, and it answers on base `/`. Its
 error handling shows the "Page not found" page for HTTP 404.
 
-The tree is not edited by hand. Seven scripts in the project write it into an
+The tree is not edited by hand. Eight scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
 `Build/Initialisation/seed-news.php` the news on top of them,
 `Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
@@ -40,7 +43,8 @@ and `Build/Initialisation/seed-not-found.php` the "Page not found" page with the
 search and `Build/Initialisation/seed-pages.php` the example content of the other
 pages, with the illustrations in `Build/Initialisation/images/`, and
 `Build/Initialisation/seed-contact-form.php` the contact form on the "Contact" page,
-and it is exported
+and `Build/Initialisation/seed-events.php` the events with their pages and the events
+list on the home page, and it is exported
 from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
@@ -50,6 +54,7 @@ from there:
     ddev exec php Build/Initialisation/seed-search.php
     ddev exec php Build/Initialisation/seed-pages.php
     ddev exec php Build/Initialisation/seed-contact-form.php
+    ddev exec php Build/Initialisation/seed-events.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
@@ -69,24 +74,24 @@ The export lands in `public/fileadmin/user_upload/_temp_/importexport/`; replace
 ### Page uids in the site settings
 
 The site settings `mtosafi.navigation.serviceMenu`, `footerMenu` and
-`searchPage` name pages by uid, and so does the 404 error handling
+`searchPage` and `mtosafi.events.detailPage` name pages by uid, and so does the 404 error handling
 (`t3://page?uid=…`). Those are the uids the pages had where the export was made.
 The import gives every page a new uid and remaps only the root page of a site
 it copies from `Initialisation/Site/`.
 
 `Classes/Initialization/RemapSitePageUidsOnPackageInitialization.php` translates
-the other four with the uid map the import kept, in the setup that imported the
+the other five with the uid map the import kept, in the setup that imported the
 data. It changes the site `main` where its root page is one of the imported
 pages, whether the site came from `Initialisation/Site/main/` or was in
 `config/sites/main/` already. A uid the import did not bring stays as it is.
 
 Elsewhere, set them in the site settings (Site Management > Settings) to the
-"Service navigation" folder, the "Footer navigation" folder and the "Search"
-page, and the error handling (Site Management > Sites > Error Handling) to the
+"Service navigation" folder, the "Footer navigation" folder, the "Search"
+page and the "Event" page, and the error handling (Site Management > Sites > Error Handling) to the
 "Page not found" page.
 
-The news plugins name their pages (the news folder, the list and the detail
-page) in FlexForm fields the import remaps, so they need no site setting.
+The news and events plugins name their pages (the news folder, the list and the
+detail page) in FlexForm fields the import remaps, so they need no site setting.
 
 ### An installation the seed scripts wrote
 
@@ -128,7 +133,56 @@ list whose plugin chooses the template layout "Home page" renders as the home
 page section, with the content element's header as its heading and a link to the
 plugin's list page. The detail page uses the page layout "Article", which leaves
 the heading to the news. Addresses are `/news/article/<news>` and
-`/news/page-2` (`Configuration/Sets/Sitepackage/route-enhancers.yaml`).
+`/news/page-2` (`Configuration/Sets/Sitepackage/route-enhancers.yaml`). On the
+detail page, the breadcrumb ends with the title of the news instead of the page
+"Article" (`Classes/DataProcessing/NewsTitleInBreadcrumbProcessor.php`, built on the
+`AddNewsToMenuProcessor` of EXT:news); on "Event" with the title of the event.
+
+## Events
+
+The events come from `georgringer/eventnews`, which makes a news record an event:
+"Is event" beside the date, then an end, "Full day" and, on the tab "Eventnews",
+a place ("Location (simple)"). The date of the news is the start. The extension ships
+no site set; the site set imports its TypoScript, which makes every news plugin list
+news only unless the plugin chooses otherwise on its tab "Eventnews".
+
+Events have pages of their own, beside the news: the "Events" page lists every
+upcoming event, and its subpage "Event" shows one, at `/events/event/<event>`. So the
+breadcrumb of an event leads to the events and not to the news. The list plugins
+choose "Only events", the time limit `today` and the order by date, oldest first; an
+event that has started stays in the list until its last day. The one on the home page
+uses the template layout "Home page: the upcoming events", lists the next three and
+links to the "Events" page; the one on the "Events" page uses "Events page: all
+upcoming events". Both name "Event" as detail page. The detail plugin on "Event"
+names "Events" as list page, which the detail page links to as "All events".
+
+Each event in a list shows a date badge, the title as link to the detail page and the
+teaser; an event over several days has its first and its last day in the badge, one
+on each line. The detail page shows the days and the place instead of the date of the
+news. The partial is `Resources/Private/Extensions/News/Partials/List/Event.html`.
+
+The search indexes events with the news, through the indexer "News", which knows
+one detail page for all of them. `Classes/Search/LinkEventsToEventPage.php` links the
+events in the index to the page of the site setting `mtosafi.events.detailPage`
+(Site Management > Settings > Mto Safi > Events) instead. Like "Article", the "Event"
+page is excluded from the page indexer.
+
+An event can have a registration: on the tab "Eventnews", "Registration" takes a page,
+a website or an email address, and "Text of the registration button" the text of the
+button, "Register" where it is empty. The detail page shows the button below the text;
+the list on the home page does not. The two fields are the sitepackage's own
+(`Configuration/TCA/Overrides/tx_news_domain_model_news.php`). They reach the
+templates as `registrationLink` and `registrationLabel` through the class extension of
+EXT:news, which merges `Classes/Domain/Model/News.php` into its news model, as
+EXT:eventnews does with its fields; after a change to that class, flush the caches.
+
+The site shows days, not times: PHP runs on the installation's time zone, which is
+not necessarily the municipality's. The seeded events carry their times in the text,
+together with the cost and the registration, which have no field; the teaser repeats
+the place and the time the way the design does.
+
+The home page is cached. An event leaves the list when the page cache is rebuilt
+after its last day, at the latest when the cache expires.
 
 ## Text, images and tables
 

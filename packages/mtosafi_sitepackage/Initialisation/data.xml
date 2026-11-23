@@ -76,6 +76,14 @@
 							</node>
 						</node>
 					</node>
+					<node index="35" type="array">
+						<uid>35</uid>
+						<node index="subrow" type="array">
+							<node index="36" type="array">
+								<uid>36</uid>
+							</node>
+						</node>
+					</node>
 					<node index="22" type="array">
 						<uid>22</uid>
 						<node index="subrow" type="array">
@@ -205,6 +213,16 @@
 							<table>pages</table>
 						</element>
 					</relations>
+				</rec>
+				<rec index="35" type="array">
+					<uid>35</uid>
+					<pid>1</pid>
+					<title>Events</title>
+				</rec>
+				<rec index="36" type="array">
+					<uid>36</uid>
+					<pid>35</pid>
+					<title>Event</title>
 				</rec>
 				<rec index="30" type="array">
 					<uid>30</uid>
@@ -373,6 +391,55 @@
 						</element>
 						<element index="pages:30" type="array">
 							<id>30</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="45" type="array">
+					<uid>45</uid>
+					<pid>1</pid>
+					<title>Events</title>
+					<relations index="rels" type="array">
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:36" type="array">
+							<id>36</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:35" type="array">
+							<id>35</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="46" type="array">
+					<uid>46</uid>
+					<pid>35</pid>
+					<title>Upcoming events</title>
+					<relations index="rels" type="array">
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:36" type="array">
+							<id>36</id>
+							<table>pages</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="47" type="array">
+					<uid>47</uid>
+					<pid>36</pid>
+					<title>Event</title>
+					<relations index="rels" type="array">
+						<element index="pages:32" type="array">
+							<id>32</id>
+							<table>pages</table>
+						</element>
+						<element index="pages:35" type="array">
+							<id>35</id>
 							<table>pages</table>
 						</element>
 					</relations>
@@ -1115,6 +1182,13 @@
 							<sorting>0</sorting>
 							<sorting_foreign>1</sorting_foreign>
 						</element>
+						<element index="tx_news_domain_model_news:12" type="array">
+							<id>12</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
 					</relations>
 				</rec>
 				<rec index="2" type="array">
@@ -1157,6 +1231,13 @@
 							<sorting>0</sorting>
 							<sorting_foreign>1</sorting_foreign>
 						</element>
+						<element index="tx_news_domain_model_news:13" type="array">
+							<id>13</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
 					</relations>
 				</rec>
 				<rec index="5" type="array">
@@ -1171,6 +1252,13 @@
 							<sorting>0</sorting>
 							<sorting_foreign>1</sorting_foreign>
 						</element>
+						<element index="tx_news_domain_model_news:9" type="array">
+							<id>9</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
 					</relations>
 				</rec>
 				<rec index="6" type="array">
@@ -1180,6 +1268,13 @@
 					<relations index="rels" type="array">
 						<element index="tx_news_domain_model_news:6" type="array">
 							<id>6</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+						<element index="tx_news_domain_model_news:8" type="array">
+							<id>8</id>
 							<table>tx_news_domain_model_news</table>
 							<fieldname>categories</fieldname>
 							<sorting>0</sorting>
@@ -1205,9 +1300,74 @@
 					<uid>8</uid>
 					<pid>32</pid>
 					<title>Education</title>
+					<relations index="rels" type="array">
+						<element index="tx_news_domain_model_news:10" type="array">
+							<id>10</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
 				</rec>
 			</table>
 			<table index="tx_news_domain_model_news" type="array">
+				<rec index="13" type="array">
+					<uid>13</uid>
+					<pid>32</pid>
+					<title>Land rates help desk</title>
+				</rec>
+				<rec index="12" type="array">
+					<uid>12</uid>
+					<pid>32</pid>
+					<title>Festive market at the jetty</title>
+					<softrefs type="array">
+						<softref_element index="tx_mtosafisitepackage_registration_link:typolink:b89f1eea3897b9064c20c16343252f30:0" type="array">
+							<field>tx_mtosafisitepackage_registration_link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=9</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:9</recordRef>
+								<tokenID>b89f1eea3897b9064c20c16343252f30</tokenID>
+								<tokenValue>9</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="11" type="array">
+					<uid>11</uid>
+					<pid>32</pid>
+					<title>Jamhuri Day celebrations</title>
+				</rec>
+				<rec index="10" type="array">
+					<uid>10</uid>
+					<pid>32</pid>
+					<title>Youth job and skills fair</title>
+					<softrefs type="array">
+						<softref_element index="tx_mtosafisitepackage_registration_link:typolink:55fca047b228a52e981d533d3c4a7abc:0" type="array">
+							<field>tx_mtosafisitepackage_registration_link</field>
+							<spKey>typolink</spKey>
+							<matchString>t3://page?uid=15</matchString>
+							<subst type="array">
+								<type>db</type>
+								<recordRef>pages:15</recordRef>
+								<tokenID>55fca047b228a52e981d533d3c4a7abc</tokenID>
+								<tokenValue>15</tokenValue>
+							</subst>
+						</softref_element>
+					</softrefs>
+				</rec>
+				<rec index="9" type="array">
+					<uid>9</uid>
+					<pid>32</pid>
+					<title>Public participation forum: budget 2027/...</title>
+				</rec>
+				<rec index="8" type="array">
+					<uid>8</uid>
+					<pid>32</pid>
+					<title>Beach clean-up day</title>
+				</rec>
 				<rec index="1" type="array">
 					<uid>1</uid>
 					<pid>32</pid>
@@ -2112,6 +2272,7 @@
 					<item index="7">1</item>
 					<item index="6">1</item>
 					<item index="3">1</item>
+					<item index="45">1</item>
 				</table>
 				<table index="tx_mtosafisitepackage_slide" type="array">
 					<item index="1">1</item>
@@ -2131,6 +2292,7 @@
 					<item index="32">1</item>
 					<item index="23">1</item>
 					<item index="22">1</item>
+					<item index="35">1</item>
 					<item index="30">1</item>
 					<item index="33">1</item>
 					<item index="21">1</item>
@@ -2177,6 +2339,12 @@
 					<item index="8">1</item>
 				</table>
 				<table index="tx_news_domain_model_news" type="array">
+					<item index="13">1</item>
+					<item index="12">1</item>
+					<item index="11">1</item>
+					<item index="10">1</item>
+					<item index="9">1</item>
+					<item index="8">1</item>
 					<item index="1">1</item>
 					<item index="2">1</item>
 					<item index="3">1</item>
@@ -2198,6 +2366,19 @@
 				<table index="pages" type="array">
 					<item index="25">1</item>
 					<item index="24">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="35" type="array">
+				<table index="tt_content" type="array">
+					<item index="46">1</item>
+				</table>
+				<table index="pages" type="array">
+					<item index="36">1</item>
+				</table>
+			</page_contents>
+			<page_contents index="36" type="array">
+				<table index="tt_content" type="array">
+					<item index="47">1</item>
 				</table>
 			</page_contents>
 			<page_contents index="30" type="array">
@@ -2476,7 +2657,7 @@
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
 				<field index="perms_everybody" type="integer">1</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795344511</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795372569</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Home</field>
 				<field index="slug">/</field>
@@ -2645,6 +2826,103 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 							<path index="additional/lDEF/settings.listPid/vDEF/" type="array">
 								<element index="0" type="array">
 									<id>30</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:45" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">45</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">512</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">news_newsliststicky</field>
+				<field index="header">Events</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.orderBy&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;datetime&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.orderDirection&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;asc&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;32&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.timeRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;today&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.detailPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;36&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.listPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;35&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.limit&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;3&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.hidePagination&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;template&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.templateLayout&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;events&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;extraEntryEventNews&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.eventRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="sDEF/lDEF/settings.startingpoint/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>32</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.detailPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>36</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.listPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>35</id>
 									<table>pages</table>
 								</element>
 							</path>
@@ -3323,6 +3601,13 @@ fields[] = bodytext</field>
 							<sorting>0</sorting>
 							<sorting_foreign>1</sorting_foreign>
 						</element>
+						<element index="1" type="array">
+							<id>12</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
 					</relations>
 				</field>
 			</related>
@@ -3410,6 +3695,13 @@ fields[] = bodytext</field>
 							<sorting>0</sorting>
 							<sorting_foreign>1</sorting_foreign>
 						</element>
+						<element index="1" type="array">
+							<id>13</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
 					</relations>
 				</field>
 			</related>
@@ -3439,6 +3731,13 @@ fields[] = bodytext</field>
 							<sorting>0</sorting>
 							<sorting_foreign>1</sorting_foreign>
 						</element>
+						<element index="1" type="array">
+							<id>9</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
 					</relations>
 				</field>
 			</related>
@@ -3463,6 +3762,13 @@ fields[] = bodytext</field>
 					<relations index="itemArray" type="array">
 						<element index="0" type="array">
 							<id>6</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+						<element index="1" type="array">
+							<id>8</id>
 							<table>tx_news_domain_model_news</table>
 							<fieldname>categories</fieldname>
 							<sorting>0</sorting>
@@ -3514,6 +3820,194 @@ fields[] = bodytext</field>
 				<field index="slug">education</field>
 				<field index="tx_kesearch_filter" type="NULL"></field>
 				<field index="tx_kesearch_filtersubcat" type="NULL"></field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="items" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>10</id>
+							<table>tx_news_domain_model_news</table>
+							<fieldname>categories</fieldname>
+							<sorting>0</sorting>
+							<sorting_foreign>1</sorting_foreign>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:13" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">13</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Land rates help desk</field>
+				<field index="teaser">Monday to Friday, 9:00–15:00, at the cash office: help with your valuation notice and land rates.</field>
+				<field index="bodytext">&lt;p&gt;Staff of the Revenue Department help you read your valuation notice, calculate your land rates and set up payment by mobile money.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; Monday to Friday, 9:00–15:00&lt;br /&gt;&lt;strong&gt;Cost:&lt;/strong&gt; Free&lt;br /&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Not needed&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1800252000</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">land-rates-help-desk</field>
+				<field index="is_event" type="integer">1</field>
+				<field index="event_end" type="integer">1806494400</field>
+				<field index="location_simple">Municipal office, cash office</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:12" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">12</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Festive market at the jetty</field>
+				<field index="teaser">Every evening from 16:00 to 22:00 at the jetty: food, crafts and music.</field>
+				<field index="bodytext">&lt;p&gt;Food, crafts and music every evening before Christmas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; Every evening, 16:00–22:00&lt;br /&gt;&lt;strong&gt;Cost:&lt;/strong&gt; Free entry&lt;br /&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Traders apply for a stall at the Trade &amp;amp; Markets Office until 1 December&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1797685200</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">festive-market-at-the-jetty</field>
+				<field index="is_event" type="integer">1</field>
+				<field index="event_end" type="integer">1798138800</field>
+				<field index="location_simple">Jetty and fish market</field>
+				<field index="tx_mtosafisitepackage_registration_link">t3://page?uid=9</field>
+				<field index="tx_mtosafisitepackage_registration_label">Apply for a stall</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="tx_mtosafisitepackage_registration_link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="b89f1eea3897b9064c20c16343252f30:0" type="array">
+									<matchString>t3://page?uid=9</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:9</recordRef>
+										<tokenID>b89f1eea3897b9064c20c16343252f30</tokenID>
+										<tokenValue>9</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:b89f1eea3897b9064c20c16343252f30}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:11" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">11</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Jamhuri Day celebrations</field>
+				<field index="teaser">Municipal grounds, 9:00–14:00. Flag raising, speeches, school choirs and traditional dances.</field>
+				<field index="bodytext">&lt;p&gt;The municipality celebrates Jamhuri Day with the flag raising, speeches, school choirs and traditional dances.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 9:00–14:00&lt;br /&gt;&lt;strong&gt;Cost:&lt;/strong&gt; Free&lt;br /&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Not needed&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1797055200</field>
+				<field index="type">0</field>
+				<field index="path_segment">jamhuri-day-celebrations</field>
+				<field index="is_event" type="integer">1</field>
+				<field index="event_end" type="integer">1797073200</field>
+				<field index="location_simple">Municipal grounds</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:10" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">10</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Youth job and skills fair</field>
+				<field index="teaser">Mto Safi Polytechnic, 9:00–15:00. Bring copies of your CV and certificates.</field>
+				<field index="bodytext">&lt;p&gt;Employers from tourism, fishing, construction and IT present jobs and apprenticeships. Bring copies of your CV and certificates.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 9:00–15:00&lt;br /&gt;&lt;strong&gt;Cost:&lt;/strong&gt; Free&lt;br /&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Recommended, at the Education Office&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1796450400</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">youth-job-and-skills-fair</field>
+				<field index="is_event" type="integer">1</field>
+				<field index="event_end" type="integer">1796472000</field>
+				<field index="location_simple">Mto Safi Polytechnic</field>
+				<field index="tx_mtosafisitepackage_registration_link">t3://page?uid=15</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="tx_mtosafisitepackage_registration_link" type="array">
+					<softrefs type="array">
+						<keys type="array">
+							<softref_key index="typolink" type="array">
+								<softref_element index="55fca047b228a52e981d533d3c4a7abc:0" type="array">
+									<matchString>t3://page?uid=15</matchString>
+									<subst type="array">
+										<type>db</type>
+										<recordRef>pages:15</recordRef>
+										<tokenID>55fca047b228a52e981d533d3c4a7abc</tokenID>
+										<tokenValue>15</tokenValue>
+									</subst>
+								</softref_element>
+							</softref_key>
+						</keys>
+						<tokenizedContent>{softref:55fca047b228a52e981d533d3c4a7abc}</tokenizedContent>
+					</softrefs>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:9" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">9</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Public participation forum: budget 2027/28</field>
+				<field index="teaser">Municipal hall, 10:00. Every resident may speak.</field>
+				<field index="bodytext">&lt;p&gt;Every resident may speak. The forum is held in Kiswahili and English. Sign language interpretation is available on request until 15 November.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 10:00–13:00&lt;br /&gt;&lt;strong&gt;Cost:&lt;/strong&gt; Free&lt;br /&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Not needed&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1795330800</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">public-participation-forum-budget-2027-28</field>
+				<field index="is_event" type="integer">1</field>
+				<field index="event_end" type="integer">1795341600</field>
+				<field index="location_simple">Municipal hall, Beach Road 1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_news_domain_model_news:8" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">8</field>
+				<field index="pid" type="integer">32</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="title">Beach clean-up day</field>
+				<field index="teaser">Meet at the lifeguard tower on the public beach, 7:00. Gloves, bags and water provided.</field>
+				<field index="bodytext">&lt;p&gt;Residents, schools and businesses clean the beach together. Gloves, bags and water are provided. The cleanest group wins a tree for its school.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Time:&lt;/strong&gt; 7:00–11:00&lt;br /&gt;&lt;strong&gt;Cost:&lt;/strong&gt; Free&lt;br /&gt;&lt;strong&gt;Registration:&lt;/strong&gt; Not needed&lt;/p&gt;</field>
+				<field index="datetime" type="integer">1794715200</field>
+				<field index="categories" type="integer">1</field>
+				<field index="type">0</field>
+				<field index="path_segment">beach-clean-up-day</field>
+				<field index="is_event" type="integer">1</field>
+				<field index="event_end" type="integer">1794729600</field>
+				<field index="location_simple">Public beach, meeting point at the lifeguard tower</field>
 			</fieldlist>
 		</tablerow>
 		<tablerow index="tx_news_domain_model_news:1" type="array">
@@ -3885,6 +4379,203 @@ fields[] = bodytext</field>
 							<table>pages</table>
 						</element>
 					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="pages:35" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">35</field>
+				<field index="pid" type="integer">1</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">3264</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795372569</field>
+				<field index="doktype" type="integer">1</field>
+				<field index="title">Events</field>
+				<field index="slug">/events</field>
+				<field index="nav_hide" type="integer">1</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:46" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">46</field>
+				<field index="pid" type="integer">35</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">news_newsliststicky</field>
+				<field index="header">Upcoming events</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.orderBy&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;datetime&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.orderDirection&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;asc&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;32&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.timeRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;today&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.detailPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;36&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.hidePagination&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;template&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.templateLayout&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;eventsPage&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;extraEntryEventNews&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.eventRestriction&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;1&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="sDEF/lDEF/settings.startingpoint/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>32</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.detailPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>36</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="pages:36" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">36</field>
+				<field index="pid" type="integer">35</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="perms_userid" type="integer">1</field>
+				<field index="perms_groupid" type="integer">1</field>
+				<field index="perms_user" type="integer">31</field>
+				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795372569</field>
+				<field index="doktype" type="integer">1</field>
+				<field index="title">Event</field>
+				<field index="slug">/events/event</field>
+				<field index="nav_hide" type="integer">1</field>
+				<field index="no_search" type="integer">1</field>
+				<field index="backend_layout">pagets__Article</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tt_content:47" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">47</field>
+				<field index="pid" type="integer">36</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">256</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">news_newsdetail</field>
+				<field index="header">Event</field>
+				<field index="header_layout" type="integer">100</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="pi_flexform">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot; ?&gt;
+&lt;T3FlexForms&gt;
+    &lt;data&gt;
+        &lt;sheet index=&quot;sDEF&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.startingpoint&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;32&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.recursive&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;0&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+        &lt;sheet index=&quot;additional&quot;&gt;
+            &lt;language index=&quot;lDEF&quot;&gt;
+                &lt;field index=&quot;settings.listPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;35&lt;/value&gt;
+                &lt;/field&gt;
+                &lt;field index=&quot;settings.backPid&quot;&gt;
+                    &lt;value index=&quot;vDEF&quot;&gt;35&lt;/value&gt;
+                &lt;/field&gt;
+            &lt;/language&gt;
+        &lt;/sheet&gt;
+    &lt;/data&gt;
+&lt;/T3FlexForms&gt;</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="pi_flexform" type="array">
+					<type>flex</type>
+					<flexform index="flexFormRels" type="array">
+						<db_relations index="db" type="array">
+							<path index="sDEF/lDEF/settings.startingpoint/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>32</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.listPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>35</id>
+									<table>pages</table>
+								</element>
+							</path>
+							<path index="additional/lDEF/settings.backPid/vDEF/" type="array">
+								<element index="0" type="array">
+									<id>35</id>
+									<table>pages</table>
+								</element>
+							</path>
+						</db_relations>
+					</flexform>
 				</field>
 			</related>
 		</tablerow>
@@ -4845,7 +5536,7 @@ Sat, Sun|Closed</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795368020</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Public participation</field>
 				<field index="slug">/public-participation</field>
@@ -5046,7 +5737,7 @@ The old town with its carved doors</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795368020</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Environment &amp; water</field>
 				<field index="slug">/environment-water</field>
@@ -5205,7 +5896,7 @@ Mnarani|Mnarani|Mon–Fri 8:00–17:00</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795334294</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795368020</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Revenue &amp; payments</field>
 				<field index="slug">/revenue-payments</field>

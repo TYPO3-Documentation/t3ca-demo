@@ -1,0 +1,31 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:n="http://typo3.org/ns/GeorgRinger/News/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:comment>
+    One event in the list of upcoming events: the date badge, the title as link to the
+    detail page, and the teaser. An event that ends on a later day shows its first and
+    its last day in the badge, one on each line.
+</f:comment>
+<f:variable name="start" value="{newsItem.datetime -> f:format.date(format: 'Y-m-d')}" />
+<f:variable name="end" value="{start}" />
+<f:if condition="{newsItem.eventEnd}">
+    <f:variable name="end" value="{newsItem.eventEnd -> f:format.date(format: 'Y-m-d')}" />
+</f:if>
+<li>
+    <f:if condition="{end} != {start}">
+        <f:then>
+            <span class="events__date events__date--range">
+                <time datetime="{start}">{newsItem.datetime -> f:format.date(format: 'j M')}</time><span aria-hidden="true">&nbsp;–</span><span class="visually-hidden"> <f:translate key="events.until" domain="mtosafi_sitepackage.frontend" /></span><br>
+                <time datetime="{end}">{newsItem.eventEnd -> f:format.date(format: 'j M')}</time>
+            </span>
+        </f:then>
+        <f:else>
+            <time class="events__date" datetime="{start}">{newsItem.datetime -> f:format.date(format: 'j')}<br>{newsItem.datetime -> f:format.date(format: 'M')}</time>
+        </f:else>
+    </f:if>
+    <div>
+        <strong><n:link newsItem="{newsItem}" settings="{settings}">{newsItem.title}</n:link></strong>
+        <f:if condition="{newsItem.teaser}"><br>{newsItem.teaser}</f:if>
+    </div>
+</li>
+</html>

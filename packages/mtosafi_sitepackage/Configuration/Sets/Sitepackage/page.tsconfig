@@ -3,6 +3,8 @@
 # The variants of a news list an editor chooses in the plugin, tab "Template".
 tx_news.templateLayouts {
   home = Home page: the latest news as cards, with a link to all news
+  events = Home page: the upcoming events as a list with date badges, with a link to all events
+  eventsPage = Events page: all upcoming events as a list with date badges
 }
 
 # Page module previews of the sitepackage's content elements.

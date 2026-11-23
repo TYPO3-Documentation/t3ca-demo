@@ -38,6 +38,9 @@ return [
             'loginLogo' => '',
             'loginLogoAlt' => '',
         ],
+        'eventnews' => [
+            'overrideAdministrationModuleLabel' => '0',
+        ],
         'ke_search' => [
             'additionalWordCharacters' => '',
             'allowEmptySearch' => '1',

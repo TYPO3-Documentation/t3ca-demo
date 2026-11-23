@@ -541,15 +541,19 @@ main {
 .events {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-columns: minmax(4rem, max-content) 1fr;
 }
 .events li {
-  display: flex;
+  display: grid;
+  grid-column: 1/-1;
+  grid-template-columns: subgrid;
   gap: 1rem;
+  align-items: start;
   padding: 0.75rem 0;
   border-bottom: 1px solid #cdd8d2;
 }
 .events__date {
-  flex: 0 0 4rem;
   padding: 0.4rem;
   border-radius: 6px;
   background: #9b1c1f;
@@ -557,6 +561,9 @@ main {
   text-align: center;
   font-weight: 700;
   line-height: 1.2;
+}
+.events__date--range {
+  white-space: nowrap;
 }
 
 .infobox {

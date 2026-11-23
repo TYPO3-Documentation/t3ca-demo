@@ -16,6 +16,9 @@
 			<trans-unit id="categories.mtosafi.footer">
 				<source>Footer</source>
 			</trans-unit>
+			<trans-unit id="categories.mtosafi.events">
+				<source>Events</source>
+			</trans-unit>
 
 			<trans-unit id="settings.mtosafi.brand.name">
 				<source>Name</source>
@@ -53,6 +56,13 @@
 			</trans-unit>
 			<trans-unit id="settings.description.mtosafi.navigation.searchPage">
 				<source>The page the search form in the header submits to. 0 hides the search form.</source>
+			</trans-unit>
+
+			<trans-unit id="settings.mtosafi.events.detailPage">
+				<source>Event detail page</source>
+			</trans-unit>
+			<trans-unit id="settings.description.mtosafi.events.detailPage">
+				<source>The page that shows one event. The search links events there instead of to the detail page of the news. 0 links them like news.</source>
 			</trans-unit>
 
 			<trans-unit id="settings.mtosafi.footer.address">

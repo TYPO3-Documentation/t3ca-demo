@@ -11,6 +11,7 @@
     ],
     "require": {
         "bbysaeth/typo3-altcha": "^2.0",
+        "georgringer/eventnews": "^7.2",
         "georgringer/news": "^14.1",
         "tpwd/ke_search": "^7.5",
         "typo3/cms-core": "^14.3",

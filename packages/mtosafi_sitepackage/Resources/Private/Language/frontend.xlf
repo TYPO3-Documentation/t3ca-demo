@@ -93,6 +93,18 @@
 			<trans-unit id="news.pagination.status">
 				<source>Page %1$s of %2$s</source>
 			</trans-unit>
+			<trans-unit id="events.all">
+				<source>All events</source>
+			</trans-unit>
+			<trans-unit id="events.none">
+				<source>There are no upcoming events at the moment.</source>
+			</trans-unit>
+			<trans-unit id="events.register">
+				<source>Register</source>
+			</trans-unit>
+			<trans-unit id="events.until">
+				<source>to</source>
+			</trans-unit>
 			<trans-unit id="slider.roledescription">
 				<source>carousel</source>
 			</trans-unit>

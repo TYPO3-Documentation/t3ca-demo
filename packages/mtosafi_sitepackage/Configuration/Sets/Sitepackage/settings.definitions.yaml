@@ -7,6 +7,8 @@ categories:
     parent: mtosafi
   mtosafi.footer:
     parent: mtosafi
+  mtosafi.events:
+    parent: mtosafi
 
 settings:
   mtosafi.brand.name:
@@ -32,6 +34,11 @@ settings:
     default: 0
   mtosafi.navigation.searchPage:
     category: mtosafi.navigation
+    type: page
+    default: 0
+
+  mtosafi.events.detailPage:
+    category: mtosafi.events
     type: page
     default: 0
 

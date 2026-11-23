@@ -59,6 +59,10 @@ page {
         as = breadcrumb
       }
 
+      # On the detail page of a news or an event, its title instead of the page "Article" or "Event".
+      41 = Mtosafi\Sitepackage\DataProcessing\NewsTitleInBreadcrumbProcessor
+      41.menus = breadcrumb
+
       50 = menu
       50 {
         if.isTrue = {$mtosafi.navigation.serviceMenu}
@@ -92,6 +96,11 @@ lib.contentElement.templateRootPaths.200 = EXT:mtosafi_sitepackage/Resources/Pri
 lib.contentElement.partialRootPaths.200 = EXT:mtosafi_sitepackage/Resources/Private/Templates/Partials/Content/
 
 @import './TypoScript/ContentElements/*.typoscript'
+
+# Events (EXT:eventnews): it ships no site set, so its TypoScript is imported here. It sets
+# the demand class that knows events and makes every news plugin that does not choose
+# otherwise list news only.
+@import 'EXT:eventnews/Configuration/TypoScript/setup.typoscript'
 
 # News (EXT:news): the design's markup instead of the extension's own, and none of its CSS.
 plugin.tx_news {

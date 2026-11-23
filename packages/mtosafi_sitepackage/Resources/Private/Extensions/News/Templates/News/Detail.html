@@ -4,6 +4,10 @@
 <f:comment>
     One news on the detail page. The page uses the page layout "Article", which
     prints no heading: the title of the news is the page's h1 and its title tag.
+    An event (EXT:eventnews) shows its days and its place instead of the date of the
+    news, its registration as a button below the text where it has one, and a link to
+    all events instead of all news. Events have their own detail page, whose plugin
+    names the events page as list page.
 </f:comment>
 <f:layout name="Detail" />
 
@@ -15,6 +19,12 @@
                 <h1>{newsItem.title}</h1>
                 <p class="card__meta">
                     <time datetime="{f:format.date(date: newsItem.datetime, format: 'Y-m-d')}">{f:format.date(date: newsItem.datetime, format: 'j F Y')}</time>
+                    <f:if condition="{newsItem.isEvent}">
+                        <f:if condition="{newsItem.eventEnd} && {f:format.date(date: newsItem.eventEnd, format: 'Y-m-d')} != {f:format.date(date: newsItem.datetime, format: 'Y-m-d')}">
+                            – <time datetime="{f:format.date(date: newsItem.eventEnd, format: 'Y-m-d')}">{f:format.date(date: newsItem.eventEnd, format: 'j F Y')}</time>
+                        </f:if>
+                        <f:if condition="{newsItem.locationSimple}"> · {newsItem.locationSimple}</f:if>
+                    </f:if>
                     <f:for each="{newsItem.categories}" as="category"> · {category.title}</f:for>
                 </p>
                 <f:if condition="{newsItem.teaser}">
@@ -42,8 +52,15 @@
                     </f:if>
                 </f:for>
                 <f:format.html>{newsItem.bodytext}</f:format.html>
+                <f:if condition="{newsItem.isEvent} && {newsItem.registrationLink}">
+                    <f:variable name="registrationLabel" value="{newsItem.registrationLabel}" />
+                    <f:if condition="!{registrationLabel}">
+                        <f:variable name="registrationLabel" value="{f:translate(key: 'events.register', domain: 'mtosafi_sitepackage.frontend')}" />
+                    </f:if>
+                    <p><f:link.typolink parameter="{newsItem.registrationLink}" class="button">{registrationLabel}</f:link.typolink></p>
+                </f:if>
                 <f:if condition="{settings.listPid}">
-                    <p><f:link.page pageUid="{settings.listPid}"><f:translate key="news.all" domain="mtosafi_sitepackage.frontend" /></f:link.page></p>
+                    <p><f:link.page pageUid="{settings.listPid}"><f:translate key="{f:if(condition: newsItem.isEvent, then: 'events.all', else: 'news.all')}" domain="mtosafi_sitepackage.frontend" /></f:link.page></p>
                 </f:if>
             </article>
         </f:then>
