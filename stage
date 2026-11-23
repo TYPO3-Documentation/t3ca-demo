@@ -184,9 +184,15 @@ cmd_rehearse() {
     ((failed == 0)) && say "Every stage came up" || die "some stages need attention, see above"
 }
 
-case "${1:-}" in
-    record|save|go|play) [[ -n "${2:-}" ]] || die "$1 needs a stage"; "cmd_$1" "$2" ;;
-    list|next|rehearse) "cmd_$1" ;;
-    ""|-h|--help|help) usage ;;
-    *) die "unknown command '$1' (./stage help)" ;;
-esac
+# bash reads a script while it runs it. A record waits a long time, and if this
+# file changes meanwhile, bash would read on at its old position in the new file.
+# The braces make bash read everything up to "exit" before running anything.
+{
+    case "${1:-}" in
+        record|save|go|play) [[ -n "${2:-}" ]] || die "$1 needs a stage"; "cmd_$1" "$2" ;;
+        list|next|rehearse) "cmd_$1" ;;
+        ""|-h|--help|help) usage ;;
+        *) die "unknown command '$1' (./stage help)" ;;
+    esac
+    exit
+}
