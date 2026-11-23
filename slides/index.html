@@ -756,9 +756,9 @@
     <aside class="notes">Stage 03, real. A short "go" after a good question. Then watch it work.</aside>
   </section>
 
-  <section class="replay" data-cast="03-site-package">
+  <section class="replay" data-cast="03-site-package" data-speed="1" data-idle="3">
     <div class="player"></div>
-    <aside class="notes">Stage 03 replay, thinking squeezed out. Space: play/pause. PageDown/PageUp: next/previous slide. Watch: right after "go" it loads the skill typo3-sitepackage-development from the dev companion. Then it reads the design, writes the package file by file, and renders every layout to test it.</aside>
+    <aside class="notes">Stage 03 replay in real time, thinking squeezed out, pauses up to 3 s for reading. Space: play/pause (pause for long answers). PageDown/PageUp: next/previous slide. Watch: right after "go" it loads the skill typo3-sitepackage-development from the dev companion. Then it reads the design, writes the package file by file, and renders every layout to test it.</aside>
   </section>
 
   <section class="terminal">
@@ -830,8 +830,9 @@
   }
 
   // Replays are created when their slide is first shown, and paused when you leave it.
-  // On a replay slide Space plays and pauses. Once you click into the player, all keys go to it
-  // (arrows seek); click outside it or press PageDown/PageUp to move on.
+  // Speed and longest pause: data-speed (default 1, real time) and data-idle (default 3 s) on the slide;
+  // people need time to read. The thinking is already squeezed out of the cast. On a replay slide Space plays and pauses, and a click never moves on. Once you click into the
+  // player, all keys go to it (arrows seek); PageDown/PageUp (or a presenter remote) always move on.
   const players = new Map();
   const playing = new Map();
   function startReplay(slide) {
@@ -840,7 +841,7 @@
     const cast = (window.CASTS || {})[slide.dataset.cast];
     if (!cast || !window.AsciinemaPlayer) return;
     const player = AsciinemaPlayer.create({ data: cast }, slide.querySelector('.player'), {
-      speed: 3, idleTimeLimit: 1, fit: 'both',
+      speed: Number(slide.dataset.speed || 1), idleTimeLimit: Number(slide.dataset.idle || 3), fit: 'both',
     });
     player.addEventListener('play', () => playing.set(slide, true));
     player.addEventListener('pause', () => playing.set(slide, false));
@@ -851,7 +852,8 @@
   document.addEventListener('keydown', (event) => {
     const slide = slides[current];
     if (slide.classList.contains('replay')) {
-      if (event.target.closest && event.target.closest('.player')) return;   // the player handles it
+      const toPlayer = event.target.closest && event.target.closest('.player');
+      if (toPlayer && !['PageDown', 'PageUp'].includes(event.key)) return;   // the player handles it
       if (event.key === ' ') {
         const player = players.get(slide);
         if (player) playing.get(slide) ? player.pause() : player.play();
@@ -869,7 +871,9 @@
     else return;
     event.preventDefault();
   });
-  document.addEventListener('click', (event) => { if (!event.target.closest('.replay')) show(current + 1); });
+  // A click moves on, except on a replay slide: there clicks belong to the player. (Checking the
+  // clicked element is not enough, the player removes its start button while handling the click.)
+  document.addEventListener('click', () => { if (!slides[current].classList.contains('replay')) show(current + 1); });
   window.addEventListener('resize', fit);
 
   fit();
