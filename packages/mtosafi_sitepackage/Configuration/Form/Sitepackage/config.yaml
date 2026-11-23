@@ -16,6 +16,12 @@ prototypes:
       # section "Forms") instead of the Bootstrap classes EXT:form writes.
       Form:
         renderingOptions:
+          # The labels of the forms in every language of the site (sw.form.xlf for
+          # Kiswahili). Read before the labels of EXT:form at key 10, so the file
+          # also carries the Kiswahili error messages of the validators.
+          translation:
+            translationFiles:
+              20: 'EXT:mtosafi_sitepackage/Resources/Private/Language/form.xlf'
           # Form.fluid.html with the class "form" on the form tag.
           templateRootPaths:
             20: 'EXT:mtosafi_sitepackage/Resources/Private/Extensions/Form/Templates/'

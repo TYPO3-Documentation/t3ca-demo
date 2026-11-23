@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="sw" datatype="plaintext" original="EXT:mtosafi_sitepackage/Resources/Private/Language/frontend.xlf" date="2026-11-23T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="skipLink">
+				<source>Skip to content</source>
+				<target>Ruka hadi maudhui</target>
+			</trans-unit>
+			<trans-unit id="navigation.service">
+				<source>Service</source>
+				<target>Huduma</target>
+			</trans-unit>
+			<trans-unit id="navigation.main">
+				<source>Main</source>
+				<target>Kuu</target>
+			</trans-unit>
+			<trans-unit id="navigation.toggle">
+				<source>Menu</source>
+				<target>Menyu</target>
+			</trans-unit>
+			<trans-unit id="navigation.breadcrumb">
+				<source>Breadcrumb</source>
+				<target>Njia ya ukurasa</target>
+			</trans-unit>
+			<trans-unit id="search.label">
+				<source>Search the website</source>
+				<target>Tafuta kwenye tovuti</target>
+			</trans-unit>
+			<trans-unit id="search.placeholder">
+				<source>Search services, news, forms</source>
+				<target>Tafuta huduma, habari, fomu</target>
+			</trans-unit>
+			<trans-unit id="search.submit">
+				<source>Search</source>
+				<target>Tafuta</target>
+			</trans-unit>
+			<trans-unit id="search.results.count">
+				<source>%1$s results for “%2$s”</source>
+				<target>Matokeo %1$s ya “%2$s”</target>
+			</trans-unit>
+			<trans-unit id="search.results.countOne">
+				<source>1 result for “%1$s”</source>
+				<target>Tokeo 1 la “%1$s”</target>
+			</trans-unit>
+			<trans-unit id="search.results.none">
+				<source>Nothing found for “%1$s”. Try another word, or fewer words.</source>
+				<target>Hakuna kilichopatikana kwa “%1$s”. Jaribu neno lingine, au maneno machache.</target>
+			</trans-unit>
+			<trans-unit id="search.results.tooShort">
+				<source>Search for words of at least %1$s letters.</source>
+				<target>Tafuta maneno yenye herufi %1$s au zaidi.</target>
+			</trans-unit>
+			<trans-unit id="search.filters">
+				<source>Filter results</source>
+				<target>Chuja matokeo</target>
+			</trans-unit>
+			<trans-unit id="search.filters.apply">
+				<source>Apply filter</source>
+				<target>Tumia kichujio</target>
+			</trans-unit>
+			<trans-unit id="search.type.service">
+				<source>Service</source>
+				<target>Huduma</target>
+			</trans-unit>
+			<trans-unit id="search.type.news">
+				<source>News</source>
+				<target>Habari</target>
+			</trans-unit>
+			<trans-unit id="search.pagination">
+				<source>More results</source>
+				<target>Matokeo zaidi</target>
+			</trans-unit>
+			<trans-unit id="search.pagination.previous">
+				<source>Previous results</source>
+				<target>Matokeo yaliyotangulia</target>
+			</trans-unit>
+			<trans-unit id="search.pagination.next">
+				<source>Next results</source>
+				<target>Matokeo yanayofuata</target>
+			</trans-unit>
+			<trans-unit id="search.pagination.status">
+				<source>Page %1$s of %2$s</source>
+				<target>Ukurasa %1$s kati ya %2$s</target>
+			</trans-unit>
+			<trans-unit id="footer.openingHours">
+				<source>Opening hours</source>
+				<target>Saa za kazi</target>
+			</trans-unit>
+			<trans-unit id="footer.information">
+				<source>Information</source>
+				<target>Taarifa</target>
+			</trans-unit>
+			<trans-unit id="news.all">
+				<source>All news</source>
+				<target>Habari zote</target>
+			</trans-unit>
+			<trans-unit id="news.more">
+				<source>Read more</source>
+				<target>Soma zaidi</target>
+			</trans-unit>
+			<trans-unit id="news.none">
+				<source>There is no news at the moment.</source>
+				<target>Hakuna habari kwa sasa.</target>
+			</trans-unit>
+			<trans-unit id="news.notFound">
+				<source>This news item does not exist or is no longer online.</source>
+				<target>Habari hii haipo au haipo mtandaoni tena.</target>
+			</trans-unit>
+			<trans-unit id="news.pagination">
+				<source>More news</source>
+				<target>Habari zaidi</target>
+			</trans-unit>
+			<trans-unit id="news.pagination.previous">
+				<source>Newer news</source>
+				<target>Habari mpya zaidi</target>
+			</trans-unit>
+			<trans-unit id="news.pagination.next">
+				<source>Older news</source>
+				<target>Habari za zamani</target>
+			</trans-unit>
+			<trans-unit id="news.pagination.status">
+				<source>Page %1$s of %2$s</source>
+				<target>Ukurasa %1$s kati ya %2$s</target>
+			</trans-unit>
+			<trans-unit id="events.all">
+				<source>All events</source>
+				<target>Matukio yote</target>
+			</trans-unit>
+			<trans-unit id="events.none">
+				<source>There are no upcoming events at the moment.</source>
+				<target>Hakuna matukio yajayo kwa sasa.</target>
+			</trans-unit>
+			<trans-unit id="events.register">
+				<source>Register</source>
+				<target>Jisajili</target>
+			</trans-unit>
+			<trans-unit id="events.until">
+				<source>to</source>
+				<target>hadi</target>
+			</trans-unit>
+			<trans-unit id="slider.roledescription">
+				<source>carousel</source>
+				<target>jukwaa la slaidi</target>
+			</trans-unit>
+			<trans-unit id="slider.slide.roledescription">
+				<source>slide</source>
+				<target>slaidi</target>
+			</trans-unit>
+			<trans-unit id="slider.slide.position">
+				<source>%1$s of %2$s</source>
+				<target>%1$s kati ya %2$s</target>
+			</trans-unit>
+			<trans-unit id="slider.dot">
+				<source>Show slide %1$s of %2$s</source>
+				<target>Onyesha slaidi %1$s kati ya %2$s</target>
+			</trans-unit>
+			<trans-unit id="slider.previous">
+				<source>Previous slide</source>
+				<target>Slaidi iliyotangulia</target>
+			</trans-unit>
+			<trans-unit id="slider.next">
+				<source>Next slide</source>
+				<target>Slaidi inayofuata</target>
+			</trans-unit>
+			<trans-unit id="slider.pause">
+				<source>Pause slider</source>
+				<target>Simamisha slaidi</target>
+			</trans-unit>
+			<trans-unit id="slider.play">
+				<source>Play slider</source>
+				<target>Endesha slaidi</target>
+			</trans-unit>
+			<trans-unit id="lightbox.enlarge">
+				<source>(show larger)</source>
+				<target>(onyesha kubwa zaidi)</target>
+			</trans-unit>
+			<trans-unit id="lightbox.close">
+				<source>Close</source>
+				<target>Funga</target>
+			</trans-unit>
+			<trans-unit id="lightbox.previous">
+				<source>Previous image</source>
+				<target>Picha iliyotangulia</target>
+			</trans-unit>
+			<trans-unit id="lightbox.next">
+				<source>Next image</source>
+				<target>Picha inayofuata</target>
+			</trans-unit>
+			<trans-unit id="lightbox.position">
+				<source>Image %1$s of %2$s</source>
+				<target>Picha %1$s kati ya %2$s</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

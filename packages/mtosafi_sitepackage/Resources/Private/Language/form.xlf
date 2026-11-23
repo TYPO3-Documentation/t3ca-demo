@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="EXT:mtosafi_sitepackage/Resources/Private/Language/form.xlf" date="2026-11-23T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="contact.element.contact.renderingOptions.submitButtonLabel">
+				<source>Send message</source>
+			</trans-unit>
+			<trans-unit id="contact.element.required-hint.properties.text">
+				<source>Fields marked * are required.</source>
+			</trans-unit>
+			<trans-unit id="contact.element.name.properties.label">
+				<source>Full name</source>
+			</trans-unit>
+			<trans-unit id="contact.element.email.properties.label">
+				<source>Email address</source>
+			</trans-unit>
+			<trans-unit id="contact.element.phone.properties.label">
+				<source>Phone number</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.label">
+				<source>Topic</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.prependOptionLabel">
+				<source>Please choose</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.revenue">
+				<source>Revenue &amp; payments</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.land">
+				<source>Land &amp; planning</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.health">
+				<source>Health</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.environment">
+				<source>Environment, water &amp; waste</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.trade">
+				<source>Trade &amp; markets</source>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.other">
+				<source>Something else</source>
+			</trans-unit>
+			<trans-unit id="contact.element.message.properties.label">
+				<source>Your message</source>
+			</trans-unit>
+			<trans-unit id="contact.element.message.properties.elementDescription">
+				<source>At least 20 characters. Please do not include ID or bank account numbers.</source>
+			</trans-unit>
+			<trans-unit id="contact.element.consent.properties.label">
+				<source>I agree that the municipality processes my details to answer my message. &lt;a href="/privacy-policy"&gt;Privacy policy&lt;/a&gt;</source>
+			</trans-unit>
+			<trans-unit id="contact.element.altcha.properties.label">
+				<source>Spam protection</source>
+			</trans-unit>
+			<trans-unit id="contact.finisher.Confirmation.message">
+				<source>&lt;div class="alert alert--success"&gt;&lt;strong&gt;Asante! Your message has been sent.&lt;/strong&gt;&lt;p&gt;The right department answers to your email address within five working days.&lt;/p&gt;&lt;/div&gt;</source>
+			</trans-unit>
+			<trans-unit id="contact.validation.error.phone.1221565130">
+				<source>Please enter a phone number, such as +254 700 000 000.</source>
+			</trans-unit>
+			<trans-unit id="contact.validation.error.altcha.1719693214">
+				<source>Please tick "I'm not a robot" and wait until it is checked.</source>
+			</trans-unit>
+			<trans-unit id="contact.validation.error.altcha.1719694187">
+				<source>The robot check has expired. Please tick "I'm not a robot" again.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1221560910">
+				<source>This field is mandatory.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1221560718">
+				<source>This field is mandatory.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1221559976">
+				<source>You must enter a valid email address.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1428504122">
+				<source>Your text must be a minimum of %s characters in length and no longer than %s.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1238108068">
+				<source>You must enter text which is longer than %s characters.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1238108069">
+				<source>You must enter text which is no longer than %s characters.</source>
+			</trans-unit>
+			<trans-unit id="validation.error.1221565130">
+				<source>You must enter a valid value. Please refer to the description of this field.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

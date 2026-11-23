@@ -6,3 +6,8 @@ services:
 
   Mtosafi\Sitepackage\:
     resource: '../Classes/*'
+
+  # A ke_search hook is created by GeneralUtility::makeInstance(), which takes it from the
+  # container only where the service is public.
+  Mtosafi\Sitepackage\Search\IndexFallbackContentOfPageTranslations:
+    public: true

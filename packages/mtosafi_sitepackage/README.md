@@ -30,11 +30,14 @@ placeholders, because their real text is the municipality's to write. The "Conta
 carries the contact form beside the address and the opening hours. The "Search index" folder holds what the search needs: the filter
 "Show only" and the indexers for pages and news (see Search below).
 
-`Initialisation/Site/main/` is the site configuration that comes with it. It is
-copied only where no site called `main` exists, and it answers on base `/`. Its
-error handling shows the "Page not found" page for HTTP 404.
+Every page and the content of the home page also come in Kiswahili (see Languages
+below).
 
-The tree is not edited by hand. Eight scripts in the project write it into an
+`Initialisation/Site/main/` is the site configuration that comes with it. It is
+copied only where no site called `main` exists, and it answers on base `/`, in
+Kiswahili on `/sw/`. Its error handling shows the "Page not found" page for HTTP 404.
+
+The tree is not edited by hand. Nine scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
 `Build/Initialisation/seed-news.php` the news on top of them,
 `Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
@@ -44,7 +47,8 @@ search and `Build/Initialisation/seed-pages.php` the example content of the othe
 pages, with the illustrations in `Build/Initialisation/images/`, and
 `Build/Initialisation/seed-contact-form.php` the contact form on the "Contact" page,
 and `Build/Initialisation/seed-events.php` the events with their pages and the events
-list on the home page, and it is exported
+list on the home page, and `Build/Initialisation/seed-kiswahili.php` the Kiswahili
+translation, and it is exported
 from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
@@ -55,6 +59,7 @@ from there:
     ddev exec php Build/Initialisation/seed-pages.php
     ddev exec php Build/Initialisation/seed-contact-form.php
     ddev exec php Build/Initialisation/seed-events.php
+    ddev exec php Build/Initialisation/seed-kiswahili.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
@@ -102,6 +107,40 @@ the first setup there:
 
     ddev mysql -e "INSERT INTO sys_registry (entry_namespace, entry_key, entry_value)
         VALUES ('extensionDataImport', 'mtosafi_sitepackage:Initialisation/dataImported', 'i:1;')"
+
+## Languages
+
+The site speaks English (language 0, `/`) and Kiswahili (language 1, `/sw/`,
+locale `sw_KE`). The top bar of the header links to the other language of the
+current page (data processor `language-menu` in `setup.typoscript`, markup in
+`Partials/Page/Header.fluid.html`). It shows the link only where the page has a
+translation.
+
+`seed-kiswahili.php` translates every page and shortcut, with a Kiswahili title
+and URL, the content of the home page: the headers, the slides and the service
+tiles, and the content of the "Contact" page; the contact form is translated in its
+own label file (see "The form in Kiswahili" under Contact form). The other content, the news and the events are in English only.
+The Kiswahili language falls back to English for them (`fallbackType: fallback`,
+`fallbacks: '0'`), so a Kiswahili page shows the English content where it has no
+translation of its own.
+
+The labels of the templates are translated in
+`Resources/Private/Language/sw.frontend.xlf` and `sw.news.xlf`. The core does not
+know Kiswahili as a language, so `ext_localconf.php` adds `sw` to
+`SYS/localization/locales/user`; without it the site reads the English labels.
+
+Still in English on the Kiswahili pages:
+
+- the site settings of the header and the footer (the notice in the top bar, the
+  opening hours, the note), because a site setting has one value for all languages
+- the filter "Show only" of the search, a record of the "Search index" folder
+
+The search in Kiswahili finds the Kiswahili pages by their title and by the English
+content they show. ke_search writes an index entry for a page translation only
+where it has content elements of its own; for a translation that falls back to
+English, `Classes/Search/IndexFallbackContentOfPageTranslations.php` (hook
+`modifyPagesIndexEntry`) gives it the English content. The news are indexed in
+English only and are not found from the Kiswahili search.
 
 ## Editors
 
@@ -288,9 +327,41 @@ ALTCHA still registers its form setup through TypoScript
 removes. It works on 14.3; the extension has to move to `Configuration/Form/` before
 the site can go to TYPO3 15.
 
-The consent label links to the privacy policy by its address, `/privacy-policy`,
-rather than by page uid, so the link holds on any installation the package is
-imported into, as long as the page keeps that address.
+The consent label links to the privacy policy by its address, `/privacy-policy`
+(`/sw/sera-ya-faragha` in Kiswahili), rather than by page uid, so the link holds on
+any installation the package is imported into, as long as the page keeps that
+address.
+
+### The form in Kiswahili
+
+A form is not translated as a content element. The form setup names a translation
+file, `Resources/Private/Language/form.xlf`, and the form framework looks up every
+text of the form there in the language of the page: `sw.form.xlf` on `/sw/`. The
+keys are built from the identifiers of the form, its elements and its finishers,
+such as `contact.element.name.properties.label`,
+`contact.element.topic.properties.options.land`,
+`contact.element.contact.renderingOptions.submitButtonLabel` and
+`contact.finisher.Confirmation.message`. A text without a key stays the one of
+`contact.form.yaml`, in English. `form.xlf` repeats the English texts as the source
+for the translators. A new field or a changed text needs its key in both files.
+
+The error messages are in the same file. Messages written into the form definition
+(`validationErrorMessages`) are shown as they are, in every language, so the form
+keeps none: the ones for the phone number and the spam protection are keys of the
+form (`contact.validation.error.phone.1221565130`), and the messages of the
+validators are keys for every form (`validation.error.1221560910`). EXT:form has no
+Kiswahili, so `sw.form.xlf` carries the messages of the validators the form uses:
+NotEmpty, StringLength, EmailAddress and RegularExpression. A form with another
+validator shows its message in English until it is added.
+
+The ALTCHA widget translates itself: it reads the language from `<html lang>` and
+brings Kiswahili along.
+
+The mail to the office stays in English whatever language the visitor wrote in
+(`translation.language: default` of the finisher EmailToReceiver).
+
+The heading of the form, the address, the opening hours and "Report a problem" are
+content elements, translated by `Build/Initialisation/seed-kiswahili.php`.
 
 ## Search
 

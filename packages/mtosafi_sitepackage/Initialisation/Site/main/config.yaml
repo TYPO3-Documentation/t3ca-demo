@@ -15,5 +15,15 @@ languages:
     locale: en_US.UTF-8
     navigationTitle: English
     flag: us
+  -
+    title: Kiswahili
+    enabled: true
+    languageId: 1
+    base: /sw/
+    locale: sw_KE.UTF-8
+    navigationTitle: Kiswahili
+    flag: ke
+    fallbackType: fallback
+    fallbacks: '0'
 rootPageId: 1
 routes: {  }

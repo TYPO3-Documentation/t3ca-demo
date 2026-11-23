@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" target-language="sw" datatype="plaintext" original="EXT:mtosafi_sitepackage/Resources/Private/Language/form.xlf" date="2026-11-23T00:00:00Z" product-name="mtosafi_sitepackage">
+		<header/>
+		<body>
+			<trans-unit id="contact.element.contact.renderingOptions.submitButtonLabel">
+				<source>Send message</source>
+				<target>Tuma ujumbe</target>
+			</trans-unit>
+			<trans-unit id="contact.element.required-hint.properties.text">
+				<source>Fields marked * are required.</source>
+				<target>Sehemu zenye alama * ni za lazima.</target>
+			</trans-unit>
+			<trans-unit id="contact.element.name.properties.label">
+				<source>Full name</source>
+				<target>Jina kamili</target>
+			</trans-unit>
+			<trans-unit id="contact.element.email.properties.label">
+				<source>Email address</source>
+				<target>Anwani ya barua pepe</target>
+			</trans-unit>
+			<trans-unit id="contact.element.phone.properties.label">
+				<source>Phone number</source>
+				<target>Nambari ya simu</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.label">
+				<source>Topic</source>
+				<target>Mada</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.prependOptionLabel">
+				<source>Please choose</source>
+				<target>Tafadhali chagua</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.revenue">
+				<source>Revenue &amp; payments</source>
+				<target>Mapato na malipo</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.land">
+				<source>Land &amp; planning</source>
+				<target>Ardhi na mipango</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.health">
+				<source>Health</source>
+				<target>Afya</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.environment">
+				<source>Environment, water &amp; waste</source>
+				<target>Mazingira, maji na taka</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.trade">
+				<source>Trade &amp; markets</source>
+				<target>Biashara na masoko</target>
+			</trans-unit>
+			<trans-unit id="contact.element.topic.properties.options.other">
+				<source>Something else</source>
+				<target>Jambo lingine</target>
+			</trans-unit>
+			<trans-unit id="contact.element.message.properties.label">
+				<source>Your message</source>
+				<target>Ujumbe wako</target>
+			</trans-unit>
+			<trans-unit id="contact.element.message.properties.elementDescription">
+				<source>At least 20 characters. Please do not include ID or bank account numbers.</source>
+				<target>Angalau herufi 20. Tafadhali usiweke nambari za kitambulisho au za akaunti ya benki.</target>
+			</trans-unit>
+			<trans-unit id="contact.element.consent.properties.label">
+				<source>I agree that the municipality processes my details to answer my message. &lt;a href="/privacy-policy"&gt;Privacy policy&lt;/a&gt;</source>
+				<target>Ninakubali manispaa itumie taarifa zangu kujibu ujumbe wangu. &lt;a href="/sw/sera-ya-faragha"&gt;Sera ya faragha&lt;/a&gt;</target>
+			</trans-unit>
+			<trans-unit id="contact.element.altcha.properties.label">
+				<source>Spam protection</source>
+				<target>Kinga dhidi ya barua taka</target>
+			</trans-unit>
+			<trans-unit id="contact.finisher.Confirmation.message">
+				<source>&lt;div class="alert alert--success"&gt;&lt;strong&gt;Asante! Your message has been sent.&lt;/strong&gt;&lt;p&gt;The right department answers to your email address within five working days.&lt;/p&gt;&lt;/div&gt;</source>
+				<target>&lt;div class="alert alert--success"&gt;&lt;strong&gt;Asante! Ujumbe wako umetumwa.&lt;/strong&gt;&lt;p&gt;Idara husika itakujibu kupitia barua pepe yako ndani ya siku tano za kazi.&lt;/p&gt;&lt;/div&gt;</target>
+			</trans-unit>
+			<trans-unit id="contact.validation.error.phone.1221565130">
+				<source>Please enter a phone number, such as +254 700 000 000.</source>
+				<target>Tafadhali weka nambari ya simu, kwa mfano +254 700 000 000.</target>
+			</trans-unit>
+			<trans-unit id="contact.validation.error.altcha.1719693214">
+				<source>Please tick "I'm not a robot" and wait until it is checked.</source>
+				<target>Tafadhali weka alama kwenye "Mimi sio roboti" na usubiri hadi uthibitishwe.</target>
+			</trans-unit>
+			<trans-unit id="contact.validation.error.altcha.1719694187">
+				<source>The robot check has expired. Please tick "I'm not a robot" again.</source>
+				<target>Uthibitishaji umeisha. Tafadhali weka alama kwenye "Mimi sio roboti" tena.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1221560910">
+				<source>This field is mandatory.</source>
+				<target>Sehemu hii ni ya lazima.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1221560718">
+				<source>This field is mandatory.</source>
+				<target>Sehemu hii ni ya lazima.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1221559976">
+				<source>You must enter a valid email address.</source>
+				<target>Weka anwani sahihi ya barua pepe.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1428504122">
+				<source>Your text must be a minimum of %s characters in length and no longer than %s.</source>
+				<target>Maandishi yako yanapaswa kuwa na angalau herufi %s na yasizidi herufi %s.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1238108068">
+				<source>You must enter text which is longer than %s characters.</source>
+				<target>Weka maandishi yenye zaidi ya herufi %s.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1238108069">
+				<source>You must enter text which is no longer than %s characters.</source>
+				<target>Maandishi yasizidi herufi %s.</target>
+			</trans-unit>
+			<trans-unit id="validation.error.1221565130">
+				<source>You must enter a valid value. Please refer to the description of this field.</source>
+				<target>Weka thamani sahihi. Tafadhali angalia maelezo ya sehemu hii.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

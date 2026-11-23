@@ -1,6 +1,11 @@
 # The contact form of design/contact.html. The content element "Form" on the
 # "Contact" page renders it; Configuration/Form/Sitepackage/config.yaml gives it
 # the classes of the design and the mail layout of the site.
+#
+# The texts here are the English ones. Resources/Private/Language/form.xlf repeats
+# them as the source of the translations (sw.form.xlf for Kiswahili), and holds the
+# error messages of the phone number and the spam protection: a message written
+# into this file is shown as it is, in every language.
 type: Form
 identifier: contact
 label: 'Contact form'
@@ -22,6 +27,10 @@ finishers:
         '{email}': '{name}'
       addHtmlPart: true
       attachUploads: false
+      # The mail goes to the office, in English, whatever language the visitor wrote
+      # from: the subject, the title and the labels of the fields.
+      translation:
+        language: default
   # No copy to the visitor: it would go to whatever address was entered, with the
   # text that was entered, which lets anybody send mail from the municipality.
   -
@@ -77,10 +86,6 @@ renderables:
           fluidAdditionalAttributes:
             autocomplete: tel
             placeholder: '+254'
-          validationErrorMessages:
-            -
-              code: 1221565130
-              message: 'Please enter a phone number, such as +254 700 000 000.'
         validators:
           -
             identifier: RegularExpression
@@ -149,14 +154,6 @@ renderables:
         label: 'Spam protection'
         renderingOptions:
           doNotShowLabel: true
-        properties:
-          validationErrorMessages:
-            -
-              code: 1719693214
-              message: 'Please tick "I''m not a robot" and wait until it is checked.'
-            -
-              code: 1719694187
-              message: 'The robot check has expired. Please tick "I''m not a robot" again.'
         validators:
           -
             identifier: Altcha
