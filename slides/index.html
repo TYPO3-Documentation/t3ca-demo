@@ -28,6 +28,22 @@
     font-weight: 200 900;
     font-style: normal;
   }
+  /* Ethiopic letters (Amharic) come from Noto; the browser takes them only for these characters. */
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/NotoSansEthiopic.ttf') format('truetype');
+    font-weight: 200 900;   /* the same range as Source Sans, or the browser picks this face for normal text */
+    font-style: normal;
+    unicode-range: U+1200-139F, U+2D80-2DDF, U+AB00-AB2F;
+  }
+  /* Arabic letters come from Noto as well, only for these characters. */
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/NotoSansArabic.ttf') format('truetype');
+    font-weight: 200 900;
+    font-style: normal;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+  }
   @font-face {
     font-family: 'Source Sans 3';
     src: url('fonts/SourceSans3-latin-italic.woff2') format('woff2');
@@ -88,8 +104,8 @@
 
   /* Picture: a photo filling the screen. */
   .picture { background: var(--primary-dark); }
-  .picture img { width: 100%; height: 100%; object-fit: cover; }
-  .picture.upright img { object-fit: contain; }
+  .picture > img { width: 100%; height: 100%; object-fit: cover; }
+  .picture.upright > img { object-fit: contain; }
   .picture .caption {
     position: absolute;
     left: 0;
@@ -115,13 +131,15 @@
     padding: 0 90px 0 40px;
   }
   .picture.upright.left-text .caption { left: 0; right: auto; padding: 0 40px 0 90px; }
-  .picture.upright img { width: calc(100% - 640px); }
-  .picture.upright.left-text img { margin-left: 640px; }
+  .picture.upright > img { width: calc(100% - 640px); }
+  .picture.upright.left-text > img { margin-left: 640px; }
   .picture .caption.top { top: 80px; bottom: auto; }
+  .picture .caption.farewell { bottom: 50px; text-align: center; font-size: 120px; font-weight: 700; line-height: 1.15; padding: 20px 0 34px; }
+  .picture .caption.farewell .am { font-size: 96px; }
   .caption em { font-style: normal; color: var(--accent); }
 
   /* A screenshot: shown whole, on green, with a little margin. */
-  .picture.screenshot img { object-fit: contain; padding: 80px 80px 220px; }
+  .picture.screenshot > img { object-fit: contain; padding: 80px 80px 220px; }
   .picture .caption.url { background: none; text-align: center; bottom: 70px; font-size: 80px; }
   .picture .caption.url.small-url { font-size: 52px; bottom: 90px; }
 
@@ -150,6 +168,44 @@
   /* Replay: a recorded session, played in the slide. */
   .replay { align-items: center; justify-content: center; background: #1c2420; }
   .replay .player { width: 1880px; height: 1050px; }
+
+  /* A document: a page of the municipality's Word file, with its mistakes. */
+  .doc { align-items: center; justify-content: center; background: var(--primary-dark); }
+  .doc .page { width: 1300px; padding: 70px 90px; background: #fff; color: #222; border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); font: 40px/1.5 'Source Sans 3', 'Segoe UI', sans-serif; }
+  .doc h3 { margin: 0 0 6px; font-size: 48px; }
+  .doc h3 + .meta { margin-top: 0; }
+  .doc p { margin: 0 0 22px; }
+  .doc .meta { color: #555; font-size: 34px; }
+  .doc u { text-decoration: underline wavy #d32f2f; text-decoration-thickness: 3px; text-underline-offset: 8px; }
+  .doc mark { background: var(--accent); }
+  .doc h3:not(:first-child) { margin-top: 10px; }
+  .doc .gap { color: #999; margin: 0 0 10px; }
+  .doc .cursor { display: inline-block; width: 4px; height: 44px; margin-left: 4px; vertical-align: -8px; background: #222; }
+
+  /* Tiles: the other stages in the repository, with the QR code beside them. */
+  .tiles { align-items: center; justify-content: center; gap: 110px; background: var(--primary-dark); }
+  .tiles .grid { display: grid; grid-template-columns: repeat(2, 400px); gap: 28px; }
+  .tiles .tile { height: 170px; padding: 22px 30px; border-radius: 18px; background: var(--primary);
+    color: var(--white); font-size: 42px; font-weight: 600; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; }
+  .tiles .tile b { font-size: 62px; color: var(--accent); }
+  .tiles .repo-box { display: flex; flex-direction: column; gap: 30px; }
+  .tiles .qr { width: 440px; height: 440px; border-radius: 12px; }
+  .tiles .repo { font: 600 46px/1.2 'Source Sans 3', sans-serif; color: var(--accent); }
+  .tiles .foot { color: var(--white); font: 400 38px/1.3 'Source Sans 3', sans-serif; opacity: 0.85; }
+  .tiles code { font-size: 0.9em; color: var(--accent); }
+
+  /* Workshop: the announcement next to the puzzle. */
+  .workshop .caption > div { display: flex; flex-direction: column; gap: 18px; }
+  .workshop .title { font-size: 84px; font-weight: 700; line-height: 1.05; }
+  .workshop .sub { font-size: 52px; font-weight: 400; opacity: 0.85; }
+  .workshop .qr { width: 320px; height: 320px; border-radius: 12px; margin-top: 16px; }
+  .workshop .where { font-size: 40px; font-weight: 600; color: var(--accent); line-height: 1.2; }
+
+  /* A small link to the live site of a stage, bottom left; the slide count stays the same. */
+  .live-link { position: absolute; left: 22px; bottom: 12px; z-index: 3; padding: 6px 14px; border-radius: 8px;
+    background: rgba(7, 61, 41, 0.75); color: rgba(255, 255, 255, 0.85); font: 600 24px 'Source Sans 3', sans-serif; text-decoration: none; }
+  .live-link:hover { background: var(--primary); color: #fff; }
 
   /* Chat: a jambo-ai window. */
   .chat { align-items: center; justify-content: center; background: var(--primary-dark); }
@@ -309,13 +365,18 @@
   </section>
 
   <section class="picture">
-    <img src="images/typo3-gmbh-team-wall.jpg" alt="The team in front of the TYPO3 logo in the office">
-    <aside class="notes">My colleagues. The poodle came too.</aside>
+    <img src="images/folie_16_9.jpg" alt="The TYPO3 team of Lina's agency, chalked on a wall, with TYPO3-coloured pillows">
+    <aside class="notes">My team at the agency. One of us now works for the TYPO3 GmbH.</aside>
   </section>
 
   <section class="picture">
     <img src="images/bjoern_drake_meme.jpg" alt="Meme: Typo3 rejected, TYPO3 approved" style="object-fit: contain; background: #fff">
     <aside class="notes">"This is my boss, and this is the only rule he really insists on."</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/typo3-office-code-sprint.jpg" alt="Participants of a code sprint in front of the TYPO3 logo in the TYPO3 office">
+    <aside class="notes">A code sprint in the TYPO3 office: the community working on TYPO3 together. The poodle came too.</aside>
   </section>
 
   <section class="picture">
@@ -328,7 +389,7 @@
   <!-- Graphics instead of words: people listen while they look, not while they read. -->
 
   <section class="graphic">
-    <svg viewBox="0 0 1920 1080" role="img" aria-label="Raised hand and a browser window">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="People raising their hands and a browser window">
       <use href="#hand" x="90" y="290"/>
       <use href="#browser" x="920" y="290"/>
     </svg>
@@ -336,7 +397,7 @@
   </section>
 
   <section class="graphic">
-    <svg viewBox="0 0 1920 1080" role="img" aria-label="Raised hand and an IDE window">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="People raising their hands and an IDE window">
       <use href="#hand" x="90" y="290"/>
       <use href="#ide" x="920" y="290"/>
     </svg>
@@ -344,7 +405,7 @@
   </section>
 
   <section class="graphic">
-    <svg viewBox="0 0 1920 1080" role="img" aria-label="Raised hand and a terminal window">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="People raising their hands and a terminal window">
       <use href="#hand" x="90" y="290"/>
       <use href="#terminal" x="920" y="290"/>
     </svg>
@@ -513,6 +574,7 @@
       </div>
     </div>
     <aside class="notes">So: name the version yourself. Then the cut-off date doesn't matter. (Example, not from the recordings.)</aside>
+    <a class="live-link" href="https://t3ca-01.ddev.site/" target="_blank">live: t3ca-01.ddev.site</a>
   </section>
 
   <section class="picture screenshot">
@@ -800,7 +862,369 @@
       </div>
     </div>
     <aside class="notes">Stage 03, one of two bugs it found and fixed while testing. Exactly the kind of version detail an AI gets wrong from memory: the cut-off date again. It tested, so it found it. It also said what it did NOT test: "I didn't open the page module in a browser." So you look.</aside>
+    <a class="live-link" href="https://t3ca-03.ddev.site/" target="_blank">live: t3ca-03.ddev.site</a>
   </section>
+
+  <!-- ================= Stage 05: dirty data ================= -->
+  <!-- SPOILER: shows the planted mistakes. Do not push before the talk. -->
+
+  <section class="picture">
+    <img src="images/benny-muddy.jpg" alt="Benny covered in mud, sitting innocently next to a football" style="object-position: center 35%">
+    <aside class="notes">Section: sometimes data is dirty. The news and events come from the municipality's Word document.</aside>
+  </section>
+
+  <section class="doc">
+    <div class="page">
+      <h3>New boreholes bring clean water to Ward 5</h3>
+      <p class="meta">Date: 5 September <mark>2062</mark></p>
+      <p class="gap">…</p>
+      <p>Traders who sold at <u>the the</u> old market keep <u>there</u> stall number.</p>
+      <p><u>Pedestrains</u> and bicycles can pass at all times.</p>
+      <p><u>Contcat</u>: Revenue Department, +254 700 000 040</p>
+      <p class="gap">…</p>
+      <h3>Youth bursaries: applications open</h3>
+      <p>Students from Mto Safi who attend secondary school, a polytechnic or a<span class="cursor"></span></p>
+    </div>
+    <aside class="notes">Excerpts from different news items in design/docs/news-and-events.docx. Planted on purpose: typos, a date in 2062, an item that breaks off mid-sentence. What does the AI do with it?</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 05-news, from the final report, shortened. -->
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>I fixed the typos from the document.<br><mark>I read the boreholes date "2062" as 2026.</mark><br>I left out "Youth bursaries" because it breaks off mid-sentence.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 05, from the report at the end, slightly shortened. The typos: fine. The bursaries: left out and said so. The date: guessed, without asking. That is where the human has to look: read the report.</aside>
+    <a class="live-link" href="https://t3ca-05.ddev.site/" target="_blank">live: t3ca-05.ddev.site</a>
+  </section>
+
+  <section class="picture">
+    <img src="images/benny-dog-wash.jpg" alt="Benny wet in a self-service dog wash, next to the programme buttons">
+    <aside class="notes">The AI cleans up, like a dog wash: you pick the programme, the machine does the work. But somebody has to look whether the dog is really clean.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 05-news, from the report, shortened. -->
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>My first <code>extension:setup</code> run created <mark>a second copy of the whole page tree</mark>. I restored the database from the snapshot I took beforehand.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 05, real. It took a snapshot before a risky step, noticed the mess, restored it, and told me. Later it wanted to drop the database to test a fresh install; auto mode blocked that, and it asked instead.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/festive-benny-halma.jpg" alt="Benny posing with a Santa hat, Halma behind him with her head inside another Santa hat">
+    <aside class="notes">Two assistants, the same instruction: one poses perfectly, the other has her nose in something nobody asked for.</aside>
+  </section>
+  <section class="trio">
+    <img src="images/benny-bath-before.jpg" alt="Benny on a table in the shower, the shower head coming closer, clearly not amused" style="object-position: 55% center">
+    <img src="images/benny-bath-after.jpg" alt="Benny soaking wet in a blue bathrobe" style="object-position: center 60%">
+    <aside class="notes">You are more intelligent than your AI. You decide, sometimes against Claudia's will: no dropped database, ask before guessing a date. Benny didn't want a bath either.</aside>
+  </section>
+
+  <!-- ================= Stage 12: the contact form ================= -->
+
+  <section class="picture">
+    <img src="images/dogdancing/munsingen-2025-4.jpg" alt="Lina kneeling, reaching out with one hand, Halma beside her">
+    <aside class="notes">Section: the contact form. The first time the site collects personal data. Seven of my ten prompts in this stage were questions.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form, as typed; the first sentences of the answer, shortened. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>we need a contact form, what ways can it be created and what can you recommend?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The best fit is the core form extension, <mark>EXT:form</mark>. It's already installed but not switched on for your site yet.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Ask for the options first. The TYPO3 way: the form framework from the core, not a plugin from somewhere.</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/contact-form.png" alt="The contact form on the Mto Safi site, in the site's design">
+    <aside class="notes">The result: the core form extension, in the design. A YAML file in the site package; mails tested in Mailpit, which DDEV runs alongside the site.</aside>
+    <a class="live-link" href="https://t3ca-12.ddev.site/contact" target="_blank">live: t3ca-12.ddev.site/contact</a>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form, as typed; two sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>what about data privacy and security?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The form is technically sound, but <mark>my design has one real security flaw</mark>. A spammer can enter a stranger's address and their own text, and the municipality sends it for them, from its own domain.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The copy to the sender: whatever address is typed in gets the message. A spam relay, and one typo sends a citizen's message to a stranger. Claudia found her own flaw, because I asked. I decided: remove the copy.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/dogdancing/menzigen-2024-072A2887.jpg" alt="Lina with a fishing net, Halma reaching for a glittering fish">
+    <aside class="notes">Spam. Fishing it out before it reaches the inbox.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form; the reCAPTCHA row of the comparison table, as a sentence. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>what about spam protection?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Google reCAPTCHA sends visitor data to Google, so <mark>I advise against it for a public authority</mark>.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">She compared honeypot, ALTCHA, Friendly Captcha, mosparo and reCAPTCHA, and recommended ALTCHA: no outside service, no cookies. I said: try ALTCHA.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>why are the mails I receive TYPO3 themed now and with a TYPO3 imprint?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>ALTCHA caused it, and <mark>I missed it</mark> because I didn't check the mail layout after installing it.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">ALTCHA registered its own mail template with a higher key than the site's, so TYPO3's system layout won.</aside>
+  </section>
+
+  <section class="picture upright">
+    <img src="images/typo3-gmbh-espresso-selfie.jpg" alt="Lina at the espresso machine, looking sceptical">
+    <aside class="notes">I caught that, not Claudia: after a new extension, look at the result yourself.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>If you can solve this puzzle so quickly cant an attacker do the same?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><mark>Yes.</mark> ALTCHA makes each submission cost a little computing time; it doesn't stop someone who sets out to beat it.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Honest. It stops the generic bots, which is most spam on a small site. Next step would be a limit per IP, not a harder puzzle that hurts visitors on slow phones.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 12-contact-form, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>where is the personal data of the senders saved?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>TYPO3 doesn't store the sender's data anywhere. <mark>It exists only in the mail.</mark></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">She checked: database, logs, cookies. The mailbox is where retention and deletion happen. What the privacy policy says, and which law applies (Kenya's Data Protection Act here; Ghana's Data Protection Act, Ethiopia's Personal Data Protection Proclamation, Nigeria's NDPA, South Africa's POPIA, the GDPR elsewhere): the municipality decides, not the AI.</aside>
+  </section>
+
+  <!-- ================= Takeaways ================= -->
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A terminal with a chat inside">
+      <use href="#terminal-chat" x="150" y="230" width="700" height="530"/>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="1000" y="500" font-size="100" fill="#f3f7f4">Chat in the</text>
+        <text x="1000" y="640" font-size="100" fill="#f2b632">terminal.</text>
+      </g>
+    </svg>
+    <aside class="notes">Your colleague in the terminal. Give it a name. No commands to remember; look at the result in your IDE.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A TYPO3 book with the version 14.3">
+      <g transform="translate(300 250)"><rect width="390" height="480" rx="24" fill="#ff8700"/><rect width="66" height="480" rx="18" fill="#c96a00"/><g transform="translate(120 150) scale(5)" fill="#fff"><path d="M31.7,28.8c-0.6,0.2-1.1,0.2-1.7,0.2c-5.2,0-12.9-18.2-12.9-24.3c0-2.2,0.5-3,1.3-3.6 C12,1.9,4.3,4.2,1.9,7.2C1.3,8,1,9.1,1,10.6c0,9.5,10.1,31,17.3,31C21.6,41.6,27.1,36.2,31.7,28.8"/><path d="M28.4,0.5c6.6,0,13.2,1.1,13.2,4.8c0,7.6-4.8,16.7-7.2,16.7C30,22,24.5,9.9,24.5,3.8 C24.5,1,25.6,0.5,28.4,0.5"/></g><rect x="400" y="300" width="190" height="90" rx="18" fill="#f2b632"/><text x="495" y="363" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="56" fill="#073d29">14.3</text></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="1000" y="500" font-size="100" fill="#f3f7f4">Name the version.</text>
+        <text x="1000" y="640" font-size="100" fill="#f2b632">Use the docs.</text>
+      </g>
+    </svg>
+    <aside class="notes">The AI has a cut-off date. Name the TYPO3 version yourself, check get.typo3.org, connect the official docs through MCP: the TYPO3 Dev Companion.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A question mark and a check mark">
+      <g transform="translate(220 250)"><path d="M40 0h420a40 40 0 0 1 40 40v240a40 40 0 0 1-40 40H170l-80 70v-70H40a40 40 0 0 1-40-40V40a40 40 0 0 1 40-40z" fill="#f2b632"/><text x="250" y="250" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="240" fill="#073d29">?</text><g transform="translate(330 300)"><circle cx="150" cy="150" r="140" fill="#f3f7f4"/><path d="M85 155l45 45 95-100" fill="none" stroke="#0b5a3c" stroke-width="34" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="1000" y="500" font-size="100" fill="#f3f7f4">Ask first.</text>
+        <text x="1000" y="640" font-size="100" fill="#f2b632">You decide.</text>
+      </g>
+    </svg>
+    <aside class="notes">Ask for the options and the reasons, then choose. Sometimes against Claudia's will.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A magnifying glass over a mail">
+      <g transform="translate(220 250)"><rect x="0" y="60" width="520" height="340" rx="24" fill="#f3f7f4"/><path d="M0 84l260 170 260-170" fill="none" stroke="#9fb3a8" stroke-width="16" stroke-linejoin="round"/><circle cx="470" cy="330" r="150" fill="none" stroke="#f2b632" stroke-width="40"/><path d="M575 440l130 130" stroke="#f2b632" stroke-width="56" stroke-linecap="round"/></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="1000" y="500" font-size="100" fill="#f3f7f4">Check the</text>
+        <text x="1000" y="640" font-size="100" fill="#f2b632">result.</text>
+      </g>
+    </svg>
+    <aside class="notes">Read the report: the guessed date. Look at the mails yourself: the TYPO3 imprint. Claudia is fast; you are responsible.</aside>
+  </section>
+
+  <!-- ================= Outlook: the online workshop ================= -->
+
+  <section class="picture upright left-text workshop">
+    <img src="images/typo3-puzzle-inspiring-people-to-share.jpg" alt="A TYPO3 jigsaw puzzle, half done: inspiring people to share">
+    <div class="caption"><div>
+      <span class="title">Online workshop</span>
+      <span class="sub">for participants · details coming soon</span>
+      <img class="qr" src="screens/qr-discussions.svg" alt="QR code for the GitHub Discussions of the t3ca-demo repository">
+      <span class="where">GitHub Discussions<br>of the repository</span>
+    </div></div>
+    <aside class="notes">Not decided yet: date, time, content. We will announce it in the GitHub Discussions of the repository; whoever has no GitHub account, make one. TODO before the talk: switch on Discussions for TYPO3-Documentation/t3ca-demo, or the QR code leads to a 404. Today you saw the finished picture; in the workshop you put the pieces together yourselves.</aside>
+  </section>
+
+  <!-- ================= Closing ================= -->
+
+  <section class="picture">
+    <img src="images/festive-benny-sled.jpg" alt="Benny on a wooden sled, happy, among blue Christmas decorations" style="object-position: center 55%">
+    <div class="caption farewell">Thank you! <em>Asante sana!</em><br><span class="am" lang="am">አመሰግናለሁ።</span></div>
+    <aside class="notes">Thank you, in English, in Kiswahili (the host country) and in Amharic: አመሰግናለሁ, amesegnalehu, "I thank you". Checked by a friend from Ethiopia, with the Ethiopic full stop ። at the end. Benny says thank you too.</aside>
+  </section>
+
+  <!-- ================= Questions: more in the repository ================= -->
+
+  <section class="tiles">
+    <div class="grid">
+      <div class="tile"><b>06</b>Home page</div>
+      <div class="tile"><b>07</b>Slider</div>
+      <div class="tile"><b>08</b>Error page</div>
+      <div class="tile"><b>09</b>Search</div>
+      <div class="tile"><b>10</b>Fresh install</div>
+      <div class="tile"><b>11</b>Example content</div>
+      <div class="tile"><b>13</b>Events</div>
+      <div class="tile"><b>14</b>Kiswahili</div>
+    </div>
+    <div class="repo-box">
+      <img class="qr" src="screens/qr-repository.svg" alt="QR code for github.com/TYPO3-Documentation/t3ca-demo">
+      <span class="repo">github.com/<br>TYPO3-Documentation/<br>t3ca-demo</span>
+      <span class="foot">Every stage: the recording<br>and <code>dialogue.md</code></span>
+    </div>
+    <aside class="notes">Questions. Everything is in the repository: every stage recorded (./stage play NN), the prompts and answers in dialogue.md, the site at that point (./stage go NN), the design, the slides. Not in the talk: 08 a bug report and 404 handling; 09 choosing a search engine, with "what does it cost?" and Solr; 13 events, past events disappear by themselves; 14 Kiswahili, with a search hook and a translated form.</aside>
+    <a class="live-link" href="https://t3ca-14.ddev.site/" target="_blank">live: t3ca-14.ddev.site</a>
+  </section>
+
+
 
 
 </div>
@@ -873,7 +1297,7 @@
   });
   // A click moves on, except on a replay slide: there clicks belong to the player. (Checking the
   // clicked element is not enough, the player removes its start button while handling the click.)
-  document.addEventListener('click', () => { if (!slides[current].classList.contains('replay')) show(current + 1); });
+  document.addEventListener('click', (event) => { if (event.target.closest('a')) return; if (!slides[current].classList.contains('replay')) show(current + 1); });
   window.addEventListener('resize', fit);
 
   fit();

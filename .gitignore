@@ -3,3 +3,8 @@
 /stages/*/notes.md
 # Photos for the talk (colleagues, dogs): shown on stage, not published here.
 /slides/images/
+# Running copies of the stages for the talk (./live-sites): built locally, not published.
+/live/
+# Printed speaker notes (./print-notes): spoilers, not published.
+/speaker-notes.pdf
+/speaker-notes-part2.pdf

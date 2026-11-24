@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Writes handout.pdf from handout.html and cards.pdf from cards.html (A4).
+set -euo pipefail
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+google-chrome --headless=new --no-pdf-header-footer --print-to-pdf="$DIR/handout.pdf" "file://$DIR/handout.html" 2>/dev/null
+echo "written: $DIR/handout.pdf"
+google-chrome --headless=new --no-pdf-header-footer --print-to-pdf="$DIR/cards.pdf" "file://$DIR/cards.html" 2>/dev/null
+echo "written: $DIR/cards.pdf"

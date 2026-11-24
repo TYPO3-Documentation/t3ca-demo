@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI meets TYPO3, part 2</title>
+<!--
+  Slides for "AI meets TYPO3", TYPO3 Camp Africa 2026, Diani.
+  Works offline: the font and the pictures are local files.
+
+  Keys:  → Space PageDown  next      ← PageUp  previous
+         Home / End        first / last
+         F                 full screen
+         N                 speaker notes in the browser console (and below the slide)
+  The slide number is in the address (#5), so a reload stays on the slide.
+
+  Slide kinds:
+    class "words"    a few words on green
+    class "picture"  a photo filling the screen; add "upright" for portrait photos,
+                     and "left-text" to put the caption on the left
+    class "chat"     a jambo-ai window
+  Speaker notes go into an aside with class "notes" inside a slide; they are hidden unless N is pressed.
+-->
+<style>
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/SourceSans3-latin.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: normal;
+  }
+  /* Ethiopic letters (Amharic) come from Noto; the browser takes them only for these characters. */
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/NotoSansEthiopic.ttf') format('truetype');
+    font-weight: 200 900;   /* the same range as Source Sans, or the browser picks this face for normal text */
+    font-style: normal;
+    unicode-range: U+1200-139F, U+2D80-2DDF, U+AB00-AB2F;
+  }
+  /* Arabic letters come from Noto as well, only for these characters. */
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/NotoSansArabic.ttf') format('truetype');
+    font-weight: 200 900;
+    font-style: normal;
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+  }
+  @font-face {
+    font-family: 'Source Sans 3';
+    src: url('fonts/SourceSans3-latin-italic.woff2') format('woff2');
+    font-weight: 200 900;
+    font-style: italic;
+  }
+
+  /* Mto Safi design: demo/design/scss/_variables.scss */
+  :root {
+    --primary: #0b5a3c;
+    --primary-dark: #073d29;
+    --secondary: #9b1c1f;
+    --accent: #f2b632;
+    --text: #1c2420;
+    --border: #cdd8d2;
+    --surface: #f3f7f4;
+    --white: #fff;
+    --radius: 6px;
+    --shadow: 0 2px 10px rgba(18, 53, 91, 0.12);
+    --typo3: #ff8700;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  body { font-family: 'Source Sans 3', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: var(--text); }
+
+  /* Every slide is drawn at 1920 × 1080 and scaled to the window. */
+  #deck {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1920px;
+    height: 1080px;
+    transform-origin: center;
+  }
+  section {
+    position: absolute;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+  }
+  section.current { display: flex; }
+
+  /* Words: a few words on green. */
+  .words {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 200px;
+    background: var(--primary-dark);
+    color: var(--white);
+  }
+  .words h1, .words h2 { margin: 0; font-weight: 700; line-height: 1.1; }
+  .words h1 { font-size: 150px; }
+  .words h2 { font-size: 110px; }
+  .words p { margin: 48px 0 0; font-size: 84px; line-height: 1.3; opacity: 0.9; }
+  .words .small { font-size: 48px; opacity: 0.75; }
+  .words em { font-style: normal; color: var(--accent); }
+
+  /* Picture: a photo filling the screen. */
+  .picture { background: var(--primary-dark); }
+  .picture > img { width: 100%; height: 100%; object-fit: cover; }
+  .picture.upright > img { object-fit: contain; }
+  .picture .caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    padding: 28px 120px;
+    background: rgba(7, 61, 41, 0.85);
+    color: var(--white);
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+  .picture.upright .caption {
+    /* Next to a portrait photo the caption sits on the free side. */
+    left: auto;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 640px;
+    display: flex;
+    align-items: center;
+    background: none;
+    padding: 0 90px 0 40px;
+  }
+  .picture.upright.left-text .caption { left: 0; right: auto; padding: 0 40px 0 90px; }
+  .picture.upright > img { width: calc(100% - 640px); }
+  .picture.upright.left-text > img { margin-left: 640px; }
+  .picture .caption.top { top: 80px; bottom: auto; }
+  .picture .caption.farewell { bottom: 50px; text-align: center; font-size: 120px; font-weight: 700; line-height: 1.15; padding: 20px 0 34px; }
+  .picture .caption.farewell .am { font-size: 96px; }
+  .caption em { font-style: normal; color: var(--accent); }
+
+  /* A screenshot: shown whole, on green, with a little margin. */
+  .picture.screenshot > img { object-fit: contain; padding: 80px 80px 220px; }
+  .picture .caption.url { background: none; text-align: center; bottom: 70px; font-size: 80px; }
+  .picture .caption.url.small-url { font-size: 52px; bottom: 90px; }
+
+  /* Graphic: a drawing on green. */
+  .graphic { background: var(--primary-dark); }
+  .graphic > svg { width: 100%; height: 100%; }
+
+  /* Terminal: one or two commands, large. */
+  .terminal { align-items: center; justify-content: center; background: var(--primary-dark); }
+  .term { width: 1640px; background: #1c2420; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); }
+  .term-bar { display: flex; gap: 16px; padding: 22px 28px; background: #33403a; }
+  .term-bar i { width: 24px; height: 24px; border-radius: 50%; background: #9b1c1f; }
+  .term-bar i:nth-child(2) { background: #f2b632; }
+  .term-bar i:nth-child(3) { background: #0b5a3c; }
+  .term pre { margin: 0; padding: 60px 60px 70px; color: #f3f7f4; font: 44px/1.8 'DejaVu Sans Mono', Consolas, monospace; white-space: pre-wrap; }
+  .term .prompt { color: var(--accent); }
+
+  /* Trio: three photos side by side. */
+  .trio { background: var(--primary-dark); gap: 16px; padding: 16px; }
+  .trio img { flex: 1; min-width: 0; height: 100%; object-fit: cover; border-radius: 8px; }
+
+  /* A file tree in the terminal card. */
+  .term pre.tree { font-size: 38px; line-height: 1.5; }
+  .term .hint { color: #9fb3a8; }
+
+  /* Replay: a recorded session, played in the slide. */
+  .replay { align-items: center; justify-content: center; background: #1c2420; }
+  .replay .player { width: 1880px; height: 1050px; }
+
+  /* A document: a page of the municipality's Word file, with its mistakes. */
+  .doc { align-items: center; justify-content: center; background: var(--primary-dark); }
+  .doc .page { width: 1300px; padding: 70px 90px; background: #fff; color: #222; border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); font: 40px/1.5 'Source Sans 3', 'Segoe UI', sans-serif; }
+  .doc h3 { margin: 0 0 6px; font-size: 48px; }
+  .doc h3 + .meta { margin-top: 0; }
+  .doc p { margin: 0 0 22px; }
+  .doc .meta { color: #555; font-size: 34px; }
+  .doc u { text-decoration: underline wavy #d32f2f; text-decoration-thickness: 3px; text-underline-offset: 8px; }
+  .doc mark { background: var(--accent); }
+  .doc h3:not(:first-child) { margin-top: 10px; }
+  .doc .gap { color: #999; margin: 0 0 10px; }
+  .doc .cursor { display: inline-block; width: 4px; height: 44px; margin-left: 4px; vertical-align: -8px; background: #222; }
+
+  /* Tiles: the other stages in the repository, with the QR code beside them. */
+  .tiles { align-items: center; justify-content: center; gap: 110px; background: var(--primary-dark); }
+  .tiles .grid { display: grid; grid-template-columns: repeat(2, 400px); gap: 28px; }
+  .tiles .tile { height: 170px; padding: 22px 30px; border-radius: 18px; background: var(--primary);
+    color: var(--white); font-size: 42px; font-weight: 600; line-height: 1.1; display: flex; flex-direction: column; justify-content: space-between; }
+  .tiles .tile b { font-size: 62px; color: var(--accent); }
+  .tiles .repo-box { display: flex; flex-direction: column; gap: 30px; }
+  .tiles .qr { width: 440px; height: 440px; border-radius: 12px; }
+  .tiles .repo { font: 600 46px/1.2 'Source Sans 3', sans-serif; color: var(--accent); }
+  .tiles .foot { color: var(--white); font: 400 38px/1.3 'Source Sans 3', sans-serif; opacity: 0.85; }
+  .tiles code { font-size: 0.9em; color: var(--accent); }
+
+  /* Workshop: the announcement next to the puzzle. */
+  .workshop .caption > div { display: flex; flex-direction: column; gap: 18px; }
+  .workshop .title { font-size: 84px; font-weight: 700; line-height: 1.05; }
+  .workshop .sub { font-size: 52px; font-weight: 400; opacity: 0.85; }
+  .workshop .qr { width: 320px; height: 320px; border-radius: 12px; margin-top: 16px; }
+  .workshop .where { font-size: 40px; font-weight: 600; color: var(--accent); line-height: 1.2; }
+
+  /* A small link to the live site of a stage, bottom left; the slide count stays the same. */
+  .live-link { position: absolute; left: 22px; bottom: 12px; z-index: 3; padding: 6px 14px; border-radius: 8px;
+    background: rgba(7, 61, 41, 0.75); color: rgba(255, 255, 255, 0.85); font: 600 24px 'Source Sans 3', sans-serif; text-decoration: none; }
+  .live-link:hover { background: var(--primary); color: #fff; }
+
+  /* Live: the browser window is a link to the live site. */
+  .live a { cursor: pointer; }
+
+  /* Code: a terminal card with source code. */
+  .term-bar .lang { margin-left: auto; color: #9fb3a8; font: 600 28px 'Source Sans 3', sans-serif; }
+  .term pre.code { font-size: 32px; line-height: 1.55; white-space: pre; }
+  .term .c { color: #9fb3a8; }
+  .term .s { color: var(--accent); }
+
+  /* Chat: a jambo-ai window. */
+  .chat { align-items: center; justify-content: center; background: var(--primary-dark); }
+  .window {
+    width: 1500px;
+    background: var(--surface);
+    border-radius: calc(var(--radius) * 3);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+  }
+  .titlebar { display: flex; align-items: center; gap: 22px; padding: 24px 36px; background: var(--primary); color: var(--white); }
+  .titlebar svg { width: 64px; height: 64px; flex: none; }
+  .titlebar .name { font-size: 40px; font-weight: 700; letter-spacing: 0.5px; }
+  .titlebar .name span { color: var(--accent); }
+  .titlebar .who { margin-left: auto; font-size: 28px; opacity: 0.9; }
+  .titlebar .who::before { content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 10px; border-radius: 50%; background: var(--accent); }
+  .messages { display: flex; flex-direction: column; gap: 40px; padding: 56px 64px 64px; }
+  .msg { display: flex; gap: 22px; align-items: flex-end; max-width: 1120px; }
+  .msg.me { align-self: flex-end; flex-direction: row-reverse; }
+  .avatar { flex: none; width: 130px; height: 130px; border-radius: 50%; display: grid; place-items: center; font-size: 36px; font-weight: 700; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .claudia .avatar { background: var(--accent); color: var(--primary-dark); }
+  .bubble { padding: 26px 34px; border-radius: calc(var(--radius) * 4); font-size: 40px; line-height: 1.4; box-shadow: var(--shadow); }
+  .me .bubble { background: var(--primary); color: var(--white); border-bottom-right-radius: var(--radius); }
+  .claudia .bubble { background: var(--white); border: 1px solid var(--border); border-bottom-left-radius: var(--radius); }
+  .sender { display: block; margin-bottom: 6px; font-size: 26px; font-weight: 600; opacity: 0.75; }
+  mark { background: var(--accent); color: var(--primary-dark); padding: 0 6px; border-radius: 4px; }
+  code { font-family: 'DejaVu Sans Mono', Consolas, monospace; font-size: 0.85em; white-space: nowrap; }
+
+  /* Speaker notes: hidden unless N is pressed. */
+  .notes { display: none; }
+  body.show-notes .notes {
+    display: block;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 20px;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #000;
+    font-size: 30px;
+    border-radius: 8px;
+    z-index: 2;
+  }
+  #counter { position: fixed; right: 18px; bottom: 12px; color: rgba(255, 255, 255, 0.85); font: 600 26px 'Source Sans 3', sans-serif; text-shadow: 0 0 6px rgba(0, 0, 0, 0.8), 0 1px 2px rgba(0, 0, 0, 0.9); }
+</style>
+<link rel="stylesheet" href="vendor/asciinema-player/asciinema-player.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- A raised hand, 320 × 560 -->
+    <!-- A show of hands: three people, two with an arm raised, 700 × 540 -->
+    <symbol id="hand" viewBox="0 0 760 540" width="760" height="540">
+      <g transform="translate(0 0)" fill="#f2b632"><circle cx="90" cy="270" r="58"/><path d="M0 540v-90a90 90 0 0 1 90-90a90 90 0 0 1 90 90v90z"/><g transform="rotate(14 150 400)"><rect x="124" y="140" width="54" height="270" rx="27"/><circle cx="151" cy="140" r="42"/></g></g>
+      <g transform="translate(230 0)" fill="#c9d6cf"><circle cx="90" cy="270" r="58"/><path d="M0 540v-90a90 90 0 0 1 90-90a90 90 0 0 1 90 90v90z"/></g>
+      <g transform="translate(460 0)" fill="#f2b632"><circle cx="90" cy="270" r="58"/><path d="M0 540v-90a90 90 0 0 1 90-90a90 90 0 0 1 90 90v90z"/><g transform="rotate(14 150 400)"><rect x="124" y="140" width="54" height="270" rx="27"/><circle cx="151" cy="140" r="42"/></g></g>
+    </symbol>
+
+    <!-- Windows, 900 × 560 -->
+    <symbol id="browser" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#f3f7f4"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#cdd8d2"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <rect x="180" y="22" width="600" height="36" rx="18" fill="#fff"/>
+      <rect x="380" y="140" width="440" height="80" rx="30" fill="#0b5a3c"/>
+      <rect x="80" y="260" width="560" height="200" rx="30" fill="#fff" stroke="#cdd8d2" stroke-width="4"/>
+      <rect x="120" y="305" width="440" height="22" rx="11" fill="#cdd8d2"/>
+      <rect x="120" y="350" width="380" height="22" rx="11" fill="#cdd8d2"/>
+      <rect x="120" y="395" width="300" height="22" rx="11" fill="#cdd8d2"/>
+    </symbol>
+
+    <symbol id="ide" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#f3f7f4"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#cdd8d2"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <path d="M0 80h220v456a24 24 0 0 1-24 24H24a24 24 0 0 1-24-24z" fill="#dfe8e2"/>
+      <g fill="#9fb3a8"><rect x="30" y="120" width="140" height="18" rx="9"/><rect x="50" y="160" width="120" height="18" rx="9"/><rect x="50" y="200" width="100" height="18" rx="9"/><rect x="30" y="240" width="150" height="18" rx="9"/><rect x="50" y="280" width="110" height="18" rx="9"/><rect x="50" y="320" width="130" height="18" rx="9"/></g>
+      <g><rect x="260" y="120" width="220" height="20" rx="10" fill="#9b1c1f"/><rect x="500" y="120" width="160" height="20" rx="10" fill="#0b5a3c"/>
+        <rect x="300" y="165" width="300" height="20" rx="10" fill="#0b5a3c"/><rect x="300" y="210" width="180" height="20" rx="10" fill="#f2b632"/><rect x="500" y="210" width="240" height="20" rx="10" fill="#9fb3a8"/>
+        <rect x="300" y="255" width="360" height="20" rx="10" fill="#9fb3a8"/><rect x="260" y="300" width="120" height="20" rx="10" fill="#9b1c1f"/>
+        <rect x="260" y="345" width="260" height="20" rx="10" fill="#0b5a3c"/><rect x="300" y="390" width="200" height="20" rx="10" fill="#f2b632"/></g>
+      <rect x="220" y="450" width="680" height="110" fill="#e9efeb"/>
+      <g fill="#c0392b"><rect x="250" y="475" width="420" height="14" rx="7"/><rect x="250" y="505" width="360" height="14" rx="7"/></g>
+    </symbol>
+
+    <symbol id="terminal" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#1c2420"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#33403a"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <path d="M60 170l50 40-50 40" fill="none" stroke="#f2b632" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="150" y="188" width="44" height="60" fill="#f3f7f4"/>
+    </symbol>
+
+    <!-- A terminal with a chat inside, 900 × 680 -->
+    <symbol id="terminal-chat" viewBox="0 0 900 680" width="900" height="680">
+      <rect width="900" height="680" rx="24" fill="#1c2420"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#33403a"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <path d="M420 140h380a30 30 0 0 1 30 30v80a30 30 0 0 1-30 30H470l-50 40v-40a30 30 0 0 1-30-30v-80a30 30 0 0 1 30-30z" fill="#0b5a3c"/>
+      <rect x="440" y="190" width="300" height="20" rx="10" fill="#f3f7f4" opacity="0.8"/>
+      <path d="M100 350h460a30 30 0 0 1 30 30v170a30 30 0 0 1-30 30H150l-50 40v-40a30 30 0 0 1-30-30V380a30 30 0 0 1 30-30z" fill="#f3f7f4"/>
+      <rect x="110" y="400" width="400" height="20" rx="10" fill="#9fb3a8"/>
+      <rect x="110" y="445" width="340" height="20" rx="10" fill="#9fb3a8"/>
+      <rect x="110" y="490" width="260" height="20" rx="10" fill="#9fb3a8"/>
+    </symbol>
+
+    <!-- A project folder, 440 × 360 -->
+    <symbol id="folder" viewBox="0 0 440 360" width="440" height="360">
+      <path d="M0 40a30 30 0 0 1 30-30h120l40 45h220a30 30 0 0 1 30 30v245a30 30 0 0 1-30 30H30a30 30 0 0 1-30-30z" fill="#f2b632"/>
+      <g fill="#073d29" opacity="0.55"><rect x="60" y="140" width="220" height="22" rx="11"/><rect x="60" y="190" width="300" height="22" rx="11"/><rect x="60" y="240" width="180" height="22" rx="11"/></g>
+    </symbol>
+
+    <!-- An old laptop with a grey beard and glasses, 900 × 700 -->
+    <symbol id="laptop" viewBox="0 0 900 700" width="900" height="700">
+      <rect x="120" y="0" width="660" height="440" rx="26" fill="#33403a"/>
+      <rect x="150" y="30" width="600" height="380" rx="10" fill="#cdd8d2"/>
+      <path d="M60 470h780l50 80a20 20 0 0 1-17 30H27a20 20 0 0 1-17-30z" fill="#33403a"/>
+      <!-- bushy grey eyebrows -->
+      <g fill="#f3f7f4" stroke="#9fb3a8" stroke-width="3">
+        <path d="M300 120q40 -40 110 -10q-10 22 -40 18q-40 -8 -70 -8z"/>
+        <path d="M600 120q-40 -40 -110 -10q10 22 40 18q40 -8 70 -8z"/>
+      </g>
+      <!-- round glasses and eyes -->
+      <g fill="none" stroke="#33403a" stroke-width="10">
+        <circle cx="360" cy="190" r="58"/><circle cx="540" cy="190" r="58"/>
+        <path d="M418 186q32 -16 64 0"/><path d="M302 180l-60 -14M598 180l60 -14"/>
+      </g>
+      <circle cx="368" cy="196" r="14" fill="#1c2420"/><circle cx="548" cy="196" r="14" fill="#1c2420"/>
+      <!-- nose -->
+      <path d="M450 220q-18 40 0 52q14 4 22 -6" fill="none" stroke="#7f948a" stroke-width="7" stroke-linecap="round"/>
+      <!-- long grey beard with moustache, hanging over the keyboard -->
+      <path d="M300 300q20 -30 70 -24q40 6 80 22q40 -16 80 -22q50 -6 70 24
+               q30 60 0 150q-20 80 -60 140q-30 50 -90 100q-60 -50 -90 -100q-40 -60 -60 -140q-30 -90 0 -150z"
+            fill="#f3f7f4" stroke="#9fb3a8" stroke-width="4"/>
+      <g fill="none" stroke="#c9d6cf" stroke-width="5" stroke-linecap="round">
+        <path d="M380 360q-10 80 20 170M450 350v240M520 360q10 80 -20 170M330 340q0 70 30 140M570 340q0 70 -30 140"/>
+      </g>
+      <path d="M340 300q50 -30 110 0q60 -30 110 0q-50 30 -110 10q-60 20 -110 -10z" fill="#e3ebe6" stroke="#9fb3a8" stroke-width="4"/>
+    </symbol>
+  </defs>
+</svg>
+<div id="deck">
+
+  <section class="words">
+    <h1>AI meets <em>TYPO3</em></h1>
+    <p>Part 2: thinking like a<br>TYPO3 developer</p>
+    <p class="small">TYPO3 Camp Africa 2026 · Diani</p>
+    <aside class="notes">Same room, same Claudia. Part 2.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/benny-tunnel.jpg" alt="Benny crawling out of a play tunnel">
+    <aside class="notes">Where were we? Claudia built the contact form. Today: a bug, choosing extensions, content elements for editors, events, a second language. And Benny instead of Halma.</aside>
+  </section>
+
+  <!-- ================= 08: a bug report ================= -->
+
+  <section class="picture">
+    <img src="images/typo3-decision-dice.jpg" alt="The TYPO3 decision dice: Clear the cache, Works on my machine, Core bug">
+    <aside class="notes">Debugging the classic way: roll the dice. Clear the cache? Works on my machine? Core bug?</aside>
+  </section>
+
+  <section class="picture">
+    <img src="screens/error-page-typo3.png" alt="TYPO3's built-in error page: 404, Page Not Found, Request parameters could not be validated (&amp;cHash empty)">
+    <aside class="notes">What I saw after searching for "water": TYPO3's built-in error page, the whole page. Read the small print: "Request parameters could not be validated (&amp;cHash empty)". The cause is right there.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 08-error-page, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>when I click on the search button an error page appears</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><mark>The search button works now.</mark> <code>/search?q=test</code> returns 200 instead of the 404 error page.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 08. I did not ask for the cause first, and Claudia fixed it right away; the explanation came afterwards. Here it was harmless. With a bigger change I would have said: "Find the cause and explain it to me before you change anything."</aside>
+  </section>
+
+  <section class="terminal">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="lang">PHP · ext_localconf.php</span></div>
+      <pre class="code"><span class="c">// The search form in the page header submits "q" without a cHash; with
+// FE.cacheHash.enforceValidation the request would otherwise end in a 404.</span>
+$GLOBALS['TYPO3_CONF_VARS']['FE']['cacheHash']
+    ['excludedParameters'][] = <span class="s">'q'</span>;</pre>
+    </div>
+    <aside class="notes">The fix, one line, with Claudia's comment. The cHash: a checksum TYPO3 adds to URLs with parameters, so nobody can fill the page cache with endless variants (?q=1, ?q=2, …). Unknown parameters without a cHash end in a 404. A search term is different on every request, so it is left out of the check.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 08-error-page, as typed; the first sentences of the answer, shortened. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>https://demo.ddev.site/apple-tree gives me the same error page</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><mark>That one isn't the same bug.</mark> <code>/apple-tree</code> isn't a page on your site, so a 404 is the right answer. What you're seeing is TYPO3's built-in error page.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">A web developer tests a made-up URL. Claudia separates the two problems instead of "fixing" a correct 404.</aside>
+  </section>
+
+  <section class="terminal">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="lang">YAML · config/sites/main/config.yaml</span></div>
+      <pre class="code">errorHandling:
+  - errorCode: 404
+    errorHandler: Page
+    errorContentSource: <span class="s">'t3://page?uid=33'</span></pre>
+    </div>
+    <aside class="notes">The TYPO3 way: 404 handling is part of the site configuration. It points to a normal page, so editors maintain the text. It still answers with status 404.</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/error-page-site.png" alt="The Page not found page in the Mto Safi design, with links to the home page and the search">
+    <div class="caption url small-url">apple-tree</div>
+    <aside class="notes">After: a page that does not exist shows "Page not found" in the site's design, still with status 404. And /search?q=water now answers, but there is no search engine yet: that is the next section.</aside>
+  </section>
+
+  <!-- ================= 09: choosing an extension ================= -->
+
+  <section class="picture">
+    <img src="images/dogdancing/menzigen-2024-072A3375.jpg" alt="Lina sitting, one hand raised: wait. Benny lying in front of her">
+    <aside class="notes">Choosing an extension: wait, and ask before you install.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 09-search, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>How would you recommend to implement the search?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>I'd use <mark>ke_search</mark> (version 7.5.0 on TER, works with TYPO3 13 and 14).</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 09. A recommendation with a version and a reason. Now the questions a project lead asks.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 09-search, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>who maintains ke_search?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The registries I checked don't name a maintainer, so <mark>most of this answer is from memory and I haven't verified it.</mark></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Honest: it says what it checked and what it did not. Worth a look yourself: TER, Packagist, the repository.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 09-search, prompts 3 and 4 as typed; from the answer to 4, shortened. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>what does it cost?</div>
+        </div>
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>is there a free option?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Yes. The base ke_search I recommended is <mark>free (0 €)</mark>. The 890 € premium version only adds extras such as autocomplete and "Did you mean…?".</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">With sources from the vendor's website. Free covers the whole design.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 09-search, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>Our other websites are using solr I believe</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><mark>That changes my recommendation.</mark> I called Solr "too much" because you'd have to run a server, but if your team already runs Solr and knows it, that cost is mostly paid.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The human brings the context the AI cannot know. Then: which Solr version? Apache Solr 10, which we did not have yet. Decision: ke_search now, Solr later, and build it so the switch is cheap.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 09-search, as typed; the answer shortened. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>oh we dont have a solr core version 10.0 yet. Can we go with ke_search now and replace it with solr once cores become available?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Yes, that works well. ke_search and EXT:solr have the same overall shape. <mark>Most of what we build can stay when you switch.</mark></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The way out, planned before we start: keep the search page, make the query parameter a setting, own partials for the result markup, the same type keys (service, news, document), only free ke_search features. Thrown away when switching: the indexer and filter records, the dependency, the ke_search tables. And: with Solr, PDFs need EXT:solrfal, which is paid.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="ke_search now, Solr later, both on the same foundation: search page, templates, type keys">
+      <g font-family="Source Sans 3, sans-serif" font-weight="700" text-anchor="middle">
+        <rect x="300" y="250" width="520" height="220" rx="30" fill="#f2b632"/>
+        <text x="560" y="345" font-size="72" fill="#073d29">ke_search</text>
+        <text x="560" y="420" font-size="44" font-weight="400" fill="#073d29">now</text>
+        <path d="M860 360h180" stroke="#f3f7f4" stroke-width="16" stroke-linecap="round"/>
+        <path d="M1010 320l50 40-50 40" fill="none" stroke="#f3f7f4" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="1100" y="250" width="520" height="220" rx="30" fill="none" stroke="#f3f7f4" stroke-width="8" stroke-dasharray="26 18"/>
+        <text x="1360" y="345" font-size="72" fill="#f3f7f4">Solr</text>
+        <text x="1360" y="420" font-size="44" font-weight="400" fill="#f3f7f4">later</text>
+        <rect x="300" y="560" width="1320" height="260" rx="30" fill="#f3f7f4"/>
+        <text x="960" y="660" font-size="56" fill="#073d29">what stays</text>
+        <text x="960" y="750" font-size="44" font-weight="400" fill="#073d29">search page · templates · type keys</text>
+      </g>
+    </svg>
+    <aside class="notes">Plan the way out before you go in. Only the plugin and the indexer change; the page, the markup and the filters stay.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A checklist: maintainer, cost, versions, way out">
+      <g transform="translate(260 230)" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="54" fill="#073d29">
+        <rect width="560" height="580" rx="28" fill="#f3f7f4"/>
+        <g fill="#f2b632"><circle cx="80" cy="110" r="34"/><circle cx="80" cy="230" r="34"/><circle cx="80" cy="350" r="34"/><circle cx="80" cy="470" r="34"/></g>
+        <g fill="none" stroke="#073d29" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64 110l12 12 22-24"/><path d="M64 230l12 12 22-24"/><path d="M64 350l12 12 22-24"/><path d="M64 470l12 12 22-24"/></g>
+        <text x="140" y="128">maintainer</text><text x="140" y="248">cost</text><text x="140" y="368">versions</text><text x="140" y="488">way out</text>
+      </g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="960" y="500" font-size="100" fill="#f3f7f4">Check the</text>
+        <text x="960" y="640" font-size="100" fill="#f2b632">extension.</text>
+      </g>
+    </svg>
+    <aside class="notes">Not just the feature: who maintains it, what it costs, which TYPO3 versions it supports, and how you get out again. Same questions for eventnews later.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 09-search, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>Why does "new" not find anything?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>"new" finds nothing because of how MySQL/MariaDB's full-text search is set up, <mark>not because of ke_search or our templates.</mark></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Words under four letters are not in the full-text index, and "new" is also a stopword. The fix would be a database server setting, which shared hosting often does not allow. My decision: "new" does not need to be found.</aside>
+  </section>
+
+  <section class="graphic live">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Live in the browser: t3ca-14.ddev.site/search?q=market">
+      <a href="https://t3ca-14.ddev.site/search?q=market" target="_blank">
+        <use href="#browser" x="360" y="230" width="1200" height="746"/>
+        <rect x="580" y="258" width="800" height="50" rx="25" fill="#fff"/>
+        <text x="980" y="295" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="34" fill="#073d29">t3ca-14.ddev.site/search?q=market</text>
+      </a>
+      <text x="960" y="160" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="96" fill="#f2b632">Live</text>
+      <text x="960" y="1040" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="30" fill="#9fb3a8">click the window to open it</text>
+    </svg>
+    <aside class="notes">Click the window: it opens t3ca-14.ddev.site/search?q=market in a new tab. The search on the finished site (stage 14), with the example content, news and events: 9 results with type badges. Then the "Show only" filter: Services or News.</aside>
+  </section>
+
+  <!-- ================= 06/07: content elements ================= -->
+
+  <section class="picture">
+    <img src="images/dogdancing/munsingen-2025-2.jpg" alt="Halma in mid-air with a ball in her mouth">
+    <aside class="notes">Content elements: let editors do it.</aside>
+  </section>
+
+  <section class="picture screenshot">
+    <img src="screens/design-index.png" alt="The home page of the static design: slider, service tiles, news, events">
+    <aside class="notes">The home page in the design: a slider, service tiles, news, events, a newsletter sign-up. After the site package, TYPO3 showed only the news.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 06-home-page, as typed; two sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>The home page only shows the news. In the design it also has a slider, service tiles, events and a newsletter sign-up. What do I need for that?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Your sitepackage already has the CSS for all four sections. <mark>What's missing is the content behind them</mark>, plus two scripts.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 06. The design is done, the CSS too. What is missing: places where editors put the content. In TYPO3 that means content elements with fields.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 06-home-page, as typed (without the typo); the answer's first two points, shortened. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>That sounds like a lot. What should I start with, and why?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Start with the <mark>service tiles</mark>: it's the smallest piece, and it sets up the pattern for the slider.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 06. Small steps, and the first one makes the second one easy.</aside>
+  </section>
+
+  <section class="replay" data-cast="07-slider" data-speed="1" data-idle="3">
+    <div class="player"></div>
+    <aside class="notes">Stage 07 in real time, thinking squeezed out: one prompt, "Lets do the slides next". Space: play/pause. PageDown: next slide.</aside>
+  </section>
+
+  <section class="terminal">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="lang">PHP · TCA, shortened</span></div>
+      <pre class="code"><span class="c">// The slides belong to the element and are edited inside its form.</span>
+'tx_mtosafisitepackage_slides' =&gt; [
+    'config' =&gt; [
+        'type' =&gt; <span class="s">'inline'</span>,
+        'foreign_table' =&gt; <span class="s">'tx_mtosafisitepackage_slide'</span>,
+    ],
+],
+ExtensionManagementUtility::addRecordType([
+    'value' =&gt; <span class="s">'mtosafi_slider'</span>,
+    'group' =&gt; <span class="s">'mtosafi'</span>,
+], 'header, tx_mtosafisitepackage_slides, …');</pre>
+    </div>
+    <aside class="notes">TCA: TYPO3's schema and backend form in one (think schema plus admin form). A new content type "Slider" with child records, the slides. Editors sort, hide and translate them in the backend.</aside>
+  </section>
+
+  <section class="terminal">
+    <div class="term">
+      <div class="term-bar"><i></i><i></i><i></i><span class="lang">Fluid · Slider.fluid.html, shortened</span></div>
+      <pre class="code">&lt;f:for each=<span class="s">"{record.tx_mtosafisitepackage_slides}"</span> as=<span class="s">"slide"</span>&gt;
+  &lt;f:image image=<span class="s">"{slide.image}"</span> alt=<span class="s">""</span> width=<span class="s">"1600c"</span> height=<span class="s">"560c"</span> /&gt;
+  &lt;h2&gt;{slide.title}&lt;/h2&gt;
+  &lt;f:link.typolink parameter=<span class="s">"{slide.link}"</span>&gt;
+    {slide.link_label}
+  &lt;/f:link.typolink&gt;
+&lt;/f:for&gt;</pre>
+    </div>
+    <aside class="notes">Fluid, TYPO3's template engine (think Twig or Blade): the design's markup, filled from the records. Images are cropped to 1600×560 by TYPO3.</aside>
+  </section>
+
+  <section class="graphic live">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Live in the browser: t3ca-07.ddev.site/typo3">
+      <a href="https://t3ca-07.ddev.site/typo3" target="_blank">
+        <use href="#browser" x="360" y="230" width="1200" height="746"/>
+        <rect x="580" y="258" width="800" height="50" rx="25" fill="#fff"/>
+        <text x="980" y="295" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="34" fill="#073d29">t3ca-07.ddev.site/typo3</text>
+      </a>
+      <text x="960" y="160" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="96" fill="#f2b632">Live</text>
+      <text x="960" y="1040" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="30" fill="#9fb3a8">click the window to open it</text>
+    </svg>
+    <aside class="notes">Click the window: it opens t3ca-07.ddev.site/typo3 in a new tab. The backend: Page module, the home page, edit the Slider element and show the slides. Logged in beforehand.</aside>
+  </section>
+
+  <!-- ================= 13: events ================= -->
+
+  <section class="picture">
+    <img src="images/dogdancing/stgallen-2025-tournament-DSC_6184.jpg" alt="Halma jumping into Lina's arms at a dog dancing tournament, under the banner Gemeinschaft Dogdance Schweiz">
+    <aside class="notes">Events. A tournament is an event too: the Swiss dog dancing community.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 13-events, prompts 1 and 2 as typed; the answer to 2, shortened. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>where are the events displayed at?</div>
+        </div>
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>what technique should we use to display them?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>I recommend <mark>georgringer/eventnews</mark>. It extends the news extension with events. It runs on your versions: 7.2.0 requires TYPO3 13.4 or 14.3.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 13. The events from the municipality's Word document. Remember part 1: in stage 05 Claudia said eventnews only supports TYPO3 12. This time she checked Packagist, and it runs on 14.3. Next question: is it maintained?</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 13-events, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>is it still actively maintained?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Yes, it's actively maintained, though <mark>by one person</mark>, Georg Ringer, the author of the news extension.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 13, about eventnews. It checked GitHub: last release six weeks ago. And it named the risk and the way out: the events stay news records.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 13-events, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>What happens if we have events spanning multiple days?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span><mark>I read the query code</mark> of eventnews 7.2.0 to check this. Multi-day events are handled properly.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">It looked it up in the code instead of guessing. Past events disappear by themselves: the list shows upcoming events by date.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 13-events, as typed; the first sentence of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>the events are on the news page and when you use de breadcrumb you only see news not events</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Events now have their own pages, so the breadcrumb on an event <mark>leads back to the events list</mark> instead of the news.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">I found that by clicking around, like a visitor. The AI had tested the pages, not the way through them.</aside>
+  </section>
+
+  <section class="graphic live">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Live in the browser: t3ca-13.ddev.site">
+      <a href="https://t3ca-13.ddev.site" target="_blank">
+        <use href="#browser" x="360" y="230" width="1200" height="746"/>
+        <rect x="580" y="258" width="800" height="50" rx="25" fill="#fff"/>
+        <text x="980" y="295" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="34" fill="#073d29">t3ca-13.ddev.site</text>
+      </a>
+      <text x="960" y="160" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="96" fill="#f2b632">Live</text>
+      <text x="960" y="1040" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="30" fill="#9fb3a8">click the window to open it</text>
+    </svg>
+    <aside class="notes">Click the window: it opens t3ca-13.ddev.site in a new tab. The events on the home page, a multi-day event, then the breadcrumb on an event.</aside>
+  </section>
+
+  <!-- ================= 14: a second language ================= -->
+
+  <section class="picture">
+    <img src="images/winter-selfie-halma.jpg" alt="Lina and Halma on a snowy morning">
+    <aside class="notes">A second language.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 14-kiswahili, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>we still need the language menu</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>The language menu now works. The header's top bar links to the <mark>Kiswahili version of the current page</mark>, and on a Kiswahili page it links back to English.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 14. The design had a "Kiswahili" link from the start; it led nowhere. Claudia added the language to the site configuration, translated page titles and URLs, and the home page.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="screens/kiswahili-home.png" alt="The Mto Safi home page in Kiswahili: Karibu Mto Safi, Huduma maarufu">
+    <aside class="notes">The home page in Kiswahili: the menu (Mwanzo, Mapato na malipo, …), "Karibu Mto Safi", "Huduma maarufu". Ask the room: is it any good? Then: the search.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 14-kiswahili, as typed; two sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>searching for ardhi there is no result</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>Searching for "ardhi" now works. ke_search only indexes a page translation that has <mark>content elements in its own language.</mark></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Stage 14. "ardhi" is Kiswahili for land. I tested the search in the new language; the AI had not.</aside>
+  </section>
+
+  <section class="chat">
+    <div class="window">
+      <div class="titlebar">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="32" cy="32" r="31" fill="#fff"/>
+          <circle cx="32" cy="26" r="11" fill="#f2b632"/>
+          <path d="M6 40c6-4 10-4 16 0s10 4 16 0 10-4 20 0v6c-10-4-14-4-20 0s-10 4-16 0-10-4-16 0z" fill="#0b5a3c"/>
+          <path d="M8 50c6-4 10-4 16 0s10 4 16 0 10-4 16 0l-2 4c-5-3-9-3-14 0s-10 4-16 0-10-4-14 0z" fill="#9b1c1f"/>
+        </svg>
+        <div class="name">jambo<span>-ai</span></div>
+        <div class="who">Claudia</div>
+      </div>
+      <div class="messages">
+        <!-- Stage 14-kiswahili, as typed; the first sentences of the answer. -->
+        <div class="msg me">
+          <div class="avatar"><img src="images/avatars/lina.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Lina</span>How to translate the contact form?</div>
+        </div>
+        <div class="msg claudia">
+          <div class="avatar"><img src="images/avatars/claudia.jpg" alt=""></div>
+          <div class="bubble"><span class="sender">Claudia</span>A form isn't translated as a content element. The form framework translates the form definition through <mark>XLF files</mark>.</div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The TYPO3 way: languages per site, content translated record by record, labels and forms in XLF files.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="The site's languages: English, Kiswahili, and maybe Amharic or Arabic">
+      <g font-family="Source Sans 3, sans-serif" font-weight="700" font-size="72" text-anchor="middle">
+        <rect x="260" y="380" width="380" height="170" rx="30" fill="#f3f7f4"/><text x="450" y="490" fill="#073d29">English</text>
+        <rect x="770" y="380" width="380" height="170" rx="30" fill="#f2b632"/><text x="960" y="490" fill="#073d29">Kiswahili</text>
+        <rect x="1280" y="380" width="380" height="170" rx="30" fill="none" stroke="#f3f7f4" stroke-width="8" stroke-dasharray="24 16"/><text x="1470" y="490" fill="#f3f7f4">አማርኛ</text>
+        <rect x="1280" y="600" width="380" height="170" rx="30" fill="none" stroke="#f3f7f4" stroke-width="8" stroke-dasharray="24 16"/><text x="1470" y="710" fill="#f3f7f4" lang="ar" direction="rtl">العربية</text>
+      </g>
+    </svg>
+    <aside class="notes">And your language? The same steps: a language in the site configuration, translated pages and content, XLF files for labels and the form. TYPO3 does not know Kiswahili or Amharic as label languages yet, so they are registered in the site package, like Kiswahili in stage 14. Arabic TYPO3 knows, and it writes dir="rtl" on the page by itself, because the locale is right to left. The work is in the CSS: the Mto Safi design has 11 rules with left and right (margin-left, text-align: left …) that would become logical properties (margin-inline-start …). The AI writes a draft translation; a native speaker checks it.</aside>
+  </section>
+
+  <section class="graphic live">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Live in the browser: t3ca-14.ddev.site/sw/">
+      <a href="https://t3ca-14.ddev.site/sw/" target="_blank">
+        <use href="#browser" x="360" y="230" width="1200" height="746"/>
+        <rect x="580" y="258" width="800" height="50" rx="25" fill="#fff"/>
+        <text x="980" y="295" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="34" fill="#073d29">t3ca-14.ddev.site/sw/</text>
+      </a>
+      <text x="960" y="160" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="96" fill="#f2b632">Live</text>
+      <text x="960" y="1040" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="30" fill="#9fb3a8">click the window to open it</text>
+    </svg>
+    <aside class="notes">Click the window: it opens t3ca-14.ddev.site/sw/ in a new tab. The site in Kiswahili, then search for "ardhi", then the contact form in Kiswahili.</aside>
+  </section>
+
+  <!-- ================= Takeaways, part 2 ================= -->
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="Four things from today">
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="960" y="150" text-anchor="middle" font-size="96" fill="#f2b632">Four things from today</text>
+        <g transform="translate(90 250)"><g transform="scale(0.42) translate(-180 -220)"><g transform="translate(260 260)"><circle cx="230" cy="230" r="200" fill="none" stroke="#f2b632" stroke-width="40"/><path d="M375 375l150 150" stroke="#f2b632" stroke-width="60" stroke-linecap="round"/><text x="230" y="320" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="260" fill="#f3f7f4">?</text></g></g><text x="360" y="125" font-size="54" fill="#f3f7f4">Ask for the cause</text><text x="360" y="195" font-size="54" fill="#f2b632">before the fix.</text></g><g transform="translate(990 250)"><g transform="scale(0.42) translate(-180 -220)"><g transform="translate(260 230)" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="54" fill="#073d29">
+        <rect width="560" height="580" rx="28" fill="#f3f7f4"/>
+        <g fill="#f2b632"><circle cx="80" cy="110" r="34"/><circle cx="80" cy="230" r="34"/><circle cx="80" cy="350" r="34"/><circle cx="80" cy="470" r="34"/></g>
+        <g fill="none" stroke="#073d29" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64 110l12 12 22-24"/><path d="M64 230l12 12 22-24"/><path d="M64 350l12 12 22-24"/><path d="M64 470l12 12 22-24"/></g>
+        <text x="140" y="128">maintainer</text><text x="140" y="248">cost</text><text x="140" y="368">versions</text><text x="140" y="488">way out</text>
+      </g></g><text x="360" y="125" font-size="54" fill="#f3f7f4">Check the extension,</text><text x="360" y="195" font-size="54" fill="#f2b632">not just the feature.</text></g><g transform="translate(90 630)"><g transform="scale(0.42) translate(-180 -220)"><g transform="translate(240 250)"><rect width="580" height="540" rx="28" fill="#f3f7f4"/><rect x="40" y="40" width="500" height="200" rx="16" fill="#f2b632"/><rect x="40" y="280" width="230" height="90" rx="14" fill="#9fb3a8"/><rect x="310" y="280" width="230" height="90" rx="14" fill="#9fb3a8"/><rect x="40" y="410" width="230" height="90" rx="14" fill="#9fb3a8"/><rect x="310" y="410" width="230" height="90" rx="14" fill="#9fb3a8"/></g></g><text x="360" y="125" font-size="54" fill="#f3f7f4">Build for editors,</text><text x="360" y="195" font-size="54" fill="#f2b632">not for the template.</text></g><g transform="translate(990 630)"><g transform="scale(0.42) translate(-180 -220)"><g transform="translate(330 220)"><path d="M0 0l0 460 120-110 90 210 80-36-90-206 160-12z" fill="#f3f7f4" stroke="#073d29" stroke-width="10" stroke-linejoin="round"/><circle cx="0" cy="0" r="90" fill="none" stroke="#f2b632" stroke-width="16"/><circle cx="0" cy="0" r="150" fill="none" stroke="#f2b632" stroke-width="10" opacity="0.6"/></g></g><text x="360" y="125" font-size="54" fill="#f3f7f4">Test it like</text><text x="360" y="195" font-size="54" fill="#f2b632">a visitor.</text></g>
+      </g>
+    </svg>
+    <aside class="notes">Four things from today. Then one by one.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A magnifying glass with a question mark">
+      <g transform="translate(260 260)"><circle cx="230" cy="230" r="200" fill="none" stroke="#f2b632" stroke-width="40"/><path d="M375 375l150 150" stroke="#f2b632" stroke-width="60" stroke-linecap="round"/><text x="230" y="320" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="260" fill="#f3f7f4">?</text></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="960" y="512" font-size="84" fill="#f3f7f4">Ask for the cause</text>
+        <text x="960" y="628" font-size="84" fill="#f2b632">before the fix.</text>
+      </g>
+    </svg>
+    <aside class="notes">Before the fix: what is the cause? In stage 08 I did not ask, and it was harmless. "Find the cause and explain it to me before you change anything."</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A checklist: maintainer, cost, versions, way out">
+      <g transform="translate(260 230)" font-family="Source Sans 3, sans-serif" font-weight="700" font-size="54" fill="#073d29">
+        <rect width="560" height="580" rx="28" fill="#f3f7f4"/>
+        <g fill="#f2b632"><circle cx="80" cy="110" r="34"/><circle cx="80" cy="230" r="34"/><circle cx="80" cy="350" r="34"/><circle cx="80" cy="470" r="34"/></g>
+        <g fill="none" stroke="#073d29" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64 110l12 12 22-24"/><path d="M64 230l12 12 22-24"/><path d="M64 350l12 12 22-24"/><path d="M64 470l12 12 22-24"/></g>
+        <text x="140" y="128">maintainer</text><text x="140" y="248">cost</text><text x="140" y="368">versions</text><text x="140" y="488">way out</text>
+      </g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="960" y="512" font-size="84" fill="#f3f7f4">Check the extension,</text>
+        <text x="960" y="628" font-size="84" fill="#f2b632">not just the feature.</text>
+      </g>
+    </svg>
+    <aside class="notes">Who maintains it, what it costs, which TYPO3 versions it supports, how you get out again. And bring the context the AI cannot know: "Our other websites are using Solr".</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A content element made of blocks">
+      <g transform="translate(240 250)"><rect width="580" height="540" rx="28" fill="#f3f7f4"/><rect x="40" y="40" width="500" height="200" rx="16" fill="#f2b632"/><rect x="40" y="280" width="230" height="90" rx="14" fill="#9fb3a8"/><rect x="310" y="280" width="230" height="90" rx="14" fill="#9fb3a8"/><rect x="40" y="410" width="230" height="90" rx="14" fill="#9fb3a8"/><rect x="310" y="410" width="230" height="90" rx="14" fill="#9fb3a8"/></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="960" y="512" font-size="84" fill="#f3f7f4">Build for editors,</text>
+        <text x="960" y="628" font-size="84" fill="#f2b632">not for the template.</text>
+      </g>
+    </svg>
+    <aside class="notes">Content elements with fields instead of markup in the template: the TYPO3 way. Editors sort, hide and translate.</aside>
+  </section>
+
+  <section class="graphic">
+    <svg viewBox="0 0 1920 1080" role="img" aria-label="A mouse pointer clicking">
+      <g transform="translate(330 220)"><path d="M0 0l0 460 120-110 90 210 80-36-90-206 160-12z" fill="#f3f7f4" stroke="#073d29" stroke-width="10" stroke-linejoin="round"/><circle cx="0" cy="0" r="90" fill="none" stroke="#f2b632" stroke-width="16"/><circle cx="0" cy="0" r="150" fill="none" stroke="#f2b632" stroke-width="10" opacity="0.6"/></g>
+      <g font-family="Source Sans 3, sans-serif" font-weight="700">
+        <text x="960" y="512" font-size="84" fill="#f3f7f4">Test it like</text>
+        <text x="960" y="628" font-size="84" fill="#f2b632">a visitor.</text>
+      </g>
+    </svg>
+    <aside class="notes">Click through it yourself: the breadcrumb, the search in the new language, a made-up URL. The AI tests pages; you test the way through them.</aside>
+  </section>
+
+  <section class="picture">
+    <img src="images/festive-knitted.jpg" alt="Lina in a knitted hat with Benny on her lap, a Santa figure and a snowman beside them">
+    <div class="caption farewell">Thank you! <em>Asante sana!</em><br><span class="am" lang="am">አመሰግናለሁ።</span></div>
+    <aside class="notes">Thank you. Benny says thank you too, all knitted up.</aside>
+  </section>
+
+  <!-- ================= Questions: more in the repository ================= -->
+
+  <section class="tiles">
+    <div class="grid">
+      <div class="tile"><b>06</b>Home page</div>
+      <div class="tile"><b>07</b>Slider</div>
+      <div class="tile"><b>08</b>Error page</div>
+      <div class="tile"><b>09</b>Search</div>
+      <div class="tile"><b>10</b>Fresh install</div>
+      <div class="tile"><b>11</b>Example content</div>
+      <div class="tile"><b>13</b>Events</div>
+      <div class="tile"><b>14</b>Kiswahili</div>
+    </div>
+    <div class="repo-box">
+      <img class="qr" src="screens/qr-repository.svg" alt="QR code for github.com/TYPO3-Documentation/t3ca-demo">
+      <span class="repo">github.com/<br>TYPO3-Documentation/<br>t3ca-demo</span>
+      <span class="foot">Every stage: the recording<br>and <code>dialogue.md</code></span>
+    </div>
+    <aside class="notes">Questions. Everything is in the repository: every stage recorded (./stage play NN), the prompts and answers in dialogue.md, the site at that point (./stage go NN), the design, the slides. Not in the talk: 08 a bug report and 404 handling; 09 choosing a search engine, with "what does it cost?" and Solr; 13 events, past events disappear by themselves; 14 Kiswahili, with a search hook and a translated form.</aside>
+    <a class="live-link" href="https://t3ca-14.ddev.site/" target="_blank">live: t3ca-14.ddev.site</a>
+  </section>
+</div>
+<div id="counter"></div>
+
+<script src="vendor/asciinema-player/asciinema-player.min.js"></script>
+<script src="casts/07-slider.js"></script>
+<script>
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('section')];
+  const counter = document.getElementById('counter');
+  let current = 0;
+
+  function fit() {
+    const scale = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    deck.style.transform = `translate(-50%, -50%) scale(${scale})`;
+  }
+
+  function show(index) {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach((slide, i) => slide.classList.toggle('current', i === current));
+    counter.textContent = `${current + 1} / ${slides.length}`;
+    history.replaceState(null, '', `#${current + 1}`);
+    startReplay(slides[current]);
+    const notes = slides[current].querySelector('.notes');
+    if (notes) console.log(`Slide ${current + 1}: ${notes.textContent}`);
+  }
+
+  // Replays are created when their slide is first shown, and paused when you leave it.
+  // Speed and longest pause: data-speed (default 1, real time) and data-idle (default 3 s) on the slide;
+  // people need time to read. The thinking is already squeezed out of the cast. On a replay slide Space plays and pauses, and a click never moves on. Once you click into the
+  // player, all keys go to it (arrows seek); PageDown/PageUp (or a presenter remote) always move on.
+  const players = new Map();
+  const playing = new Map();
+  function startReplay(slide) {
+    players.forEach((player, s) => { if (s !== slide && playing.get(s)) player.pause(); });
+    if (!slide.classList.contains('replay') || players.has(slide)) return;
+    const cast = (window.CASTS || {})[slide.dataset.cast];
+    if (!cast || !window.AsciinemaPlayer) return;
+    const player = AsciinemaPlayer.create({ data: cast }, slide.querySelector('.player'), {
+      speed: Number(slide.dataset.speed || 1), idleTimeLimit: Number(slide.dataset.idle || 3), fit: 'both',
+    });
+    player.addEventListener('play', () => playing.set(slide, true));
+    player.addEventListener('pause', () => playing.set(slide, false));
+    player.addEventListener('ended', () => playing.set(slide, false));
+    players.set(slide, player);
+  }
+
+  document.addEventListener('keydown', (event) => {
+    const slide = slides[current];
+    if (slide.classList.contains('replay')) {
+      const toPlayer = event.target.closest && event.target.closest('.player');
+      if (toPlayer && !['PageDown', 'PageUp'].includes(event.key)) return;   // the player handles it
+      if (event.key === ' ') {
+        const player = players.get(slide);
+        if (player) playing.get(slide) ? player.pause() : player.play();
+        event.preventDefault();
+        return;
+      }
+    }
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(event.key)) show(current + 1);
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(event.key)) show(current - 1);
+    else if (event.key === 'Home') show(0);
+    else if (event.key === 'End') show(slides.length - 1);
+    else if (event.key === 'f' || event.key === 'F') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    } else if (event.key === 'n' || event.key === 'N') document.body.classList.toggle('show-notes');
+    else return;
+    event.preventDefault();
+  });
+  // A click moves on, except on a replay slide: there clicks belong to the player. (Checking the
+  // clicked element is not enough, the player removes its start button while handling the click.)
+  document.addEventListener('click', (event) => { if (event.target.closest('a')) return; if (!slides[current].classList.contains('replay')) show(current + 1); });
+  window.addEventListener('resize', fit);
+
+  fit();
+  show((parseInt(location.hash.slice(1), 10) || 1) - 1);
+</script>
+</body>
+</html>

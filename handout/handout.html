@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI meets TYPO3: handout</title>
+<!-- The handout of the talk. ./handout/make-pdf writes handout.pdf from this file. -->
+<style>
+  @font-face { font-family: 'Source Sans 3'; src: url('../slides/fonts/SourceSans3-latin.woff2') format('woff2'); font-weight: 200 900; font-style: normal; }
+  @font-face { font-family: 'Source Sans 3'; src: url('../slides/fonts/SourceSans3-latin-italic.woff2') format('woff2'); font-weight: 200 900; font-style: italic; }
+  @page { size: A4; margin: 16mm 16mm 18mm; }
+  :root { --green: #0b5a3c; --orange: #ff8700; --grey: #5d6b64; --line: #b8c4be; }
+  * { box-sizing: border-box; }
+  body { margin: 0 auto; max-width: 180mm; padding: 0 16px; font: 11pt/1.5 'Source Sans 3', 'Segoe UI', sans-serif; color: #111; background: #fff; }
+  h1 { margin: 0; font-size: 26pt; line-height: 1.1; color: var(--green); }
+  .byline { margin: 2mm 0 6mm; color: var(--grey); }
+  h2 { margin: 9mm 0 2mm; font-size: 15pt; color: var(--green); break-after: avoid; }
+  h2 .n { color: var(--orange); }
+  h3 { margin: 4mm 0 1mm; font-size: 11.5pt; break-after: avoid; }
+  p { margin: 0 0 2.5mm; }
+  ul { margin: 0 0 2.5mm; padding-left: 5mm; }
+  li { margin-bottom: 1mm; }
+  code, pre { font-family: 'DejaVu Sans Mono', Consolas, monospace; font-size: 9pt; }
+  code { background: #eef2f0; padding: 0 1mm; border-radius: 1mm; }
+  pre { margin: 0 0 3mm; padding: 3mm 4mm; background: #eef2f0; border-left: 1mm solid var(--green); white-space: pre-wrap; break-inside: avoid; }
+  pre code { background: none; padding: 0; }
+  blockquote { margin: 0 0 3mm; padding: 2mm 4mm; border-left: 1mm solid var(--orange); background: #fff6ec; break-inside: avoid; }
+  blockquote p { margin: 0; }
+  .who { font-size: 9pt; font-weight: 700; color: var(--grey); text-transform: uppercase; letter-spacing: 0.05em; }
+  figure { margin: 3mm 0 4mm; break-inside: avoid; }
+  figure svg { display: block; width: 100%; height: auto; }
+  figcaption { margin-top: 1mm; font-size: 9.5pt; color: var(--grey); font-style: italic; }
+  table { width: 100%; border-collapse: collapse; margin: 0 0 3mm; font-size: 10pt; break-inside: auto; }
+  th, td { padding: 1.5mm 2mm; border-bottom: 0.3mm solid var(--line); text-align: left; vertical-align: top; }
+  th { border-bottom: 0.5mm solid var(--green); }
+  tr { break-inside: avoid; }
+  .take { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 2mm 0 3mm; }
+  .take div { padding: 3mm 4mm; border: 0.4mm solid var(--green); border-radius: 2mm; break-inside: avoid; }
+  .take b { display: block; color: var(--green); font-size: 12pt; }
+  a { color: var(--green); }
+  .keep { break-inside: avoid; }
+  .small { font-size: 9.5pt; color: var(--grey); }
+</style>
+</head>
+<body>
+
+<h1>AI meets TYPO3</h1>
+<p class="byline">From prompt to site package, grounded in the official docs · TYPO3 Camp Africa 2026, Diani · Lina Wolf</p>
+
+<p>In the talk an AI agent, Claudia, built a TYPO3 site for Mto Safi, a fictional municipality on the
+Kenyan coast, from a static HTML design. Every step is recorded and lives in the repository
+<a href="https://github.com/TYPO3-Documentation/t3ca-demo">github.com/TYPO3-Documentation/t3ca-demo</a>.
+This handout collects what to take home.</p>
+
+<div class="take">
+  <div><b>Chat in the terminal.</b>Your AI as a colleague, with a name. Look at the result in your IDE.</div>
+  <div><b>Name the version. Use the docs.</b>The AI's knowledge has a cut-off date.</div>
+  <div><b>Ask first. You decide.</b>Options and reasons first, then you choose, sometimes against the AI.</div>
+  <div><b>Check the result.</b>Read the report, look at the site and the mails yourself.</div>
+</div>
+
+<h2><span class="n">1</span> Where to run your AI</h2>
+<figure>
+  <svg viewBox="0 0 900 250" role="img" aria-label="Browser, IDE and terminal">
+    <g font-family="Source Sans 3, sans-serif" font-size="20" text-anchor="middle">
+      <g transform="translate(20 20)">
+        <rect width="260" height="160" rx="10" fill="#fff" stroke="#111" stroke-width="3"/>
+        <path d="M0 10a10 10 0 0 1 10-10h240a10 10 0 0 1 10 10v24H0z" fill="#e3e9e6" stroke="#111" stroke-width="3"/>
+        <rect x="60" y="9" width="160" height="16" rx="8" fill="#fff" stroke="#111" stroke-width="2"/>
+        <rect x="120" y="55" width="115" height="26" rx="10" fill="#0b5a3c"/>
+        <rect x="25" y="95" width="160" height="45" rx="10" fill="#fff" stroke="#111" stroke-width="2"/>
+        <text x="130" y="210" font-weight="700">Browser</text>
+        <text x="130" y="234" fill="#5d6b64">can't see or try your project</text>
+      </g>
+      <g transform="translate(320 20)">
+        <rect width="260" height="160" rx="10" fill="#fff" stroke="#111" stroke-width="3"/>
+        <path d="M0 10a10 10 0 0 1 10-10h240a10 10 0 0 1 10 10v24H0z" fill="#e3e9e6" stroke="#111" stroke-width="3"/>
+        <rect x="0" y="34" width="60" height="126" fill="#e3e9e6" stroke="#111" stroke-width="3"/>
+        <g fill="#111"><rect x="80" y="52" width="90" height="8"/><rect x="95" y="72" width="120" height="8"/><rect x="95" y="92" width="70" height="8"/><rect x="80" y="112" width="140" height="8"/></g>
+        <g fill="#ff8700"><rect x="80" y="135" width="150" height="7"/></g>
+        <text x="130" y="210" font-weight="700">IDE</text>
+        <text x="130" y="234" fill="#5d6b64">heavy; look at the diff here</text>
+      </g>
+      <g transform="translate(620 20)">
+        <rect width="260" height="160" rx="10" fill="#1c2420" stroke="#111" stroke-width="3"/>
+        <rect x="120" y="45" width="120" height="30" rx="10" fill="#0b5a3c"/>
+        <rect x="20" y="95" width="160" height="45" rx="10" fill="#fff"/>
+        <text x="130" y="210" font-weight="700">Terminal</text>
+        <text x="130" y="234" fill="#5d6b64">chat with a colleague</text>
+      </g>
+    </g>
+  </svg>
+</figure>
+<ul>
+  <li><b>In the browser</b> (ChatGPT, Claude.ai, Gemini) the AI can't see your project and can't try what it suggests.
+    Fine for questions, not for building a site.</li>
+  <li><b>In the IDE</b> the AI competes with the IDE for memory and CPU; an older laptop struggles. Even on a strong one
+    the IDE keeps re-indexing files the AI is still changing. Use the IDE to look at the diff, but don't run the AI in it.</li>
+  <li><b>In the terminal</b> (Claude Code, OpenCode, Cursor CLI; also Codex CLI or Gemini CLI) it feels like chatting
+    with a colleague: describe what you want, no commands or flags to remember. Several agents can work in parallel.
+    Give yours a name; mine is Claudia.</li>
+</ul>
+
+<h2><span class="n">2</span> Name the TYPO3 version</h2>
+<figure>
+  <svg viewBox="0 0 900 170" role="img" aria-label="Timeline: the AI knows v12 and v13; its knowledge ends before v14">
+    <g font-family="Source Sans 3, sans-serif" text-anchor="middle">
+      <line x1="40" y1="90" x2="560" y2="90" stroke="#111" stroke-width="10" stroke-linecap="round"/>
+      <line x1="560" y1="90" x2="860" y2="90" stroke="#8a9690" stroke-width="5" stroke-dasharray="14 12"/>
+      <line x1="560" y1="20" x2="560" y2="150" stroke="#ff8700" stroke-width="5" stroke-dasharray="10 8"/>
+      <text x="560" y="168" font-size="16" fill="#5d6b64">the AI's cut-off date</text>
+      <circle cx="200" cy="90" r="18" fill="#111"/><text x="200" y="55" font-size="26" font-weight="700">v12</text><text x="200" y="130" font-size="17" fill="#5d6b64">2023</text>
+      <circle cx="430" cy="90" r="18" fill="#111"/><text x="430" y="55" font-size="26" font-weight="700">v13</text><text x="430" y="130" font-size="17" fill="#5d6b64">2024</text>
+      <circle cx="700" cy="90" r="18" fill="#fff" stroke="#8a9690" stroke-width="5"/><text x="700" y="55" font-size="26" font-weight="700" fill="#8a9690">v14 ?</text><text x="700" y="130" font-size="17" fill="#5d6b64">2026</text>
+    </g>
+  </svg>
+</figure>
+<p>An AI only knows what was in its training data. TYPO3 gets a new LTS version about every 18 months and bug fix
+releases every few weeks, so the AI's own knowledge is almost always behind. Some AI tools search the web, some
+can't, and a local model (for example OpenCode with Ollama) usually has no internet at all.</p>
+<ul>
+  <li><b>Name the version yourself:</b> <code>Install TYPO3 14.3 LTS with DDEV and Composer.</code></li>
+  <li><b>Look it up:</b> <a href="https://get.typo3.org">get.typo3.org</a> (current versions and support dates),
+    the roadmap on <a href="https://typo3.org">typo3.org</a>, and <a href="https://docs.typo3.org">docs.typo3.org</a>
+    (every manual has a version switcher).</li>
+  <li><b>Or connect the official docs</b> through MCP, see the next section.</li>
+</ul>
+
+<h2><span class="n">3</span> MCP and the TYPO3 Dev Companion</h2>
+<figure>
+  <svg viewBox="0 0 900 220" role="img" aria-label="Several AI tools connect through MCP to tools like the TYPO3 docs">
+    <g font-family="Source Sans 3, sans-serif" font-size="18" text-anchor="middle">
+      <g fill="none" stroke="#8a9690" stroke-width="4">
+        <path d="M190 50C300 50 320 110 380 110"/><path d="M190 110H380"/><path d="M190 170C300 170 320 110 380 110"/>
+        <path d="M520 110C580 110 600 50 710 50"/><path d="M520 110H710"/><path d="M520 110C580 110 600 170 710 170"/>
+      </g>
+      <g fill="#fff" stroke="#111" stroke-width="3"><rect x="30" y="28" width="160" height="44" rx="22"/><rect x="30" y="88" width="160" height="44" rx="22"/><rect x="30" y="148" width="160" height="44" rx="22"/></g>
+      <text x="110" y="56">Claude Code</text><text x="110" y="116">OpenCode</text><text x="110" y="176">Cursor CLI</text>
+      <rect x="380" y="70" width="140" height="80" rx="16" fill="#111"/>
+      <text x="450" y="118" font-size="30" font-weight="700" fill="#fff">MCP</text>
+      <rect x="710" y="25" width="170" height="50" rx="8" fill="#ff8700"/><text x="795" y="56" font-weight="700" fill="#fff">TYPO3 docs</text>
+      <g fill="#fff" stroke="#111" stroke-width="3"><rect x="710" y="85" width="170" height="50" rx="8"/><rect x="710" y="145" width="170" height="50" rx="8"/></g>
+      <text x="795" y="116">a database</text><text x="795" y="176">a browser</text>
+    </g>
+  </svg>
+  <figcaption>One standard plug between AI tools and what they can use.</figcaption>
+</figure>
+<p><b>MCP, the Model Context Protocol,</b> is an open standard for connecting AI tools to outside capabilities.
+The AI client starts an MCP server, asks which tools it offers, and calls them when the model asks for it; the
+messages are JSON-RPC. It does for AI tools what the Language Server Protocol did for editors: one server, usable
+from many clients.</p>
+<p><b>The <a href="https://github.com/TYPO3/dev-companion">TYPO3 Dev Companion</a></b> is an MCP server for TYPO3. It
+supplies current, version-bound TYPO3 knowledge for 12.4, 13.4, 14.3 and main, reads your installation, writes
+nothing into it, and runs locally. It also installs task skills such as site package development and content
+elements. It is experimental (0.x). Installing it in a DDEV project, as Claudia did in stage 02:</p>
+<pre><code>ddev composer require --dev "typo3/dev-companion:@dev"
+ddev exec vendor/bin/typo3-dev-companion install</code></pre>
+<p class="small"><code>install</code> writes the server into <code>.mcp.json</code> and the skills into
+<code>.agents/skills</code>; <code>--agent=&lt;id&gt;</code> writes them where a specific client reads them. Restart your
+AI session afterwards. Manual: <a href="https://typo3.github.io/dev-companion/">typo3.github.io/dev-companion</a></p>
+<div class="keep">
+<p>Check that it works, and ask what it did:</p>
+<blockquote><p class="who">Lina</p><p>Which icon identifier is the right one for a delete button in the TYPO3 backend?</p></blockquote>
+<blockquote><p class="who">Lina</p><p>Which tools did you call?</p></blockquote>
+</div>
+
+<h2><span class="n">4</span> A theme is a site package</h2>
+<p>What WordPress calls a theme, TYPO3 calls a <b>site package</b>: an extension with the page layouts, the Fluid
+templates (TYPO3's Twig or Blade), CSS and JavaScript, and the site's settings, under version control.</p>
+<ul>
+  <li><a href="https://get.typo3.org/sitepackage">get.typo3.org/sitepackage</a>: the Site Package Builder, a kickstarter.</li>
+  <li>The <a href="https://docs.typo3.org/m/typo3/tutorial-sitepackage/main/en-us/">site package tutorial</a> on docs.typo3.org,
+    step by step. New in v14: the Camino theme as a ready-made starting point.</li>
+  <li>With an AI, ask for the options first. The scaffolding of the builder helps people find their way; an AI
+    writes only the files it needs.</li>
+</ul>
+<blockquote><p class="who">Lina, stage 03</p><p>How should I turn the static design in design/ into a TYPO3 v14 site
+package? What are the options, and which do you suggest and why?</p></blockquote>
+
+<h2><span class="n">5</span> Ask first, you decide, check</h2>
+<p>The prompts that worked best in the recordings were short questions, typos included. Ask for options and
+reasons, choose, then say "go":</p>
+<ul>
+  <li><code>we need a contact form, what ways can it be created and what can you recommend?</code></li>
+  <li><code>what about data privacy and security?</code> · <code>what about spam protection?</code></li>
+  <li><code>who maintains ke_search?</code> · <code>what does it cost?</code> · <code>is there a free option?</code></li>
+  <li><code>try installing the project fresh, do the import scripts etc work?</code></li>
+</ul>
+<h3>What a human caught in the recordings</h3>
+<table>
+  <tr><th>What happened</th><th>How it came out</th></tr>
+  <tr><td>A news item dated <b>2062</b>; the AI read it as 2026 without asking.</td><td>Its own report said so. Read the report.</td></tr>
+  <tr><td>A setup command created a second copy of the whole page tree.</td><td>The AI had taken a snapshot before and restored it.</td></tr>
+  <tr><td>The copy of the contact form to the sender could send spam to any address.</td><td>The AI found its own flaw, because it was asked about security.</td></tr>
+  <tr><td>After a spam protection extension, all mails had TYPO3's system layout.</td><td>The human saw it in the mails; the AI had not checked.</td></tr>
+  <tr><td>"eventnews only supports up to TYPO3 12."</td><td>Wrong. A later stage checked and used it with v14.</td></tr>
+</table>
+<p><b>Personal data:</b> which law applies (Kenya's Data Protection Act, Ghana's Data Protection Act, Ethiopia's
+Personal Data Protection Proclamation, Nigeria's NDPA, South Africa's POPIA, the GDPR…), what the privacy policy says,
+how long messages are kept: the site owner decides, not the AI.</p>
+
+<h2><span class="n">6</span> Everything is in the repository</h2>
+<p><a href="https://github.com/TYPO3-Documentation/t3ca-demo">github.com/TYPO3-Documentation/t3ca-demo</a>: the design
+in <code>demo/design/</code>, the TYPO3 project in <code>demo/</code> (one git tag per stage), and for every stage the
+recording, the database, and <code>dialogue.md</code> with the prompts and the answers.</p>
+<table>
+  <tr><th>Stage</th><th>What happens</th></tr>
+  <tr><td>01, 02</td><td>TYPO3 with DDEV and Composer; connecting the Dev Companion</td></tr>
+  <tr><td>03, 04</td><td>The site package from the design; the page tree</td></tr>
+  <tr><td>05</td><td>News from a messy Word document</td></tr>
+  <tr><td>06, 07</td><td>Home page; a slider content element</td></tr>
+  <tr><td>08</td><td>A bug report: the search shows an error page; 404 handling</td></tr>
+  <tr><td>09</td><td>Choosing a search engine: ke_search, and Solr</td></tr>
+  <tr><td>10</td><td>A fresh installation works</td></tr>
+  <tr><td>11</td><td>Example content with images, captions and a lightbox</td></tr>
+  <tr><td>12</td><td>The contact form: privacy, spam protection</td></tr>
+  <tr><td>13</td><td>Events; past events disappear by themselves</td></tr>
+  <tr><td>14</td><td>A second language: Kiswahili</td></tr>
+</table>
+<pre><code>git clone -b presenter https://github.com/TYPO3-Documentation/t3ca-demo.git t3ca-2026
+git clone https://github.com/TYPO3-Documentation/t3ca-demo.git t3ca-2026/demo
+cd t3ca-2026
+./stage play 12     # replay the recording of stage 12
+./stage go 12       # put the site in demo/ in the state of stage 12</code></pre>
+<p class="small">The branch <code>presenter</code> holds the recordings and the <code>stage</code> script, <code>main</code>
+the TYPO3 project. The README explains the setup.</p>
+<p class="small">The online workshop for participants will be announced in the GitHub Discussions of the repository.</p>
+
+</body>
+</html>

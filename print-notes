@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+# Writes speaker-notes.pdf for a black and white printer: for every slide a preview (dark on white),
+# its number and the notes.
+#
+#   ./print-notes                              part 1 -> speaker-notes.pdf
+#   ./print-notes part2.html speaker-notes-part2.pdf   another deck in slides/, another file
+#
+# The notes contain spoilers (the planted mistakes): the PDF is git-ignored.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SLIDES="$ROOT/slides"
+DECK="${1:-index.html}"
+OUT="${2:-$ROOT/speaker-notes.pdf}"
+[[ "$OUT" = /* ]] || OUT="$ROOT/$OUT"
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+
+count="$(grep -c '^  <section class' "$SLIDES/$DECK")"
+echo "rendering $count slides …"
+for i in $(seq 1 "$count"); do
+    google-chrome --headless=new --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=2000 \
+        --screenshot="$TMP/$(printf '%03d' "$i").png" "file://$SLIDES/$DECK#$i" 2>/dev/null
+done
+
+python3 -I - "$SLIDES/$DECK" "$TMP" <<'PY'
+import html, re, sys
+from PIL import Image, ImageOps
+source, tmp = sys.argv[1], sys.argv[2]
+title = html.escape(re.search(r'<title>(.*?)</title>', open(source, encoding='utf-8').read()).group(1))
+page = open(source, encoding='utf-8').read()
+deck = page[page.index('<div id="deck">'):]
+sections = re.findall(r'<section class="[^"]*"[^>]*>(.*?)</section>', deck, re.S)
+page_sections = re.findall(r'(<section class="[^"]*"[^>]*>)', deck)
+
+def printable(png, kind):
+    """A preview for a black and white printer: dark text on white, whatever the slide's colours."""
+    img = Image.open(png).convert('RGB')
+    grey = ImageOps.grayscale(img)
+    if kind.startswith(('words', 'graphic', 'tiles')):
+        grey = ImageOps.invert(grey)                      # green background white, white text black
+    elif kind.startswith(('chat', 'doc', 'terminal', 'replay')) or 'screenshot' in kind:
+        bg = img.getpixel((5, 5))                          # the slide's background colour
+        mask = img.point(lambda v: 255).convert('L')
+        px, gp = img.load(), grey.load()
+        for y in range(0, img.height):
+            for x in range(0, img.width):
+                r, g, b = px[x, y]
+                if abs(r - bg[0]) + abs(g - bg[1]) + abs(b - bg[2]) < 40:
+                    gp[x, y] = 255
+    elif 'upright' in kind:                                # invert only the text column beside the photo
+        box = (0, 0, 640, 1080) if 'left-text' in kind else (1280, 0, 1920, 1080)
+        grey.paste(ImageOps.invert(grey.crop(box)), box)
+    grey.resize((640, 360)).save(png[:-4] + '.jpg', quality=80)
+
+kinds = re.findall(r'<section class="([^"]*)"', deck)
+for number, kind in enumerate(kinds, 1):
+    printable(f'{tmp}/{number:03d}.png', kind)
+rows = []
+for number, body in enumerate(sections, 1):
+    note = re.search(r'<aside class="notes">(.*?)</aside>', body, re.S)
+    text = re.sub(r'<[^>]+>', '', note.group(1)).strip() if note else ''
+    rows.append(f'''<div class="slide"><img src="{number:03d}.jpg" alt=""><span class="no">{number}</span><div>
+  <p>{html.escape(html.unescape(text)) or '<em>(no notes)</em>'}</p></div>
+</div>''')
+open(tmp + '/notes.html', 'w', encoding='utf-8').write('''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>AI meets TYPO3: speaker notes</title>
+<style>
+  @font-face { font-family: 'Source Sans 3'; src: url('file://''' + source.rsplit('/', 1)[0] + '''/fonts/SourceSans3-latin.woff2'); font-weight: 200 900; }
+  @font-face { font-family: 'Source Sans 3'; src: url('file://''' + source.rsplit('/', 1)[0] + '''/fonts/NotoSansEthiopic.ttf'); font-weight: 200 900; unicode-range: U+1200-139F; }
+  @page { size: A4; margin: 12mm; }
+  body { margin: 0; font: 11.5pt/1.4 'Source Sans 3', sans-serif; color: #000; }
+  h1 { margin: 0 0 6mm; font-size: 15pt; color: #000; }
+  .slide { display: flex; gap: 5mm; padding: 3.5mm 0; border-bottom: 0.3mm solid #000; break-inside: avoid; }
+  .slide img { width: 70mm; height: 39.4mm; flex: none; border: 0.3mm solid #000; }
+  .no { flex: none; min-width: 11mm; font-size: 20pt; font-weight: 700; line-height: 1; }
+  .slide p { margin: 0; }
+  .shown { font-style: italic; margin-bottom: 1.5mm !important; }
+</style></head><body>
+<h1>''' + title + ''' · speaker notes</h1>
+''' + '\n'.join(rows) + '\n</body></html>\n')
+print(f'{len(rows)} slides')
+PY
+
+google-chrome --headless=new --no-pdf-header-footer --print-to-pdf="$OUT" "file://$TMP/notes.html" 2>/dev/null
+echo "written: $OUT"

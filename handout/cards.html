@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI meets TYPO3: cards</title>
+<!-- Four A6 cards on one A4 page, to cut and hand out. ./handout/make-pdf writes cards.pdf. -->
+<style>
+  @font-face { font-family: 'Source Sans 3'; src: url('../slides/fonts/SourceSans3-latin.woff2') format('woff2'); font-weight: 200 900; }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: 'Source Sans 3', sans-serif; color: #000; background: #fff; }
+  .sheet { display: grid; grid-template-columns: 105mm 105mm; grid-template-rows: 148.5mm 148.5mm; width: 210mm; height: 297mm; }
+  .card { position: relative; padding: 10mm 10mm 8mm; display: flex; flex-direction: column; }
+  /* cutting lines along the middle of the sheet */
+  .card:nth-child(odd)  { border-right: 0.3mm dashed #777; }
+  .card:nth-child(-n+2) { border-bottom: 0.3mm dashed #777; }
+  h1 { margin: 0; font-size: 23pt; line-height: 1; }
+  .by { margin: 1.5mm 0 5mm; font-size: 10pt; }
+  .row { display: flex; gap: 4mm; align-items: center; margin-bottom: 4mm; }
+  .row img { width: 33mm; height: 33mm; flex: none; }
+  .row b { display: block; font-size: 12.5pt; }
+  .row span { font-size: 9.5pt; line-height: 1.3; }
+  .take { margin-top: auto; padding-top: 2.5mm; border-top: 0.4mm solid #000; font-size: 9pt; line-height: 1.35; }
+  .bye { margin-top: 1.5mm; font-size: 9pt; }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="card">
+    <h1>AI meets TYPO3</h1>
+    <p class="by">Lina Wolf · TYPO3 Camp Africa 2026, Diani</p>
+    <div class="row"><img src="../slides/screens/qr-repository.svg" alt="">
+      <div><b>Everything from the talk</b><span>recordings, prompts, slides, handout<br>github.com/TYPO3-Documentation/<br>t3ca-demo</span></div></div>
+    <div class="row"><img src="../slides/screens/qr-discussions.svg" alt="">
+      <div><b>Online workshop</b><span>for participants, details coming soon<br>in the GitHub Discussions of the repository</span></div></div>
+    <p class="take">Chat in the terminal · Name the version, use the docs · Ask first, you decide · Check the result</p>
+    <p class="bye">Asante sana! Thank you!</p>
+  </div>
+  <div class="card">
+    <h1>AI meets TYPO3</h1>
+    <p class="by">Lina Wolf · TYPO3 Camp Africa 2026, Diani</p>
+    <div class="row"><img src="../slides/screens/qr-repository.svg" alt="">
+      <div><b>Everything from the talk</b><span>recordings, prompts, slides, handout<br>github.com/TYPO3-Documentation/<br>t3ca-demo</span></div></div>
+    <div class="row"><img src="../slides/screens/qr-discussions.svg" alt="">
+      <div><b>Online workshop</b><span>for participants, details coming soon<br>in the GitHub Discussions of the repository</span></div></div>
+    <p class="take">Chat in the terminal · Name the version, use the docs · Ask first, you decide · Check the result</p>
+    <p class="bye">Asante sana! Thank you!</p>
+  </div>
+  <div class="card">
+    <h1>AI meets TYPO3</h1>
+    <p class="by">Lina Wolf · TYPO3 Camp Africa 2026, Diani</p>
+    <div class="row"><img src="../slides/screens/qr-repository.svg" alt="">
+      <div><b>Everything from the talk</b><span>recordings, prompts, slides, handout<br>github.com/TYPO3-Documentation/<br>t3ca-demo</span></div></div>
+    <div class="row"><img src="../slides/screens/qr-discussions.svg" alt="">
+      <div><b>Online workshop</b><span>for participants, details coming soon<br>in the GitHub Discussions of the repository</span></div></div>
+    <p class="take">Chat in the terminal · Name the version, use the docs · Ask first, you decide · Check the result</p>
+    <p class="bye">Asante sana! Thank you!</p>
+  </div>
+  <div class="card">
+    <h1>AI meets TYPO3</h1>
+    <p class="by">Lina Wolf · TYPO3 Camp Africa 2026, Diani</p>
+    <div class="row"><img src="../slides/screens/qr-repository.svg" alt="">
+      <div><b>Everything from the talk</b><span>recordings, prompts, slides, handout<br>github.com/TYPO3-Documentation/<br>t3ca-demo</span></div></div>
+    <div class="row"><img src="../slides/screens/qr-discussions.svg" alt="">
+      <div><b>Online workshop</b><span>for participants, details coming soon<br>in the GitHub Discussions of the repository</span></div></div>
+    <p class="take">Chat in the terminal · Name the version, use the docs · Ask first, you decide · Check the result</p>
+    <p class="bye">Asante sana! Thank you!</p>
+  </div>
+</div>
+</body>
+</html>

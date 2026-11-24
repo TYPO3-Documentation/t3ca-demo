@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+# One running TYPO3 per stage, so the talk can switch between stages by switching browser tabs:
+# no `ddev start` and no database import on stage.
+#
+# Each stage gets a git worktree of demo/ in live/<stage>/ (the code at the stage's tag), its own
+# DDEV project t3ca-<NN> at https://t3ca-<NN>.ddev.site/, and the stage's database and fileadmin
+# from stages/<stage>/. Your normal demo/ (https://demo.ddev.site/) is not touched.
+#
+#   ./live-sites setup 03 05 12 14   build these stages (needs the internet once, for Composer)
+#   ./live-sites start               start all built stages, e.g. before the talk
+#   ./live-sites stop                stop them again
+#   ./live-sites list                the stages and their addresses
+#   ./live-sites remove 05           delete one stage's copy and its DDEV project
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DEMO="$ROOT/demo"
+STAGES="$ROOT/stages"
+LIVE="$ROOT/live"
+
+die() { echo "live-sites: $*" >&2; exit 1; }
+say() { printf '\033[1m==> %s\033[0m\n' "$*"; }
+
+# "5" or "05" or "05-news" -> "05-news"
+resolve() {
+    local n="${1%%-*}"; n="$(printf '%02d' "$((10#$n))")"
+    local match; match="$(cd "$STAGES" && ls -d "$n"-* 2>/dev/null | head -1)"
+    [[ -n "$match" ]] || die "no stage $1 in stages/"
+    echo "$match"
+}
+
+built() { [[ -d "$LIVE" ]] && (cd "$LIVE" && ls -d [0-9][0-9]-* 2>/dev/null) || true; }
+
+cmd_setup() {
+    [[ $# -gt 0 ]] || die "setup needs stages, e.g. ./live-sites setup 03 05 12 14"
+    mkdir -p "$LIVE"
+    for arg in "$@"; do
+        local stage; stage="$(resolve "$arg")"
+        local nn="${stage%%-*}" dir="$LIVE/$stage" name="t3ca-${stage%%-*}"
+        local url="https://$name.ddev.site/"
+        [[ -f "$STAGES/$stage/db.sql.gz" ]] || die "stage $stage has no saved database"
+        say "Stage $stage -> $url"
+        if [[ ! -d "$dir" ]]; then
+            git -C "$DEMO" worktree add --detach --quiet "$dir" "stage-$stage"
+        fi
+        # Its own DDEV project, and the site answering on its own address.
+        printf 'name: %s\n' "$name" >"$dir/.ddev/config.local.yaml"
+        sed -i "s|https://demo.ddev.site/|$url|" "$dir/config/sites/main/config.yaml"
+        (
+            cd "$dir"
+            ddev start
+            ddev composer install --no-interaction
+            ddev restart   # DDEV writes config/system/additional.php only once TYPO3 is installed
+            ddev import-db --file="$STAGES/$stage/db.sql.gz"
+            if [[ -f "$STAGES/$stage/fileadmin.tar.gz" ]]; then
+                rm -rf public/fileadmin && mkdir -p public/fileadmin
+                tar -xzf "$STAGES/$stage/fileadmin.tar.gz" -C public/fileadmin
+            fi
+            ddev exec typo3 cache:flush
+        )
+        local code; code="$(curl -sk -o /dev/null -w '%{http_code}' "$url")"
+        [[ "$code" == 200 ]] && say "Stage $stage answers 200 at $url" || echo "Stage $stage answers $code at $url" >&2
+    done
+}
+
+cmd_start() {
+    for stage in $(built); do say "Starting $stage"; (cd "$LIVE/$stage" && ddev start); done
+    cmd_list
+}
+
+cmd_stop() {
+    for stage in $(built); do say "Stopping $stage"; (cd "$LIVE/$stage" && ddev stop); done
+}
+
+cmd_list() {
+    for stage in $(built); do
+        local url="https://t3ca-${stage%%-*}.ddev.site/"
+        printf '  %-22s %-34s %s\n' "$stage" "$url" "$(curl -sk -o /dev/null -w '%{http_code}' --max-time 5 "$url" || true)"
+    done
+}
+
+cmd_remove() {
+    local stage; stage="$(resolve "${1:-}")"
+    local dir="$LIVE/$stage"
+    [[ -d "$dir" ]] || die "stage $stage is not built"
+    (cd "$dir" && ddev delete --omit-snapshot --yes)
+    git -C "$DEMO" worktree remove --force "$dir"
+    say "Removed $stage"
+}
+
+# Read to the end before running anything: this file may change while it runs.
+{
+    case "${1:-}" in
+        setup) shift; cmd_setup "$@" ;;
+        start|stop|list) "cmd_$1" ;;
+        remove) shift; cmd_remove "${1:-}" ;;
+        *) sed -n '2,15p' "$0" | sed 's/^# \{0,1\}//' ;;
+    esac
+    exit
+}

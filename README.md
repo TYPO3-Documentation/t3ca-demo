@@ -47,6 +47,11 @@ computer the stage was recorded on. To write it again:
     ./extract-dialogue stages/12-contact-form          # final answers only
     ./extract-dialogue stages/12-contact-form --all    # also Claude's notes in between
 
+## Handout
+
+[`handout/handout.pdf`](handout/handout.pdf): the talk's takeaways on four pages, with the prompts,
+the commands and the official links. `handout/make-pdf` writes it from `handout/handout.html`.
+
 ## Repository
 
 Both parts live in https://github.com/TYPO3-Documentation/t3ca-demo:

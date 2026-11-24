@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+# Copies the slides to a USB stick (or any folder): both decks (index.html = part 1, part2.html =
+# part 2) and exactly the files they use, plus one PDF per deck (slides.pdf, slides-part2.pdf),
+# one page per slide, as a last resort on a computer without a usable browser.
+#
+#   ./pack-slides /media/$USER/STICK/ai-meets-typo3
+#
+# Open <target>/index.html or <target>/part2.html in a browser: everything works offline,
+# including the replays. The live stage sites (./live-sites) need DDEV and only run on this laptop.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SLIDES="$ROOT/slides"
+TARGET="${1:-}"
+DECKS=(index.html part2.html)
+[[ -n "$TARGET" ]] || { sed -n '2,10p' "$0" | sed 's/^# \{0,1\}//'; exit 1; }
+mkdir -p "$TARGET"
+
+python3 -I - "$SLIDES" "$TARGET" "${DECKS[@]}" <<'PY'
+import os, re, shutil, sys
+slides, target, decks = sys.argv[1], sys.argv[2], sys.argv[3:]
+refs = {'fonts/OFL.txt', 'fonts/README.md', 'vendor/asciinema-player/LICENSE'}
+for deck in decks:
+    html = open(os.path.join(slides, deck), encoding='utf-8').read()
+    refs |= set(re.findall(r'(?:src|href)="((?:images|screens|fonts|vendor|casts)/[^"#?]+)"', html))
+    refs |= set(re.findall(r"url\('(fonts/[^']+)'\)", html))
+missing = [r for r in sorted(refs) if not os.path.exists(os.path.join(slides, r))]
+if missing:
+    sys.exit('missing: ' + ', '.join(missing))
+for deck in decks:
+    shutil.copy2(os.path.join(slides, deck), target)
+for ref in sorted(refs):
+    os.makedirs(os.path.join(target, os.path.dirname(ref)), exist_ok=True)
+    shutil.copy2(os.path.join(slides, ref), os.path.join(target, ref))
+print(f'copied {", ".join(decks)} and {len(refs)} files')
+PY
+
+TMP="$(mktemp -d)"
+trap 'rm -rf "$TMP"' EXIT
+for deck in "${DECKS[@]}"; do
+    pdf="slides.pdf"; [[ "$deck" == index.html ]] || pdf="slides-${deck%.html}.pdf"
+    echo "rendering $pdf …"
+    rm -f "$TMP"/*.png
+    count="$(grep -c '^  <section class' "$TARGET/$deck")"
+    # A file address for Chrome; the path may contain spaces (a stick named "UBUNTU 26_0").
+    url="$(python3 -I -c 'import pathlib, sys; print(pathlib.Path(sys.argv[1]).resolve().as_uri())' "$TARGET/$deck")"
+    for i in $(seq 1 "$count"); do
+        google-chrome --headless=new --hide-scrollbars --window-size=1920,1080 --virtual-time-budget=2000 \
+            --screenshot="$TMP/$(printf '%03d' "$i").png" "$url#$i" 2>/dev/null
+    done
+    python3 -I - "$TMP" "$TARGET/$pdf" <<'PY'
+import glob, sys
+from PIL import Image
+pages = [Image.open(f).convert('RGB') for f in sorted(glob.glob(sys.argv[1] + '/*.png'))]
+pages[0].save(sys.argv[2], save_all=True, append_images=pages[1:], resolution=96, quality=85)
+print(f'{sys.argv[2].rsplit("/", 1)[1]}: {len(pages)} pages')
+PY
+done
+du -sh "$TARGET"
