@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Page module preview of "Land rates calculator": the rates it calculates with, one
+    line per land use, then the minimum rate and the interest. The header is rendered
+    by the page module above this.
+</f:comment>
+<ul>
+    <f:for each="{record.tx_mtosafisitepackage_landuses}" as="landUse">
+        <li><strong>{landUse.label}</strong>: {landUse.percent} %</li>
+    </f:for>
+</ul>
+<p>
+    <f:translate key="preview.landrates.minimum" domain="mtosafi_sitepackage.content_elements" arguments="{0: '{f:format.number(number: record.tx_mtosafisitepackage_minimum_rate, decimals: 0)}'}" /><br>
+    <f:translate key="preview.landrates.interest" domain="mtosafi_sitepackage.content_elements" arguments="{0: record.tx_mtosafisitepackage_interest}" />
+</p>
+</html>

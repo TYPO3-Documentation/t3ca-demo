@@ -1,0 +1,61 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:comment>
+    Land rates calculator (design/land-rates.html), the rule of
+    design/docs/land-rates-calculation.md.
+
+    The rates are the element's: each land use carries its share of the rateable value
+    on its option, the minimum rate and the interest per month are attributes of the
+    section. The script calculates as the visitor types; the texts it writes come
+    translated from here.
+
+    The heading is part of the section rather than the frame's own header, so the
+    section can name itself by it. Header type "Hidden" keeps it for screen readers.
+</f:comment>
+<f:layout name="Default" />
+
+<f:section name="Header" />
+
+<f:section name="Main">
+    <f:asset.script identifier="mtosafiLandRatesCalculator" src="EXT:mtosafi_sitepackage/Resources/Public/JavaScript/land-rates-calculator.js" defer="1" />
+    <f:variable name="id" value="calculator-{data.uid}" />
+    <section class="calculator" data-calculator data-currency="KES"
+        data-minimum="{record.tx_mtosafisitepackage_minimum_rate}"
+        data-interest-per-month="{record.tx_mtosafisitepackage_interest}"
+        data-max-months="36"
+        data-label-no-value="{f:translate(key: 'calculator.warning.noValue', domain: 'mtosafi_sitepackage.frontend')}"
+        data-label-interest="{f:translate(key: 'calculator.warning.interest', domain: 'mtosafi_sitepackage.frontend')}"
+        aria-labelledby="{id}-title">
+        <h2 id="{id}-title"{f:if(condition: '{data.header_layout} == 100', then: ' class="visually-hidden"') -> f:format.raw()}>{data.header}</h2>
+        <form class="calculator__form" action="#">
+            <div class="form-field">
+                <label for="{id}-use"><f:translate key="calculator.use" domain="mtosafi_sitepackage.frontend" /></label>
+                <select id="{id}-use" name="use">
+                    <f:for each="{record.tx_mtosafisitepackage_landuses}" as="landUse">
+                        <option value="{landUse.uid}" data-percent="{landUse.percent}">{landUse.label}</option>
+                    </f:for>
+                </select>
+            </div>
+            <div class="form-field">
+                <label for="{id}-value"><f:translate key="calculator.value" domain="mtosafi_sitepackage.frontend" /></label>
+                <input id="{id}-value" name="value" type="number" min="0" step="10000" inputmode="numeric" value="2500000" aria-describedby="{id}-value-hint">
+                <p class="form-hint" id="{id}-value-hint"><f:translate key="calculator.value.hint" domain="mtosafi_sitepackage.frontend" /></p>
+            </div>
+            <div class="form-field">
+                <label for="{id}-months"><f:translate key="calculator.months" domain="mtosafi_sitepackage.frontend" /></label>
+                <input id="{id}-months" name="months" type="number" min="0" max="36" value="0" inputmode="numeric" aria-describedby="{id}-months-hint">
+                <p class="form-hint" id="{id}-months-hint"><f:translate key="calculator.months.hint" domain="mtosafi_sitepackage.frontend" /></p>
+            </div>
+        </form>
+        <div class="calculator__result" aria-live="polite">
+            <dl>
+                <dt><f:translate key="calculator.result.percent" domain="mtosafi_sitepackage.frontend" /></dt><dd data-output="percent"></dd>
+                <dt><f:translate key="calculator.result.rate" domain="mtosafi_sitepackage.frontend" /></dt><dd data-output="rate"></dd>
+                <dt><f:translate key="calculator.result.interest" domain="mtosafi_sitepackage.frontend" /></dt><dd data-output="interest"></dd>
+                <dt class="calculator__total"><f:translate key="calculator.result.total" domain="mtosafi_sitepackage.frontend" /></dt><dd class="calculator__total" data-output="total"></dd>
+            </dl>
+            <p class="calculator__warning" data-output="warning"></p>
+        </div>
+    </section>
+</f:section>
+
+</html>

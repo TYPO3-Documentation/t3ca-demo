@@ -58,6 +58,7 @@ final readonly class CreateEditorGroupOnPackageInitialization
         'tx_news_domain_model_tag',
         'tx_mtosafisitepackage_tile',
         'tx_mtosafisitepackage_slide',
+        'tx_mtosafisitepackage_landuse',
     ];
 
     /**

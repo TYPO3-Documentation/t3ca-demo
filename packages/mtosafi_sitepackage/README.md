@@ -27,7 +27,8 @@ shows under it and in the lightbox. The illustrations land in
 `fileadmin/user_upload/pages/`. The texts are made up for the fictional
 municipality; the accessibility statement and the privacy policy say that they are
 placeholders, because their real text is the municipality's to write. The "Contact" page
-carries the contact form beside the address and the opening hours. The "Search index" folder holds what the search needs: the filter
+carries the contact form beside the address and the opening hours, the "Land rates"
+page the land rates calculator below the table of the rates. The "Search index" folder holds what the search needs: the filter
 "Show only" and the indexers for pages and news (see Search below).
 
 Every page and the content of the home page also come in Kiswahili (see Languages
@@ -37,7 +38,7 @@ below).
 copied only where no site called `main` exists, and it answers on base `/`, in
 Kiswahili on `/sw/`. Its error handling shows the "Page not found" page for HTTP 404.
 
-The tree is not edited by hand. Nine scripts in the project write it into an
+The tree is not edited by hand. Ten scripts in the project write it into an
 installation, `Build/Initialisation/seed-page-tree.php` the pages,
 `Build/Initialisation/seed-news.php` the news on top of them,
 `Build/Initialisation/seed-home.php` the slider and the service tiles of the home page
@@ -47,8 +48,9 @@ search and `Build/Initialisation/seed-pages.php` the example content of the othe
 pages, with the illustrations in `Build/Initialisation/images/`, and
 `Build/Initialisation/seed-contact-form.php` the contact form on the "Contact" page,
 and `Build/Initialisation/seed-events.php` the events with their pages and the events
-list on the home page, and `Build/Initialisation/seed-kiswahili.php` the Kiswahili
-translation, and it is exported
+list on the home page, `Build/Initialisation/seed-kiswahili.php` the Kiswahili
+translation, and `Build/Initialisation/seed-land-rates-calculator.php` the land rates
+calculator on the "Land rates" page with its Kiswahili translation, and it is exported
 from there:
 
     ddev exec php Build/Initialisation/seed-page-tree.php
@@ -60,11 +62,12 @@ from there:
     ddev exec php Build/Initialisation/seed-contact-form.php
     ddev exec php Build/Initialisation/seed-events.php
     ddev exec php Build/Initialisation/seed-kiswahili.php
+    ddev exec php Build/Initialisation/seed-land-rates-calculator.php
     ddev exec typo3 impexp:export --type=xml --pid=1 --levels=999 \
         --table=pages --table=tt_content --table=sys_category \
         --table=tx_news_domain_model_news --table=tx_news_domain_model_link \
         --table=tx_news_domain_model_tag --table=tx_mtosafisitepackage_tile \
-        --table=tx_mtosafisitepackage_slide \
+        --table=tx_mtosafisitepackage_slide --table=tx_mtosafisitepackage_landuse \
         --table=tx_kesearch_indexerconfig --table=tx_kesearch_filters \
         --table=tx_kesearch_filteroptions \
         --include-related=sys_file \
@@ -118,7 +121,8 @@ translation.
 
 `seed-kiswahili.php` translates every page and shortcut, with a Kiswahili title
 and URL, the content of the home page: the headers, the slides and the service
-tiles, and the content of the "Contact" page; the contact form is translated in its
+tiles, the content of the "Contact" page, and the land rates calculator: its heading
+and the names of the land uses; the contact form is translated in its
 own label file (see "The form in Kiswahili" under Contact form). The other content, the news and the events are in English only.
 The Kiswahili language falls back to English for them (`fallbackType: fallback`,
 `fallbacks: '0'`), so a Kiswahili page shows the English content where it has no
@@ -153,8 +157,8 @@ are built where the package is set up. The group gets:
 - the site's page tree as its mount, and every page of it, with all page
   permissions; new pages are its own through `TCEMAIN.permissions` on the root page
 - the Page, List and Media modules
-- pages, content, news, categories, tags, links, tiles, slides and files, with all
-  their fields
+- pages, content, news, categories, tags, links, tiles, slides, land uses and
+  files, with all their fields
 - every content type but "HTML" and "Insert records"
 - the file mounts "News images", `fileadmin/user_upload/news/`, which is also
   where uploads go, "Slider images", `fileadmin/user_upload/slides/`, and "Page
@@ -275,6 +279,46 @@ moves into the slider and stays off where the visitor prefers reduced motion. Th
 labels the script writes are in `Resources/Private/Language/frontend.xlf`. The
 template is `Resources/Private/Templates/Content/Slider.fluid.html`, the page
 module preview `Resources/Private/Templates/ContentPreviews/Slider.fluid.html`.
+
+## Land rates calculator
+
+The content element "Land rates calculator" (group "Mto Safi" in the content wizard)
+renders the calculator of `design/land-rates.html`: the visitor chooses the land use,
+enters the rateable value and the months paid late, and reads the annual rate, the
+interest and the total in Kenya shillings as they type. It applies the rule of
+`design/docs/land-rates-calculation.md`:
+
+    annual rate = rateable value × rate of the land use, at least the minimum rate
+    interest    = annual rate × interest per month × months paid late (at most 36)
+    total       = annual rate + interest
+
+The rates are the element's, so editors change them without touching the script:
+
+- "Land uses": records of `tx_mtosafisitepackage_landuse` that belong to the element
+  and are edited, sorted, hidden and translated inside its form, each with its name
+  and its rate in percent of the rateable value (two decimals). The select offers
+  them in that order.
+- "Minimum rate (KES per plot and year)" and "Interest when paid late (% per
+  month)" on the element; 0 means no minimum and no interest.
+
+The rates belong to the default language. A translation translates the heading and
+the names of the land uses and calculates with the rates of the English element,
+whatever its own fields hold.
+
+The heading is required, because the calculator is named by it; header type "Hidden"
+keeps it for screen readers only. The due date, 31 March, is part of the texts in
+`Resources/Private/Language/frontend.xlf` (`calculator.*`), not a field. The annual
+rate and the interest are rounded to whole shillings each, so they add up to the
+total shown. Money and numbers are formatted in the language of the page ("KES" on
+`/`, "Ksh" on `/sw/`).
+
+The calculation is `Resources/Public/JavaScript/land-rates-calculator.js`, which the
+template loads through the asset collector on the pages that carry a calculator.
+Without JavaScript the results stay empty. The template is
+`Resources/Private/Templates/Content/LandRatesCalculator.fluid.html`, the page module
+preview, which lists the land uses with their rates, the minimum and the interest,
+`Resources/Private/Templates/ContentPreviews/LandRatesCalculator.fluid.html`. The
+icon is the package's own, `Resources/Public/Icons/ContentElements/LandRatesCalculator.svg`.
 
 ## Contact form
 

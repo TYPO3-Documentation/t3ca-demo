@@ -144,6 +144,39 @@
 			<trans-unit id="lightbox.position">
 				<source>Image %1$s of %2$s</source>
 			</trans-unit>
+			<trans-unit id="calculator.use">
+				<source>Land use</source>
+			</trans-unit>
+			<trans-unit id="calculator.value">
+				<source>Rateable value (KES)</source>
+			</trans-unit>
+			<trans-unit id="calculator.value.hint">
+				<source>As stated on your valuation notice.</source>
+			</trans-unit>
+			<trans-unit id="calculator.months">
+				<source>Months paid late</source>
+			</trans-unit>
+			<trans-unit id="calculator.months.hint">
+				<source>0 if you pay before 31 March.</source>
+			</trans-unit>
+			<trans-unit id="calculator.result.percent">
+				<source>Rate for this land use</source>
+			</trans-unit>
+			<trans-unit id="calculator.result.rate">
+				<source>Annual land rate</source>
+			</trans-unit>
+			<trans-unit id="calculator.result.interest">
+				<source>Interest</source>
+			</trans-unit>
+			<trans-unit id="calculator.result.total">
+				<source>Total to pay</source>
+			</trans-unit>
+			<trans-unit id="calculator.warning.noValue">
+				<source>Enter the rateable value from your valuation notice. Until then the minimum rate applies.</source>
+			</trans-unit>
+			<trans-unit id="calculator.warning.interest">
+				<source>Interest of %1$s per month adds %2$s. You can apply for a waiver of interest.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

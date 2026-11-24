@@ -191,6 +191,50 @@
 				<source>Image %1$s of %2$s</source>
 				<target>Picha %1$s kati ya %2$s</target>
 			</trans-unit>
+			<trans-unit id="calculator.use">
+				<source>Land use</source>
+				<target>Matumizi ya ardhi</target>
+			</trans-unit>
+			<trans-unit id="calculator.value">
+				<source>Rateable value (KES)</source>
+				<target>Thamani ya kutozwa kodi (KES)</target>
+			</trans-unit>
+			<trans-unit id="calculator.value.hint">
+				<source>As stated on your valuation notice.</source>
+				<target>Kama ilivyoandikwa kwenye notisi yako ya uthamini.</target>
+			</trans-unit>
+			<trans-unit id="calculator.months">
+				<source>Months paid late</source>
+				<target>Miezi ya kuchelewa kulipa</target>
+			</trans-unit>
+			<trans-unit id="calculator.months.hint">
+				<source>0 if you pay before 31 March.</source>
+				<target>0 ukilipa kabla ya tarehe 31 Machi.</target>
+			</trans-unit>
+			<trans-unit id="calculator.result.percent">
+				<source>Rate for this land use</source>
+				<target>Kiwango cha matumizi haya ya ardhi</target>
+			</trans-unit>
+			<trans-unit id="calculator.result.rate">
+				<source>Annual land rate</source>
+				<target>Kodi ya ardhi ya mwaka</target>
+			</trans-unit>
+			<trans-unit id="calculator.result.interest">
+				<source>Interest</source>
+				<target>Riba</target>
+			</trans-unit>
+			<trans-unit id="calculator.result.total">
+				<source>Total to pay</source>
+				<target>Jumla ya kulipa</target>
+			</trans-unit>
+			<trans-unit id="calculator.warning.noValue">
+				<source>Enter the rateable value from your valuation notice. Until then the minimum rate applies.</source>
+				<target>Weka thamani ya kutozwa kodi kutoka kwenye notisi yako ya uthamini. Hadi hapo, kodi ya chini kabisa inatumika.</target>
+			</trans-unit>
+			<trans-unit id="calculator.warning.interest">
+				<source>Interest of %1$s per month adds %2$s. You can apply for a waiver of interest.</source>
+				<target>Riba ya %1$s kwa mwezi inaongeza %2$s. Unaweza kuomba msamaha wa riba.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

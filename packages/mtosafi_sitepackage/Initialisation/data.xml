@@ -6,7 +6,7 @@
 		<meta type="array">
 			<packager_username>_cli_</packager_username>
 			<TYPO3_version>14.3.10</TYPO3_version>
-			<created>Mon 23. November 2026</created>
+			<created>Tue 24. November 2026</created>
 		</meta>
 		<pagetree type="array">
 			<node index="1" type="array">
@@ -1550,6 +1550,48 @@
 					<pid>6</pid>
 					<title>Rates for 2026</title>
 				</rec>
+				<rec index="56" type="array">
+					<uid>56</uid>
+					<pid>6</pid>
+					<title>Land rates calculator</title>
+					<relations index="rels" type="array">
+						<element index="tx_mtosafisitepackage_landuse:1" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="tx_mtosafisitepackage_landuse:2" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="tx_mtosafisitepackage_landuse:3" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="57" type="array">
+					<uid>57</uid>
+					<pid>6</pid>
+					<title>Kikokotoo cha kodi ya ardhi</title>
+					<relations index="rels" type="array">
+						<element index="tt_content:56" type="array">
+							<id>56</id>
+							<table>tt_content</table>
+						</element>
+						<element index="tx_mtosafisitepackage_landuse:4" type="array">
+							<id>4</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="tx_mtosafisitepackage_landuse:5" type="array">
+							<id>5</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="tx_mtosafisitepackage_landuse:6" type="array">
+							<id>6</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</rec>
 				<rec index="15" type="array">
 					<uid>15</uid>
 					<pid>6</pid>
@@ -2279,6 +2321,56 @@
 					<uid>7</uid>
 					<pid>32</pid>
 					<title>New boreholes bring clean water to Ward ...</title>
+				</rec>
+			</table>
+			<table index="tx_mtosafisitepackage_landuse" type="array">
+				<rec index="1" type="array">
+					<uid>1</uid>
+					<pid>6</pid>
+					<title>Residential, 0.50</title>
+				</rec>
+				<rec index="4" type="array">
+					<uid>4</uid>
+					<pid>6</pid>
+					<title>Makazi, 0.50</title>
+					<relations index="rels" type="array">
+						<element index="tx_mtosafisitepackage_landuse:1" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="5" type="array">
+					<uid>5</uid>
+					<pid>6</pid>
+					<title>Biashara, 1.20</title>
+					<relations index="rels" type="array">
+						<element index="tx_mtosafisitepackage_landuse:2" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="6" type="array">
+					<uid>6</uid>
+					<pid>6</pid>
+					<title>Kilimo, 0.20</title>
+					<relations index="rels" type="array">
+						<element index="tx_mtosafisitepackage_landuse:3" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</rec>
+				<rec index="2" type="array">
+					<uid>2</uid>
+					<pid>6</pid>
+					<title>Commercial, 1.20</title>
+				</rec>
+				<rec index="3" type="array">
+					<uid>3</uid>
+					<pid>6</pid>
+					<title>Agricultural, 0.20</title>
 				</rec>
 			</table>
 			<table index="sys_file_reference" type="array">
@@ -3547,7 +3639,17 @@
 				<table index="tt_content" type="array">
 					<item index="13">1</item>
 					<item index="14">1</item>
+					<item index="56">1</item>
+					<item index="57">1</item>
 					<item index="15">1</item>
+				</table>
+				<table index="tx_mtosafisitepackage_landuse" type="array">
+					<item index="1">1</item>
+					<item index="4">1</item>
+					<item index="5">1</item>
+					<item index="6">1</item>
+					<item index="2">1</item>
+					<item index="3">1</item>
 				</table>
 				<table index="sys_file_reference" type="array">
 					<item index="5">1</item>
@@ -3676,6 +3778,7 @@ TCEMAIN.permissions.group = show,editcontent,edit,new,delete</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
 				<field index="perms_everybody" type="integer">1</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795414399</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Mwanzo</field>
 				<field index="slug">/</field>
@@ -7077,7 +7180,7 @@ fields[] = bodytext</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795345582</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795348009</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Page not found</field>
 				<field index="slug">/page-not-found</field>
@@ -9575,7 +9678,7 @@ A description of the activity and the number of employees</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
-				<field index="SYS_LASTCHANGED" type="integer">1795368020</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795531560</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Land rates</field>
 				<field index="slug">/revenue-payments/land-rates</field>
@@ -9597,6 +9700,7 @@ A description of the activity and the number of employees</field>
 				<field index="perms_groupid" type="integer">1</field>
 				<field index="perms_user" type="integer">31</field>
 				<field index="perms_group" type="integer">31</field>
+				<field index="SYS_LASTCHANGED" type="integer">1795531560</field>
 				<field index="doktype" type="integer">1</field>
 				<field index="title">Kodi ya ardhi</field>
 				<field index="slug">/mapato-malipo/kodi-ya-ardhi</field>
@@ -9674,6 +9778,103 @@ Agricultural|0.2 % of the rateable value|KES 1,500</field>
 				<field index="table_header_position" type="integer">1</field>
 			</fieldlist>
 		</tablerow>
+		<tablerow index="tt_content:56" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">56</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">640</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l18n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l18n_diffsource"></field>
+				<field index="CType">mtosafi_landrates</field>
+				<field index="header">Land rates calculator</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="tx_mtosafisitepackage_landuses" type="integer">3</field>
+				<field index="tx_mtosafisitepackage_minimum_rate" type="integer">1500</field>
+				<field index="tx_mtosafisitepackage_interest">1.00</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="tx_mtosafisitepackage_landuses" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="1" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="2" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tt_content:57" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">57</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="fe_group"></field>
+				<field index="sorting" type="integer">704</field>
+				<field index="sys_language_uid" type="integer">1</field>
+				<field index="l18n_parent" type="integer">56</field>
+				<field index="l10n_source" type="integer">56</field>
+				<field index="l18n_diffsource">{&quot;CType&quot;:&quot;mtosafi_landrates&quot;,&quot;assets&quot;:&quot;0&quot;,&quot;bodytext&quot;:&quot;&quot;,&quot;bullets_type&quot;:&quot;0&quot;,&quot;categories&quot;:&quot;0&quot;,&quot;category_field&quot;:&quot;&quot;,&quot;colPos&quot;:&quot;0&quot;,&quot;cols&quot;:&quot;0&quot;,&quot;crdate&quot;:&quot;1795531560&quot;,&quot;date&quot;:&quot;0&quot;,&quot;editlock&quot;:&quot;0&quot;,&quot;endtime&quot;:&quot;0&quot;,&quot;fe_group&quot;:&quot;0&quot;,&quot;file_collections&quot;:&quot;&quot;,&quot;filelink_size&quot;:&quot;0&quot;,&quot;filelink_sorting&quot;:&quot;&quot;,&quot;filelink_sorting_direction&quot;:&quot;&quot;,&quot;frame_class&quot;:&quot;default&quot;,&quot;header&quot;:&quot;Land rates calculator&quot;,&quot;header_layout&quot;:&quot;0&quot;,&quot;header_link&quot;:&quot;&quot;,&quot;header_position&quot;:&quot;&quot;,&quot;hidden&quot;:&quot;0&quot;,&quot;image&quot;:&quot;0&quot;,&quot;image_zoom&quot;:&quot;1&quot;,&quot;imageborder&quot;:&quot;0&quot;,&quot;imagecols&quot;:&quot;2&quot;,&quot;imageheight&quot;:&quot;&quot;,&quot;imageorient&quot;:&quot;0&quot;,&quot;imagewidth&quot;:&quot;&quot;,&quot;layout&quot;:&quot;0&quot;,&quot;linkToTop&quot;:&quot;0&quot;,&quot;media&quot;:&quot;0&quot;,&quot;pages&quot;:&quot;&quot;,&quot;pi_flexform&quot;:&quot;&quot;,&quot;records&quot;:&quot;&quot;,&quot;recursive&quot;:&quot;0&quot;,&quot;rowDescription&quot;:&quot;&quot;,&quot;sectionIndex&quot;:&quot;1&quot;,&quot;selected_categories&quot;:&quot;&quot;,&quot;space_after_class&quot;:&quot;&quot;,&quot;space_before_class&quot;:&quot;&quot;,&quot;starttime&quot;:&quot;0&quot;,&quot;subheader&quot;:&quot;&quot;,&quot;table_caption&quot;:&quot;&quot;,&quot;table_class&quot;:&quot;&quot;,&quot;table_delimiter&quot;:&quot;124&quot;,&quot;table_enclosure&quot;:&quot;0&quot;,&quot;table_header_position&quot;:&quot;0&quot;,&quot;table_tfoot&quot;:&quot;0&quot;,&quot;target&quot;:&quot;&quot;,&quot;tstamp&quot;:&quot;1795531560&quot;,&quot;tx_impexp_origuid&quot;:&quot;0&quot;,&quot;tx_mtosafisitepackage_interest&quot;:&quot;1.00&quot;,&quot;tx_mtosafisitepackage_landuses&quot;:&quot;3&quot;,&quot;tx_mtosafisitepackage_minimum_rate&quot;:&quot;1500&quot;,&quot;tx_mtosafisitepackage_slides&quot;:&quot;0&quot;,&quot;tx_mtosafisitepackage_tiles&quot;:&quot;0&quot;,&quot;tx_news_related_news&quot;:&quot;0&quot;,&quot;uploads_description&quot;:&quot;0&quot;,&quot;uploads_type&quot;:&quot;0&quot;}</field>
+				<field index="CType">mtosafi_landrates</field>
+				<field index="header">Kikokotoo cha kodi ya ardhi</field>
+				<field index="image_zoom" type="integer">1</field>
+				<field index="pages"></field>
+				<field index="records"></field>
+				<field index="selected_categories">0</field>
+				<field index="file_collections"></field>
+				<field index="tx_mtosafisitepackage_landuses" type="integer">3</field>
+				<field index="tx_mtosafisitepackage_minimum_rate" type="integer">1500</field>
+				<field index="tx_mtosafisitepackage_interest">1.00</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="l18n_parent" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>56</id>
+							<table>tt_content</table>
+						</element>
+					</relations>
+				</field>
+				<field index="tx_mtosafisitepackage_landuses" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>4</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="1" type="array">
+							<id>5</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+						<element index="2" type="array">
+							<id>6</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</field>
+				<field index="l10n_source" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>56</id>
+							<table>tt_content</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
 		<tablerow index="tt_content:15" type="array">
 			<fieldlist index="data" type="array">
 				<field index="uid" type="integer">15</field>
@@ -9709,6 +9910,129 @@ Agricultural|0.2 % of the rateable value|KES 1,500</field>
 					</softrefs>
 				</field>
 			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_landuse:1" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">1</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">56</field>
+				<field index="label">Residential</field>
+				<field index="percent">0.50</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_landuse:4" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">4</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">1</field>
+				<field index="sys_language_uid" type="integer">1</field>
+				<field index="l10n_parent" type="integer">1</field>
+				<field index="l10n_source" type="integer">1</field>
+				<field index="l10n_diffsource">{&quot;hidden&quot;:&quot;0&quot;,&quot;label&quot;:&quot;Residential&quot;,&quot;parent&quot;:&quot;56&quot;,&quot;percent&quot;:&quot;0.50&quot;}</field>
+				<field index="parent" type="integer">57</field>
+				<field index="label">Makazi</field>
+				<field index="percent">0.50</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="l10n_parent" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>1</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_landuse:5" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">5</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">2</field>
+				<field index="sys_language_uid" type="integer">1</field>
+				<field index="l10n_parent" type="integer">2</field>
+				<field index="l10n_source" type="integer">2</field>
+				<field index="l10n_diffsource">{&quot;hidden&quot;:&quot;0&quot;,&quot;label&quot;:&quot;Commercial&quot;,&quot;parent&quot;:&quot;56&quot;,&quot;percent&quot;:&quot;1.20&quot;}</field>
+				<field index="parent" type="integer">57</field>
+				<field index="label">Biashara</field>
+				<field index="percent">1.20</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="l10n_parent" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>2</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_landuse:6" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">6</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">3</field>
+				<field index="sys_language_uid" type="integer">1</field>
+				<field index="l10n_parent" type="integer">3</field>
+				<field index="l10n_source" type="integer">3</field>
+				<field index="l10n_diffsource">{&quot;hidden&quot;:&quot;0&quot;,&quot;label&quot;:&quot;Agricultural&quot;,&quot;parent&quot;:&quot;56&quot;,&quot;percent&quot;:&quot;0.20&quot;}</field>
+				<field index="parent" type="integer">57</field>
+				<field index="label">Kilimo</field>
+				<field index="percent">0.20</field>
+			</fieldlist>
+			<related index="rels" type="array">
+				<field index="l10n_parent" type="array">
+					<type>db</type>
+					<relations index="itemArray" type="array">
+						<element index="0" type="array">
+							<id>3</id>
+							<table>tx_mtosafisitepackage_landuse</table>
+						</element>
+					</relations>
+				</field>
+			</related>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_landuse:2" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">2</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">514</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">56</field>
+				<field index="label">Commercial</field>
+				<field index="percent">1.20</field>
+			</fieldlist>
+		</tablerow>
+		<tablerow index="tx_mtosafisitepackage_landuse:3" type="array">
+			<fieldlist index="data" type="array">
+				<field index="uid" type="integer">3</field>
+				<field index="pid" type="integer">6</field>
+				<field index="hidden" type="integer">0</field>
+				<field index="sorting" type="integer">515</field>
+				<field index="sys_language_uid" type="integer">0</field>
+				<field index="l10n_parent" type="integer">0</field>
+				<field index="l10n_source" type="integer">0</field>
+				<field index="l10n_diffsource"></field>
+				<field index="parent" type="integer">56</field>
+				<field index="label">Agricultural</field>
+				<field index="percent">0.20</field>
+			</fieldlist>
 		</tablerow>
 		<tablerow index="sys_file_reference:1" type="array">
 			<fieldlist index="data" type="array">

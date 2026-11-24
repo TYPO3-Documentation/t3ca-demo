@@ -81,6 +81,54 @@
 			<trans-unit id="slide.link">
 				<source>Link</source>
 			</trans-unit>
+			<trans-unit id="landrates.title">
+				<source>Land rates calculator</source>
+			</trans-unit>
+			<trans-unit id="landrates.description">
+				<source>Owners calculate their annual land rate from the land use and the rateable value of their plot, with the interest for paying late, in Kenya shillings.</source>
+			</trans-unit>
+			<trans-unit id="landrates.field.landuses">
+				<source>Land uses</source>
+			</trans-unit>
+			<trans-unit id="landrates.field.landuses.new">
+				<source>Add a land use</source>
+			</trans-unit>
+			<trans-unit id="landrates.palette.rates">
+				<source>Minimum and interest</source>
+			</trans-unit>
+			<trans-unit id="landrates.field.minimum">
+				<source>Minimum rate (KES per plot and year)</source>
+			</trans-unit>
+			<trans-unit id="landrates.field.minimum.description">
+				<source>A plot pays at least this much, whatever its value. 0 for no minimum.</source>
+			</trans-unit>
+			<trans-unit id="landrates.field.interest">
+				<source>Interest when paid late (% per month)</source>
+			</trans-unit>
+			<trans-unit id="landrates.field.interest.description">
+				<source>Percent of the annual rate, for every month after 31 March that has started before the rate is paid, such as 1 for 1 %. 0 for no interest.</source>
+			</trans-unit>
+			<trans-unit id="landuse">
+				<source>Land use</source>
+			</trans-unit>
+			<trans-unit id="landuse.label">
+				<source>Land use</source>
+			</trans-unit>
+			<trans-unit id="landuse.label.description">
+				<source>As the valuation roll names it, such as "Residential".</source>
+			</trans-unit>
+			<trans-unit id="landuse.percent">
+				<source>Rate (% of the rateable value per year)</source>
+			</trans-unit>
+			<trans-unit id="landuse.percent.description">
+				<source>Such as 0.5 for 0.5 %. A translation calculates with the rate of the default language.</source>
+			</trans-unit>
+			<trans-unit id="preview.landrates.minimum">
+				<source>Minimum rate: KES %1$s per plot and year</source>
+			</trans-unit>
+			<trans-unit id="preview.landrates.interest">
+				<source>Interest when paid late: %1$s %% per month</source>
+			</trans-unit>
 			<trans-unit id="preview.noLink">
 				<source>no link</source>
 			</trans-unit>
