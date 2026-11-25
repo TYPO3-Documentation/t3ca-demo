@@ -289,6 +289,22 @@
       <rect x="120" y="395" width="300" height="22" rx="11" fill="#cdd8d2"/>
     </symbol>
 
+    <!-- The browser chat with the AI's face (Claudia, the coffee grinder) beside its answer. -->
+    <symbol id="browser-ai" viewBox="0 0 900 560" width="900" height="560">
+      <rect width="900" height="560" rx="24" fill="#f3f7f4"/>
+      <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#cdd8d2"/>
+      <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
+      <rect x="180" y="22" width="600" height="36" rx="18" fill="#fff"/>
+      <rect x="380" y="140" width="440" height="80" rx="30" fill="#0b5a3c"/>
+      <clipPath id="browser-ai-face"><circle cx="96" cy="400" r="62"/></clipPath>
+      <image href="images/avatars/claudia.jpg" x="34" y="338" width="124" height="124" clip-path="url(#browser-ai-face)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="96" cy="400" r="62" fill="none" stroke="#cdd8d2" stroke-width="4"/>
+      <rect x="175" y="260" width="560" height="200" rx="30" fill="#fff" stroke="#cdd8d2" stroke-width="4"/>
+      <rect x="215" y="305" width="440" height="22" rx="11" fill="#cdd8d2"/>
+      <rect x="215" y="350" width="380" height="22" rx="11" fill="#cdd8d2"/>
+      <rect x="215" y="395" width="300" height="22" rx="11" fill="#cdd8d2"/>
+    </symbol>
+
     <symbol id="ide" viewBox="0 0 900 560" width="900" height="560">
       <rect width="900" height="560" rx="24" fill="#f3f7f4"/>
       <path d="M0 24a24 24 0 0 1 24-24h852a24 24 0 0 1 24 24v56H0z" fill="#cdd8d2"/>
@@ -318,10 +334,16 @@
       <circle cx="44" cy="40" r="12" fill="#9b1c1f"/><circle cx="84" cy="40" r="12" fill="#f2b632"/><circle cx="124" cy="40" r="12" fill="#0b5a3c"/>
       <path d="M420 140h380a30 30 0 0 1 30 30v80a30 30 0 0 1-30 30H470l-50 40v-40a30 30 0 0 1-30-30v-80a30 30 0 0 1 30-30z" fill="#0b5a3c"/>
       <rect x="440" y="190" width="300" height="20" rx="10" fill="#f3f7f4" opacity="0.8"/>
-      <path d="M100 350h460a30 30 0 0 1 30 30v170a30 30 0 0 1-30 30H150l-50 40v-40a30 30 0 0 1-30-30V380a30 30 0 0 1 30-30z" fill="#f3f7f4"/>
-      <rect x="110" y="400" width="400" height="20" rx="10" fill="#9fb3a8"/>
-      <rect x="110" y="445" width="340" height="20" rx="10" fill="#9fb3a8"/>
-      <rect x="110" y="490" width="260" height="20" rx="10" fill="#9fb3a8"/>
+      <g transform="translate(80 0)">
+        <path d="M100 350h460a30 30 0 0 1 30 30v170a30 30 0 0 1-30 30H150l-50 40v-40a30 30 0 0 1-30-30V380a30 30 0 0 1 30-30z" fill="#f3f7f4"/>
+        <rect x="110" y="400" width="400" height="20" rx="10" fill="#9fb3a8"/>
+        <rect x="110" y="445" width="340" height="20" rx="10" fill="#9fb3a8"/>
+        <rect x="110" y="490" width="260" height="20" rx="10" fill="#9fb3a8"/>
+      </g>
+      <!-- the AI's face: Claudia, the coffee grinder -->
+      <clipPath id="terminal-ai-face"><circle cx="92" cy="590" r="58"/></clipPath>
+      <image href="images/avatars/claudia.jpg" x="34" y="532" width="116" height="116" clip-path="url(#terminal-ai-face)" preserveAspectRatio="xMidYMid slice"/>
+      <circle cx="92" cy="590" r="58" fill="none" stroke="#9fb3a8" stroke-width="4"/>
     </symbol>
 
     <!-- A project folder, 440 × 360 -->
