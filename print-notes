@@ -57,10 +57,17 @@ kinds = re.findall(r'<section class="([^"]*)"', deck)
 for number, kind in enumerate(kinds, 1):
     printable(f'{tmp}/{number:03d}.png', kind)
 rows = []
+numbered = 0
 for number, body in enumerate(sections, 1):
+    # A slide added later ("extra") shows the number before it with a "+", like the counter on screen.
+    if ' extra' in page_sections[number - 1] or '"extra' in page_sections[number - 1]:
+        label = f'{numbered}+'
+    else:
+        numbered += 1
+        label = str(numbered)
     note = re.search(r'<aside class="notes">(.*?)</aside>', body, re.S)
     text = re.sub(r'<[^>]+>', '', note.group(1)).strip() if note else ''
-    rows.append(f'''<div class="slide"><img src="{number:03d}.jpg" alt=""><span class="no">{number}</span><div>
+    rows.append(f'''<div class="slide"><img src="{number:03d}.jpg" alt=""><span class="no">{label}</span><div>
   <p>{html.escape(html.unescape(text)) or '<em>(no notes)</em>'}</p></div>
 </div>''')
 open(tmp + '/notes.html', 'w', encoding='utf-8').write('''<!doctype html>

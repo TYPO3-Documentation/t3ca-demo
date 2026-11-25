@@ -137,6 +137,8 @@
   .picture .caption.farewell { bottom: 50px; text-align: center; font-size: 120px; font-weight: 700; line-height: 1.15; padding: 20px 0 34px; }
   .picture .caption.farewell .am { font-size: 96px; }
   .caption em { font-style: normal; color: var(--accent); }
+  .trio .caption { position: absolute; left: 0; right: 0; bottom: 80px; z-index: 2; padding: 28px 120px;
+    background: rgba(7, 61, 41, 0.85); color: var(--white); font-size: 64px; font-weight: 600; line-height: 1.25; }
 
   /* A screenshot: shown whole, on green, with a little margin. */
   .picture.screenshot > img { object-fit: contain; padding: 80px 80px 220px; }
@@ -1154,6 +1156,10 @@ ExtensionManagementUtility::addRecordType([
   const deck = document.getElementById('deck');
   const slides = [...deck.querySelectorAll('section')];
   const counter = document.getElementById('counter');
+  // A slide with class "extra" was added later: it shows the number before it with a "+" and does
+  // not count, so the numbers of the slides after it (and in printed notes) stay the same.
+  let numbered = 0;
+  const labels = slides.map((slide) => slide.classList.contains('extra') ? `${numbered}+` : String(++numbered));
   let current = 0;
 
   function fit() {
@@ -1164,11 +1170,11 @@ ExtensionManagementUtility::addRecordType([
   function show(index) {
     current = Math.max(0, Math.min(slides.length - 1, index));
     slides.forEach((slide, i) => slide.classList.toggle('current', i === current));
-    counter.textContent = `${current + 1} / ${slides.length}`;
+    counter.textContent = `${labels[current]} / ${numbered}`;
     history.replaceState(null, '', `#${current + 1}`);
     startReplay(slides[current]);
     const notes = slides[current].querySelector('.notes');
-    if (notes) console.log(`Slide ${current + 1}: ${notes.textContent}`);
+    if (notes) console.log(`Slide ${labels[current]}: ${notes.textContent}`);
   }
 
   // Replays are created when their slide is first shown, and paused when you leave it.

@@ -137,6 +137,8 @@
   .picture .caption.farewell { bottom: 50px; text-align: center; font-size: 120px; font-weight: 700; line-height: 1.15; padding: 20px 0 34px; }
   .picture .caption.farewell .am { font-size: 96px; }
   .caption em { font-style: normal; color: var(--accent); }
+  .trio .caption { position: absolute; left: 0; right: 0; bottom: 80px; z-index: 2; padding: 28px 120px;
+    background: rgba(7, 61, 41, 0.85); color: var(--white); font-size: 64px; font-weight: 600; line-height: 1.25; }
 
   /* A screenshot: shown whole, on green, with a little margin. */
   .picture.screenshot > img { object-fit: contain; padding: 80px 80px 220px; }
@@ -367,6 +369,7 @@
   <section class="picture">
     <img src="images/folie_16_9.jpg" alt="The TYPO3 team of Lina's agency, chalked on a wall, with TYPO3-coloured pillows">
     <aside class="notes">My team at the agency. One of us now works for the TYPO3 GmbH.</aside>
+    <div class="caption">My <em>team</em></div>
   </section>
 
   <section class="picture">
@@ -377,6 +380,13 @@
   <section class="picture">
     <img src="images/typo3-office-code-sprint.jpg" alt="Participants of a code sprint in front of the TYPO3 logo in the TYPO3 office">
     <aside class="notes">A code sprint in the TYPO3 office: the community working on TYPO3 together. The poodle came too.</aside>
+    <div class="caption">The <em>community</em></div>
+  </section>
+
+  <section class="picture extra">
+    <img src="images/typo3-devdays-2023-women.jpg" alt="Seven women of the TYPO3 community on a bench at the TYPO3 Developer Days 2023">
+    <div class="caption">The TYPO3 <em>ladies</em></div>
+    <aside class="notes">The TYPO3 ladies at the Developer Days 2023. Women build TYPO3 too.</aside>
   </section>
 
   <section class="picture">
@@ -433,6 +443,7 @@
   <section class="picture upright">
     <img src="images/typo3-gmbh-desk-ide-coffee.jpg" alt="Desk with an IDE full of warnings and a TYPO3 coffee mug">
     <aside class="notes">Look at the diff in your IDE, but don't run the AI in it. The IDE eats resources on old computers. On strong ones it keeps re-indexing files the AI is still changing.</aside>
+    <div class="caption"><span><em>IDE</em> for the diff</span></div>
   </section>
 
   <section class="graphic">
@@ -478,6 +489,7 @@
   <section class="picture">
     <img src="images/benny-patriciamaier-fotografie.jpg" alt="A white dog with wide eyes and an open mouth" style="object-position: center 40%">
     <aside class="notes">Some even have humour. (Claudia excluded.)</aside>
+    <div class="caption">Some have <em>humor</em></div>
   </section>
 
   <!-- ================= The cut-off date ================= -->
@@ -485,6 +497,7 @@
   <section class="picture">
     <img src="images/dogdancing/stgallen-2025-tournament-DSC_6108.jpg" alt="Lina shading her eyes and looking into the distance, Halma standing up beside her">
     <aside class="notes">Section: which TYPO3 version? Looking out for what's new.</aside>
+    <div class="caption">Which TYPO3 <em>version</em>?</div>
   </section>
 
   <section class="graphic">
@@ -588,6 +601,7 @@
   <section class="picture">
     <img src="images/dogdancing/munsingen-2025-5.jpg" alt="Lina pointing far away with one arm, Halma sitting up beside her">
     <aside class="notes">Section: giving the AI the right knowledge. Clear signals.</aside>
+    <div class="caption">The right <em>knowledge</em></div>
   </section>
 
   <section class="graphic">
@@ -701,6 +715,7 @@
     <img src="images/dogdancing/stgallen-2025-studio-DSC_6346.jpg" alt="Lina in a summer dress and straw hat, Halma leaping past her" style="object-position: 50% center">
     <img src="images/dogdancing/barock-costume-bridge.jpg" alt="Lina in a baroque costume with a grey wig and lace collar, Halma in her arm with a lace collar, on a covered wooden bridge" style="object-position: 100% center">
     <aside class="notes">Section: themes. Same dancer, same dog, a different costume each time. In TYPO3 the costume of a website is the site package.</aside>
+    <div class="caption">Same dancer, new <em>theme</em></div>
   </section>
 
   <section class="graphic">
@@ -871,6 +886,7 @@
   <section class="picture">
     <img src="images/benny-muddy.jpg" alt="Benny covered in mud, sitting innocently next to a football" style="object-position: center 35%">
     <aside class="notes">Section: sometimes data is dirty. The news and events come from the municipality's Word document.</aside>
+    <div class="caption"><em>Dirty</em> data</div>
   </section>
 
   <section class="doc">
@@ -915,6 +931,7 @@
   <section class="picture">
     <img src="images/benny-dog-wash.jpg" alt="Benny wet in a self-service dog wash, next to the programme buttons">
     <aside class="notes">The AI cleans up, like a dog wash: you pick the programme, the machine does the work. But somebody has to look whether the dog is really clean.</aside>
+    <div class="caption"><em>Cleaning</em> up</div>
   </section>
 
   <section class="chat">
@@ -943,11 +960,13 @@
   <section class="picture">
     <img src="images/festive-benny-halma.jpg" alt="Benny posing with a Santa hat, Halma behind him with her head inside another Santa hat">
     <aside class="notes">Two assistants, the same instruction: one poses perfectly, the other has her nose in something nobody asked for.</aside>
+    <div class="caption">Two <em>assistants</em></div>
   </section>
   <section class="trio">
     <img src="images/benny-bath-before.jpg" alt="Benny on a table in the shower, the shower head coming closer, clearly not amused" style="object-position: 55% center">
     <img src="images/benny-bath-after.jpg" alt="Benny soaking wet in a blue bathrobe" style="object-position: center 60%">
     <aside class="notes">You are more intelligent than your AI. You decide, sometimes against Claudia's will: no dropped database, ask before guessing a date. Benny didn't want a bath either.</aside>
+    <div class="caption"><em>You</em> decide</div>
   </section>
 
   <!-- ================= Stage 12: the contact form ================= -->
@@ -955,6 +974,7 @@
   <section class="picture">
     <img src="images/dogdancing/munsingen-2025-4.jpg" alt="Lina kneeling, reaching out with one hand, Halma beside her">
     <aside class="notes">Section: the contact form. The first time the site collects personal data. Seven of my ten prompts in this stage were questions.</aside>
+    <div class="caption">The <em>contact</em> form</div>
   </section>
 
   <section class="chat">
@@ -1020,6 +1040,7 @@
   <section class="picture">
     <img src="images/dogdancing/menzigen-2024-072A2887.jpg" alt="Lina with a fishing net, Halma reaching for a glittering fish">
     <aside class="notes">Spam. Fishing it out before it reaches the inbox.</aside>
+    <div class="caption"><em>Spam</em></div>
   </section>
 
   <section class="chat">
@@ -1079,6 +1100,7 @@
   <section class="picture upright">
     <img src="images/typo3-gmbh-espresso-selfie.jpg" alt="Lina at the espresso machine, looking sceptical">
     <aside class="notes">I caught that, not Claudia: after a new extension, look at the result yourself.</aside>
+    <div class="caption"><span>Look <em>yourself</em></span></div>
   </section>
 
   <section class="chat">
@@ -1236,6 +1258,10 @@
   const deck = document.getElementById('deck');
   const slides = [...deck.querySelectorAll('section')];
   const counter = document.getElementById('counter');
+  // A slide with class "extra" was added later: it shows the number before it with a "+" and does
+  // not count, so the numbers of the slides after it (and in printed notes) stay the same.
+  let numbered = 0;
+  const labels = slides.map((slide) => slide.classList.contains('extra') ? `${numbered}+` : String(++numbered));
   let current = 0;
 
   function fit() {
@@ -1246,11 +1272,11 @@
   function show(index) {
     current = Math.max(0, Math.min(slides.length - 1, index));
     slides.forEach((slide, i) => slide.classList.toggle('current', i === current));
-    counter.textContent = `${current + 1} / ${slides.length}`;
+    counter.textContent = `${labels[current]} / ${numbered}`;
     history.replaceState(null, '', `#${current + 1}`);
     startReplay(slides[current]);
     const notes = slides[current].querySelector('.notes');
-    if (notes) console.log(`Slide ${current + 1}: ${notes.textContent}`);
+    if (notes) console.log(`Slide ${labels[current]}: ${notes.textContent}`);
   }
 
   // Replays are created when their slide is first shown, and paused when you leave it.
